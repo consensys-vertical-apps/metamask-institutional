@@ -1,0 +1,29 @@
+{
+  "name": "@mmi-monorepo/types",
+  "version": "0.1.0",
+  "description": "This package will export shared types used across the old @codefi/mmi-sdk library",
+  "author": "Albert Olive <albertolivecorbella@gmail.com>",
+  "homepage": "https://github.com/ConsenSys/mmi-monorepo#readme",
+  "license": "ISC",
+  "main": "lib/types.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ConsenSys/mmi-monorepo.git"
+  },
+  "scripts": {
+    "test": "node ./__tests__/@mmi-monorepo/types.test.js"
+  },
+  "bugs": {
+    "url": "https://github.com/ConsenSys/mmi-monorepo/issues"
+  }
+}
