@@ -1,0 +1,25 @@
+{
+  "name": "mmi-monorepo",
+  "version": "0.1.0",
+  "description": "Monorepo for MetaMask Institutional",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ConsenSys/mmi-monorepo.git"
+  },
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "test": "lerna run test --stream",
+    "publish-all": "lerna publish",
+    "lint": "lerna run lint --stream --parallel",
+    "build": "lerna run build --stream",
+    "bootstrap": "lerna bootstrap",
+    "clean": "rimraf dist",
+    "exec": "lerna exec"
+  },
+  "devDependencies": {
+    "lerna": "^6.1.0"
+  }
+}
