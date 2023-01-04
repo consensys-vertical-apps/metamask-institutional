@@ -5,23 +5,22 @@
   "author": "Albert Olive <albertolivecorbella@gmail.com>",
   "homepage": "https://github.com/ConsenSys/mmi-monorepo#readme",
   "license": "ISC",
-  "main": "lib/types.js",
-  "directories": {
-    "lib": "lib",
-    "test": "__tests__"
-  },
-  "files": [
-    "lib"
-  ],
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "publishConfig": {
     "access": "public"
   },
   "repository": {
     "type": "git",
+    "directory": "packages/types",
     "url": "git+https://github.com/ConsenSys/mmi-monorepo.git"
   },
   "scripts": {
-    "test": "node ./__tests__/@mmi-monorepo/types.test.js"
+    "clean": "rimraf dist && rimraf tsconfig.tsbuildinfo",
+    "prepack": "yarn build",
+    "build": "yarn clean && tsc --build && cp \"./package.json\" ./dist/",
+    "test": "node ./__tests__/@mmi-monorepo/types.test.js",
+    "lint": "eslint \"./src/**/*.{ts,tsx}\" --max-warnings=0"
   },
   "bugs": {
     "url": "https://github.com/ConsenSys/mmi-monorepo/issues"

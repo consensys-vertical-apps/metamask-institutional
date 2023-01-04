@@ -8,12 +8,20 @@
     "target": "es2019",
     "sourceMap": true,
     "outDir": "./dist",
-    "baseUrl": "./",
+    "baseUrl": "./packages",
     "incremental": true,
     "resolveJsonModule": true,
     "esModuleInterop": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "paths": {
+      "@mmi-monorepo/interfaces/*": ["interfaces/src/*"],
+      "@mmi-monorepo/types/*": ["types/src/*"]
+    }
   },
-  "include": ["./packages/**/*"],
-  "exclude": ["node_modules", "dist"]
+  "files": [],
+  "references": [
+    {
+      "path": "packages/types"
+    }
+  ]
 }
