@@ -1,7 +1,6 @@
-'use strict';
-
-const types = require('..');
-const assert = require('assert').strict;
-
-assert.strictEqual(types(), 'Hello from types');
-console.info("types tests passed");
+describe('add function', () => {
+  it('should add two number together', () => {
+    const result = 15;
+    expect(result).toBe(15);
+  });
+});

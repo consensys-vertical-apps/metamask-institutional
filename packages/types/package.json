@@ -19,7 +19,7 @@
     "clean": "rimraf dist && rimraf tsconfig.tsbuildinfo",
     "prepack": "yarn build",
     "build": "yarn clean && tsc --build && cp \"./package.json\" ./dist/",
-    "test": "node ./__tests__/@mmi-monorepo/types.test.js",
+    "test": "yarn jest",
     "lint": "eslint \"./src/**/*.{ts,tsx}\" --max-warnings=0"
   },
   "bugs": {
