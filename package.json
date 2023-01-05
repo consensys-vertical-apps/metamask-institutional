@@ -11,7 +11,7 @@
     "packages/*"
   ],
   "scripts": {
-    "prepare": "husky install && node ./configure-references.js",
+    "prepare": "husky install",
     "test": "lerna run test --stream",
     "publish-all": "lerna publish",
     "lint": "lerna run lint --stream --parallel",
