@@ -22,7 +22,8 @@
     "compile": "tsc --build && cp \"./package.json\" ./dist/",
     "bootstrap": "lerna bootstrap",
     "clean": "rimraf dist && rimraf tsconfig.tsbuildinfo",
-    "exec": "lerna exec"
+    "exec": "lerna exec",
+    "publish": "lerna publish"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.48.0",
@@ -40,7 +41,7 @@
     "typescript": "^4.9.4"
   },
   "lint-staged": {
-    "*.{js,jsx,ts,tsx,json,md}": [
+    "*.{js,jsx,ts,tsx,md}": [
       "yarn nx affected:lint --fix --parallel --uncommitted",
       "yarn nx format:write --uncommitted"
     ]

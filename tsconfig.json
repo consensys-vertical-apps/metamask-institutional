@@ -1,26 +1,28 @@
 {
-  "compilerOptions": {
-    "module": "commonjs",
-    "declaration": true,
-    "removeComments": true,
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "target": "es2019",
-    "sourceMap": true,
-    "outDir": "./dist",
-    "baseUrl": "./packages",
-    "incremental": true,
-    "resolveJsonModule": true,
-    "esModuleInterop": true,
-    "skipLibCheck": true,
-    "paths": {
-      "@mmi-monorepo/types/*": ["types/src/*"]
-    }
-  },
-  "files": [],
-  "references": [
-    {
-      "path": "packages/types"
-    }
-  ]
+    "compilerOptions": {
+        "module": "commonjs",
+        "declaration": true,
+        "removeComments": true,
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "target": "es2019",
+        "sourceMap": true,
+        "outDir": "./dist",
+        "baseUrl": "./packages",
+        "incremental": true,
+        "resolveJsonModule": true,
+        "esModuleInterop": true,
+        "skipLibCheck": true,
+        "paths": {
+            "@mmi-monorepo/types/*": [
+                "types/src/*"
+            ]
+        }
+    },
+    "files": [],
+    "references": [
+        {
+            "path": "packages/types"
+        }
+    ]
 }
