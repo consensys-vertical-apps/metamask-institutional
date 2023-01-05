@@ -1,5 +1,5 @@
 // TO FIX import { MmiConfigurationController } from "../controllers/mmi-configuration";
-import { ICustodianAccount } from './ICustodianAccount';
+import { ICustodianAccount } from "./ICustodianAccount";
 
 export interface ICustodyKeyringOptions {
   accounts?: string[];

@@ -20,7 +20,7 @@
     "prepack": "yarn build",
     "build": "yarn clean && tsc --build && cp \"./package.json\" ./dist/",
     "test": "yarn jest",
-    "lint": "eslint \"./src/**/*.{ts,tsx}\" --max-warnings=0"
+    "pre-commit": "lint-staged"
   },
   "bugs": {
     "url": "https://github.com/ConsenSys/mmi-monorepo/issues"

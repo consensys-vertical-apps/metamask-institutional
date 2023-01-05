@@ -1,6 +1,6 @@
 // TO FIX import { CustodyKeyring } from "src/classes/CustodyKeyring";
 // TO FIX import { MmiConfigurationController } from "src/controllers/mmi-configuration";
-import { IWebhookJsonRpc2Request } from './IWebhookJsonRpc2Request';
+import { IWebhookJsonRpc2Request } from "./IWebhookJsonRpc2Request";
 
 export class IWebsocketClientControllerOptions {
   initState?: Record<string, unknown>;
