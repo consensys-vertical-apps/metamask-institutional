@@ -20,6 +20,8 @@
     "prepack": "yarn build",
     "build": "yarn clean && tsc --build && cp \"./package.json\" ./dist/",
     "test": "yarn jest",
+    "lint": "eslint 'src/**/*.ts'",
+    "lint:fix": "eslint --fix 'src/**/*.ts'",
     "pre-commit": "lint-staged"
   },
   "bugs": {
