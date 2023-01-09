@@ -1,33 +1,50 @@
-# This workflow will run tests using node and then publish a package to GitHub Packages when a release is created
-# For more information see: https://docs.github.com/en/actions/publishing-packages/publishing-nodejs-packages
+name: Publish to npmJS
+"on":
+  # When Release Pull Request is merged
+  pull_request:
+    branches:
+      - master
+    types: [closed]
 
-name: Node.js Package
-
-on:
-  release:
-    types: [created]
+permissions:
+  contents: write # for checkout and tag
+  pull-requests: write # for comments
+  packages: write # for publish
 
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
           node-version: 16
-      - run: npm ci
-      - run: npm test
+      - run: yarn test
 
   publish-npm:
-    needs: build
+    needs: test
+    permissions:
+      contents: write
+    if: |
+      github.event.pull_request.merged == true &&
+      startsWith(github.event.pull_request.head.ref, 'release/')
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: "Checkout" # Download code from the repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0 # Checkout all branches and tags
+          ref: "${{ github.event.pull_request.base.ref }}"
+
+      - name: Get Node.js version
+        id: nvm
+        run: echo "NODE_VERSION=$(cat .nvmrc)" >> "$GITHUB_OUTPUT"
+
       - uses: actions/setup-node@v3
         with:
           node-version: 16
-          registry-url: https://registry.npmjs.org/
+          registry-url: "https://registry.npmjs.org/"
       - run: npm ci
-      - run: npm publish
+      - run: yarn run publish --yes
         env:
-          NODE_AUTH_TOKEN: ${{secrets.npm_token}}
+          NODE_AUTH_TOKEN: "${{secrets.npm_token}}"
