@@ -1,1 +1,1 @@
-export { IWebhookJsonRpc2Request } from "./IWebhookJsonRpc2Request";
+export { ICustodianUpdate } from "./ICustodianUpdate";

@@ -1,5 +1,5 @@
 // Will come through the websockets
-export interface IWebhookJsonRpc2Request {
+export interface ICustodianUpdate {
   transaction?: {
     id: string; // This must match the transaction ID from the custodian_createTransaction method
     type: string; // In hexlified (0x...) format
