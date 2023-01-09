@@ -4,7 +4,7 @@
   "description": "Monorepo for MetaMask Institutional",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ConsenSys/mmi-monorepo.git"
+    "url": "https://github.com/consensys-vertical-apps/metamask-institutional.git"
   },
   "private": true,
   "workspaces": [

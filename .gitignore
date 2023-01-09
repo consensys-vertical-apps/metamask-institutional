@@ -289,6 +289,8 @@ node_modules/
 
 # Typescript v1 declaration files
 typings/
+*.tsbuildinfo
+tsconfig.tsbuildinfo
 
 # Visual Studio 6 build log
 *.plg
@@ -379,3 +381,4 @@ dist
 .vscode
 junit.xml
 test-report.xml
+
