@@ -3,7 +3,7 @@ name: Publish to npmJS
   # When Release Pull Request is merged
   pull_request:
     branches:
-      - master
+      - main
     types: [closed]
 
 permissions:
