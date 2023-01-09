@@ -12,7 +12,8 @@
     },
     "publish": {
       "conventionalCommits": true,
-      "npmClient": "npm"
+      "npmClient": "yarn",
+      "message": "chore(release): updated release notes and package versions"
     }
   }
 }
