@@ -12,8 +12,10 @@ permissions:
   packages: write # for publish
 
 jobs:
+  tests:
+    uses: ./.github/workflows/tests.yml
   publish-npm:
-    needs: [Tests]
+    needs: [tests]
     permissions:
       contents: write
     if: |
