@@ -29,11 +29,16 @@ jobs:
           fetch-depth: 0 # Checkout all branches and tags
           ref: "${{ github.event.pull_request.base.ref }}"
 
-      - name: Get Node.js version
-        id: nvm
-        run: echo "NODE_VERSION=$(cat .nvmrc)" >> "$GITHUB_OUTPUT"
+      - name: Configure Git User
+        run: |
+          git config --global user.email "${GITHUB_ACTOR}"
+          git config --global user.name "${GITHUB_ACTOR}@users.noreply.github.com"
 
-      - uses: actions/setup-node@v3
+      - name: Check if able to publish changes
+        run: npm whoami # will throw and exit if npm is not ready to publish
+
+      - name: "Install dependencies and publish"
+        uses: actions/setup-node@v3
         with:
           node-version: 16
           registry-url: "https://registry.npmjs.org/"
