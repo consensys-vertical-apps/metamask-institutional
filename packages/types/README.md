@@ -8,17 +8,17 @@ A Typescript library to use types and interfaces in order to interact with. [Met
 
 ### Setting up
 
-```
+```typescript
 npm i @metamask-institutional/types
 yarn add @metamask-institutional/types
 ```
 
-### Usage
+### Example
 
-```
+```typescript
 import { IWebhookJsonRpc2Request } from "@metamask-institutional/types";
 
 public  custodianTxData(txData: IWebhookJsonRpc2Request): void {
-	// Do something
+ // Do something
 }
 ```
