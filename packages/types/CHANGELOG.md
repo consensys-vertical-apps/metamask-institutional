@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.7](https://github.com/consensys-vertical-apps/metamask-institutional/compare/@metamask-institutional/types@0.1.6...@metamask-institutional/types@0.1.7) (2023-01-10)
+
+**Note:** Version bump only for package @metamask-institutional/types
+
 ## [0.1.6](https://github.com/ConsenSys/mmi-monorepo/compare/@metamask-institutional/types@0.1.5...@metamask-institutional/types@0.1.6) (2023-01-09)
 
 **Note:** Version bump only for package @metamask-institutional/types
