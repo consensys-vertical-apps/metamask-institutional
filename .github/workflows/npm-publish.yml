@@ -28,6 +28,14 @@ jobs:
         with:
           fetch-depth: 0 # Checkout all branches and tags
           ref: "${{ github.event.pull_request.base.ref }}"
+          token: ${{ secrets.npm_token }} # this token is available by default
+
+      # setup .npmrc using NODE_AUTH_TOKEN
+      - name: Setup .npmrc file for publish
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          registry-url: "https://registry.npmjs.org"
 
       - name: Configure Git User
         run: |
@@ -37,12 +45,10 @@ jobs:
       - name: Check if able to publish changes
         run: npm whoami # will throw and exit if npm is not ready to publish
 
-      - name: "Install dependencies and publish"
-        uses: actions/setup-node@v3
-        with:
-          node-version: 16
-          registry-url: "https://registry.npmjs.org/"
-      - run: yarn install --immutable --immutable-cache --check-cache
-      - run: yarn run publish --yes
+      - name: "Install dependencies"
+        run: yarn install --immutable --immutable-cache --check-cache
+
+      - name: "Publish to npmJS"
+        run: yarn run publish --yes
         env:
           NODE_AUTH_TOKEN: "${{secrets.npm_token}}"
