@@ -32,7 +32,7 @@ export interface ICustodianUpdate {
       signed: boolean;
       success: boolean;
       displayText: string;
-      reason: string; // The reason for the transaction status
+      reason?: string; // The reason for the transaction status
     };
   };
   metadata: {
