@@ -16,9 +16,9 @@ yarn add @metamask-institutional/types
 ### Example
 
 ```typescript
-import { IWebhookJsonRpc2Request } from "@metamask-institutional/types";
+import { ICustodianUpdate } from "@metamask-institutional/types";
 
-public  custodianTxData(txData: IWebhookJsonRpc2Request): void {
+public  custodianTxData(txData: ICustodianUpdate): void {
  // Do something
 }
 ```
