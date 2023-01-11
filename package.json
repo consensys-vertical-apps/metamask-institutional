@@ -14,7 +14,6 @@
     "prepare": "husky install",
     "updated": "lerna updated",
     "test": "lerna run test --stream",
-    "publish-all": "lerna publish",
     "lint": "lerna run lint --stream --parallel",
     "lint:fix": "lerna run lint:fix --stream --parallel",
     "prettier": "prettier --write packages",
