@@ -1,12 +1,11 @@
 name: Publish to npmJS
-on: push
 
-# on:
-#   # When Release Pull Request is merged
-#   pull_request:
-#     branches:
-#       - main
-#     types: [closed]
+on:
+  # When Release Pull Request is merged
+  pull_request:
+    branches:
+      - main
+    types: [closed]
 
 permissions:
   contents: write # for checkout and tag
@@ -15,8 +14,6 @@ permissions:
 
 jobs:
   tests:
-    if: |
-      startsWith(github.ref_name, 'release/')
     uses: ./.github/workflows/tests.yml
   publish-npm:
     needs: [tests]

@@ -22,7 +22,7 @@ If you have installed react for every package but would like to upgrade/downgrad
 
 Lerna comes with a `version` command that allows you to increment your package's version number, commit the changes and tag them accordingly. Note that by passing `--no-private` we exclude all packages that are marked `private` in their `package.json` file.
 
-```
+```typescript
 lerna version --no-private
 ```
 
@@ -38,5 +38,53 @@ If we run `$ yarn run publish` Lerna executes the version incrementing workflow 
 
 ## Create new packages
 
-You can create a packages folder and start adding creating your packages there or use this command
-`$ npx lerna create @projectName/packagename.`
+Create a directory for your package in the packages folder, and run npm init as normal to create the package.json for your new package.
+
+### Writing commit messages with Conventional Commits
+
+#### Type
+
+The type is mandatory and determines the intent of the change. Here are possible values:
+
+- build: changes affecting build systems or external dependencies
+- ci: updating configuration files for continuous integration and deployment services
+- chore: updating grunt tasks etc.; no production code change
+- docs: documentation-only changes
+- feat: a new feature
+- fix: a bug fix
+- perf: a code change that improves performance
+- refactor: a code change that neither fixes a bug nor adds a feature
+- style: changes that do not affect the meaning of the code (white-space, formatting, missing semicolons, etc.)
+- test: adding missing tests or correcting existing tests
+
+#### Scope
+
+A scope is an optional value that provides additional contextual information about the change. For example, when the module’s name, npm package, or particular routine was affected.
+
+The scope, when present, must be contained within parenthesis.
+
+#### Subject
+
+The subject is the headline of the commit. It should summarize in one sentence the nature of change.
+
+####  Example with monorepos
+
+```typescript
+packages
+├── api
+├── app
+└── web
+
+❯ echo "build(api): change something in api's build" | commitlint
+⧗   input: build(api): change something in api's build
+✔   found 0 problems, 0 warnings
+
+❯ echo "test(foo): this won't pass" | commitlint
+⧗   input: test(foo): this won't pass
+✖   scope must be one of [api, app, web] [scope-enum]
+✖   found 1 problems, 0 warnings
+
+❯ echo "ci: do some general maintenance" | commitlint
+⧗   input: ci: do some general maintenance
+✔   found 0 problems, 0 warnings
+```
