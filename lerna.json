@@ -7,13 +7,13 @@
   "command": {
     "version": {
       "ignoreChanges": ["*.md"],
-      "npmClient": "npm",
-      "message": "chore(release): publish"
+      "npmClient": "yarn",
+      "message": "chore: updated release notes and package versions"
     },
     "publish": {
       "conventionalCommits": true,
       "npmClient": "yarn",
-      "message": "chore(release): updated release notes and package versions"
+      "message": "chore: published new version"
     }
   }
 }
