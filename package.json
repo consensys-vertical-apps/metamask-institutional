@@ -45,7 +45,7 @@
     "typescript": "^4.9.4"
   },
   "lint-staged": {
-    "*.{ts}": [
+    "*.ts": [
       "yarn nx affected:lint --fix --parallel --uncommitted",
       "yarn nx format:write --uncommitted"
     ]
