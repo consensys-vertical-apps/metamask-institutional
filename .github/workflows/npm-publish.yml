@@ -1,8 +1,10 @@
 name: Publish to npmJS
+
 on:
   # When Release Pull Request is merged
   pull_request:
     branches:
+      - development
       - main
     types: [closed]
 
@@ -13,14 +15,12 @@ permissions:
 
 jobs:
   tests:
+    if: github.event.pull_request.merged == true
     uses: ./.github/workflows/tests.yml
   publish-npm:
     needs: [tests]
     permissions:
       contents: write
-    if: |
-      github.event.pull_request.merged == true &&
-      startsWith(github.event.pull_request.head.ref, 'release/')
     runs-on: ubuntu-latest
     env:
       NODE_AUTH_TOKEN: ${{ secrets.npm_token }} # set this token manually
@@ -28,6 +28,7 @@ jobs:
       - name: "Checkout" # Download code from the repository
         uses: actions/checkout@v3
         with:
+          persist-credentials: false
           fetch-depth: 0 # Checkout all branches and tags
           ref: "${{ github.event.pull_request.base.ref }}"
           token: ${{ secrets.GITHUB_TOKEN }} # this token is available by default
@@ -43,6 +44,7 @@ jobs:
         run: |
           git config --global user.email "${GITHUB_ACTOR}"
           git config --global user.name "${GITHUB_ACTOR}@users.noreply.github.com"
+
       - name: Check if able to publish changes
         run: npm whoami # will throw and exit if npm is not ready to publish
 
@@ -50,6 +52,7 @@ jobs:
         run: yarn install --immutable --immutable-cache --check-cache
 
       - name: "Publish to npmJS"
-        run: yarn run publish --yes
+        run: |
+          yarn run publish --yes
         env:
           NODE_AUTH_TOKEN: "${{secrets.npm_token}}"
