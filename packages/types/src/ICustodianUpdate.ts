@@ -1,4 +1,3 @@
-// Will come through the websockets
 export interface ICustodianUpdate {
   transaction?: {
     id: string; // This must match the transaction ID from the custodian_createTransaction method
