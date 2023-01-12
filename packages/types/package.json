@@ -8,7 +8,7 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "publishConfig": {
-    "@metamask-institutional:registry": "https://npm.pkg.github.com/metamask-institutional"
+    "@consensys-vertical-apps:registry": "https://npm.pkg.github.com/consensys-vertical-apps"
   },
   "repository": {
     "type": "git",
