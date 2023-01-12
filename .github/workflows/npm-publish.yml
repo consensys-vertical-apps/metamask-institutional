@@ -30,7 +30,7 @@ jobs:
         with:
           fetch-depth: 0 # Checkout all branches and tags
           ref: "${{ github.event.pull_request.base.ref }}"
-          token: ${{ secrets.BUILD_SVC_PAT }} # this token is available by default
+          token: ${{ secrets.BUILD_SVC_PAT }} # this is a PAT token generated with a personal user
 
       # setup .npmrc using NODE_AUTH_TOKEN
       - name: Setup .npmrc file for publish
