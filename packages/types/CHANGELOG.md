@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.18](https://github.com/consensys-vertical-apps/metamask-institutional/compare/@metamask-institutional/types@0.1.17...@metamask-institutional/types@0.1.18) (2023-01-12)
+
+**Note:** Version bump only for package @metamask-institutional/types
+
 ## [0.1.17](https://github.com/consensys-vertical-apps/metamask-institutional/compare/@metamask-institutional/types@0.1.16...@metamask-institutional/types@0.1.17) (2023-01-12)
 
 **Note:** Version bump only for package @metamask-institutional/types
