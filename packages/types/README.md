@@ -22,5 +22,3 @@ public  custodianTxData(txData: ICustodianUpdate): void {
  // Do something
 }
 ```
-
-test
