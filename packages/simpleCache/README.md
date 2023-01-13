@@ -12,13 +12,3 @@ A Typescript library to use types and interfaces in order to interact with. [Met
 npm i @metamask-institutional/simplecache
 yarn add @metamask-institutional/simplecache
 ```
-
-### Example
-
-```typescript
-import { ICustodianUpdate } from "@metamask-institutional/simplecache";
-
-public  custodianTxData(txData: ICustodianUpdate): void {
- // Do something
-}
-```
