@@ -51,5 +51,8 @@
   },
   "publishConfig": {
     "access": "restricted"
+  },
+  "dependencies": {
+    "@types/node": "^18.11.18"
   }
 }
