@@ -2,6 +2,12 @@
 
 ## Installing dependecies
 
+If you have common dev dependencies, it’s better to specify them in the workspace root package.json. For instance, this can be dependencies like Jest, Husky, Storybook, Eslint, Prettier, etc.
+
+`yarn add husky --D -W`
+
+_Adding the -W flag makes it explicit that we’re adding the dependency to the workspace root._
+
 To install, for example, react as a dependency into all packages, you can use the following command:
 
 `$ lerna add react`
