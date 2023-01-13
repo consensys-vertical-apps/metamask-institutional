@@ -14,7 +14,7 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "paths": {
-      "@mmi-monorepo/types/*": ["types/src/*"]
+      "@metamask-institutional/types/*": ["types/src/*"]
     }
   },
   "files": [],

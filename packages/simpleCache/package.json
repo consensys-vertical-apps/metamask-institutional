@@ -1,0 +1,30 @@
+{
+  "name": "@metamask-institutional/simplecache",
+  "version": "0.0.1",
+  "description": "This package will export simpleCache used across the old @codefi/mmi-sdk library",
+  "author": "Albert Olive <albertolivecorbella@gmail.com>",
+  "homepage": "https://github.com/consensys-vertical-apps/metamask-institutional#readme",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "publishConfig": {
+    "@consensys-vertical-apps:registry": "https://npm.pkg.github.com/consensys-vertical-apps"
+  },
+  "repository": {
+    "type": "git",
+    "directory": "packages/simplecache",
+    "url": "git+https://github.com/consensys-vertical-apps/metamask-institutional.git"
+  },
+  "scripts": {
+    "clean": "rimraf dist && rimraf tsconfig.tsbuildinfo",
+    "prepack": "yarn build",
+    "build": "yarn clean && tsc --build && cp \"./package.json\" ./dist/",
+    "lint": "eslint 'src/**/*.ts'",
+    "lint:fix": "eslint --fix 'src/**/*.ts'",
+    "pre-commit": "lint-staged"
+  },
+  "bugs": {
+    "url": "https://github.com/consensys-vertical-apps/metamask-institutional/issues"
+  },
+  "gitHead": "62ed7639b9145658a4fa1273e35e99d300acdc99"
+}
