@@ -4,7 +4,7 @@
   "description": "This package will export shared types used across the old @codefi/mmi-sdk library",
   "author": "Albert Olive <albertolivecorbella@gmail.com>",
   "homepage": "https://github.com/consensys-vertical-apps/metamask-institutional#readme",
-  "license": "ISC",
+  "license": "MIT",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "publishConfig": {
