@@ -21,13 +21,25 @@ module.exports = {
   // clearMocks: false,
 
   // Indicates whether the coverage information should be collected while executing the test
-  // collectCoverage: false,
+  collectCoverage: true,
 
   // An array of glob patterns indicating a set of files for which coverage information should be collected
-  // collectCoverageFrom: null,
+  collectCoverageFrom: [
+    "**/*.{js,jsx,ts,tsx}",
+    "!./index.ts",
+    "!./integration/**",
+    "!./constants/**",
+    "!./errors/**",
+    "!./util/*-factory.ts",
+    "!./classes/TimerService.ts",
+    "!./enum/**",
+    "!./util/map-status.ts",
+    "!./custodian-types/curv/**",
+    "!./interfaces/*",
+  ],
 
   // The directory where Jest should output its coverage files
-  // coverageDirectory: null,
+  coverageDirectory: "../coverage",
 
   // An array of regexp pattern strings used to skip coverage collection
   // coveragePathIgnorePatterns: [
@@ -38,7 +50,14 @@ module.exports = {
   coverageReporters: ["json", "html"],
 
   // An object that configures minimum threshold enforcement for coverage results
-  // coverageThreshold: null,
+  coverageThreshold: {
+    global: {
+      statements: 90,
+      branches: 0,
+      functions: 89,
+      lines: 90,
+    },
+  },
 
   // A path to a custom dependency extractor
   // dependencyExtractor: null,
