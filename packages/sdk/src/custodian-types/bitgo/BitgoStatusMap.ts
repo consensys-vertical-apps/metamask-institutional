@@ -1,4 +1,4 @@
-import { MetaMaskTransactionStatuses } from "../../enum/MetaMaskTransactionStatuses";
+import { MetaMaskTransactionStatuses } from "@metamask-institutional/types";
 import { ITransactionStatusMap } from "../../interfaces/ITransactionStatusMap";
 
 export const BitgoStatusMap: ITransactionStatusMap = {
