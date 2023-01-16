@@ -1,6 +1,6 @@
 {
   "alias": {
-    "@mmi-monorepo/types/*": "packages/types/src/*"
+    "@metamask-institutional/types/*": "packages/types/src/*"
   },
   "resolveExtensions": [".js", ".jsx", ".ts", ".tsx", ".vue", ".scss", ".less"]
 }
