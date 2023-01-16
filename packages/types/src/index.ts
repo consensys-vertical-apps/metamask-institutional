@@ -14,6 +14,8 @@ export { IEIP1559TxParams } from "./ITXParams";
 
 // Enums
 export { AuthTypes } from "./enum/AuthTypes";
+export { AddressType } from "./enum/AddressType";
+export { MetaMaskTransactionStatuses } from "./enum/MetaMaskTransactionStatuses";
 
 // Types
 export { AuthDetails } from './types/AuthDetails'
