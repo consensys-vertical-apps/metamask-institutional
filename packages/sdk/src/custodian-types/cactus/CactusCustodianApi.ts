@@ -1,21 +1,23 @@
 import { AccountHierarchyNode } from "../../classes/AccountHierarchyNode";
-import { AuthTypes } from "../../enum/AuthTypes";
+import { AuthTypes,
+  IMetamaskContractMetadata,
+  ITransactionDetails,
+  IEIP1559TxParams,
+  ILegacyTXParams,
+  IRefreshTokenAuthDetails,
+  ICustodianTransactionLink,
+  ISignatureDetails
+} from "@metamask-institutional/types";
 import { ICustodianApi } from "../../interfaces/ICustodianApi";
 import { IEthereumAccount } from "../../interfaces/IEthereumAccount";
-import { IMetamaskContractMetadata } from "../../interfaces/IMetamaskContractMetadata";
-import { ITransactionDetails } from "../../interfaces/ITransactionDetails";
-import { IEIP1559TxParams, ILegacyTXParams } from "../../interfaces/ITXParams";
 import { MessageTypes, TypedMessage } from "../../interfaces/ITypedMessage";
 import { DefaultCactusCustodianDetails } from "./DefaultCactusCustodianDetails";
 import { ICactusEthereumAccountCustodianDetails } from "./interfaces/ICactusEthereumAccountCustodianDetails";
 import { CactusClient } from "./CactusClient";
-import { IRefreshTokenAuthDetails } from "../../interfaces/auth/IRefreshTokenAuthDetails";
 import { CreateTransactionMetadata } from "../../types/CreateTransactionMetadata";
-import { SimpleCache } from "../../classes/SimpleCache";
-import { ICustodianTransactionLink } from "src/interfaces/ICustodian";
+import { SimpleCache } from "@metamask-institutional/simplecache";
 import { EventEmitter } from "events";
-import { ISignatureDetails } from "src/interfaces/ISignatureDetails";
-import { mapTransactionStatus } from "../../util/map-status";
+import { mapTransactionStatus } from "../../util/map-status"
 
 export class CactusCustodianApi extends EventEmitter implements ICustodianApi {
   private client: CactusClient;

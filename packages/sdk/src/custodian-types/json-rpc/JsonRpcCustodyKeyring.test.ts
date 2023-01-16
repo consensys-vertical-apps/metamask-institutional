@@ -4,7 +4,7 @@ import { mmiSDKFactory } from "../../util/mmi-sdk-factory";
 import { mocked } from "ts-jest/utils";
 import { MMISDK } from "../../classes/MMISDK";
 import { JsonRpcStatusMap } from "./JsonRpcStatusMap";
-import { IRefreshTokenAuthDetails } from "../../interfaces/auth/IRefreshTokenAuthDetails";
+import { IRefreshTokenAuthDetails } from "@metamask-institutional/types";
 import crypto, { Hash } from "crypto";
 import { JsonRpcCustodyKeyring } from "./JsonRpcCustodyKeyring";
 jest.mock("../../util/mmi-sdk-factory");

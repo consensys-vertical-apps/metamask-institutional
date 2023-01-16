@@ -5,7 +5,7 @@ import { mocked } from "ts-jest/utils";
 import { MMISDK } from "../../classes/MMISDK";
 import { CactusStatusMap } from "./CactusStatusMap";
 import { CactusCustodyKeyring } from "./CactusCustodyKeyring";
-import { IRefreshTokenAuthDetails } from "../../interfaces/auth/IRefreshTokenAuthDetails";
+import { IRefreshTokenAuthDetails } from "@metamask-institutional/types";
 import crypto, { Hash } from "crypto";
 jest.mock("../../util/mmi-sdk-factory");
 

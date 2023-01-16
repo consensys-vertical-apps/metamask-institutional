@@ -1,14 +1,16 @@
 import { CustodyKeyring } from "../../classes/CustodyKeyring";
 import { ICustodyKeyringOptions } from "../../interfaces/ICustodyKeyringOptions";
-import { ITransactionStatusMap } from "@metamask-institutional/types";
+import {
+  ITransactionStatusMap,
+  AuthDetails,
+  AuthTypes,
+  ICustodianTransactionLink
+} from "@metamask-institutional/types";
 import { BitgoStatusMap } from "./BitgoStatusMap";
 import { BitgoCustodianApi } from "./BitgoCustodianApi";
 import { mmiSDKFactory } from "../../util/mmi-sdk-factory";
-import { AuthDetails } from "@metamask-institutional/types";
 import { MMISDK } from "../..";
-import { AuthTypes } from "@metamask-institutional/types";
 import { CUSTODIAN_TYPES } from "..";
-import { ICustodianTransactionLink } from "@metamask-institutional/types";
 
 export class BitgoCustodyKeyring extends CustodyKeyring {
   public static readonly type = "Custody - Bitgo";

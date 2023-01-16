@@ -1,5 +1,5 @@
 import { CustodianApiError } from "../../errors/CustodianApiError";
-import { IEIP1559TxParams, ILegacyTXParams } from "../../interfaces/ITXParams";
+import { IEIP1559TxParams, ILegacyTXParams } from "@metamask-institutional/types";
 import { ICactusTransaction } from "./interfaces/ICactusTransaction";
 import { ICactusEthereumAccount } from "./interfaces/ICactusEthereumAccount";
 import { ICactusTxDetails } from "./interfaces/ICactusTxDetails";
@@ -8,7 +8,7 @@ import { ICactusSignatureRequest } from "./interfaces/ICactusSignatureRequest";
 import { MessageTypes, TypedMessage } from "../../interfaces/ITypedMessage";
 import { ICactusSignatureResponse } from "./interfaces/ICactusSignatureResponse";
 import { ICactusAccessTokenResponse } from "./interfaces/ICactusAccessTokenResponse";
-import { SimpleCache } from "../../classes/SimpleCache";
+import { SimpleCache } from "@metamask-institutional/simplecache";
 import { ICactusChainIdsResponse } from "./interfaces/ICactusChainIdsResponse";
 
 const CACTUS_CACHE_AGE = 120 * 60;

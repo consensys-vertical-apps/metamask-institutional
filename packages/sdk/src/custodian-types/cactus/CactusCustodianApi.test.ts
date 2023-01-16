@@ -8,10 +8,8 @@ jest.mock("../../util/get-token-issuer", () => ({
 }));
 
 import { CactusCustodianApi } from "./CactusCustodianApi";
-import { ITransactionDetails } from "../../interfaces/ITransactionDetails";
+import { ITransactionDetails, AuthTypes, ISignatureDetails } from "@metamask-institutional/types";
 import { MessageTypes, TypedMessage } from "../../interfaces/ITypedMessage";
-import { AuthTypes } from "../../enum/AuthTypes";
-
 import { mockCactusGetEthereumAccountsResponse } from "./mocks/mockCactusGetEthereumAccountsResponse";
 import { mockCactusGetTransactionsResult } from "./mocks/mockCactusGetTransactionsResult";
 import { mockCactusCreateTransactionResult } from "./mocks/mockCactusCreateTransactionResult";
@@ -19,7 +17,6 @@ import { mockCactusGetCustomerProofResponse } from "./mocks/mockCactusGetCustome
 import { mockCactusCreateSignatureResponse } from "./mocks/mockCactusCreateSignatureResponse";
 import { mockCactusGetChainIdsResponse } from "./mocks/mockCactusGetChainIdsResponse";
 import { mockCactusGetSignedMessageResponse } from "./mocks/mockCactusGetSignedMessageResponse";
-import { ISignatureDetails } from "src/interfaces/ISignatureDetails";
 
 describe("CactusCustodianApi", () => {
   let cactusCustodianApi: CactusCustodianApi;

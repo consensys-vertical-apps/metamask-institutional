@@ -9,11 +9,11 @@ import { MMISDK } from "../../classes/MMISDK";
 import { DEFAULT_MAX_CACHE_AGE } from "../../constants/constants";
 import { JupiterStatusMap } from "./JupiterStatusMap";
 import { JupiterCustodyKeyring } from "./JupiterCustodyKeyring";
-import { ITokenAuthDetails } from "../../interfaces/auth/ITokenAuthDetails";
+import { ITokenAuthDetails } from "@metamask-institutional/types";
 import { JupiterCustodianApi } from "./JupiterCustodianApi";
 import { Transaction } from "@ethereumjs/tx";
 import { MetamaskTransaction } from "../../types/MetamaskTransaction";
-import { IEIP1559TxParams, ILegacyTXParams } from "../../interfaces/ITXParams";
+import { IEIP1559TxParams, ILegacyTXParams } from "@metamask-institutional/types";
 jest.mock("../../util/mmi-sdk-factory");
 
 const mockedMmiSdkFactory = mocked(mmiSDKFactory, true);

@@ -1,15 +1,17 @@
 import { CustodyKeyring } from "../../classes/CustodyKeyring";
 import { ICustodyKeyringOptions } from "../../interfaces/ICustodyKeyringOptions";
-import { ITransactionStatusMap } from "../../interfaces/ITransactionStatusMap";
+import {
+  ITransactionStatusMap,
+  AuthTypes,
+  IRefreshTokenAuthDetails,
+  AddressType,
+  ICustodianTransactionLink
+} from "@metamask-institutional/types";
 import { CactusStatusMap } from "./CactusStatusMap";
 import { CactusCustodianApi } from "./CactusCustodianApi";
 import { mmiSDKFactory } from "../../util/mmi-sdk-factory";
 import { MMISDK } from "../..";
-import { AuthTypes } from "../../enum/AuthTypes";
 import { CUSTODIAN_TYPES } from "..";
-import { IRefreshTokenAuthDetails } from "../../interfaces/auth/IRefreshTokenAuthDetails";
-import { AddressType } from "../../enum/AddressType";
-import { ICustodianTransactionLink } from "src/interfaces/ICustodian";
 
 export class CactusCustodyKeyring extends CustodyKeyring {
   public static readonly type = "Custody - Cactus";

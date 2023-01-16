@@ -5,9 +5,9 @@ import { mocked } from "ts-jest/utils";
 import { MMISDK } from "../../classes/MMISDK";
 import { QredoStatusMap } from "./QredoStatusMap";
 import { QredoCustodyKeyring } from "./QredoCustodyKeyring";
-import { IRefreshTokenAuthDetails } from "../../interfaces/auth/IRefreshTokenAuthDetails";
+import { IRefreshTokenAuthDetails } from "@metamask-institutional/types";
 import crypto, { Hash } from "crypto";
-import { isJSDocReturnTag } from "typescript";
+
 jest.mock("../../util/mmi-sdk-factory");
 
 const mockedMmiSdkFactory = mocked(mmiSDKFactory, true);
