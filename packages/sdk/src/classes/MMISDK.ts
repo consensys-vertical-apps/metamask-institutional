@@ -4,21 +4,23 @@ import {
 } from "../interfaces/ICustodianApi";
 import { AccountHierarchyNode } from "./AccountHierarchyNode";
 import { IEthereumAccount } from "../interfaces/IEthereumAccount";
-import { IEIP1559TxParams, ILegacyTXParams } from "@metamask-institutional/types";
+import {
+  IEIP1559TxParams,
+  ILegacyTXParams,
+  ITransactionDetails,
+  IMetamaskContractMetadata,
+  AuthDetails,
+  AuthTypes,
+  ICustodianTransactionLink,
+  ISignatureDetails,
+  IRefreshTokenAuthDetails
+} from "@metamask-institutional/types";
 import { IEthereumAccountCustodianDetails } from "../interfaces/IEthereumAccountCustodianDetails";
-import { ITransactionDetails } from "@metamask-institutional/types";
+import {  } from "@metamask-institutional/types";
 import { orderByProperty } from "../util/order-by-property";
-import { SimpleCache } from "./SimpleCache";
-
+import { SimpleCache } from "@metamask-institutional/simplecache";
 import { MessageTypes, TypedMessage } from "../interfaces/ITypedMessage";
-
-import { IMetamaskContractMetadata } from "@metamask-institutional/types";
-import { AuthDetails } from "@metamask-institutional/types";
-import { AuthTypes } from "@metamask-institutional/types";
 import { CreateTransactionMetadata } from "../types/CreateTransactionMetadata";
-import { ICustodianTransactionLink } from "@metamask-institutional/types";
-import { ISignatureDetails } from "@metamask-institutional/types";
-import { IRefreshTokenAuthDetails } from "@metamask-institutional/types";
 import { EventEmitter } from "events";
 import {
   REFRESH_TOKEN_CHANGE_EVENT,
@@ -200,4 +202,7 @@ export class MMISDK extends EventEmitter {
 }
 
 export { ICustodianDetails } from "../interfaces/ICustodianDetails";
-export { CustodyKeyring } from "./CustodyKeyring";
+
+// @TODO We don't need it right now, come back later after CustodyKeyring is in its own package
+// and check if we still want to export it here for some reason
+// export { CustodyKeyring } from "./CustodyKeyring";
