@@ -1,6 +1,6 @@
 import { CustodyKeyring } from "../../classes/CustodyKeyring";
 import { ICustodyKeyringOptions } from "../../interfaces/ICustodyKeyringOptions";
-import { ITransactionStatusMap } from "../../interfaces/ITransactionStatusMap";
+import { ITransactionStatusMap } from "@metamask-institutional/types";
 import { BitgoStatusMap } from "./BitgoStatusMap";
 import { BitgoCustodianApi } from "./BitgoCustodianApi";
 import { mmiSDKFactory } from "../../util/mmi-sdk-factory";
