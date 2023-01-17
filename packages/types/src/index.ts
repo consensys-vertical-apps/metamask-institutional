@@ -11,6 +11,8 @@ export { ITransactionDetails } from "./ITransactionDetails";
 export { TransactionStatus } from "./ITransactionDetails";
 export { ILegacyTXParams } from "./ITXParams";
 export { IEIP1559TxParams } from "./ITXParams";
+export { ITransactionStatusMap } from "./ITransactionStatusMap";
+export { ICustodianAccount, IExtensionCustodianAccount } from "./ICustodianAccount";
 
 // Enums
 export { AuthTypes } from "./enum/AuthTypes";
