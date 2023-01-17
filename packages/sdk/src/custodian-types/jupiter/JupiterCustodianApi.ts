@@ -1,18 +1,19 @@
 import { EventEmitter } from "events";
-import { ICustodianTransactionLink } from "src/interfaces/ICustodian";
-import { AccountHierarchyNode } from "../../classes/AccountHierarchyNode";
-import { SimpleCache } from "../../classes/SimpleCache";
-import { AuthTypes } from "../../enum/AuthTypes";
-import { IRefreshTokenAuthDetails } from "../../interfaces/auth/IRefreshTokenAuthDetails";
-import { ITokenAuthDetails } from "../../interfaces/auth/ITokenAuthDetails";
-import { ICustodianApi } from "../../interfaces/ICustodianApi";
-import { IEthereumAccount } from "../../interfaces/IEthereumAccount";
-import { IMetamaskContractMetadata } from "../../interfaces/IMetamaskContractMetadata";
 import {
+  ICustodianTransactionLink,
+  AuthTypes,
+  IRefreshTokenAuthDetails,
+  ITokenAuthDetails,
+  IMetamaskContractMetadata,
   ITransactionDetails,
   TransactionStatus,
-} from "../../interfaces/ITransactionDetails";
-import { IEIP1559TxParams, ILegacyTXParams } from "../../interfaces/ITXParams";
+  IEIP1559TxParams,
+  ILegacyTXParams
+} from "@metamask-institutional/types";
+import { AccountHierarchyNode } from "../../classes/AccountHierarchyNode";
+import { SimpleCache } from "@metamask-institutional/simplecache";
+import { ICustodianApi } from "../../interfaces/ICustodianApi";
+import { IEthereumAccount } from "../../interfaces/IEthereumAccount";
 import { MessageTypes, TypedMessage } from "../../interfaces/ITypedMessage";
 import { CreateTransactionMetadata } from "../../types/CreateTransactionMetadata";
 import { getTokenIssuer } from "../../util/get-token-issuer";

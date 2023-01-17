@@ -13,6 +13,8 @@ describe("MMISDK", () => {
 
   beforeAll(() => {
     mmiSDK = new MMISDK(
+      // @TODO check back later
+      // @ts-ignore
       JupiterCustodianApi,
       {
         jwt: "xyz",
@@ -160,6 +162,8 @@ describe("MMISDK", () => {
   describe("MMISDK#constructor(Jupiter)", () => {
     it("should also construct an SDK for Jupiter", () => {
       const mmiSDK2 = new MMISDK(
+        // @TODO check back later
+        // @ts-ignore
         JupiterCustodianApi,
         {
           jwt: "xyz",

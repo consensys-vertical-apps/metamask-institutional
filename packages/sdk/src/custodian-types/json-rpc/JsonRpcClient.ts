@@ -13,7 +13,7 @@ import { JsonRpcGetTransactionByIdResponse } from "./rpc-responses/JsonRpcGetTra
 import { JsonRpcGetSignedMessageByIdResponse } from "./rpc-responses/JsonRpcGetSignedMessageByIdResponse";
 import { JsonRpcGetTransactionByIdPayload } from "./rpc-payloads/JsonRpcGetTransactionByIdPayload";
 import { JsonRpcGetSignedMessageByIdPayload } from "./rpc-payloads/JsonRpcGetSignedMessageByIdPayload";
-import { SimpleCache } from "../../classes/SimpleCache";
+import { SimpleCache } from "@metamask-institutional/simplecache";
 import { JsonRpcListAccountChainIdsPayload } from "./rpc-payloads/JsonRpcListAccountChainIdsPayload";
 import { JsonRpcGetTransactionLinkPayload } from "./rpc-payloads/JsonRpcGetTransactionLinkPayload";
 import { JsonRpcGetTransactionLinkResponse } from "./rpc-responses/JsonRpcGetTransactionLinkResponse";
@@ -22,7 +22,7 @@ import {
   REFRESH_TOKEN_CHANGE_EVENT,
   INTERACTIVE_REPLACEMENT_TOKEN_CHANGE_EVENT,
 } from "../../constants/constants";
-import { IRefreshTokenChangeEvent } from "../../interfaces/IRefreshTokenChangeEvent";
+import { IRefreshTokenChangeEvent } from "@metamask-institutional/types";
 
 export class JsonRpcClient extends EventEmitter {
   private call: <T1, T2>(

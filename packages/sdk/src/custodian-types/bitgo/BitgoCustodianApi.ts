@@ -14,9 +14,9 @@ import {
 import { ICustodianApi } from "../../interfaces/ICustodianApi";
 import { IEthereumAccount } from "../../interfaces/IEthereumAccount";
 import { MessageTypes, TypedMessage } from "../../interfaces/ITypedMessage";
+import { DefaultBitgoCustodianDetails } from "./DefaultBitgoCustodianDetails";
 import { IBitgoEthereumAccountCustodianDetails } from "./interfaces/IBitgoEthereumAccountCustodianDetails";
 import { BitgoClient } from "./BitgoClient";
-import { CUSTODIAN_TYPES } from "..";
 
 const BITGO_ADDITIONAL_GAS = 100000;
 
@@ -29,7 +29,7 @@ export class BitgoCustodianApi extends EventEmitter implements ICustodianApi {
   constructor(
     authDetails: ITokenAuthDetails,
     _authType: AuthTypes,
-    apiUrl = CUSTODIAN_TYPES.BITGO.apiUrl,
+    apiUrl = DefaultBitgoCustodianDetails.apiUrl,
     private readonly _cacheAge: number
   ) {
     super();

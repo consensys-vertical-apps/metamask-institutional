@@ -1,16 +1,19 @@
 import { AccountHierarchyNode } from "../classes/AccountHierarchyNode";
-import { IMetamaskContractMetadata } from "@metamask-institutional/types";
+import { ICustodianTransactionLink } from "@metamask-institutional/types";
+import {
+  IMetamaskContractMetadata,
+  ITransactionDetails,
+  IEIP1559TxParams,
+  ILegacyTXParams,
+  AuthDetails,
+  AuthTypes,
+  ISignatureDetails,
+  IRefreshTokenAuthDetails 
+} from "@metamask-institutional/types";
 import { IEthereumAccount } from "./IEthereumAccount";
 import { IEthereumAccountCustodianDetails } from "./IEthereumAccountCustodianDetails";
-import { ITransactionDetails } from "@metamask-institutional/types";
 import { MessageTypes, TypedMessage } from "./ITypedMessage";
-import { IEIP1559TxParams, ILegacyTXParams } from "@metamask-institutional/types";
-import { AuthDetails } from "@metamask-institutional/types";
-import { AuthTypes } from "@metamask-institutional/types";
 import { CreateTransactionMetadata } from "../types/CreateTransactionMetadata";
-import { ICustodianTransactionLink } from "@metamask-institutional/types";
-import { ISignatureDetails } from "@metamask-institutional/types";
-import { IRefreshTokenAuthDetails } from "@metamask-institutional/types";
 import { EventEmitter } from "events";
 
 export interface CustodianApiConstructor {

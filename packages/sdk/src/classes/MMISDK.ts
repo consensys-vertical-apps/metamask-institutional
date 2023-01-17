@@ -16,7 +16,6 @@ import {
   IRefreshTokenAuthDetails
 } from "@metamask-institutional/types";
 import { IEthereumAccountCustodianDetails } from "../interfaces/IEthereumAccountCustodianDetails";
-import {  } from "@metamask-institutional/types";
 import { orderByProperty } from "../util/order-by-property";
 import { SimpleCache } from "@metamask-institutional/simplecache";
 import { MessageTypes, TypedMessage } from "../interfaces/ITypedMessage";

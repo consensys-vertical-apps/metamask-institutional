@@ -16,9 +16,9 @@ jest.mock("./util/json-rpc-call", () => ({
   default: (_url: string) => jsonRpcCall,
 }));
 
-import { SimpleCache } from "../../classes/SimpleCache";
+import { SimpleCache } from "@metamask-institutional/simplecache";
 
-jest.mock("../../classes/SimpleCache");
+jest.mock("@metamask-institutional/simplecache");
 
 import { JsonRpcClient } from "./JsonRpcClient";
 import fetchMock from "jest-fetch-mock";
