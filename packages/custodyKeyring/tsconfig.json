@@ -1,0 +1,14 @@
+{
+  "extends": "../../tsconfig.build.json",
+  "compilerOptions": {
+    "composite": true,
+    "rootDir": "./src",
+    "outDir": "./dist"
+  },
+  "paths": {
+    "@metamask-institutional/sdk": ["../sdk/src/index.ts"],
+    "@metamask-institutional/mmi-configuration": ["../mmiConfiguration/src/index.ts"]
+  },
+  "references": [{ "path": "../sdk" }, { "path": "../mmiConfiguration" }],
+  "include": ["src/**/*"]
+}

@@ -14,6 +14,7 @@ export { IEIP1559TxParams } from "./ITXParams";
 export { ITransactionStatusMap } from "./ITransactionStatusMap";
 export { ICustodianAccount, IExtensionCustodianAccount } from "./ICustodianAccount";
 export { IRefreshTokenChangeEvent } from "./IRefreshTokenChangeEvent";
+export { IInteractiveRefreshTokenChangeEvent } from "./IInteractiveRefreshTokenChangeEvent";
 
 // Enums
 export { AuthTypes } from "./enum/AuthTypes";
@@ -21,4 +22,4 @@ export { AddressType } from "./enum/AddressType";
 export { MetaMaskTransactionStatuses } from "./enum/MetaMaskTransactionStatuses";
 
 // Types
-export { AuthDetails } from './types/AuthDetails'
+export { AuthDetails } from "./types/AuthDetails";
