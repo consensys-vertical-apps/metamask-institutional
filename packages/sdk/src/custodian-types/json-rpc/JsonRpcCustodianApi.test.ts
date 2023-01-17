@@ -6,12 +6,11 @@ jest.mock("../../util/get-token-issuer", () => ({
   getTokenIssuer: jest.fn().mockReturnValue("some_website"),
 }));
 
-import { AuthTypes } from "../../enum/AuthTypes";
+import { AuthTypes, IEIP1559TxParams, ILegacyTXParams } from "@metamask-institutional/types";
 import { JsonRpcCustodianApi } from "./JsonRpcCustodianApi";
 import { JsonRpcClient } from "./JsonRpcClient";
 import { mockJsonRpcListAccountResponse } from "./mocks/mockJsonRpcListAccountResponse";
 import { mockJsonRpcCreateTransactionResponse } from "./mocks/mockJsonRpcCreateTransactionResponse";
-import { IEIP1559TxParams, ILegacyTXParams } from "../../interfaces/ITXParams";
 import { hexlify } from "./util/hexlify";
 import { mockJsonRpcGetTransactionByIdPayload } from "./mocks/mockJsonRpcGetTransactionByIdPayload";
 import { mockJsonRpcGetTransactionByIdResponse } from "./mocks/mockJsonRpcGetTransactionByIdResponse";
@@ -180,7 +179,7 @@ describe("JsonRpcCustodianApi", () => {
           from: fromAddress,
           to: txParams.to,
           gas: hexlify(txParams.gasLimit),
-          value: hexlify(txParams.value),
+          value: hexlify(txParams.value || ''),
           data: undefined,
           maxFeePerGas: hexlify(txParams.maxFeePerGas),
           maxPriorityFeePerGas: hexlify(txParams.maxPriorityFeePerGas),
@@ -218,10 +217,10 @@ describe("JsonRpcCustodianApi", () => {
           from: fromAddress,
           to: txParams.to,
           gas: hexlify(txParams.gasLimit),
-          value: hexlify(txParams.value),
+          value: hexlify(txParams.value || ''),
           data: undefined,
           gasPrice: hexlify(txParams.gasPrice),
-          type: hexlify(txParams.type),
+          type: hexlify(txParams.type || ''),
         },
         { chainId: "0x4", note: "note" },
       ]);
@@ -254,7 +253,7 @@ describe("JsonRpcCustodianApi", () => {
   describe("getTransaction", () => {
     it("calls getTransaction on the client", async () => {
       const result = await jsonRpcCustodianApi.getTransaction(
-        null,
+        null || '',
         mockJsonRpcGetTransactionByIdPayload[0]
       );
 
@@ -287,7 +286,7 @@ describe("JsonRpcCustodianApi", () => {
       mockedJsonRpcClientInstance.getTransaction.mockReturnValueOnce({
         result: null,
       });
-      const result = await jsonRpcCustodianApi.getTransaction(null, "fake");
+      const result = await jsonRpcCustodianApi.getTransaction(null || '', "fake");
 
       expect(result).toEqual(null);
     });

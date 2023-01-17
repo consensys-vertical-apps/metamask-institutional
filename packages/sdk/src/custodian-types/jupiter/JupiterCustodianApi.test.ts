@@ -9,10 +9,8 @@ jest.mock("../../util/get-token-issuer", () => ({
 }));
 
 import { JupiterCustodianApi } from "./JupiterCustodianApi";
-import { ITransactionDetails } from "../../interfaces/ITransactionDetails";
+import { ITransactionDetails, AuthTypes } from "@metamask-institutional/types";
 import { MessageTypes, TypedMessage } from "../../interfaces/ITypedMessage";
-import { ICustodianDetails } from "../../interfaces/ICustodianDetails";
-import { AuthTypes } from "../../enum/AuthTypes";
 import { jupiterAccountsMock } from "./mocks/jupiterAccountsMock";
 import { jupiterCustomerProofMock } from "./mocks/jupiterCustomerProofMock";
 import { jupiterTransactionMock } from "./mocks/jupiterTransactionMock";

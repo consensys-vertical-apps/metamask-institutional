@@ -1,5 +1,5 @@
 import { CustodianApiError } from "../../errors/CustodianApiError";
-import { IEIP1559TxParams, ILegacyTXParams } from "../../interfaces/ITXParams";
+import { IEIP1559TxParams, ILegacyTXParams } from "@metamask-institutional/types";
 import { IJupiterTransaction } from "./interfaces/IJupiterTransaction";
 import { IJupiterEthereumAccount } from "./interfaces/IJupiterEthereumAccount";
 import { IJupiterTxDetails } from "./interfaces/IJupiterTxDetails";

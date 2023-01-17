@@ -1,21 +1,22 @@
 import { EventEmitter } from "events";
-import { ICustodianTransactionLink } from "src/interfaces/ICustodian";
-import { ISignatureDetails } from "src/interfaces/ISignatureDetails";
 import { mapTransactionStatus } from "../../util/map-status";
 import { AccountHierarchyNode } from "../../classes/AccountHierarchyNode";
 import { NetworkMappings } from "../../classes/NetworkMappings";
-import { SimpleCache } from "../../classes/SimpleCache";
+import { SimpleCache } from "@metamask-institutional/simplecache";
 import { REFRESH_TOKEN_CHANGE_EVENT } from "../../constants/constants";
-import { AuthTypes } from "../../enum/AuthTypes";
-import { IRefreshTokenAuthDetails } from "../../interfaces/auth/IRefreshTokenAuthDetails";
 import { ICustodianApi } from "../../interfaces/ICustodianApi";
 import { IEthereumAccount } from "../../interfaces/IEthereumAccount";
-import { IMetamaskContractMetadata } from "../../interfaces/IMetamaskContractMetadata";
 import {
+  ICustodianTransactionLink,
+  ISignatureDetails,
+  AuthTypes,
+  IRefreshTokenAuthDetails,
+  IMetamaskContractMetadata,
   ITransactionDetails,
   TransactionStatus,
-} from "../../interfaces/ITransactionDetails";
-import { IEIP1559TxParams, ILegacyTXParams } from "../../interfaces/ITXParams";
+  IEIP1559TxParams,
+  ILegacyTXParams
+} from "@metamask-institutional/types";
 import { MessageTypes, TypedMessage } from "../../interfaces/ITypedMessage";
 import { CreateTransactionMetadata } from "../../types/CreateTransactionMetadata";
 import { DefaultQredoCustodianDetails } from "./DefaultQredoCustodianDetails";

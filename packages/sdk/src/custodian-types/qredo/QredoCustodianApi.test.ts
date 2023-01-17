@@ -8,9 +8,7 @@ jest.mock("../../util/get-token-issuer", () => ({
 }));
 
 import { QredoCustodianApi } from "./QredoCustodianApi";
-import { ITransactionDetails } from "../../interfaces/ITransactionDetails";
 import { MessageTypes, TypedMessage } from "../../interfaces/ITypedMessage";
-import { AuthTypes } from "../../enum/AuthTypes";
 import { qredoTransactionMock } from "./mocks/qredoTransactionMock";
 import { qredoAccountsMock } from "./mocks/qredoAccountsMock";
 import { qredoCustomerProofMock } from "./mocks/qredoCustomerProofMock";
@@ -18,7 +16,7 @@ import { qredoNetworksMock } from "./mocks/qredoNetworksMock";
 import { qredoSignedMessageMock } from "./mocks/qredoSignedMessageMock";
 import { qredoPersonalSignResponseMock } from "./mocks/qredoPersonalSignResponseMock";
 import { qredoEIP712SignRequestMock } from "./mocks/qredoEIP712SignRequestMock";
-import { ISignatureDetails } from "src/interfaces/ISignatureDetails";
+import { AuthTypes, ISignatureDetails, ITransactionDetails } from "@metamask-institutional/types";
 
 describe("QredoCustodianApi", () => {
   let qredoCustodianApi: QredoCustodianApi;
@@ -243,6 +241,7 @@ describe("QredoCustodianApi", () => {
       it("calls client.signTypedData_v4", async () => {
         const fromAddress = qredoAccountsMock[0].address;
 
+        // @ts-ignore
         const buffer: TypedMessage<MessageTypes> =
           qredoEIP712SignRequestMock.payload;
 

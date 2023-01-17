@@ -1,20 +1,23 @@
 import { EventEmitter } from "events";
-import { ICustodianTransactionLink } from "src/interfaces/ICustodian";
-import { ISignatureDetails } from "src/interfaces/ISignatureDetails";
+import {
+  ICustodianTransactionLink,
+  ISignatureDetails,
+  AuthTypes,
+  IRefreshTokenAuthDetails,
+  IMetamaskContractMetadata,
+  ITransactionDetails,
+  IEIP1559TxParams,
+  ILegacyTXParams
+} from "@metamask-institutional/types";
 import { AccountHierarchyNode } from "../../classes/AccountHierarchyNode";
-import { SimpleCache } from "../../classes/SimpleCache";
+import { SimpleCache } from "@metamask-institutional/simplecache";
 import {
   REFRESH_TOKEN_CHANGE_EVENT,
   INTERACTIVE_REPLACEMENT_TOKEN_CHANGE_EVENT,
 } from "../../constants/constants";
-import { AuthTypes } from "../../enum/AuthTypes";
-import { IRefreshTokenAuthDetails } from "../../interfaces/auth/IRefreshTokenAuthDetails";
 import { ICustodianApi } from "../../interfaces/ICustodianApi";
 import { IEthereumAccount } from "../../interfaces/IEthereumAccount";
 import { IEthereumAccountCustodianDetails } from "../../interfaces/IEthereumAccountCustodianDetails";
-import { IMetamaskContractMetadata } from "../../interfaces/IMetamaskContractMetadata";
-import { ITransactionDetails } from "../../interfaces/ITransactionDetails";
-import { IEIP1559TxParams, ILegacyTXParams } from "../../interfaces/ITXParams";
 import { MessageTypes, TypedMessage } from "../../interfaces/ITypedMessage";
 import { CreateTransactionMetadata } from "../../types/CreateTransactionMetadata";
 import { JsonRpcClient } from "./JsonRpcClient";
