@@ -34,7 +34,7 @@ import { ICustodyKeyringOptions } from "./interfaces/ICustodyKeyringOptions";
 import { Migrator } from "./migrations/migrator";
 import { migrations } from "./migrations";
 
-import { MmiConfigurationController } from "../controllers/mmi-configuration";
+// TO DO import { MmiConfigurationController } from "../controllers/mmi-configuration";
 
 export type UniqueAccountDetails = {
   hash: string;
@@ -57,14 +57,14 @@ export abstract class CustodyKeyring extends EventEmitter {
   public meta: { version?: number };
   public trackingActiveByCredentials = {};
 
-  public mmiConfigurationController: MmiConfigurationController;
+  public mmiConfigurationController: any; //TODO MmiConfigurationController;
 
   // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
   abstract txDeepLink(custodianDetails: any, txId: string): Promise<Partial<ICustodianTransactionLink> | null>;
 
-  abstract sdkFactory(authDetails: AuthDetails, apiUrl: string): MMISDK;
+  abstract sdkFactory(authDetails: AuthDetails, apiUrl: string): any; // TODO MMISDK;
 
-  protected sdkList: { sdk: MMISDK; hash: string }[];
+  protected sdkList: { sdk: any; hash: string }[]; // TODO MMISDK
 
   constructor(opts: ICustodyKeyringOptions = {}) {
     super();
@@ -239,7 +239,8 @@ export abstract class CustodyKeyring extends EventEmitter {
     return authDetails;
   }
 
-  getSDK(authDetails: AuthDetails, apiUrl?: string): MMISDK {
+  getSDK(authDetails: AuthDetails, apiUrl?: string): any {
+    // TODO MMISDK
     const hash = this.hashAuthDetails(authDetails, apiUrl);
 
     // Interesting thing - this will create a new SDK if the auth details are changed

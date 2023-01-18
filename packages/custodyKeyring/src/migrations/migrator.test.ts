@@ -4,7 +4,7 @@ import { cloneDeep } from "lodash";
 import { AuthTypes } from "@metamask-institutional/types";
 import { migrations as liveMigrations } from ".";
 import { Migrator } from "./migrator";
-import { CUSTODIAN_TYPES } from "..";
+//TO DO import { CUSTODIAN_TYPES } from "..";
 
 const stubMigrations = [
   {
@@ -50,11 +50,6 @@ const versionedData = {
   accountsDetails: [{ jwt: "jwt0" }],
 };
 
-// const firstTimeState = [{
-//   meta: { version: 0 },
-//   jwt: 'jwt1',
-// }];
-
 describe("migrations", function () {
   describe("liveMigrations require list", function () {
     let migrationNumbers;
@@ -62,7 +57,7 @@ describe("migrations", function () {
     beforeAll(function () {
       const fileNames = fs.readdirSync("./src/migrations/");
       migrationNumbers = fileNames
-        .reduce((acc, filename) => {
+        .reduce((acc: string[] = [], filename) => {
           const name = filename.split(".")[0];
           if (/^\d+$/u.test(name)) {
             acc.push(name);
@@ -82,7 +77,7 @@ describe("migrations", function () {
     it("should have tests for all migrations", function () {
       const fileNames = fs.readdirSync("./src/migrations/");
       const testNumbers = fileNames
-        .reduce((acc, filename) => {
+        .reduce((acc: string[] = [], filename) => {
           const name = filename.split(".test.")[0];
           if (/^\d+$/u.test(name)) {
             acc.push(name);
@@ -110,7 +105,7 @@ describe("migrations", function () {
       const migrator = new Migrator({ migrations: liveMigrations });
       const keyring = {
         type: "Custody - Jupiter",
-        custodianType: CUSTODIAN_TYPES.JUPITER,
+        custodianType: {}, // TO DO CUSTODIAN_TYPES.JUPITER,
         authType: AuthTypes.TOKEN,
         accountsDetails: [
           {

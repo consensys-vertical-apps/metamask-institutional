@@ -1,6 +1,6 @@
 import { cloneDeep } from "lodash";
-import { CustodyKeyring } from "../classes/CustodyKeyring";
-import { AuthTypes } from "../enum/AuthTypes";
+import { AuthTypes } from "@metamask-institutional/types";
+import { CustodyKeyring } from "../CustodyKeyring";
 
 const version = 1;
 const keyringTypesToChange = ["Custody - Curv", "Custody - Qredo", "Custody - Jupiter"];

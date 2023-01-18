@@ -1,4 +1,4 @@
-import { IEIP1559TxParams, ILegacyTXParams } from "./ITXParams";
+import { IEIP1559TxParams, ILegacyTXParams } from "../ITXParams";
 
 // This seems to be equivalent to
 // TransactionMeta
