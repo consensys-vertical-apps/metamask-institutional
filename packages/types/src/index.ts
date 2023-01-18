@@ -13,6 +13,7 @@ export { ILegacyTXParams } from "./ITXParams";
 export { IEIP1559TxParams } from "./ITXParams";
 export { ITransactionStatusMap } from "./ITransactionStatusMap";
 export { ICustodianAccount, IExtensionCustodianAccount } from "./ICustodianAccount";
+export { IRefreshTokenChangeEvent } from "./IRefreshTokenChangeEvent";
 
 // Enums
 export { AuthTypes } from "./enum/AuthTypes";
