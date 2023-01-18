@@ -30,7 +30,7 @@
   "gitHead": "62ed7639b9145658a4fa1273e35e99d300acdc99",
   "dependencies": {
     "@metamask-institutional/simplecache": "^0.1.1",
-    "@metamask-institutional/types": "^0.1.22",
+    "@metamask-institutional/types": "^0.1.24",
     "bignumber.js": "^9.1.1",
     "jest-fetch-mock": "^3.0.3",
     "jsonwebtoken": "^9.0.0",
