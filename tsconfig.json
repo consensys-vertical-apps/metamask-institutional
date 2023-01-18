@@ -21,6 +21,7 @@
     {
       "path": "packages/sdk"
     },
+    { "path": "packages/custodyKeyring" },
     {
       "path": "packages/simpleCache"
     },

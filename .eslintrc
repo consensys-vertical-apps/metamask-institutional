@@ -5,7 +5,8 @@
     "sourceType": "module"
   },
   "plugins": ["@typescript-eslint/eslint-plugin"],
-  "extends": ["plugin:@typescript-eslint/eslint-recommended", "plugin:@typescript-eslint/recommended", "prettier"],
+  "extends": ["eslint:recommended", "prettier", "plugin:@typescript-eslint/recommended"],
+  "ignorePatterns": ["dist", "node_modules", "examples", "scripts"],
   "root": true,
   "env": {
     "node": true,

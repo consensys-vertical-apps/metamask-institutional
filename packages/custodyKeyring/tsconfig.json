@@ -1,14 +1,22 @@
 {
-  "extends": "../../tsconfig.build.json",
+  "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "composite": true,
     "rootDir": "./src",
-    "outDir": "./dist"
+    "outDir": "./dist",
+    "baseUrl": ".",
+    "sourceMap": true,
+    "resolveJsonModule": true,
+    "composite": true,
+    "allowJs": false,
+    "declaration": true,
+    "declarationMap": true,
+    "allowSyntheticDefaultImports": true
   },
   "paths": {
     "@metamask-institutional/sdk": ["../sdk/src/index.ts"],
-    "@metamask-institutional/mmi-configuration": ["../mmiConfiguration/src/index.ts"]
+    "@metamask-institutional/mmi-configuration": ["../mmiConfiguration/src/index.ts"],
+    "@metamask-institutional/types": ["../types/src/index.ts"]
   },
-  "references": [{ "path": "../sdk" }, { "path": "../mmiConfiguration" }],
+  "references": [{ "path": "../sdk" }, { "path": "../mmiConfiguration" }, { "path": "../types" }],
   "include": ["src/**/*"]
 }

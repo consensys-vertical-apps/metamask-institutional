@@ -36,6 +36,7 @@ export class SimpleCache {
   }
 
   public cacheExists(key): boolean {
+    // eslint-disable-next-line no-prototype-builtins
     return this.cache.hasOwnProperty(key);
   }
 
