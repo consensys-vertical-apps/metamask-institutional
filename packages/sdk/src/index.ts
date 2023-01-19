@@ -5,12 +5,12 @@ export { IEthereumAccountCustodianDetails } from "./interfaces/IEthereumAccountC
 export { IEthereumAccount } from "./interfaces/IEthereumAccount";
 
 // Exports all APIs
-export { BitgoCustodianApi } from "./custodian-types/bitgo/BitgoCustodianApi";
-export { CactusCustodianApi } from "./custodian-types/cactus/CactusCustodianApi";
-export { CurvCustodianApi } from "./custodian-types/curv/CurvCustodianApi";
-export { JsonRpcCustodianApi } from "./custodian-types/json-rpc/JsonRpcCustodianApi";
-export { JupiterCustodianApi } from "./custodian-types/jupiter/JupiterCustodianApi";
-export { QredoCustodianApi } from "./custodian-types/qredo/QredoCustodianApi";
+export { BitgoCustodianApi } from "./custodianApi/bitgo/BitgoCustodianApi";
+export { CactusCustodianApi } from "./custodianApi/cactus/CactusCustodianApi";
+export { CurvCustodianApi } from "./custodianApi/curv/CurvCustodianApi";
+export { JsonRpcCustodianApi } from "./custodianApi/json-rpc/JsonRpcCustodianApi";
+export { JupiterCustodianApi } from "./custodianApi/jupiter/JupiterCustodianApi";
+export { QredoCustodianApi } from "./custodianApi/qredo/QredoCustodianApi";
 
 // Utility methods
 export { mapTransactionStatus } from "./util/map-status";

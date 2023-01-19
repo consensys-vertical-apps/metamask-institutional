@@ -1,9 +1,9 @@
 import { MMISDK } from "./MMISDK";
 import { mocked } from "ts-jest/utils";
 import { MessageTypes, TypedMessage } from "../interfaces/ITypedMessage";
-import { JupiterCustodianApi } from "../custodian-types/jupiter/JupiterCustodianApi";
+import { JupiterCustodianApi } from "../custodianApi/jupiter/JupiterCustodianApi";
 import { AuthTypes } from "@metamask-institutional/types";
-jest.mock("../custodian-types/jupiter/JupiterCustodianApi");
+jest.mock("../custodianApi/jupiter/JupiterCustodianApi");
 
 describe("MMISDK", () => {
   let mmiSDK: MMISDK;
@@ -20,7 +20,7 @@ describe("MMISDK", () => {
         jwt: "xyz",
       },
       AuthTypes.TOKEN,
-      "http://"
+      "http://",
     );
     mockedCustodianApiInstance = mockedCustodianApi.mock.instances[0];
     mockedCustodianApiInstance.on = jest.fn();
@@ -35,37 +35,25 @@ describe("MMISDK", () => {
 
   describe("MMISDK#getEthereumAccounts", () => {
     it("should call the custodian API", async () => {
-      mockedCustodianApiInstance.getEthereumAccounts = jest
-        .fn()
-        .mockResolvedValueOnce([]);
+      mockedCustodianApiInstance.getEthereumAccounts = jest.fn().mockResolvedValueOnce([]);
       await mmiSDK.getEthereumAccounts();
-      expect(
-        mockedCustodianApiInstance.getEthereumAccounts
-      ).toHaveBeenCalledWith();
+      expect(mockedCustodianApiInstance.getEthereumAccounts).toHaveBeenCalledWith();
     });
   });
 
   describe("MMISDK#getEthereumAccountsByLabelOrAddressName", () => {
     it("should call the custodian API", async () => {
-      mockedCustodianApiInstance.getEthereumAccountsByLabelOrAddressName = jest
-        .fn()
-        .mockResolvedValueOnce([]);
+      mockedCustodianApiInstance.getEthereumAccountsByLabelOrAddressName = jest.fn().mockResolvedValueOnce([]);
       await mmiSDK.getEthereumAccountsByLabelOrAddressName("test");
-      expect(
-        mockedCustodianApiInstance.getEthereumAccountsByLabelOrAddressName
-      ).toHaveBeenCalledWith("test");
+      expect(mockedCustodianApiInstance.getEthereumAccountsByLabelOrAddressName).toHaveBeenCalledWith("test");
     });
   });
 
   describe("MMISDK#getEthereumAccountsByAddress", () => {
     it("should call the custodian API", async () => {
-      mockedCustodianApiInstance.getEthereumAccountsByAddress = jest
-        .fn()
-        .mockResolvedValueOnce([]);
+      mockedCustodianApiInstance.getEthereumAccountsByAddress = jest.fn().mockResolvedValueOnce([]);
       await mmiSDK.getEthereumAccountsByAddress("0x1", 4);
-      expect(
-        mockedCustodianApiInstance.getEthereumAccountsByAddress
-      ).toHaveBeenCalledWith("0x1");
+      expect(mockedCustodianApiInstance.getEthereumAccountsByAddress).toHaveBeenCalledWith("0x1");
     });
   });
 
@@ -86,9 +74,7 @@ describe("MMISDK", () => {
 
       await mmiSDK.createTransaction(txParams, { chainId: "1" });
 
-      expect(
-        mockedCustodianApiInstance.createTransaction
-      ).toHaveBeenCalledWith(txParams, { chainId: "1" });
+      expect(mockedCustodianApiInstance.createTransaction).toHaveBeenCalledWith(txParams, { chainId: "1" });
     });
   });
 
@@ -104,10 +90,7 @@ describe("MMISDK", () => {
     it("should call the custodian API", async () => {
       await mmiSDK.getTransaction("xxx", "yyy");
 
-      expect(mockedCustodianApiInstance.getTransaction).toHaveBeenCalledWith(
-        "xxx",
-        "yyy"
-      );
+      expect(mockedCustodianApiInstance.getTransaction).toHaveBeenCalledWith("xxx", "yyy");
     });
   });
 
@@ -121,14 +104,12 @@ describe("MMISDK", () => {
 
   describe("MMISDK#signTypedData_v4", () => {
     it("should call signTypedData on the custodian API", async () => {
-      mockedCustodianApiInstance.signTypedData_v4 = jest
-        .fn()
-        .mockResolvedValueOnce({
-          custodian_transactionId: "xxx",
-          from: "",
-          bufferType: "v4",
-          isSignedMessage: true,
-        });
+      mockedCustodianApiInstance.signTypedData_v4 = jest.fn().mockResolvedValueOnce({
+        custodian_transactionId: "xxx",
+        from: "",
+        bufferType: "v4",
+        isSignedMessage: true,
+      });
 
       const buffer: TypedMessage<MessageTypes> = {
         types: {
@@ -143,11 +124,7 @@ describe("MMISDK", () => {
 
       await mmiSDK.signedTypedData_v4("0x", buffer);
 
-      expect(mockedCustodianApiInstance.signTypedData_v4).toHaveBeenCalledWith(
-        "0x",
-        buffer,
-        ""
-      );
+      expect(mockedCustodianApiInstance.signTypedData_v4).toHaveBeenCalledWith("0x", buffer, "");
     });
   });
 
@@ -169,7 +146,7 @@ describe("MMISDK", () => {
           jwt: "xyz",
         },
         AuthTypes.TOKEN,
-        "http://"
+        "http://",
       );
 
       expect(mmiSDK2).toBeDefined();
@@ -186,20 +163,16 @@ describe("MMISDK", () => {
 
   describe("MMISDK#signPersonalMessage", () => {
     it("should call signPersonalMessage on the custodian API", async () => {
-      mockedCustodianApiInstance.signPersonalMessage = jest
-        .fn()
-        .mockResolvedValueOnce({
-          custodian_transactionId: "xxx",
-          from: "",
-          bufferType: "personal",
-          isSignedMessage: true,
-        });
+      mockedCustodianApiInstance.signPersonalMessage = jest.fn().mockResolvedValueOnce({
+        custodian_transactionId: "xxx",
+        from: "",
+        bufferType: "personal",
+        isSignedMessage: true,
+      });
 
       await mmiSDK.signPersonalMessage("0x", "0x");
 
-      expect(
-        mockedCustodianApiInstance.signPersonalMessage
-      ).toHaveBeenCalledWith("0x", "0x");
+      expect(mockedCustodianApiInstance.signPersonalMessage).toHaveBeenCalledWith("0x", "0x");
     });
   });
 
@@ -207,9 +180,7 @@ describe("MMISDK", () => {
     it("should call the custodian API", async () => {
       await mmiSDK.getTransactionLink("xxx");
 
-      expect(
-        mockedCustodianApiInstance.getTransactionLink
-      ).toHaveBeenCalledWith("xxx");
+      expect(mockedCustodianApiInstance.getTransactionLink).toHaveBeenCalledWith("xxx");
     });
   });
 });
