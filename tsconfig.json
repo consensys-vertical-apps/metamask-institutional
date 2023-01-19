@@ -14,13 +14,19 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "paths": {
-      "@metamask-institutional/types/*": ["types/src/*"]
+      "@metamask-institutional/*": ["./packages/*/src/index.ts"]
     }
   },
-  "files": [],
   "references": [
+    {
+      "path": "packages/sdk"
+    },
+    {
+      "path": "packages/simpleCache"
+    },
     {
       "path": "packages/types"
     }
-  ]
+  ],
+  "exclude": ["node_modules", "dist", "*.d.ts"]
 }

@@ -1,4 +1,4 @@
-import { TransactionStatus } from "../../../interfaces/ITransactionDetails";
+import { TransactionStatus } from "@metamask-institutional/types";
 
 export interface IBitgoTransaction {
   transactionStatus: TransactionStatus;

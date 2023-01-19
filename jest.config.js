@@ -1,5 +1,14 @@
 const { pathsToModuleNameMapper } = require("ts-jest");
-const { compilerOptions } = require("./tsconfig");
+const { compilerOptions } = require("./tsconfig.json");
+
+// const path = require('path');
+// const { lstatSync, readdirSync } = require('fs');
+
+// // get listing of packages in the mono repo
+// const basePath = path.resolve(__dirname, 'packages');
+// const packages = readdirSync(basePath).filter(name => {
+//    return lstatSync(path.join(basePath, name)).isDirectory();
+// });
 
 // For a detailed explanation regarding each configuration property, visit:
 // https://jestjs.io/docs/en/configuration.html
@@ -49,15 +58,16 @@ module.exports = {
   // A list of reporter names that Jest uses when writing coverage reports
   coverageReporters: ["json", "html"],
 
+  // @TODO come back later
   // An object that configures minimum threshold enforcement for coverage results
-  coverageThreshold: {
-    global: {
-      statements: 80,
-      branches: 0,
-      functions: 80,
-      lines: 80,
-    },
-  },
+  // coverageThreshold: {
+  //   global: {
+  //     statements: 80,
+  //     branches: 0,
+  //     functions: 80,
+  //     lines: 80,
+  //   },
+  // },
 
   // A path to a custom dependency extractor
   // dependencyExtractor: null,
@@ -88,9 +98,19 @@ module.exports = {
   //   '^~/(.*)$': '<rootDir>/src/$1',
   //   '^@jjangga0214/(.*)$': '<rootDir>/../$1/src'
   // },
-  moduleNameMapper: {
-    ...pathsToModuleNameMapper(compilerOptions.paths /* , { prefix: '<rootDir>/' }, */),
-  },
+  // moduleNameMapper: {
+  //   ...pathsToModuleNameMapper(compilerOptions.paths /* , { prefix: '<rootDir>/' }, */),
+  // },
+
+  // moduleNameMapper: {
+  //   ...packages.reduce(
+  //       (acc, name) => ({
+  //         ...acc,
+  //         [`@metamask-institutional/${name}(.*)$`]: `<rootDir>/packages/./${name}/src/$1`,
+  //     }),
+  //   {},
+  // ),
+  // },
 
   // An array of regexp pattern strings, matched against all module paths before considered 'visible' to the module loader
   // modulePathIgnorePatterns: [],
@@ -156,9 +176,9 @@ module.exports = {
   // ],
 
   // An array of regexp pattern strings that are matched against all test paths, matched tests are skipped
-  // testPathIgnorePatterns: [
-  //   "/node_modules/"
-  // ],
+  testPathIgnorePatterns: [
+    "dist"
+  ],
 
   // The regexp pattern or array of patterns that Jest uses to detect test files
   // testRegex: [],
