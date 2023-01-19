@@ -1,14 +1,14 @@
 const { pathsToModuleNameMapper } = require("ts-jest");
 const { compilerOptions } = require("./tsconfig.json");
 
-// const path = require('path');
-// const { lstatSync, readdirSync } = require('fs');
+const path = require('path');
+const { lstatSync, readdirSync } = require('fs');
 
-// // get listing of packages in the mono repo
-// const basePath = path.resolve(__dirname, 'packages');
-// const packages = readdirSync(basePath).filter(name => {
-//    return lstatSync(path.join(basePath, name)).isDirectory();
-// });
+// get listing of packages in the mono repo
+const basePath = path.resolve(__dirname, 'packages');
+const packages = readdirSync(basePath).filter(name => {
+   return lstatSync(path.join(basePath, name)).isDirectory();
+});
 
 // For a detailed explanation regarding each configuration property, visit:
 // https://jestjs.io/docs/en/configuration.html
@@ -102,15 +102,15 @@ module.exports = {
   //   ...pathsToModuleNameMapper(compilerOptions.paths /* , { prefix: '<rootDir>/' }, */),
   // },
 
-  // moduleNameMapper: {
-  //   ...packages.reduce(
-  //       (acc, name) => ({
-  //         ...acc,
-  //         [`@metamask-institutional/${name}(.*)$`]: `<rootDir>/packages/./${name}/src/$1`,
-  //     }),
-  //   {},
-  // ),
-  // },
+  moduleNameMapper: {
+    ...packages.reduce(
+        (acc, name) => ({
+          ...acc,
+          [`@metamask-institutional/${name}(.*)$`]: `<rootDir>/packages/../../${name}/src/$1`,
+      }),
+    {},
+  ),
+  },
 
   // An array of regexp pattern strings, matched against all module paths before considered 'visible' to the module loader
   // modulePathIgnorePatterns: [],
