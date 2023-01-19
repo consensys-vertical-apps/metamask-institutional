@@ -1,25 +1,22 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
-      "rootDir": "./src",
-      "outDir": "./dist",
-      "baseUrl": ".",
-      "sourceMap": true,
-      "resolveJsonModule": true,
-      "composite": true,
-      "allowJs": false,
-      "declaration": true,
-      "declarationMap": true,
-      "allowSyntheticDefaultImports": true
+    "rootDir": "./src",
+    "outDir": "./dist",
+    "baseUrl": ".",
+    "sourceMap": true,
+    "resolveJsonModule": true,
+    "composite": true,
+    "allowJs": false,
+    "declaration": true,
+    "declarationMap": true,
+    "allowSyntheticDefaultImports": true
   },
   "paths": {
-      "@metamask-institutional/types": ["../types/src/index.ts"],
-      "@metamask-institutional/simplecache": ["../simpleCache/src/index.ts"]
+    "@metamask-institutional/types": ["../types/src/index.ts"],
+    "@metamask-institutional/simplecache": ["../simpleCache/src/index.ts"]
   },
-  "references": [
-      { "path": "../types" },
-      { "path": "../simpleCache" }
-  ],
+  "references": [{ "path": "../types" }, { "path": "../simpleCache" }],
   "include": ["src/**/*"],
   "exclude": ["node_modules", "dist"]
 }
