@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@metamask-institutional/*": ["./packages/*/src/index.ts"]
+    }
+  },
+  "exclude": ["node_modules", "dist"]
+}
