@@ -1,9 +1,8 @@
 import crypto, { Hash } from "crypto";
 import { mocked } from "ts-jest/utils";
 import { IExtensionCustodianAccount, IRefreshTokenAuthDetails } from "@metamask-institutional/types";
+import { mmiSDKFactory, MMISDK } from "@metamask-institutional/sdk";
 
-import { mmiSDKFactory } from "../../util/mmi-sdk-factory";
-import { MMISDK } from "../../classes/MMISDK";
 import { CactusStatusMap } from "./CactusStatusMap";
 import { CactusCustodyKeyring } from "./CactusCustodyKeyring";
 

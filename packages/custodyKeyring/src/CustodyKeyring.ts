@@ -62,9 +62,9 @@ export abstract class CustodyKeyring extends EventEmitter {
   // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
   abstract txDeepLink(custodianDetails: any, txId: string): Promise<Partial<ICustodianTransactionLink> | null>;
 
-  abstract sdkFactory(authDetails: AuthDetails, apiUrl: string): any; // TODO MMISDK;
+  abstract sdkFactory(authDetails: AuthDetails, apiUrl: string): MMISDK;
 
-  protected sdkList: { sdk: any; hash: string }[]; // TODO MMISDK
+  protected sdkList: { sdk: MMISDK; hash: string }[];
 
   constructor(opts: ICustodyKeyringOptions = {}) {
     super();
@@ -239,8 +239,7 @@ export abstract class CustodyKeyring extends EventEmitter {
     return authDetails;
   }
 
-  getSDK(authDetails: AuthDetails, apiUrl?: string): any {
-    // TODO MMISDK
+  getSDK(authDetails: AuthDetails, apiUrl?: string): MMISDK {
     const hash = this.hashAuthDetails(authDetails, apiUrl);
 
     // Interesting thing - this will create a new SDK if the auth details are changed

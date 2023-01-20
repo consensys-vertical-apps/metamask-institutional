@@ -1,5 +1,4 @@
-import { MetaMaskTransactionStatuses } from "../../enum/MetaMaskTransactionStatuses";
-import { ITransactionStatusMap } from "../../interfaces/ITransactionStatusMap";
+import { ITransactionStatusMap, MetaMaskTransactionStatuses } from "@metamask-institutional/types";
 
 export const CactusStatusMap: ITransactionStatusMap = {
   created: {

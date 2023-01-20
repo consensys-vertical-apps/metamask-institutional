@@ -4,12 +4,10 @@ import {
   AuthTypes,
   ICustodianTransactionLink,
 } from "@metamask-institutional/types";
-import { BitgoCustodianApi } from "./BitgoCustodianApi";
-import { mmiSDKFactory } from "../../util/mmi-sdk-factory";
+import { BitgoCustodianApi, mmiSDKFactory, MMISDK } from "@metamask-institutional/sdk";
 import { CustodyKeyring } from "../../CustodyKeyring";
 import { ICustodyKeyringOptions } from "../../interfaces/ICustodyKeyringOptions";
 import { BitgoStatusMap } from "./BitgoStatusMap";
-// TO DO import { MMISDK } from "../..";
 import { CUSTODIAN_TYPES } from "..";
 
 export class BitgoCustodyKeyring extends CustodyKeyring {
@@ -20,10 +18,8 @@ export class BitgoCustodyKeyring extends CustodyKeyring {
 
   public readonly custodianType = CUSTODIAN_TYPES.BITGO;
 
-  sdkFactory = (
-    authDetails: AuthDetails,
-    apiUrl: string,
-  ): any => mmiSDKFactory(BitgoCustodianApi, authDetails, this.authType, apiUrl); // TO DO MMISDK
+  sdkFactory = (authDetails: AuthDetails, apiUrl: string): MMISDK =>
+    mmiSDKFactory(BitgoCustodianApi, authDetails, this.authType, apiUrl);
 
   txDeepLink = async (_custodianDetails, _txId) => {
     const transactionLink: Partial<ICustodianTransactionLink> = {

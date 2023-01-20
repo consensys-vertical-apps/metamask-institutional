@@ -1,9 +1,7 @@
 import crypto, { Hash } from "crypto";
 import { mocked } from "ts-jest/utils";
 import { IExtensionCustodianAccount, IRefreshTokenAuthDetails } from "@metamask-institutional/types";
-
-import { mmiSDKFactory } from "../../util/mmi-sdk-factory";
-import { MMISDK } from "../../classes/MMISDK";
+import { mmiSDKFactory, MMISDK } from "@metamask-institutional/sdk";
 import { JsonRpcStatusMap } from "./JsonRpcStatusMap";
 import { JsonRpcCustodyKeyring } from "./JsonRpcCustodyKeyring";
 

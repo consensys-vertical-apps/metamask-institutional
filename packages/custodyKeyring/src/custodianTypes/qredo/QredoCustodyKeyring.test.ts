@@ -1,13 +1,10 @@
-import { IExtensionCustodianAccount } from "../../interfaces/ICustodianAccount";
-
-import { mmiSDKFactory } from "../../util/mmi-sdk-factory";
+import crypto, { Hash } from "crypto";
 import { mocked } from "ts-jest/utils";
-import { MMISDK } from "../../classes/MMISDK";
+import { IExtensionCustodianAccount, IRefreshTokenAuthDetails } from "@metamask-institutional/types";
+import { mmiSDKFactory, MMISDK } from "@metamask-institutional/sdk";
 import { QredoStatusMap } from "./QredoStatusMap";
 import { QredoCustodyKeyring } from "./QredoCustodyKeyring";
-import { IRefreshTokenAuthDetails } from "../../interfaces/auth/IRefreshTokenAuthDetails";
-import crypto, { Hash } from "crypto";
-import { isJSDocReturnTag } from "typescript";
+
 jest.mock("../../util/mmi-sdk-factory");
 
 const mockedMmiSdkFactory = mocked(mmiSDKFactory, true);
@@ -54,7 +51,7 @@ describe("QredoCustodyKeyring", () => {
     custodyKeyring = new QredoCustodyKeyring();
     beforeEach(() => {
       jest.clearAllMocks();
-      mockedMmiSdkFactory.mockReturnValue((mockMMISDK as unknown) as MMISDK);
+      mockedMmiSdkFactory.mockReturnValue(mockMMISDK as unknown as MMISDK);
     });
   });
 
@@ -76,10 +73,7 @@ describe("QredoCustodyKeyring", () => {
       custodyKeyring.setSelectedAddresses(mockSelectedAddresses);
       custodyKeyring.addAccounts(1);
 
-      const result = await custodyKeyring.getTransactionDeepLink(
-        "0x123456",
-        "12345"
-      );
+      const result = await custodyKeyring.getTransactionDeepLink("0x123456", "12345");
 
       expect(result).toEqual(null);
     });
@@ -100,15 +94,13 @@ describe("QredoCustodyKeyring", () => {
 
       const url = "http://";
 
-      const hashMock = ({
+      const hashMock = {
         update: jest.fn().mockReturnThis(),
         digest: jest.fn().mockReturnValueOnce("fake hash"),
-      } as unknown) as Hash;
+      } as unknown as Hash;
 
       // Mocking the crypto module
-      const createHashMock = jest
-        .spyOn(crypto, "createHash")
-        .mockImplementationOnce(() => hashMock);
+      const createHashMock = jest.spyOn(crypto, "createHash").mockImplementationOnce(() => hashMock);
 
       const result = custodyKeyring.hashAuthDetails(authDetails, url);
 

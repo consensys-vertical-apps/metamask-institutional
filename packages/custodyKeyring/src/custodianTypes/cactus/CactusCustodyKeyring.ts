@@ -5,12 +5,10 @@ import {
   AddressType,
   ICustodianTransactionLink,
 } from "@metamask-institutional/types";
+import { mmiSDKFactory, MMISDK, CactusCustodianApi } from "@metamask-institutional/sdk";
 import { CustodyKeyring } from "../../CustodyKeyring";
 import { ICustodyKeyringOptions } from "../../interfaces/ICustodyKeyringOptions";
-import { mmiSDKFactory } from "../../util/mmi-sdk-factory";
-import { MMISDK } from "../..";
 import { CactusStatusMap } from "./CactusStatusMap";
-import { CactusCustodianApi } from "./CactusCustodianApi";
 
 import { CUSTODIAN_TYPES } from "..";
 

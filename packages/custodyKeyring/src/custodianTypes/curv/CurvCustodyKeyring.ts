@@ -1,9 +1,8 @@
 import { ITransactionStatusMap, AuthTypes, AuthDetails, ITokenAuthDetails } from "@metamask-institutional/types";
+import { mmiSDKFactory, CurvCustodianApi } from "@metamask-institutional/sdk";
 import { CustodyKeyring } from "../../CustodyKeyring";
 import { ICustodyKeyringOptions } from "../../interfaces/ICustodyKeyringOptions";
-import { mmiSDKFactory } from "../../util/mmi-sdk-factory";
 import { CUSTODIAN_TYPES } from "..";
-import { CurvCustodianApi } from "./CurvCustodianApi";
 
 interface Label {
   key: string;

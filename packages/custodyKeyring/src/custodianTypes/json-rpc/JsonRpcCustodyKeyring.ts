@@ -5,12 +5,10 @@ import {
   IRefreshTokenAuthDetails,
   ICustodianTransactionLink,
 } from "@metamask-institutional/types";
+import { mmiSDKFactory, MMISDK, JsonRpcCustodianApi } from "@metamask-institutional/sdk";
 import { CustodyKeyring } from "../../CustodyKeyring";
 import { ICustodyKeyringOptions } from "../../interfaces/ICustodyKeyringOptions";
 import { JsonRpcStatusMap } from "./JsonRpcStatusMap";
-import { JsonRpcCustodianApi } from "./JsonRpcCustodianApi";
-import { mmiSDKFactory } from "../../util/mmi-sdk-factory";
-import { MMISDK } from "../..";
 import { CUSTODIAN_TYPES } from "..";
 
 export class JsonRpcCustodyKeyring extends CustodyKeyring {

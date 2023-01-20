@@ -4,7 +4,7 @@ import { cloneDeep } from "lodash";
 import { AuthTypes } from "@metamask-institutional/types";
 import { migrations as liveMigrations } from ".";
 import { Migrator } from "./migrator";
-//TO DO import { CUSTODIAN_TYPES } from "..";
+import { CUSTODIAN_TYPES } from "..";
 
 const stubMigrations = [
   {
@@ -105,7 +105,7 @@ describe("migrations", function () {
       const migrator = new Migrator({ migrations: liveMigrations });
       const keyring = {
         type: "Custody - Jupiter",
-        custodianType: {}, // TO DO CUSTODIAN_TYPES.JUPITER,
+        custodianType: CUSTODIAN_TYPES.JUPITER,
         authType: AuthTypes.TOKEN,
         accountsDetails: [
           {

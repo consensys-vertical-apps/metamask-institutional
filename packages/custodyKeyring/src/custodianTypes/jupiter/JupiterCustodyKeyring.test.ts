@@ -8,13 +8,10 @@ import {
   ILegacyTXParams,
   MetamaskTransaction,
 } from "@metamask-institutional/types";
-
-import { mmiSDKFactory } from "../../util/mmi-sdk-factory";
-import { MMISDK } from "../../classes/MMISDK";
+import { JupiterCustodianApi, mmiSDKFactory, MMISDK } from "@metamask-institutional/sdk";
 import { DEFAULT_MAX_CACHE_AGE } from "../../constants";
 import { JupiterStatusMap } from "./JupiterStatusMap";
 import { JupiterCustodyKeyring } from "./JupiterCustodyKeyring";
-import { JupiterCustodianApi } from "./JupiterCustodianApi";
 jest.mock("../../util/mmi-sdk-factory");
 
 const mockedMmiSdkFactory = mocked(mmiSDKFactory, true);

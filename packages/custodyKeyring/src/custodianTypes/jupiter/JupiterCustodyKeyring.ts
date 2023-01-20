@@ -1,15 +1,15 @@
-import { CustodyKeyring } from "../../classes/CustodyKeyring";
+import {
+  ITransactionStatusMap,
+  AuthDetails,
+  AuthTypes,
+  AddressType,
+  ICustodianTransactionLink,
+} from "@metamask-institutional/types";
+import { JupiterCustodianApi, mmiSDKFactory, MMISDK } from "@metamask-institutional/sdk";
+import { CustodyKeyring } from "../../CustodyKeyring";
 import { ICustodyKeyringOptions } from "../../interfaces/ICustodyKeyringOptions";
-import { ITransactionStatusMap } from "../../interfaces/ITransactionStatusMap";
 import { JupiterStatusMap } from "./JupiterStatusMap";
-import { JupiterCustodianApi } from "./JupiterCustodianApi";
-import { mmiSDKFactory } from "../../util/mmi-sdk-factory";
-import { AuthDetails } from "../../types/AuthDetails";
-import { MMISDK } from "../..";
-import { AuthTypes } from "../../enum/AuthTypes";
 import { CUSTODIAN_TYPES } from "..";
-import { AddressType } from "../../enum/AddressType";
-import { ICustodianTransactionLink } from "../../interfaces/ICustodian";
 
 export class JupiterCustodyKeyring extends CustodyKeyring {
   public static readonly type = "Custody - Jupiter";
@@ -31,8 +31,7 @@ export class JupiterCustodyKeyring extends CustodyKeyring {
     const { apiUrl } = this.getAccountDetails(address);
 
     const transactionLink: Partial<ICustodianTransactionLink> = {
-      text:
-        "Approve the transaction in the Jupiter Custody app. Once all required custody approvals have been performed the transaction will complete. Check your Jupiter Custody app for status.",
+      text: "Approve the transaction in the Jupiter Custody app. Once all required custody approvals have been performed the transaction will complete. Check your Jupiter Custody app for status.",
       url: null,
     };
 

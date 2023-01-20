@@ -5,12 +5,10 @@ import {
   AddressType,
   ICustodianTransactionLink,
 } from "@metamask-institutional/types";
+import { QredoCustodianApi, mmiSDKFactory, MMISDK } from "@metamask-institutional/sdk";
 import { CustodyKeyring } from "../../CustodyKeyring";
 import { ICustodyKeyringOptions } from "../../interfaces/ICustodyKeyringOptions";
 import { QredoStatusMap } from "./QredoStatusMap";
-import { QredoCustodianApi } from "./QredoCustodianApi";
-import { mmiSDKFactory } from "../../util/mmi-sdk-factory";
-import { MMISDK } from "../..";
 import { CUSTODIAN_TYPES } from "..";
 
 export class QredoCustodyKeyring extends CustodyKeyring {
