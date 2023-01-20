@@ -1,6 +1,6 @@
 import { CUSTODIAN_TYPES } from "@metamask-institutional/custody-keyring";
 import { IMmiConfigurationControllerOptions } from "./types";
-import { MmiConfigurationController } from "./mmi-configuration";
+import { MmiConfigurationController } from "./mmiConfiguration";
 
 const missingV1Custodian = {
   apiBaseUrl: "",

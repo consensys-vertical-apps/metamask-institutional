@@ -1,5 +1,5 @@
 import fetchMock from "jest-fetch-mock";
-import { MMI_CONFIGURATION_API_URL } from "../constants/constants";
+import { MMI_CONFIGURATION_API_URL } from "./constants";
 
 import { ConfigurationClient } from "./ConfigurationClient";
 fetchMock.enableMocks();
@@ -53,12 +53,10 @@ describe("ConfigurationClient", () => {
               websocketApiUrl: "test",
             },
           ],
-        })
+        }),
       );
 
-      const result = await configurationClient.getCustodianConfigurationForApiUrl(
-        "https://api.mymmi.com"
-      );
+      const result = await configurationClient.getCustodianConfigurationForApiUrl("https://api.mymmi.com");
       expect(fetchMock).toHaveBeenCalledWith(MMI_CONFIGURATION_API_URL, {
         method: "GET",
       });
@@ -77,14 +75,10 @@ describe("ConfigurationClient", () => {
               apiBaseUrl: "https://api.mymmi.com",
             },
           ],
-        })
+        }),
       );
 
-      expect(
-        configurationClient.getCustodianConfigurationForApiUrl(
-          "http://not-real"
-        )
-      ).rejects.toThrow();
+      expect(configurationClient.getCustodianConfigurationForApiUrl("http://not-real")).rejects.toThrow();
     });
   });
 
