@@ -29,16 +29,17 @@
   },
   "gitHead": "62ed7639b9145658a4fa1273e35e99d300acdc99",
   "dependencies": {
-    "@metamask-institutional/simplecache": "^0.1.1",
-    "@metamask-institutional/types": "^0.1.24",
-    "@types/jest": "^29.2.6",
-    "@types/mocha": "^10.0.1",
+    "@metamask-institutional/simplecache": "*",
+    "@metamask-institutional/types": "*",
+    "@types/jsonwebtoken": "^9.0.1",
+    "@types/node": "^18.11.18",
     "bignumber.js": "^9.1.1",
-    "jest-fetch-mock": "^3.0.3",
-    "jsonwebtoken": "^9.0.0",
-    "ts-jest": "^26.4.4"
+    "jsonwebtoken": "^9.0.0"
   },
   "devDependencies": {
-    "@types/jsonwebtoken": "^9.0.1"
+    "@types/jest": "^29.2.6",
+    "@types/mocha": "^10.0.1",
+    "jest-fetch-mock": "^3.0.3",
+    "ts-jest": "26.4.4"
   }
 }

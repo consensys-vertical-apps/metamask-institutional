@@ -59,9 +59,5 @@
   },
   "publishConfig": {
     "access": "restricted"
-  },
-  "dependencies": {
-    "@metamask-institutional/types": "^0.1.24",
-    "@types/node": "^18.11.18"
   }
 }
