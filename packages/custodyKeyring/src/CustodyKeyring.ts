@@ -23,6 +23,7 @@ import {
   IInteractiveRefreshTokenChangeEvent,
   MetamaskTransaction,
 } from "@metamask-institutional/types";
+import { MmiConfigurationController } from "@metamask-institutional/mmi-configuration";
 import {
   DEFAULT_MAX_CACHE_AGE,
   REFRESH_TOKEN_CHANGE_EVENT,
@@ -33,8 +34,6 @@ import { ICustodyKeyringOptions } from "./interfaces/ICustodyKeyringOptions";
 
 import { Migrator } from "./migrations/migrator";
 import { migrations } from "./migrations";
-
-// TO DO import { MmiConfigurationController } from "../controllers/mmi-configuration";
 
 export type UniqueAccountDetails = {
   hash: string;
@@ -57,7 +56,7 @@ export abstract class CustodyKeyring extends EventEmitter {
   public meta: { version?: number };
   public trackingActiveByCredentials = {};
 
-  public mmiConfigurationController: any; //TODO MmiConfigurationController;
+  public mmiConfigurationController: MmiConfigurationController;
 
   // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
   abstract txDeepLink(custodianDetails: any, txId: string): Promise<Partial<ICustodianTransactionLink> | null>;

@@ -33,6 +33,8 @@
     "@metamask-institutional/mmi-configuration": "^0.1.3",
     "@metamask-institutional/sdk": "*",
     "@metamask-institutional/types": "*",
+    "@metamask-institutional/sdk": "*",
+    "@metamask-institutional/mmi-configuration": "*",
     "crypto": "^1.0.1",
     "ethereumjs-util": "^7.1.5",
     "lodash": "^4.17.21",
