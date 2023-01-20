@@ -1,6 +1,6 @@
 {
   "name": "@metamask-institutional/sdk",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "This package will export the MMISDK Class, which is a collection of custodian API clients",
   "author": "Antonio Regadas <apregadas@gmail.com>",
   "homepage": "https://github.com/consensys-vertical-apps/metamask-institutional#readme",
@@ -30,7 +30,7 @@
   "gitHead": "62ed7639b9145658a4fa1273e35e99d300acdc99",
   "dependencies": {
     "@metamask-institutional/simplecache": "*",
-    "@metamask-institutional/types": "*",
+    "@metamask-institutional/types": "^0.1.25",
     "@types/jsonwebtoken": "^9.0.1",
     "@types/node": "^18.11.18",
     "bignumber.js": "^9.1.1",
