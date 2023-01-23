@@ -16,7 +16,7 @@
     "@metamask-institutional/types": ["../types/src/index.ts"],
     "@metamask-institutional/custody-keyring": ["../custodyKeyring/src/index.ts"]
   },
-  "references": [{ "path": "../types" }, { "path": "../custodyKeyring" }],
+  "references": [{ "path": "../types" }],
   "include": ["src/**/*"],
   "exclude": ["node_modules", "dist"]
 }
