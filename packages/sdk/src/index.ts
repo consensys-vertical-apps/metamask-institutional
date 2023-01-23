@@ -3,6 +3,13 @@ export { MMISDK, ICustodianDetails } from "./classes/MMISDK";
 
 export { IEthereumAccountCustodianDetails } from "./interfaces/IEthereumAccountCustodianDetails";
 export { IEthereumAccount } from "./interfaces/IEthereumAccount";
+export { ICustodianApi } from "./interfaces/ICustodianApi";
+
+export {
+  REFRESH_TOKEN_CHANGE_EVENT,
+  INTERACTIVE_REPLACEMENT_TOKEN_CHANGE_EVENT,
+  DEFAULT_MAX_CACHE_AGE,
+} from "./constants/constants";
 
 // Exports all APIs
 export { BitgoCustodianApi } from "./custodianApi/bitgo/BitgoCustodianApi";
