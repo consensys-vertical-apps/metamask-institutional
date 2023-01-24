@@ -23,7 +23,7 @@ import {
   IInteractiveRefreshTokenChangeEvent,
   MetamaskTransaction,
 } from "@metamask-institutional/types";
-import { MmiConfigurationController } from "@metamask-institutional/mmi-configuration";
+import { MmiConfigurationController } from "./mmiConfiguration";
 import {
   DEFAULT_MAX_CACHE_AGE,
   REFRESH_TOKEN_CHANGE_EVENT,

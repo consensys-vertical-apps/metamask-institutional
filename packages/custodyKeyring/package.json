@@ -35,7 +35,9 @@
     "@metamask-institutional/mmi-configuration": "*",
     "crypto": "^1.0.1",
     "ethereumjs-util": "^7.1.5",
-    "lodash": "^4.17.21",
-    "ts-jest": "^29.0.5"
+    "lodash": "^4.17.21"
+  },
+  "devDependencies": {
+    "ts-jest": "26.4.4"
   }
 }

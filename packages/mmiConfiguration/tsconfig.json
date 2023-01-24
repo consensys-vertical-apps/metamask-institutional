@@ -12,18 +12,8 @@
     "declarationMap": true,
     "allowSyntheticDefaultImports": true
   },
-  "paths": {
-    "@metamask-institutional/types": ["../types/src/index.ts"],
-    "@metamask-institutional/custody-keyring": ["../custodyKeyring/src/index.ts"]
-  },
-  "references": [
-    {
-      "path": "../types"
-    },
-    {
-      "path": "../custodyKeyring"
-    }
-  ],
+  "paths": {},
+  "references": [],
   "include": ["src/**/*"],
   "exclude": ["node_modules", "dist"]
 }

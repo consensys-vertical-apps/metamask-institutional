@@ -4,9 +4,11 @@
  */
 
 import { ObservableStore } from "@metamask/obs-store";
-import { CUSTODIAN_TYPES } from "@metamask-institutional/custody-keyring";
-import { ConfigurationClient } from "./ConfigurationClient";
-import { IMmiConfigurationControllerOptions, MMIConfiguration, IConfiguration } from "./types";
+import { ConfigurationClient } from "@metamask-institutional/mmi-configuration";
+import { IMmiConfigurationControllerOptions } from "./interfaces/IMmiConfigurationControllerOptions";
+import { IConfiguration } from "./interfaces/IConfiguration";
+import { MMIConfiguration } from "./types/MMIConfiguration";
+import { CUSTODIAN_TYPES } from "./custodianTypes";
 
 /**
  * Background controller responsible for maintaining

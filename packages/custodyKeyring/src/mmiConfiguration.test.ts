@@ -1,5 +1,5 @@
-import { CUSTODIAN_TYPES } from "@metamask-institutional/custody-keyring";
-import { IMmiConfigurationControllerOptions } from "./types";
+import { CUSTODIAN_TYPES } from "./custodianTypes";
+import { IMmiConfigurationControllerOptions } from "./interfaces/IMmiConfigurationControllerOptions";
 import { MmiConfigurationController } from "./mmiConfiguration";
 
 const missingV1Custodian = {
