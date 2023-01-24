@@ -12,15 +12,3 @@ export interface IJsonRpcCustodian {
   websocketApiUrl: string;
   isNoteToTraderSupported: boolean;
 }
-
-export interface IConfiguration {
-  portfolio: {
-    enabled: boolean;
-    url: string;
-    cookieSetUrls: string[];
-  };
-  features: {
-    websocketApi: boolean;
-  };
-  custodians: IJsonRpcCustodian[];
-}

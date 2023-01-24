@@ -19,6 +19,12 @@
   },
   "references": [
     {
+      "path": "packages/custodyKeyring"
+    },
+    {
+      "path": "packages/mmiConfiguration"
+    },
+    {
       "path": "packages/sdk"
     },
     {
@@ -28,5 +34,6 @@
       "path": "packages/types"
     }
   ],
-  "exclude": ["node_modules", "dist", "*.d.ts"]
+  "exclude": ["node_modules", "dist", "*.d.ts"],
+  "files": []
 }
