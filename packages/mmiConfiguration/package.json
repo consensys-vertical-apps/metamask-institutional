@@ -1,6 +1,6 @@
 {
   "name": "@metamask-institutional/mmi-configuration",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "This package will export mmiConfigurationController used across the old @codefi/mmi-sdk library",
   "author": "Albert Olive <albertolivecorbella@gmail.com>",
   "homepage": "https://github.com/consensys-vertical-apps/metamask-institutional#readme",
