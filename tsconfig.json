@@ -19,6 +19,9 @@
   },
   "references": [
     {
+      "path": "packages/transactionUpdate"
+    },
+    {
       "path": "packages/custodyKeyring"
     },
     {
