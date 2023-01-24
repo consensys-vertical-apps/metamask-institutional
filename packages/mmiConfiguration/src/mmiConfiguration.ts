@@ -4,7 +4,7 @@
  */
 
 import { ObservableStore } from "@metamask/obs-store";
-// import { CUSTODIAN_TYPES } from "@metamask-institutional/custody-keyring";
+import { CUSTODIAN_TYPES } from "@metamask-institutional/custody-keyring";
 import { ConfigurationClient } from "./ConfigurationClient";
 import { IMmiConfigurationControllerOptions, MMIConfiguration, IConfiguration } from "./types";
 
@@ -63,7 +63,22 @@ export class MmiConfigurationController {
 
     // Mutate custodians by adding information from the hardcoded types
 
-    const custodians = [];
+    const custodians = [
+      ...Object.values(CUSTODIAN_TYPES)
+        .filter(custodian => custodian.hidden === false)
+        .map(custodian => ({
+          type: custodian.name,
+          name: custodian.name.toLowerCase(),
+          apiUrl: custodian.apiUrl,
+          iconUrl: custodian.imgSrc,
+          displayName: custodian.displayName,
+          websocketApiUrl: null, // Legacy custodian
+          production: custodian.production,
+          refreshTokenUrl: null,
+          isNoteToTraderSupported: false,
+          version: 1,
+        })),
+    ];
 
     // Loop through the custodians from the API
 

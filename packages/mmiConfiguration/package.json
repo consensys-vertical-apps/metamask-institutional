@@ -29,7 +29,8 @@
   },
   "gitHead": "62ed7639b9145658a4fa1273e35e99d300acdc99",
   "dependencies": {
-    "@metamask-institutional/types": "*"
+    "@metamask-institutional/types": "*",
+    "@metamask-institutional/custody-keyring": "*"
   },
   "devDependencies": {
     "@metamask/obs-store": "^7.0.0",

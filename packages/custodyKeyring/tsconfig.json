@@ -17,6 +17,16 @@
     "@metamask-institutional/mmi-configuration": ["../mmiConfiguration/src/index.ts"],
     "@metamask-institutional/types": ["../types/src/index.ts"]
   },
-  "references": [{ "path": "../sdk" }, { "path": "../mmiConfiguration" }, { "path": "../types" }],
+  "references": [
+    {
+      "path": "../sdk"
+    },
+    {
+      "path": "../types"
+    },
+    {
+      "path": "../mmiConfiguration"
+    }
+  ],
   "include": ["src/**/*"]
 }
