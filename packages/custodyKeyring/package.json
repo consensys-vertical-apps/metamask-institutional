@@ -1,6 +1,6 @@
 {
   "name": "@metamask-institutional/custody-keyring",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "This package will export custodyKeyring used across the old @codefi/mmi-sdk library",
   "author": "Albert Olive <albertolivecorbella@gmail.com>",
   "homepage": "https://github.com/consensys-vertical-apps/metamask-institutional#readme",
