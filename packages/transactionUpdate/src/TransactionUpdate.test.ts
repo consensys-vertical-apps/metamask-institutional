@@ -1,7 +1,7 @@
 import { ICustodianUpdate } from "@metamask-institutional/types";
 import { JsonRpcCustodianApi } from "@metamask-institutional/sdk";
 import { TransactionUpdateController } from "./TransactionUpdate";
-import { ICustodianApi } from "../interfaces/ICustodianApi";
+import { ICustodianApi } from "@metamask-institutional/sdk";
 import { IWatchedTransaction } from "./interfaces/IWatchedTransaction";
 import { MetaMaskTransactionStatuses } from "@metamask-institutional/types";
 import { WebsocketClientController } from "../controllers/websocket-client";
@@ -18,13 +18,13 @@ jest.mock("./websocket-client", () => {
   };
 });
 
-jest.mock("../custodian-types/json-rpc/JsonRpcCustodianApi");
+jest.mock("@metamask-institutional/sdk");
 
-jest.mock("../classes/ConfigurationClient");
+jest.mock("@metamask-institutional/mmi-configuration");
 
 jest.mock("./websocket-client");
 
-jest.mock("../constants/constants", () => ({
+jest.mock("./constants", () => ({
   POLL_TRANSACTION_RETRIES: 5,
   TRANSACTION_POLLING_INTERVAL: 1,
 }));
