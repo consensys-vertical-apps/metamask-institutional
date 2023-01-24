@@ -30,7 +30,6 @@
   "gitHead": "",
   "dependencies": {
     "@metamask-institutional/custody-keyring": "^0.0.3",
-    "@metamask-institutional/mmi-configuration": "^0.1.4",
     "@metamask-institutional/sdk": "^0.1.5",
     "@metamask-institutional/types": "^0.1.27",
     "mock-socket": "^9.1.5"
