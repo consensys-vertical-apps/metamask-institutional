@@ -35,6 +35,9 @@
     },
     {
       "path": "packages/types"
+    },
+    {
+      "path": "packages/websocketClient"
     }
   ],
   "exclude": ["node_modules", "dist", "*.d.ts"],
