@@ -6,7 +6,7 @@ import { mmiSDKFactory, MMISDK } from "@metamask-institutional/sdk";
 import { CactusStatusMap } from "./CactusStatusMap";
 import { CactusCustodyKeyring } from "./CactusCustodyKeyring";
 
-jest.mock("../../util/mmi-sdk-factory");
+jest.mock("@metamask-institutional/sdk");
 
 const mockedMmiSdkFactory = mocked(mmiSDKFactory, true);
 

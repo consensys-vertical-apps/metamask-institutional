@@ -22,10 +22,10 @@
       "path": "packages/transactionUpdate"
     },
     {
-      "path": "packages/custodyKeyring"
+      "path": "packages/configurationClient"
     },
     {
-      "path": "packages/mmiConfiguration"
+      "path": "packages/custodyKeyring"
     },
     {
       "path": "packages/sdk"

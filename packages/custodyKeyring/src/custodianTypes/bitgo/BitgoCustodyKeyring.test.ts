@@ -5,7 +5,7 @@ import { mmiSDKFactory, MMISDK } from "@metamask-institutional/sdk";
 
 import { BitgoStatusMap } from "./BitgoStatusMap";
 import { BitgoCustodyKeyring } from "./BitgoCustodyKeyring";
-jest.mock("../../util/mmi-sdk-factory");
+jest.mock("@metamask-institutional/sdk");
 
 const mockedMmiSdkFactory = mocked(mmiSDKFactory, true);
 

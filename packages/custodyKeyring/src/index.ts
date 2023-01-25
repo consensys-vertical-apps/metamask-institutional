@@ -5,3 +5,4 @@ export { MMIConfiguration } from "./types/MMIConfiguration";
 export { MmiConfigurationController } from "./mmiConfiguration";
 
 export { IMmiConfigurationControllerOptions } from "./interfaces/IMmiConfigurationControllerOptions";
+export { JupiterCustodyKeyring } from "./custodianTypes/jupiter/JupiterCustodyKeyring";

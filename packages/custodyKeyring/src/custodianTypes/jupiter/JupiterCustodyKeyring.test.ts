@@ -12,7 +12,7 @@ import { JupiterCustodianApi, mmiSDKFactory, MMISDK } from "@metamask-institutio
 import { DEFAULT_MAX_CACHE_AGE } from "../../constants";
 import { JupiterStatusMap } from "./JupiterStatusMap";
 import { JupiterCustodyKeyring } from "./JupiterCustodyKeyring";
-jest.mock("../../util/mmi-sdk-factory");
+jest.mock("@metamask-institutional/sdk");
 
 const mockedMmiSdkFactory = mocked(mmiSDKFactory, true);
 const mockAccounts = [
