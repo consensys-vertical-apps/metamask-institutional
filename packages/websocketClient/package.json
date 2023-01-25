@@ -1,6 +1,6 @@
 {
   "name": "@metamask-institutional/websocket-client",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "This package will export WebsocketClient, responsible for establishing a connection to the WebSocket API and handle all the messages for transaction updates.",
   "author": "Antonio Regadas <apregadas@gmail.com>",
   "homepage": "https://github.com/consensys-vertical-apps/metamask-institutional#readme",
@@ -29,8 +29,8 @@
   },
   "gitHead": "",
   "dependencies": {
-    "@metamask-institutional/custody-keyring": "^0.0.3",
-    "@metamask-institutional/sdk": "^0.1.5",
+    "@metamask-institutional/custody-keyring": "^0.0.4",
+    "@metamask-institutional/sdk": "^0.1.6",
     "@metamask-institutional/types": "^0.1.27",
     "mock-socket": "^9.1.5"
   }
