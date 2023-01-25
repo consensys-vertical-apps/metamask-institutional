@@ -1883,6 +1883,11 @@
     ethereumjs-util "^7.1.5"
     lodash "^4.17.21"
 
+"@metamask-institutional/mmi-configuration@^0.1.4":
+  version "0.1.4"
+  resolved "https://registry.yarnpkg.com/@metamask-institutional/mmi-configuration/-/mmi-configuration-0.1.4.tgz#2d37f538b14002f6d970ee00ed2599ea548cca2a"
+  integrity sha512-qOv9DNwZJxCz6/lm1Vp0nz8WKwXf8s21rVXVtkpPZ+JMj2hqHTpNMLypaeI7X3l8q9MrlplC0yB3RfKxfvL5FA==
+
 "@metamask/obs-store@^7.0.0":
   version "7.0.0"
   resolved "https://registry.yarnpkg.com/@metamask/obs-store/-/obs-store-7.0.0.tgz#6cae5f28306bb3e83a381bc9ae22682316095bd3"

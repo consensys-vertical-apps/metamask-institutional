@@ -15,7 +15,6 @@
   "paths": {
     "@metamask-institutional/types": ["../types/src/index.ts"],
     "@metamask-institutional/sdk": ["../sdk/src/index.ts"],
-    "@metamask-institutional/mmi-configuration": ["../mmiConfiguration/src/index.ts"],
     "@metamask-institutional/custody-keyring": ["../custodyKeyring/src/index.ts"]
   },
   "references": [
@@ -24,9 +23,6 @@
     },
     {
       "path": "../sdk"
-    },
-    {
-      "path": "../mmiConfiguration"
     },
     {
       "path": "../custodyKeyring"

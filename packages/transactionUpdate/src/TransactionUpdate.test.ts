@@ -1,14 +1,11 @@
-import { ICustodianUpdate } from "@metamask-institutional/types";
-import { JsonRpcCustodianApi } from "@metamask-institutional/sdk";
+import { ICustodianUpdate, MetaMaskTransactionStatuses } from "@metamask-institutional/types";
+import { JsonRpcCustodianApi, ICustodianApi, mapTransactionStatus } from "@metamask-institutional/sdk";
 import { TransactionUpdateController } from "./TransactionUpdate";
-import { ICustodianApi } from "@metamask-institutional/sdk";
 import { IWatchedTransaction } from "./interfaces/IWatchedTransaction";
-import { MetaMaskTransactionStatuses } from "@metamask-institutional/types";
-import { WebsocketClientController } from "../controllers/websocket-client";
-import { mapTransactionStatus } from "@metamask-institutional/sdk";
+import { WebsocketClientController } from "@metamask-institutional/websocket-client";
 import { mocked } from "ts-jest/utils";
 
-jest.mock("./websocket-client", () => {
+jest.mock("@metamask-institutional/websocket-client", () => {
   return {
     WebsocketClientController: jest.fn().mockImplementation(() => ({
       requestStreamForCustomerProof: jest.fn(() => Promise.resolve({ streamSubject: "123" })),
@@ -19,10 +16,8 @@ jest.mock("./websocket-client", () => {
 });
 
 jest.mock("@metamask-institutional/sdk");
-
-jest.mock("@metamask-institutional/mmi-configuration");
-
-jest.mock("./websocket-client");
+jest.mock("@metamask-institutional/custody-keyring");
+// jest.mock("@metamask-institutional/websocket-client");
 
 jest.mock("./constants", () => ({
   POLL_TRANSACTION_RETRIES: 5,

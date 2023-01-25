@@ -30,9 +30,9 @@
   "gitHead": "",
   "dependencies": {
     "@metamask-institutional/custody-keyring": "^0.0.3",
-    "@metamask-institutional/mmi-configuration": "^0.1.4",
     "@metamask-institutional/sdk": "^0.1.5",
     "@metamask-institutional/types": "*",
+    "@metamask-institutional/websocket-client": "^0.1.2",
     "@metamask/obs-store": "^7.0.0"
   }
 }
