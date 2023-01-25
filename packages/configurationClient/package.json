@@ -1,6 +1,6 @@
 {
   "name": "@metamask-institutional/configuration-client",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "This package fetches the MMI configuration",
   "author": "Albert Olive <albertolivecorbella@gmail.com>",
   "homepage": "https://github.com/consensys-vertical-apps/metamask-institutional#readme",
