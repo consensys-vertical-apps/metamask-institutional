@@ -14,18 +14,18 @@
   },
   "paths": {
     "@metamask-institutional/sdk": ["../sdk/src/index.ts"],
-    "@metamask-institutional/mmi-configuration": ["../mmiConfiguration/src/index.ts"],
+    "@metamask-institutional/configuration-client": ["../configurationClient/src/index.ts"],
     "@metamask-institutional/types": ["../types/src/index.ts"]
   },
   "references": [
+    {
+      "path": "../configurationClient"
+    },
     {
       "path": "../sdk"
     },
     {
       "path": "../types"
-    },
-    {
-      "path": "../mmiConfiguration"
     }
   ],
   "include": ["src/**/*"]

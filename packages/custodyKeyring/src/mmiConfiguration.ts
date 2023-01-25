@@ -4,7 +4,7 @@
  */
 
 import { ObservableStore } from "@metamask/obs-store";
-import { ConfigurationClient } from "@metamask-institutional/mmi-configuration";
+import { ConfigurationClient } from "@metamask-institutional/configuration-client";
 import { IMmiConfigurationControllerOptions } from "./interfaces/IMmiConfigurationControllerOptions";
 import { IConfiguration } from "./interfaces/IConfiguration";
 import { MMIConfiguration } from "./types/MMIConfiguration";
