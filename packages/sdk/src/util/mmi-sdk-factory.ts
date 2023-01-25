@@ -11,7 +11,7 @@ export const mmiSDKFactory = function (
   custodianApi: CustodianApiConstructor,
   authDetails: AuthDetails,
   authType: AuthTypes,
-  apiUrl: string
+  apiUrl: string,
 ): MMISDK {
   // Do not support HTTP URLs, except in the case of curv, and then, only if they are localhost OR the cactus
   // test environment
@@ -24,11 +24,5 @@ export const mmiSDKFactory = function (
     throw new Error("http:// URLs are not supported - only https://");
   }
 
-  return new MMISDK(
-    custodianApi,
-    authDetails,
-    authType,
-    apiUrl,
-    DEFAULT_MAX_CACHE_AGE
-  );
+  return new MMISDK(custodianApi, authDetails, authType, apiUrl, DEFAULT_MAX_CACHE_AGE);
 };

@@ -5,7 +5,7 @@ import { mmiSDKFactory, MMISDK } from "@metamask-institutional/sdk";
 import { QredoStatusMap } from "./QredoStatusMap";
 import { QredoCustodyKeyring } from "./QredoCustodyKeyring";
 
-jest.mock("../../util/mmi-sdk-factory");
+jest.mock("@metamask-institutional/sdk");
 
 const mockedMmiSdkFactory = mocked(mmiSDKFactory, true);
 

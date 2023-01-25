@@ -39,7 +39,7 @@ const v2custodian = {
   isNoteToTraderSupported: false,
 };
 
-jest.mock("../classes/ConfigurationClient", () => {
+jest.mock("@metamask-institutional/configuration-client", () => {
   return {
     ConfigurationClient: jest.fn().mockImplementation(() => ({
       getConfiguration: jest.fn().mockResolvedValue({
