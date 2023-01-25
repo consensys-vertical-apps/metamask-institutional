@@ -1,0 +1,1 @@
+export const WEBSOCKET_REQUEST_TIMEOUT = 10000;

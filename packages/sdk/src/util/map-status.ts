@@ -9,10 +9,7 @@ interface TransactionStatus extends Status {
   submitted: boolean;
 }
 
-export function mapTransactionStatus(
-  status: string,
-  reason?: string
-): TransactionStatus {
+export function mapTransactionStatus(status: string, reason?: string): TransactionStatus {
   switch (status) {
     case "created":
       return {
@@ -85,16 +82,6 @@ export function mapTransactionStatus(
         signed: false,
         success: false,
         displayText: "Aborted",
-        reason,
-      };
-      break;
-    case "rejected":
-      return {
-        finished: true,
-        submitted: false,
-        signed: false,
-        success: false,
-        displayText: "Rejected",
         reason,
       };
       break;
