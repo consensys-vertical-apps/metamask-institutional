@@ -15,7 +15,8 @@
   "paths": {
     "@metamask-institutional/types": ["../types/src/index.ts"],
     "@metamask-institutional/sdk": ["../sdk/src/index.ts"],
-    "@metamask-institutional/custody-keyring": ["../custodyKeyring/src/index.ts"]
+    "@metamask-institutional/custody-keyring": ["../custodyKeyring/src/index.ts"],
+    "@metamask-institutional/websocket-client": ["../websocketClient/src/index.ts"]
   },
   "references": [
     {
@@ -26,6 +27,9 @@
     },
     {
       "path": "../custodyKeyring"
+    },
+    {
+      "path": "../websocketClient"
     }
   ],
   "include": ["src/**/*"],
