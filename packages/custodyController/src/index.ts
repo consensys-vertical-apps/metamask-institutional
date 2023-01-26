@@ -1,3 +1,3 @@
-export { CustodyController } from "./Custody";
+export { CustodyController } from "./custody";
 export { CustodyAccountDetails } from "./types";
 export { toChecksumHexAddress } from "./utils";
