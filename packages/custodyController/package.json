@@ -1,6 +1,6 @@
 {
   "name": "@metamask-institutional/custody-controller",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Custody controller is a background controller responsible for maintaining a cache of custody data in local storage",
   "author": "Albert Olive <albertolivecorbella@gmail.com>",
   "homepage": "https://github.com/consensys-vertical-apps/metamask-institutional#readme",
@@ -29,9 +29,9 @@
   },
   "gitHead": "62ed7639b9145658a4fa1273e35e99d300acdc99",
   "dependencies": {
-    "@metamask-institutional/custody-keyring": "^0.0.5",
-    "@metamask-institutional/sdk": "^0.1.7",
-    "@metamask-institutional/types": "^0.1.27",
+    "@metamask-institutional/custody-keyring": "^0.0.6",
+    "@metamask-institutional/sdk": "^0.1.8",
+    "@metamask-institutional/types": "^0.1.28",
     "@metamask/obs-store": "^7.0.0",
     "ethereumjs-util": "^7.1.5"
   }
