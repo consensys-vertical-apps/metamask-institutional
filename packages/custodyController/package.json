@@ -32,6 +32,7 @@
     "@metamask-institutional/custody-keyring": "^0.0.5",
     "@metamask-institutional/sdk": "^0.1.7",
     "@metamask-institutional/types": "^0.1.27",
-    "@metamask/obs-store": "^7.0.0"
+    "@metamask/obs-store": "^7.0.0",
+    "ethereumjs-util": "^7.1.5"
   }
 }
