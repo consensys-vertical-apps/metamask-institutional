@@ -95,7 +95,7 @@ describe("CactusClient", () => {
         };
       });
 
-      expect(cactusClient.getEthereumAccounts()).rejects.toThrow(CustodianApiError);
+      await expect(cactusClient.getEthereumAccounts()).rejects.toThrow(CustodianApiError);
     });
   });
 
