@@ -1,7 +1,7 @@
 {
   "name": "@metamask-institutional/configuration-client",
-  "version": "0.1.5",
-  "description": "This package fetches the MMI configuration",
+  "version": "0.1.6",
+  "description": "A Typescript library responsible for maintaining a cache of MMI Portfolio related data in local storage.",
   "author": "Albert Olive <albertolivecorbella@gmail.com>",
   "homepage": "https://github.com/consensys-vertical-apps/metamask-institutional#readme",
   "license": "MIT",
@@ -29,7 +29,6 @@
   },
   "gitHead": "62ed7639b9145658a4fa1273e35e99d300acdc99",
   "devDependencies": {
-    "@metamask/obs-store": "^7.0.0",
     "jest-fetch-mock": "^3.0.3"
   }
 }
