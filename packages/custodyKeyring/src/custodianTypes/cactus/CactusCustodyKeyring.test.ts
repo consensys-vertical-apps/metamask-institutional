@@ -50,10 +50,9 @@ describe("CactusCustodyKeyring", () => {
 
   beforeEach(() => {
     custodyKeyring = new CactusCustodyKeyring();
-    beforeEach(() => {
-      jest.clearAllMocks();
-      mockedMmiSdkFactory.mockReturnValue(mockMMISDK as unknown as MMISDK);
-    });
+
+    jest.clearAllMocks();
+    mockedMmiSdkFactory.mockReturnValue(mockMMISDK as unknown as MMISDK);
   });
 
   describe("getTransactionDeepLink", () => {

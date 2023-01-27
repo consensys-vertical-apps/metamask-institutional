@@ -49,10 +49,8 @@ describe("QredoCustodyKeyring", () => {
 
   beforeEach(() => {
     custodyKeyring = new QredoCustodyKeyring();
-    beforeEach(() => {
-      jest.clearAllMocks();
-      mockedMmiSdkFactory.mockReturnValue(mockMMISDK as unknown as MMISDK);
-    });
+    jest.clearAllMocks();
+    mockedMmiSdkFactory.mockReturnValue(mockMMISDK as unknown as MMISDK);
   });
 
   describe("getTransactionDeepLink", () => {

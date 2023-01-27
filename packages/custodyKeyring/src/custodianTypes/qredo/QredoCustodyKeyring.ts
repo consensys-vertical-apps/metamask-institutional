@@ -9,13 +9,32 @@ import { QredoCustodianApi, mmiSDKFactory, MMISDK } from "@metamask-institutiona
 import { CustodyKeyring } from "../../CustodyKeyring";
 import { ICustodyKeyringOptions } from "../../interfaces/ICustodyKeyringOptions";
 import { QredoStatusMap } from "./QredoStatusMap";
-import { CUSTODIAN_TYPES } from "..";
 
 export class QredoCustodyKeyring extends CustodyKeyring {
   public static readonly type = "Custody - Qredo";
   public type = "Custody - Qredo";
 
-  public readonly custodianType = CUSTODIAN_TYPES.QREDO;
+  public readonly custodianType = {
+    name: "Qredo",
+    displayName: "Qredo",
+    apiUrl: "https://api.qredo.network",
+    imgSrc: "images/qredo.svg",
+    icon: "images/qredo.svg",
+    keyringClass: QredoCustodyKeyring,
+    production: true,
+    hidden: false,
+    origins: [],
+    environmentMapping: [
+      {
+        pattern: /^.*$/u,
+        mmiApiUrl: "https://mmi.codefi.network/v1",
+      },
+      {
+        pattern: /^https:\/\/api.qredo.network/u,
+        mmiApiUrl: "https://api.mmi-prod.codefi.network/v1",
+      },
+    ],
+  };
 
   public authType = AuthTypes.REFRESH_TOKEN;
 

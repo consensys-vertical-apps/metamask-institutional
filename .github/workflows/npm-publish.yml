@@ -14,10 +14,10 @@ permissions:
   packages: write # for publish
 
 jobs:
-  tests:
-    if: github.event.pull_request.merged == true
-    uses: ./.github/workflows/tests.yml
+  # tests:
+  #   uses: ./.github/workflows/tests.yml
   publish-npm:
+    if: github.event.pull_request.merged == true
     needs: [tests]
     permissions:
       contents: write

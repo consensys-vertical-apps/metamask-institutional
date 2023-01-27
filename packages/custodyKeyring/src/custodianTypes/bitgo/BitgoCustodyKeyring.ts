@@ -8,7 +8,6 @@ import { BitgoCustodianApi, mmiSDKFactory, MMISDK } from "@metamask-institutiona
 import { CustodyKeyring } from "../../CustodyKeyring";
 import { ICustodyKeyringOptions } from "../../interfaces/ICustodyKeyringOptions";
 import { BitgoStatusMap } from "./BitgoStatusMap";
-import { CUSTODIAN_TYPES } from "..";
 
 export class BitgoCustodyKeyring extends CustodyKeyring {
   public static readonly type = "Custody - Bitgo";
@@ -16,7 +15,31 @@ export class BitgoCustodyKeyring extends CustodyKeyring {
 
   public authType = AuthTypes.TOKEN;
 
-  public readonly custodianType = CUSTODIAN_TYPES.BITGO;
+  public readonly custodianType = {
+    name: "Bitgo",
+    displayName: "BitGo",
+    apiUrl: "https://app.bitgo.com/defi/v2",
+    imgSrc: "images/bitgo.svg",
+    icon: "images/bitgo.svg",
+    keyringClass: BitgoCustodyKeyring,
+    production: true,
+    hidden: false,
+    origins: [],
+    environmentMapping: [
+      {
+        pattern: /^.*$/u,
+        mmiApiUrl: "https://mmi.codefi.network/v1",
+      },
+      {
+        pattern: /^https:\/\/app.bitgo-test.com/u,
+        mmiApiUrl: "https://mmi.codefi.network/v1",
+      },
+      {
+        pattern: /^https:\/\/app.bitgo.com/u,
+        mmiApiUrl: "https://api.mmi-prod.codefi.network/v1",
+      },
+    ],
+  };
 
   sdkFactory = (authDetails: AuthDetails, apiUrl: string): MMISDK =>
     mmiSDKFactory(BitgoCustodianApi, authDetails, this.authType, apiUrl);

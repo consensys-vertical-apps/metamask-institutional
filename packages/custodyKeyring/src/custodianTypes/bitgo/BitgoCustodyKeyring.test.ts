@@ -49,10 +49,9 @@ describe("BitgoCustodyKeyring", () => {
 
   beforeEach(() => {
     custodyKeyring = new BitgoCustodyKeyring();
-    beforeEach(() => {
-      jest.clearAllMocks();
-      mockedMmiSdkFactory.mockReturnValue(mockMMISDK as unknown as MMISDK);
-    });
+
+    jest.clearAllMocks();
+    mockedMmiSdkFactory.mockReturnValue(mockMMISDK as unknown as MMISDK);
   });
 
   describe("getTransactionDeepLink", () => {
