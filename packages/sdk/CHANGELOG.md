@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.9](https://github.com/consensys-vertical-apps/metamask-institutional/compare/@metamask-institutional/sdk@0.1.8...@metamask-institutional/sdk@0.1.9) (2023-01-27)
+
+**Note:** Version bump only for package @metamask-institutional/sdk
+
 ## [0.1.8](https://github.com/consensys-vertical-apps/metamask-institutional/compare/@metamask-institutional/sdk@0.1.7...@metamask-institutional/sdk@0.1.8) (2023-01-26)
 
 **Note:** Version bump only for package @metamask-institutional/sdk
