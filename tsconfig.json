@@ -19,6 +19,9 @@
   },
   "references": [
     {
+      "path": "packages/transactionUpdate"
+    },
+    {
       "path": "packages/configurationClient"
     },
     {
@@ -32,6 +35,9 @@
     },
     {
       "path": "packages/types"
+    },
+    {
+      "path": "packages/websocketClient"
     }
   ],
   "exclude": ["node_modules", "dist", "*.d.ts"],
