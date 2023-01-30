@@ -36,6 +36,7 @@ const mockMMISDK = {
   checkPing: jest.fn(),
   handleEvent: jest.fn(),
   getTransactionLink: jest.fn().mockResolvedValue(null),
+  on: jest.fn(),
   eventCallbacks: [],
   jwt: "",
   defaultCacheAgeSeconds: 0,
