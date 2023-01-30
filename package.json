@@ -62,6 +62,6 @@
     "access": "restricted"
   },
   "engines": {
-    "node": ">=18"
+    "node": ">=16"
   }
 }
