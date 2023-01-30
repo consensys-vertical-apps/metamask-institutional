@@ -8,10 +8,11 @@ on:
   push:
     branches: ["main"]
   pull_request:
-    types: [opened]
+    types: [opened, synchronize]
 
 jobs:
-  build:
+  test:
+    if: github.event.pull_request.merged == true
     name: Tests
     runs-on: ubuntu-latest
 
