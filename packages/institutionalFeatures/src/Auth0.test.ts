@@ -29,7 +29,7 @@ describe("Auth0", () => {
     it("should instantiate the auth0 library", async () => {
       const params = {
         domain: "test",
-        client_id: "test",
+        clientId: "test",
       };
 
       await auth0.createClient(params);
@@ -42,7 +42,7 @@ describe("Auth0", () => {
     it("should call getUser", async () => {
       const params = {
         domain: "test",
-        client_id: "test",
+        clientId: "test",
       };
 
       await auth0.createClient(params);
@@ -57,7 +57,7 @@ describe("Auth0", () => {
     it("should invoke getTokenSilently", async () => {
       const params = {
         domain: "test",
-        client_id: "test",
+        clientId: "test",
       };
 
       await auth0.createClient(params);
@@ -72,7 +72,7 @@ describe("Auth0", () => {
     it("should invoke isAuthenticated", async () => {
       const params = {
         domain: "test",
-        client_id: "test",
+        clientId: "test",
       };
 
       await auth0.createClient(params);
@@ -87,7 +87,7 @@ describe("Auth0", () => {
     it("should invoke logout and delete the user prop", async () => {
       const params = {
         domain: "test",
-        client_id: "test",
+        clientId: "test",
       };
 
       await auth0.createClient(params);
