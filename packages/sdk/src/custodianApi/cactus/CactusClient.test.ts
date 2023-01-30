@@ -80,12 +80,6 @@ describe("CactusClient", () => {
     });
 
     it("should fail if an exception is thrown by the HTTP client", async () => {
-      fetchMock.mockResponseOnce(
-        JSON.stringify({
-          jwt: "123",
-        }),
-      );
-
       fetchMock.mockImplementationOnce(() => {
         throw {
           response: {
@@ -95,7 +89,7 @@ describe("CactusClient", () => {
         };
       });
 
-      expect(cactusClient.getEthereumAccounts()).rejects.toThrow(CustodianApiError);
+      await expect(cactusClient.getEthereumAccounts()).rejects.toThrow(CustodianApiError);
     });
   });
 

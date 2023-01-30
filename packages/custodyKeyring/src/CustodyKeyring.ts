@@ -1,6 +1,6 @@
 import { EventEmitter } from "events";
 import crypto from "crypto";
-import { toChecksumAddress } from "ethereumjs-util";
+import { toChecksumAddress } from "@ethereumjs/util";
 import { FeeMarketEIP1559Transaction, Transaction } from "@ethereumjs/tx";
 import { MMISDK } from "@metamask-institutional/sdk";
 import {

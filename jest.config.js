@@ -1,13 +1,13 @@
 const { pathsToModuleNameMapper } = require("ts-jest");
 const { compilerOptions } = require("./tsconfig.json");
 
-const path = require('path');
-const { lstatSync, readdirSync } = require('fs');
+const path = require("path");
+const { lstatSync, readdirSync } = require("fs");
 
 // get listing of packages in the mono repo
-const basePath = path.resolve(__dirname, 'packages');
+const basePath = path.resolve(__dirname, "packages");
 const packages = readdirSync(basePath).filter(name => {
-   return lstatSync(path.join(basePath, name)).isDirectory();
+  return lstatSync(path.join(basePath, name)).isDirectory();
 });
 
 // For a detailed explanation regarding each configuration property, visit:
@@ -48,7 +48,7 @@ module.exports = {
   ],
 
   // The directory where Jest should output its coverage files
-  coverageDirectory: "../coverage",
+  coverageDirectory: "../../coverage",
 
   // An array of regexp pattern strings used to skip coverage collection
   // coveragePathIgnorePatterns: [
@@ -104,12 +104,12 @@ module.exports = {
 
   moduleNameMapper: {
     ...packages.reduce(
-        (acc, name) => ({
-          ...acc,
-          [`@metamask-institutional/${name}(.*)$`]: `<rootDir>/packages/../../${name}/src/$1`,
+      (acc, name) => ({
+        ...acc,
+        [`@metamask-institutional/${name}(.*)$`]: `<rootDir>/packages/../../${name}/src/$1`,
       }),
-    {},
-  ),
+      {},
+    ),
   },
 
   // An array of regexp pattern strings, matched against all module paths before considered 'visible' to the module loader

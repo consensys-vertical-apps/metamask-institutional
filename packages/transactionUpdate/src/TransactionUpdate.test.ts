@@ -186,7 +186,7 @@ describe("TransactionUpdateController", () => {
         custodianApi: mockedJsonRpcCustodianApi,
       };
 
-      await expect(transactionUpdateController.attemptWebsocketConnection.bind(mockThis)()).rejects.toThrowError;
+      await expect(transactionUpdateController.attemptWebsocketConnection.bind(mockThis)).rejects.toThrowError;
     });
 
     it("should have isWSConnectionOpen as false if connection is not open", async () => {

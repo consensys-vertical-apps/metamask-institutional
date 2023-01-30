@@ -56,7 +56,7 @@ describe("BitgoClient", () => {
         };
       });
 
-      expect(bitgoClient.getEthereumAccounts()).rejects.toThrow(CustodianApiError);
+      await expect(bitgoClient.getEthereumAccounts()).rejects.toThrow(CustodianApiError);
     });
   });
 

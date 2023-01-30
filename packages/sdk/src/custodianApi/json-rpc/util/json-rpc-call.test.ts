@@ -7,12 +7,11 @@ describe("json-rpc-call", () => {
   beforeEach(() => {
     jest.clearAllMocks();
     fetchMock.resetMocks();
-
-    fetchMock.mockResponseOnce(JSON.stringify({ result: "test" }));
   });
 
   describe("json-rpc-call", () => {
     it("should call the JSON RPC endpoint with the appropriate method and parameters", async () => {
+      fetchMock.mockResponseOnce(JSON.stringify({ result: "test" }));
       const call = factory("http://test/json-rpc");
 
       await call("test", { some: "parameter" }, "access_token");
@@ -28,7 +27,7 @@ describe("json-rpc-call", () => {
       });
     });
 
-    it("should throw an error if there is an error.message property in the response", () => {
+    it("should throw an error if there is an error.message property in the response", async () => {
       fetchMock.mockResponseOnce(
         JSON.stringify({
           error: {
@@ -39,7 +38,7 @@ describe("json-rpc-call", () => {
 
       const call = factory("http://test/json-rpc");
 
-      expect(call("test", { some: "parameter" }, "access_token")).rejects.toThrowError("Test error");
+      await expect(call("test", { some: "parameter" }, "access_token")).rejects.toThrow("Test error");
     });
   });
 });

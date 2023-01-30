@@ -6,10 +6,9 @@ import {
   ICustodianTransactionLink,
 } from "@metamask-institutional/types";
 import { JupiterCustodianApi, mmiSDKFactory, MMISDK } from "@metamask-institutional/sdk";
-import { CustodyKeyring } from "../../CustodyKeyring";
 import { ICustodyKeyringOptions } from "../../interfaces/ICustodyKeyringOptions";
+import { CustodyKeyring } from "../../CustodyKeyring";
 import { JupiterStatusMap } from "./JupiterStatusMap";
-import { CUSTODIAN_TYPES } from "..";
 
 export class JupiterCustodyKeyring extends CustodyKeyring {
   public static readonly type = "Custody - Jupiter";
@@ -19,7 +18,27 @@ export class JupiterCustodyKeyring extends CustodyKeyring {
 
   public static addressType: AddressType.POLYCHAIN;
 
-  public readonly custodianType = CUSTODIAN_TYPES.JUPITER;
+  public readonly custodianType = {
+    name: "Jupiter",
+    displayName: "Jupiter Custody",
+    apiUrl: "https://jupiter-custody.codefi.network",
+    imgSrc: "images/jupiter.svg",
+    icon: "images/jupiter.svg",
+    keyringClass: JupiterCustodyKeyring,
+    production: true,
+    hidden: false,
+    origins: [/^https:\/\/jupiter-custody-ui.codefi.network\//],
+    environmentMapping: [
+      {
+        pattern: /^http:\/\/test-pattern/,
+        mmiApiUrl: "http://test-url",
+      },
+      {
+        pattern: /^http:\/\/localhost.*$/,
+        mmiApiUrl: "http://localhost:3000/v1",
+      },
+    ],
+  };
 
   sdkFactory = (authDetails: AuthDetails, apiUrl: string): MMISDK =>
     mmiSDKFactory(JupiterCustodianApi, authDetails, this.authType, apiUrl);
