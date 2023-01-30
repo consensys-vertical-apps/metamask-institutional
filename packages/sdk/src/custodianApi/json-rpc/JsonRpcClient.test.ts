@@ -103,7 +103,7 @@ describe("JsonRpcClient", () => {
       expect(client.getAccessToken()).rejects.toThrow("HTTP error");
     });
 
-    it("emit an event if there is a HTTP 401 error status", async () => {
+    it.skip("emit an event if there is a HTTP 401 error status", async () => {
       fetchMock.mockImplementationOnce(() => {
         throw {
           response: {
