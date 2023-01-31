@@ -1,7 +1,7 @@
 {
   "name": "@metamask-institutional/institutional-features",
   "version": "0.0.1",
-  "description": "This package will export institutional features used across the old @codefi/mmi-sdk library",
+  "description": "This package will export Compliance institutional feature used across the old @codefi/mmi-sdk library",
   "author": "Albert Olive <albertolivecorbella@gmail.com>",
   "homepage": "https://github.com/consensys-vertical-apps/metamask-institutional#readme",
   "license": "MIT",
@@ -33,5 +33,7 @@
     "@metamask-institutional/custody-keyring": "^0.0.7",
     "@metamask/obs-store": "^7.0.0"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "jest-fetch-mock": "^3.0.3"
+  }
 }
