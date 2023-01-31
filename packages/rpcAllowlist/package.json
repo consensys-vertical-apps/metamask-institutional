@@ -1,0 +1,30 @@
+{
+  "name": "@metamask-institutional/rpc-allowlist",
+  "version": "0.1.0",
+  "description": "Allowlist for custom JSON-RPC commands",
+  "author": "Antonio Regadas <apregadas@gmail.com>",
+  "homepage": "https://github.com/consensys-vertical-apps/metamask-institutional#readme",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "directory": "packages/rpcAllowlist",
+    "url": "git+https://github.com/consensys-vertical-apps/metamask-institutional.git"
+  },
+  "scripts": {
+    "clean": "rimraf dist && rimraf tsconfig.tsbuildinfo",
+    "prepack": "yarn build",
+    "build": "yarn clean && tsc --build && cp \"./package.json\" ./dist/",
+    "lint": "eslint 'src/**/*.ts'",
+    "lint:fix": "eslint --fix 'src/**/*.ts'",
+    "pre-commit": "lint-staged"
+  },
+  "bugs": {
+    "url": "https://github.com/consensys-vertical-apps/metamask-institutional/issues"
+  },
+  "gitHead": ""
+}
