@@ -28,4 +28,4 @@ jobs:
       - run: yarn install
       - run: npx lerna bootstrap
       - run: yarn build
-      - run: yarn test --detectOpenHandles --forceExit
+      - run: yarn test
