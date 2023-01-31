@@ -1,10 +1,11 @@
+import { BitgoCustodianApi, MMISDK, mmiSDKFactory } from "@metamask-institutional/sdk";
 import {
-  ITransactionStatusMap,
   AuthDetails,
   AuthTypes,
   ICustodianTransactionLink,
+  ITransactionStatusMap,
 } from "@metamask-institutional/types";
-import { BitgoCustodianApi, mmiSDKFactory, MMISDK } from "@metamask-institutional/sdk";
+
 import { CustodyKeyring } from "../../CustodyKeyring";
 import { ICustodyKeyringOptions } from "../../interfaces/ICustodyKeyringOptions";
 import { BitgoStatusMap } from "./BitgoStatusMap";

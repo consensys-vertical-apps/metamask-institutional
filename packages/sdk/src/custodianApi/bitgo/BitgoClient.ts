@@ -1,16 +1,17 @@
-import { CustodianApiError } from "../../errors/CustodianApiError";
 import { IEIP1559TxParams, ILegacyTXParams } from "@metamask-institutional/types";
-import { IBitgoTransaction } from "./interfaces/IBitgoTransaction";
-import { IBitgoEthereumAccount } from "./interfaces/IBitgoEthereumAccount";
-import { IBitgoTxDetails } from "./interfaces/IBitgoTxDetails";
-import { IBitgoCustomerProof } from "./interfaces/IBitgoCustomerProof";
-import { IBitgoGetEthereumAccountsResponse } from "./interfaces/IBitgoGetEthereumAccountsResponse";
-import { IBitgoCreateTransactionResponse } from "./interfaces/IBitgoCreateTransactionResponse";
-import { IBitgoEIP712Response } from "./interfaces/IBitgoEIP712Response";
-import { IBitgoPersonalSignRequest } from "./interfaces/IBitgoPersonalSignRequest";
+
+import { CustodianApiError } from "../../errors/CustodianApiError";
 import { MessageTypes, TypedMessage } from "../../interfaces/ITypedMessage";
+import { IBitgoCreateTransactionResponse } from "./interfaces/IBitgoCreateTransactionResponse";
+import { IBitgoCustomerProof } from "./interfaces/IBitgoCustomerProof";
 import { IBitgoEIP712Request } from "./interfaces/IBitgoEIP712Request";
+import { IBitgoEIP712Response } from "./interfaces/IBitgoEIP712Response";
+import { IBitgoEthereumAccount } from "./interfaces/IBitgoEthereumAccount";
+import { IBitgoGetEthereumAccountsResponse } from "./interfaces/IBitgoGetEthereumAccountsResponse";
+import { IBitgoPersonalSignRequest } from "./interfaces/IBitgoPersonalSignRequest";
 import { IBitgoPersonalSignResponse } from "./interfaces/IBitgoPersonalSignResponse";
+import { IBitgoTransaction } from "./interfaces/IBitgoTransaction";
+import { IBitgoTxDetails } from "./interfaces/IBitgoTxDetails";
 
 export class BitgoClient {
   private bitgoApiurl: string;

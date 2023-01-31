@@ -1,15 +1,16 @@
-import { CustodianApiError } from "../../errors/CustodianApiError";
 import { IEIP1559TxParams, ILegacyTXParams } from "@metamask-institutional/types";
-import { IJupiterTransaction } from "./interfaces/IJupiterTransaction";
-import { IJupiterEthereumAccount } from "./interfaces/IJupiterEthereumAccount";
-import { IJupiterTxDetails } from "./interfaces/IJupiterTxDetails";
-import { IJupiterCustomerProof } from "./interfaces/IJupiterCustomerProof";
+
+import { CustodianApiError } from "../../errors/CustodianApiError";
 import { MessageTypes, TypedMessage } from "../../interfaces/ITypedMessage";
-import { IJupiterSupportedChains } from "./interfaces/IJupiterSupportedChains";
-import { IJupiterEIP712SignatureResponse } from "./interfaces/IJupiterEIP712SignatureResponse";
+import { IJupiterCustomerProof } from "./interfaces/IJupiterCustomerProof";
 import { IJupiterEIP712SignatureRequest } from "./interfaces/IJupiterEIP712SignatureRequest";
-import { IJupiterPersonalSignatureResponse } from "./interfaces/IJupiterPersonalSignatureResponse";
+import { IJupiterEIP712SignatureResponse } from "./interfaces/IJupiterEIP712SignatureResponse";
+import { IJupiterEthereumAccount } from "./interfaces/IJupiterEthereumAccount";
 import { IJupiterPersonalSignatureRequest } from "./interfaces/IJupiterPersonalSignatureRequest";
+import { IJupiterPersonalSignatureResponse } from "./interfaces/IJupiterPersonalSignatureResponse";
+import { IJupiterSupportedChains } from "./interfaces/IJupiterSupportedChains";
+import { IJupiterTransaction } from "./interfaces/IJupiterTransaction";
+import { IJupiterTxDetails } from "./interfaces/IJupiterTxDetails";
 
 export class JupiterClient {
   private jupiterApiurl: string;

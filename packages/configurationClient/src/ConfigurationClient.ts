@@ -1,5 +1,5 @@
 import { MMI_CONFIGURATION_API_URL } from "./constants";
-import { IJsonRpcCustodian, IConfiguration } from "./types";
+import { IConfiguration, IJsonRpcCustodian } from "./types";
 
 export class ConfigurationClient {
   constructor(public configurationApiUrl: string = MMI_CONFIGURATION_API_URL) {}

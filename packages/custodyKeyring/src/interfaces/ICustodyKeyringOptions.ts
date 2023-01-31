@@ -1,4 +1,5 @@
 import { ICustodianAccount } from "@metamask-institutional/types";
+
 import { MmiConfigurationController } from "../mmiConfiguration";
 
 export interface ICustodyKeyringOptions {

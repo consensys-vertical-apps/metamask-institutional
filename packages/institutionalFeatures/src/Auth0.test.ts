@@ -1,5 +1,7 @@
 import * as Auth0Library from "@auth0/auth0-spa-js";
 
+import { Auth0 } from "./Auth0";
+
 jest.mock("@auth0/auth0-spa-js", () => {
   return {
     Auth0Client: jest.fn().mockImplementation(() => ({
@@ -11,8 +13,6 @@ jest.mock("@auth0/auth0-spa-js", () => {
     })),
   };
 });
-
-import { Auth0 } from "./Auth0";
 
 describe("Auth0", () => {
   let auth0: Auth0;

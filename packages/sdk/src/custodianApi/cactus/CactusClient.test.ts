@@ -1,9 +1,10 @@
 import fetchMock from "jest-fetch-mock";
+
 import { CustodianApiError } from "../../errors/CustodianApiError";
 import { MessageTypes, TypedMessage } from "../../interfaces/ITypedMessage";
-
 import { CactusClient } from "./CactusClient";
 import { mockCactusGetChainIdsResponse } from "./mocks/mockCactusGetChainIdsResponse";
+
 fetchMock.enableMocks();
 
 describe("CactusClient", () => {

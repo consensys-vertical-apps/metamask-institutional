@@ -1,11 +1,11 @@
 import jwt from "jsonwebtoken";
-jest.mock("jsonwebtoken", () => ({
-  decode: jest.fn(),
-}));
-
 import { mocked } from "ts-jest/utils";
 
 import { getTokenIssuer } from "./get-token-issuer";
+
+jest.mock("jsonwebtoken", () => ({
+  decode: jest.fn(),
+}));
 
 describe("getTokenIssuer", () => {
   const jwtmock = mocked(jwt);
@@ -15,9 +15,7 @@ describe("getTokenIssuer", () => {
       claim: "no",
     }));
 
-    expect(() => getTokenIssuer("token")).toThrowError(
-      "Missing `iss` claim in token"
-    );
+    expect(() => getTokenIssuer("token")).toThrowError("Missing `iss` claim in token");
   });
 
   it("will return the issuer of the token", () => {

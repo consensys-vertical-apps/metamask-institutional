@@ -1,22 +1,22 @@
-import { BitgoClient } from "./BitgoClient";
+import { ITransactionDetails } from "@metamask-institutional/types";
+import { AuthTypes } from "@metamask-institutional/types";
 import { mocked } from "ts-jest/utils";
 
-jest.mock("./BitgoClient");
+import { MessageTypes, TypedMessage } from "../../interfaces/ITypedMessage";
 import { getTokenIssuer } from "../../util/get-token-issuer";
+import { BitgoClient } from "./BitgoClient";
+import { BitgoCustodianApi } from "./BitgoCustodianApi";
+import { bitgoMockEip712Response } from "./mocks/bitgoEip712Mock";
+import { bitgoGetAccountsMock } from "./mocks/bitgoGetAccountsMock";
+import { bitgoGetCustomerProofMock } from "./mocks/bitgoGetCustomerProofMock";
+import { bitgoMockPersonalSignResponse } from "./mocks/bitgoPersonalSignMock";
+import { bitgoTransactionMock } from "./mocks/bitgoTransactionMock";
+
+jest.mock("./BitgoClient");
 
 jest.mock("../../util/get-token-issuer", () => ({
   getTokenIssuer: jest.fn().mockReturnValue("some_website"),
 }));
-
-import { BitgoCustodianApi } from "./BitgoCustodianApi";
-import { ITransactionDetails } from "@metamask-institutional/types";
-import { MessageTypes, TypedMessage } from "../../interfaces/ITypedMessage";
-import { AuthTypes } from "@metamask-institutional/types";
-import { bitgoGetAccountsMock } from "./mocks/bitgoGetAccountsMock";
-import { bitgoGetCustomerProofMock } from "./mocks/bitgoGetCustomerProofMock";
-import { bitgoTransactionMock } from "./mocks/bitgoTransactionMock";
-import { bitgoMockPersonalSignResponse } from "./mocks/bitgoPersonalSignMock";
-import { bitgoMockEip712Response } from "./mocks/bitgoEip712Mock";
 
 describe("BitgoCustodianApi", () => {
   let bitgoCustodianApi: BitgoCustodianApi;

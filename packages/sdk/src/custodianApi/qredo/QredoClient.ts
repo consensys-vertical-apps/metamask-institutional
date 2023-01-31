@@ -1,8 +1,9 @@
-import { EventEmitter } from "events";
 import { SimpleCache } from "@metamask-institutional/simplecache";
+import { IEIP1559TxParams, ILegacyTXParams, IRefreshTokenChangeEvent } from "@metamask-institutional/types";
+import { EventEmitter } from "events";
+
 import { REFRESH_TOKEN_CHANGE_EVENT } from "../../constants/constants";
 import { CustodianApiError } from "../../errors/CustodianApiError";
-import { IEIP1559TxParams, ILegacyTXParams, IRefreshTokenChangeEvent } from "@metamask-institutional/types";
 import { MessageTypes, TypedMessage } from "../../interfaces/ITypedMessage";
 import { IQredoAccessTokenResponse } from "./interfaces/IQredoAccessTokenResponse";
 import { IQredoCustomerProof } from "./interfaces/IQredoCustomerProof";

@@ -1,25 +1,26 @@
-import { JsonRpcListAccountsResponse } from "./rpc-responses/JsonRpcListAccountsResponse";
+import { SimpleCache } from "@metamask-institutional/simplecache";
+import { IRefreshTokenChangeEvent } from "@metamask-institutional/types";
 import crypto from "crypto";
-import factory from "./util/json-rpc-call";
+import { EventEmitter } from "events";
+
+import { INTERACTIVE_REPLACEMENT_TOKEN_CHANGE_EVENT, REFRESH_TOKEN_CHANGE_EVENT } from "../../constants/constants";
 import { JsonRpcResult } from "./interfaces/JsonRpcResult";
-import { JsonRpcGetCustomerProofResponse } from "./rpc-responses/JsonRpcGetCustomerProofResponse";
-import { JsonRpcCreateTransactionResult } from "./rpc-responses/JsonRpcCreateTransactionResult";
 import { JsonRpcCreateTransactionPayload } from "./rpc-payloads/JsonRpcCreateTransactionPayload";
-import { JsonRpcSignResponse } from "./rpc-responses/JsonRpcSignResponse";
+import { JsonRpcGetSignedMessageByIdPayload } from "./rpc-payloads/JsonRpcGetSignedMessageByIdPayload";
+import { JsonRpcGetTransactionByIdPayload } from "./rpc-payloads/JsonRpcGetTransactionByIdPayload";
+import { JsonRpcGetTransactionLinkPayload } from "./rpc-payloads/JsonRpcGetTransactionLinkPayload";
+import { JsonRpcListAccountChainIdsPayload } from "./rpc-payloads/JsonRpcListAccountChainIdsPayload";
 import { JsonRpcSignPayload } from "./rpc-payloads/JsonRpcSignPayload";
 import { JsonRpcSignTypedDataPayload } from "./rpc-payloads/JsonRpcSignTypedDataPayload";
-import { JsonRpcSignTypedDataResponse } from "./rpc-responses/JsonRpcSignTypedDataResponse";
-import { JsonRpcGetTransactionByIdResponse } from "./rpc-responses/JsonRpcGetTransactionByIdResponse";
+import { JsonRpcCreateTransactionResult } from "./rpc-responses/JsonRpcCreateTransactionResult";
+import { JsonRpcGetCustomerProofResponse } from "./rpc-responses/JsonRpcGetCustomerProofResponse";
 import { JsonRpcGetSignedMessageByIdResponse } from "./rpc-responses/JsonRpcGetSignedMessageByIdResponse";
-import { JsonRpcGetTransactionByIdPayload } from "./rpc-payloads/JsonRpcGetTransactionByIdPayload";
-import { JsonRpcGetSignedMessageByIdPayload } from "./rpc-payloads/JsonRpcGetSignedMessageByIdPayload";
-import { SimpleCache } from "@metamask-institutional/simplecache";
-import { JsonRpcListAccountChainIdsPayload } from "./rpc-payloads/JsonRpcListAccountChainIdsPayload";
-import { JsonRpcGetTransactionLinkPayload } from "./rpc-payloads/JsonRpcGetTransactionLinkPayload";
+import { JsonRpcGetTransactionByIdResponse } from "./rpc-responses/JsonRpcGetTransactionByIdResponse";
 import { JsonRpcGetTransactionLinkResponse } from "./rpc-responses/JsonRpcGetTransactionLinkResponse";
-import { EventEmitter } from "events";
-import { REFRESH_TOKEN_CHANGE_EVENT, INTERACTIVE_REPLACEMENT_TOKEN_CHANGE_EVENT } from "../../constants/constants";
-import { IRefreshTokenChangeEvent } from "@metamask-institutional/types";
+import { JsonRpcListAccountsResponse } from "./rpc-responses/JsonRpcListAccountsResponse";
+import { JsonRpcSignResponse } from "./rpc-responses/JsonRpcSignResponse";
+import { JsonRpcSignTypedDataResponse } from "./rpc-responses/JsonRpcSignTypedDataResponse";
+import factory from "./util/json-rpc-call";
 
 export class JsonRpcClient extends EventEmitter {
   private call: <T1, T2>(method: string, params: T1, accessToken: string) => Promise<JsonRpcResult<T2>>;

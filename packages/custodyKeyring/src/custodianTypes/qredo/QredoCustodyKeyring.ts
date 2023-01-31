@@ -1,11 +1,12 @@
+import { MMISDK, mmiSDKFactory, QredoCustodianApi } from "@metamask-institutional/sdk";
 import {
-  ITransactionStatusMap,
-  IRefreshTokenAuthDetails,
-  AuthTypes,
   AddressType,
+  AuthTypes,
   ICustodianTransactionLink,
+  IRefreshTokenAuthDetails,
+  ITransactionStatusMap,
 } from "@metamask-institutional/types";
-import { QredoCustodianApi, mmiSDKFactory, MMISDK } from "@metamask-institutional/sdk";
+
 import { CustodyKeyring } from "../../CustodyKeyring";
 import { ICustodyKeyringOptions } from "../../interfaces/ICustodyKeyringOptions";
 import { QredoStatusMap } from "./QredoStatusMap";

@@ -1,22 +1,22 @@
-import { QredoClient } from "./QredoClient";
+import { AuthTypes, ISignatureDetails, ITransactionDetails } from "@metamask-institutional/types";
 import { mocked } from "ts-jest/utils";
+
+import { MessageTypes, TypedMessage } from "../../interfaces/ITypedMessage";
+import { qredoAccountsMock } from "./mocks/qredoAccountsMock";
+import { qredoCustomerProofMock } from "./mocks/qredoCustomerProofMock";
+import { qredoEIP712SignRequestMock } from "./mocks/qredoEIP712SignRequestMock";
+import { qredoNetworksMock } from "./mocks/qredoNetworksMock";
+import { qredoPersonalSignResponseMock } from "./mocks/qredoPersonalSignResponseMock";
+import { qredoSignedMessageMock } from "./mocks/qredoSignedMessageMock";
+import { qredoTransactionMock } from "./mocks/qredoTransactionMock";
+import { QredoClient } from "./QredoClient";
+import { QredoCustodianApi } from "./QredoCustodianApi";
 
 jest.mock("./QredoClient");
 
 jest.mock("../../util/get-token-issuer", () => ({
   getTokenIssuer: jest.fn().mockReturnValue("some_website"),
 }));
-
-import { QredoCustodianApi } from "./QredoCustodianApi";
-import { MessageTypes, TypedMessage } from "../../interfaces/ITypedMessage";
-import { qredoTransactionMock } from "./mocks/qredoTransactionMock";
-import { qredoAccountsMock } from "./mocks/qredoAccountsMock";
-import { qredoCustomerProofMock } from "./mocks/qredoCustomerProofMock";
-import { qredoNetworksMock } from "./mocks/qredoNetworksMock";
-import { qredoSignedMessageMock } from "./mocks/qredoSignedMessageMock";
-import { qredoPersonalSignResponseMock } from "./mocks/qredoPersonalSignResponseMock";
-import { qredoEIP712SignRequestMock } from "./mocks/qredoEIP712SignRequestMock";
-import { AuthTypes, ISignatureDetails, ITransactionDetails } from "@metamask-institutional/types";
 
 describe("QredoCustodianApi", () => {
   let qredoCustodianApi: QredoCustodianApi;

@@ -1,28 +1,28 @@
+import { AuthTypes, IEIP1559TxParams, ILegacyTXParams } from "@metamask-institutional/types";
 import { mocked } from "ts-jest/utils";
+
+import { JsonRpcClient } from "./JsonRpcClient";
+import { JsonRpcCustodianApi } from "./JsonRpcCustodianApi";
+import { mockJsonRpcCreateTransactionResponse } from "./mocks/mockJsonRpcCreateTransactionResponse";
+import { mockJsonRpcGetCustomerProofResponse } from "./mocks/mockJsonRpcGetCustomerProofResponse";
+import { mockJsonRpcGetTransactionByIdPayload } from "./mocks/mockJsonRpcGetTransactionByIdPayload";
+import { mockJsonRpcGetTransactionByIdResponse } from "./mocks/mockJsonRpcGetTransactionByIdResponse";
+import { mockJsonRpcGetTransactionLinkPayload } from "./mocks/mockJsonRpcGetTransactionLinkPayload";
+import { mockJsonRpcGetTransactionLinkResponse } from "./mocks/mockJsonRpcGetTransactionLinkResponse";
+import { mockJsonRpcListAccountChainIdsResponse } from "./mocks/mockJsonRpcListAccountChainIdsResponse";
+import { mockJsonRpcListAccountResponse } from "./mocks/mockJsonRpcListAccountResponse";
+import { mockJsonRpcSignPayload } from "./mocks/mockJsonRpcSignPayload";
+import { mockJsonRpcSignResponse } from "./mocks/mockJsonRpcSignResponse";
+import { mockJsonRpcSignTypedDataPayload } from "./mocks/mockJsonRpcSignTypedDataPayload";
+import { mockJsonRpcSignTypedDataResponse } from "./mocks/mockJsonRpcSignTypedDataResponse";
+import { hexlify } from "./util/hexlify";
+import { mapStatusObjectToStatusText } from "./util/mapStatusObjectToStatusText";
 
 jest.mock("./JsonRpcClient");
 
 jest.mock("../../util/get-token-issuer", () => ({
   getTokenIssuer: jest.fn().mockReturnValue("some_website"),
 }));
-
-import { AuthTypes, IEIP1559TxParams, ILegacyTXParams } from "@metamask-institutional/types";
-import { JsonRpcCustodianApi } from "./JsonRpcCustodianApi";
-import { JsonRpcClient } from "./JsonRpcClient";
-import { mockJsonRpcListAccountResponse } from "./mocks/mockJsonRpcListAccountResponse";
-import { mockJsonRpcCreateTransactionResponse } from "./mocks/mockJsonRpcCreateTransactionResponse";
-import { hexlify } from "./util/hexlify";
-import { mockJsonRpcGetTransactionByIdPayload } from "./mocks/mockJsonRpcGetTransactionByIdPayload";
-import { mockJsonRpcGetTransactionByIdResponse } from "./mocks/mockJsonRpcGetTransactionByIdResponse";
-import { mapStatusObjectToStatusText } from "./util/mapStatusObjectToStatusText";
-import { mockJsonRpcGetCustomerProofResponse } from "./mocks/mockJsonRpcGetCustomerProofResponse";
-import { mockJsonRpcSignTypedDataPayload } from "./mocks/mockJsonRpcSignTypedDataPayload";
-import { mockJsonRpcSignTypedDataResponse } from "./mocks/mockJsonRpcSignTypedDataResponse";
-import { mockJsonRpcSignPayload } from "./mocks/mockJsonRpcSignPayload";
-import { mockJsonRpcSignResponse } from "./mocks/mockJsonRpcSignResponse";
-import { mockJsonRpcListAccountChainIdsResponse } from "./mocks/mockJsonRpcListAccountChainIdsResponse";
-import { mockJsonRpcGetTransactionLinkResponse } from "./mocks/mockJsonRpcGetTransactionLinkResponse";
-import { mockJsonRpcGetTransactionLinkPayload } from "./mocks/mockJsonRpcGetTransactionLinkPayload";
 
 describe("JsonRpcCustodianApi", () => {
   let jsonRpcCustodianApi: JsonRpcCustodianApi;

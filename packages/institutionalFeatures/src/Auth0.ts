@@ -1,4 +1,4 @@
-import { Auth0Client, User, Auth0ClientOptions } from "@auth0/auth0-spa-js";
+import { Auth0Client, Auth0ClientOptions, User } from "@auth0/auth0-spa-js";
 
 export class Auth0 {
   auth0Client: Auth0Client;

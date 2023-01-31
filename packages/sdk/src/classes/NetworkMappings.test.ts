@@ -16,15 +16,11 @@ describe("NetworkMappings", () => {
 
   describe("#getMappingsByCustodianName", () => {
     it("will return a correct mapping for a network that exists", () => {
-      expect(
-        mappings.getMappingByCustodianName("ETHEREUM_MAINNET").chainId
-      ).toEqual("1");
+      expect(mappings.getMappingByCustodianName("ETHEREUM_MAINNET").chainId).toEqual("1");
     });
 
     it("will safely return 0 if it doesnt", () => {
-      expect(
-        mappings.getMappingByCustodianName("YELLOW_BITCOINZ").chainId
-      ).toEqual("0");
+      expect(mappings.getMappingByCustodianName("YELLOW_BITCOINZ").chainId).toEqual("0");
     });
   });
 
@@ -39,9 +35,7 @@ describe("NetworkMappings", () => {
 
       mappings.populateMappings([newMapping]);
 
-      expect(
-        mappings.mappings.find((net) => net.chainId === newMapping.chainId)
-      ).toEqual(newMapping);
+      expect(mappings.mappings.find(net => net.chainId === newMapping.chainId)).toEqual(newMapping);
     });
   });
 });

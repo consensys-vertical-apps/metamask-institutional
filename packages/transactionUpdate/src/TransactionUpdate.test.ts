@@ -1,9 +1,10 @@
+import { ICustodianApi, JsonRpcCustodianApi, mapTransactionStatus } from "@metamask-institutional/sdk";
 import { ICustodianUpdate, MetaMaskTransactionStatuses } from "@metamask-institutional/types";
-import { JsonRpcCustodianApi, ICustodianApi, mapTransactionStatus } from "@metamask-institutional/sdk";
-import { TransactionUpdateController } from "./TransactionUpdate";
-import { IWatchedTransaction } from "./interfaces/IWatchedTransaction";
 import { WebsocketClientController } from "@metamask-institutional/websocket-client";
 import { mocked } from "ts-jest/utils";
+
+import { IWatchedTransaction } from "./interfaces/IWatchedTransaction";
+import { TransactionUpdateController } from "./TransactionUpdate";
 
 jest.mock("@metamask-institutional/websocket-client", () => {
   return {

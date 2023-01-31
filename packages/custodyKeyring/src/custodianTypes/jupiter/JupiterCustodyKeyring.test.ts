@@ -1,17 +1,19 @@
-import { mocked } from "ts-jest/utils";
 import { Transaction } from "@ethereumjs/tx";
+import { JupiterCustodianApi, MMISDK, mmiSDKFactory } from "@metamask-institutional/sdk";
 import {
   ICustodianAccount,
-  IExtensionCustodianAccount,
-  ITokenAuthDetails,
   IEIP1559TxParams,
+  IExtensionCustodianAccount,
   ILegacyTXParams,
+  ITokenAuthDetails,
   MetamaskTransaction,
 } from "@metamask-institutional/types";
-import { JupiterCustodianApi, mmiSDKFactory, MMISDK } from "@metamask-institutional/sdk";
+import { mocked } from "ts-jest/utils";
+
 import { DEFAULT_MAX_CACHE_AGE } from "../../constants";
-import { JupiterStatusMap } from "./JupiterStatusMap";
 import { JupiterCustodyKeyring } from "./JupiterCustodyKeyring";
+import { JupiterStatusMap } from "./JupiterStatusMap";
+
 jest.mock("@metamask-institutional/sdk");
 
 const mockedMmiSdkFactory = mocked(mmiSDKFactory, true);

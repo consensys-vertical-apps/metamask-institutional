@@ -4,5 +4,9 @@
   "printWidth": 120,
   "tabWidth": 2,
   "arrowParens": "avoid",
-  "quoteProps": "as-needed"
+  "quoteProps": "as-needed",
+  "importOrder": ["^@core/(.*)$", "<THIRD_PARTY_MODULES>", "^@server/(.*)$", "^@ui/(.*)$", "^[./]"],
+  "importOrderSeparation": true,
+  "importOrderSortSpecifiers": true,
+  "importOrderCaseInsensitive": true
 }
