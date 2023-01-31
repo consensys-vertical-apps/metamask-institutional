@@ -1,8 +1,8 @@
 {
-  "name": "@metamask-institutional/transaction-update",
-  "version": "0.1.2",
-  "description": "This package will export transactionUpdate, responsible for handling transaction updates",
-  "author": "Antonio Regadas <apregadas@gmail.com>",
+  "name": "@metamask-institutional/institutional-features",
+  "version": "0.1.0",
+  "description": "This package will export Compliance institutional feature used across the old @codefi/mmi-sdk library",
+  "author": "Albert Olive <albertolivecorbella@gmail.com>",
   "homepage": "https://github.com/consensys-vertical-apps/metamask-institutional#readme",
   "license": "MIT",
   "main": "dist/index.js",
@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "directory": "packages/transactionUpdate",
+    "directory": "packages/institutionalFeatures",
     "url": "git+https://github.com/consensys-vertical-apps/metamask-institutional.git"
   },
   "scripts": {
@@ -27,15 +27,13 @@
   "bugs": {
     "url": "https://github.com/consensys-vertical-apps/metamask-institutional/issues"
   },
-  "gitHead": "",
+  "gitHead": "62ed7639b9145658a4fa1273e35e99d300acdc99",
   "dependencies": {
+    "@auth0/auth0-spa-js": "^2.0.2",
     "@metamask-institutional/custody-keyring": "^0.0.8",
-    "@metamask-institutional/sdk": "^0.1.10",
-    "@metamask-institutional/types": "*",
-    "@metamask-institutional/websocket-client": "^0.1.5",
     "@metamask/obs-store": "^7.0.0"
   },
   "devDependencies": {
-    "ts-jest": "26.4.4"
+    "jest-fetch-mock": "^3.0.3"
   }
 }
