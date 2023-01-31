@@ -2,10 +2,10 @@ import { ExtensionDashboardResponse } from "./interfaces/ExtensionDashboardRespo
 
 export async function setDashboardCookie(
   mmiDashboardData: ExtensionDashboardResponse,
-  cookieSetUrls: string[]
+  cookieSetUrls: string[],
 ): Promise<boolean> {
   try {
-    const promiseArray = cookieSetUrls.map((url) =>
+    const promiseArray = cookieSetUrls.map(url =>
       fetch(url, {
         method: "POST",
         headers: {
@@ -13,17 +13,12 @@ export async function setDashboardCookie(
         },
         credentials: "include",
         body: JSON.stringify(mmiDashboardData),
-      })
+      }),
     );
     await Promise.all(promiseArray);
     return true;
   } catch (e) {
-    console.error(
-      "Error setting dashboard cookie:",
-      e.message,
-      e.stack,
-      e.response
-    );
+    console.error("Error setting dashboard cookie:", e.message, e.stack, e.response);
     return false;
   }
 }
