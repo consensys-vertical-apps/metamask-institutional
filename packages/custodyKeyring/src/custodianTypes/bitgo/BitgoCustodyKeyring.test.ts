@@ -35,6 +35,7 @@ const mockMMISDK = {
   checkPing: jest.fn(),
   handleEvent: jest.fn(),
   getTransactionLink: jest.fn().mockResolvedValue(null),
+  on: jest.fn(),
   eventCallbacks: [],
   jwt: "",
   defaultCacheAgeSeconds: 0,
@@ -49,10 +50,9 @@ describe("BitgoCustodyKeyring", () => {
 
   beforeEach(() => {
     custodyKeyring = new BitgoCustodyKeyring();
-    beforeEach(() => {
-      jest.clearAllMocks();
-      mockedMmiSdkFactory.mockReturnValue(mockMMISDK as unknown as MMISDK);
-    });
+
+    jest.clearAllMocks();
+    mockedMmiSdkFactory.mockReturnValue(mockMMISDK as unknown as MMISDK);
   });
 
   describe("getTransactionDeepLink", () => {

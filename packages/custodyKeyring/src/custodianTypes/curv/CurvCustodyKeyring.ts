@@ -2,7 +2,6 @@ import { ITransactionStatusMap, AuthTypes, AuthDetails, ITokenAuthDetails } from
 import { mmiSDKFactory, CurvCustodianApi } from "@metamask-institutional/sdk";
 import { CustodyKeyring } from "../../CustodyKeyring";
 import { ICustodyKeyringOptions } from "../../interfaces/ICustodyKeyringOptions";
-import { CUSTODIAN_TYPES } from "..";
 
 interface Label {
   key: string;
@@ -40,7 +39,18 @@ export interface ILegacyCustodianAccount extends ICustodianAccountProto {
 
 export class CurvCustodyKeyring extends CustodyKeyring {
   public static readonly type = "Custody - Curv";
-  public readonly custodianType = CUSTODIAN_TYPES.CURV;
+  public readonly custodianType = {
+    name: "Curv",
+    displayName: "Curv",
+    apiUrl: "https://app.curv.co",
+    imgSrc: "images/curv-logo-horizontal-black.svg",
+    icon: "images/curv-logo.svg",
+    keyringClass: CurvCustodyKeyring,
+    production: false,
+    hidden: true,
+    origins: [],
+    environmentMapping: [],
+  };
   public authType = AuthTypes.TOKEN;
 
   public type = "Custody - Curv";

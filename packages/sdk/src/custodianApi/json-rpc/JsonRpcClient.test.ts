@@ -104,14 +104,13 @@ describe("JsonRpcClient", () => {
     });
 
     it("emit an event if there is a HTTP 401 error status", async () => {
-      fetchMock.mockImplementationOnce(() => {
-        throw {
-          response: {
-            status: 401,
-            data: { url: "test" },
+      fetchMock.mockResponseOnce(
+        JSON.stringify({
+          error: {
+            message: "Test error",
           },
-        };
-      });
+        }),
+      );
 
       const messageHandler = jest.fn();
 
