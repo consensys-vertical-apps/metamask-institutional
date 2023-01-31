@@ -1,6 +1,3 @@
-const { pathsToModuleNameMapper } = require("ts-jest");
-const { compilerOptions } = require("./tsconfig.json");
-
 const path = require("path");
 const { lstatSync, readdirSync } = require("fs");
 
@@ -94,14 +91,6 @@ module.exports = {
   moduleFileExtensions: ["js", "jsx", "ts", "tsx"],
 
   // A map from regular expressions to module names that allow to stub out resources with a single module
-  // moduleNameMapper: {
-  //   '^~/(.*)$': '<rootDir>/src/$1',
-  //   '^@jjangga0214/(.*)$': '<rootDir>/../$1/src'
-  // },
-  // moduleNameMapper: {
-  //   ...pathsToModuleNameMapper(compilerOptions.paths /* , { prefix: '<rootDir>/' }, */),
-  // },
-
   moduleNameMapper: {
     ...packages.reduce(
       (acc, name) => ({
@@ -128,7 +117,16 @@ module.exports = {
   // projects: null,
 
   // Use this configuration option to add custom reporters to Jest
-  reporters: ["default", "jest-junit"],
+  reporters: [
+    "default",
+    [
+      "jest-junit",
+      {
+        outputDirectory: "../../test-results/",
+        outputName: "junit.xml",
+      },
+    ],
+  ],
 
   // Automatically reset mock state between every test
   // resetMocks: false,
