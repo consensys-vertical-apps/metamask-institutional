@@ -53,7 +53,7 @@ describe("JupiterClient", () => {
         };
       });
 
-      expect(jupiterClient.getEthereumAccounts()).rejects.toThrow(CustodianApiError);
+      await expect(jupiterClient.getEthereumAccounts()).rejects.toThrow(CustodianApiError);
     });
   });
 

@@ -9,7 +9,6 @@ import { mmiSDKFactory, MMISDK, JsonRpcCustodianApi } from "@metamask-institutio
 import { CustodyKeyring } from "../../CustodyKeyring";
 import { ICustodyKeyringOptions } from "../../interfaces/ICustodyKeyringOptions";
 import { JsonRpcStatusMap } from "./JsonRpcStatusMap";
-import { CUSTODIAN_TYPES } from "..";
 
 export class JsonRpcCustodyKeyring extends CustodyKeyring {
   public static readonly type = "Custody - JSONRPC";
@@ -19,7 +18,18 @@ export class JsonRpcCustodyKeyring extends CustodyKeyring {
 
   public static addressType: AddressType.POLYCHAIN;
 
-  public readonly custodianType = CUSTODIAN_TYPES.JSONRPC;
+  public readonly custodianType = {
+    name: "JSONRPC",
+    displayName: "JSON-RPC",
+    apiUrl: "https://saturn-custody.codefi.network/eth",
+    imgSrc: "images/json-rpc.svg",
+    icon: "images/json-rpc.svg",
+    keyringClass: JsonRpcCustodyKeyring,
+    production: false,
+    hidden: true, // Since this is the prototype, we don't want to show it in the UI
+    origins: [],
+    environmentMapping: [], // No environment mapping for JSON-RPC custodians as this is derived from the configuration service
+  };
 
   sdkFactory = (authDetails: IRefreshTokenAuthDetails, apiUrl: string): MMISDK => {
     const store = this.mmiConfigurationController.store.getState();

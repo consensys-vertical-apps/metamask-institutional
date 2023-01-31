@@ -113,7 +113,7 @@ describe("migrations", function () {
           } as any,
         ],
       };
-      console.log("keyring: ", keyring);
+
       const migratedKeyring = migrator.migrateData(keyring);
       // console.log('migratedKeyring: ', migratedKeyring);
       const last = liveMigrations.length - 1;
