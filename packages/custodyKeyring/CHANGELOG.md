@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @metamask-institutional/sdk bumped from ^0.1.10 to ^0.1.11
+    * @metamask-institutional/types bumped from ^0.1.28 to ^1.0.0
+
 ## [0.0.8](https://github.com/consensys-vertical-apps/metamask-institutional/compare/@metamask-institutional/custody-keyring@0.0.7...@metamask-institutional/custody-keyring@0.0.8) (2023-01-31)
 
 **Note:** Version bump only for package @metamask-institutional/custody-keyring
