@@ -4,9 +4,7 @@ on:
   # When Release Pull Request is merged
   pull_request:
     branches:
-      - development
       - main
-    types: [closed]
 
 permissions:
   contents: write # for checkout and tag
@@ -15,7 +13,7 @@ permissions:
 
 jobs:
   publish-npm:
-    if: github.event.pull_request.merged == true
+    if: ${{ steps.release.outputs.release_created }}
     permissions:
       contents: write
     runs-on: ubuntu-latest
