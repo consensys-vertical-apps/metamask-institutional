@@ -43,20 +43,25 @@ jobs:
           registry-url: "https://registry.npmjs.org"
 
       - name: Configure Git User
+        if: ${{ steps.release.outputs.release_created }}
         run: |
           git config --global user.email "${GITHUB_ACTOR}"
           git config --global user.name "${GITHUB_ACTOR}@users.noreply.github.com"
 
       - name: Check if able to publish changes
+        if: ${{ steps.release.outputs.release_created }}
         run: npm whoami # will throw and exit if npm is not ready to publish
 
       - name: "Install dependencies"
+        if: ${{ steps.release.outputs.release_created }}
         run: yarn install --immutable --immutable-cache --check-cache
 
       - name: Build Packages for Release
+        if: ${{ steps.release.outputs.release_created }}
         run: yarn build
 
       - name: "Publish to npmJS"
+        if: ${{ steps.release.outputs.release_created }}
         run: yarn run publish --yes
 
         env:
