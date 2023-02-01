@@ -11,7 +11,7 @@ permissions:
 
 jobs:
   publish-npm:
-    if: github.event.pull_request.merged == true
+    # if: github.event.pull_request.merged == true
     permissions:
       contents: write
     runs-on: ubuntu-latest
