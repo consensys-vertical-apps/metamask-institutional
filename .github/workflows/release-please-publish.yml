@@ -12,7 +12,11 @@ permissions:
 
 jobs:
   release-please:
+    permissions:
+      contents: write
     runs-on: ubuntu-latest
+    env:
+      NODE_AUTH_TOKEN: ${{ secrets.npm_token }} # set this token manually
     steps:
       - uses: google-github-actions/release-please-action@v3
         id: release
@@ -20,14 +24,8 @@ jobs:
           command: manifest
           monorepo-tags: true
           token: ${{ secrets.BUILD_SVC_PAT }}
-  publish-npm:
-    if: ${{ steps.release.outputs.release_created }}
-    permissions:
-      contents: write
-    runs-on: ubuntu-latest
-    env:
-      NODE_AUTH_TOKEN: ${{ secrets.npm_token }} # set this token manually
-    steps:
+
+        if: ${{ steps.release.outputs.release_created }}
       - name: "Checkout" # Download code from the repository
         uses: actions/checkout@v3
         with:
