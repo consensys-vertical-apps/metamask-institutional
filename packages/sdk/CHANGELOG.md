@@ -3,12 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.12](https://github.com/consensys-vertical-apps/metamask-institutional/compare/@metamask-institutional/sdk@0.1.10...@metamask-institutional/sdk@0.1.12) (2023-02-01)
+
+**Note:** Version bump only for package @metamask-institutional/sdk
+
 ### Dependencies
 
-* The following workspace dependencies were updated
-  * dependencies
-    * @metamask-institutional/simplecache bumped from ^0.1.4 to ^1.0.0
-    * @metamask-institutional/types bumped from ^0.1.28 to ^1.0.0
+- The following workspace dependencies were updated
+  - dependencies
+    - @metamask-institutional/simplecache bumped from ^0.1.4 to ^1.0.0
+    - @metamask-institutional/types bumped from ^0.1.28 to ^1.0.0
 
 ## [0.1.10](https://github.com/consensys-vertical-apps/metamask-institutional/compare/@metamask-institutional/sdk@0.1.9...@metamask-institutional/sdk@0.1.10) (2023-01-31)
 
