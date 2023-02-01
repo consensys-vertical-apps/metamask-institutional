@@ -1,55 +1,55 @@
-name: Publish to npmJS
+# name: Publish to npmJS
 
-on:
-  # When Release Pull Request is merged
-  pull_request:
-    branches:
-      - main
+# on:
+#   # When Release Pull Request is merged
+#   pull_request:
+#     branches:
+#       - main
 
-permissions:
-  contents: write # for checkout and tag
-  pull-requests: write # for comments
-  packages: write # for publish
+# permissions:
+#   contents: write # for checkout and tag
+#   pull-requests: write # for comments
+#   packages: write # for publish
 
-jobs:
-  publish-npm:
-    if: ${{ steps.release.outputs.release_created }}
-    permissions:
-      contents: write
-    runs-on: ubuntu-latest
-    env:
-      NODE_AUTH_TOKEN: ${{ secrets.npm_token }} # set this token manually
-    steps:
-      - name: "Checkout" # Download code from the repository
-        uses: actions/checkout@v3
-        with:
-          fetch-depth: 0 # Checkout all branches and tags
-          ref: "${{ github.event.pull_request.base.ref }}"
-          token: ${{ secrets.BUILD_SVC_PAT }} # this is a PAT token generated with a personal user
+# jobs:
+#   publish-npm:
+#     if: ${{ steps.release.outputs.release_created }}
+#     permissions:
+#       contents: write
+#     runs-on: ubuntu-latest
+#     env:
+#       NODE_AUTH_TOKEN: ${{ secrets.npm_token }} # set this token manually
+#     steps:
+#       - name: "Checkout" # Download code from the repository
+#         uses: actions/checkout@v3
+#         with:
+#           fetch-depth: 0 # Checkout all branches and tags
+#           ref: "${{ github.event.pull_request.base.ref }}"
+#           token: ${{ secrets.BUILD_SVC_PAT }} # this is a PAT token generated with a personal user
 
-      # setup .npmrc using NODE_AUTH_TOKEN
-      - name: Setup .npmrc file for publish
-        uses: actions/setup-node@v3
-        with:
-          node-version: 16
-          registry-url: "https://registry.npmjs.org"
+#       # setup .npmrc using NODE_AUTH_TOKEN
+#       - name: Setup .npmrc file for publish
+#         uses: actions/setup-node@v3
+#         with:
+#           node-version: 16
+#           registry-url: "https://registry.npmjs.org"
 
-      - name: Configure Git User
-        run: |
-          git config --global user.email "${GITHUB_ACTOR}"
-          git config --global user.name "${GITHUB_ACTOR}@users.noreply.github.com"
+#       - name: Configure Git User
+#         run: |
+#           git config --global user.email "${GITHUB_ACTOR}"
+#           git config --global user.name "${GITHUB_ACTOR}@users.noreply.github.com"
 
-      - name: Check if able to publish changes
-        run: npm whoami # will throw and exit if npm is not ready to publish
+#       - name: Check if able to publish changes
+#         run: npm whoami # will throw and exit if npm is not ready to publish
 
-      - name: "Install dependencies"
-        run: yarn install --immutable --immutable-cache --check-cache
+#       - name: "Install dependencies"
+#         run: yarn install --immutable --immutable-cache --check-cache
 
-      - name: Build Packages for Release
-        run: yarn build
+#       - name: Build Packages for Release
+#         run: yarn build
 
-      - name: "Publish to npmJS"
-        run: yarn run publish --yes
+#       - name: "Publish to npmJS"
+#         run: yarn run publish --yes
 
-        env:
-          NODE_AUTH_TOKEN: "${{secrets.npm_token}}"
+#         env:
+#           NODE_AUTH_TOKEN: "${{secrets.npm_token}}"
