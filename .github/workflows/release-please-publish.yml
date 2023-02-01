@@ -1,4 +1,4 @@
-name: Generate changelog and publisj to npmjs
+name: Generate changelog and publish to npmjs
 
 on:
   workflow_dispatch:
