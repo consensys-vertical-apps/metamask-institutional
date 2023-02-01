@@ -17,7 +17,7 @@ jest.mock("./Auth0", () => {
 
 jest.mock("./TimerService");
 
-describe.skip("#Compliance", () => {
+describe("#Compliance", () => {
   let complianceClient: Compliance;
   const auth0 = new Auth0.Auth0();
 
