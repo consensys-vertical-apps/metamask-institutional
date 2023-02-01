@@ -37,7 +37,7 @@ describe("InstitutionalFeaturesController", function () {
   };
 
   const createController = async initState => {
-    return new InstitutionalFeaturesController({
+    return await new InstitutionalFeaturesController({
       initState,
       showConfirmRequest: () => "mock",
     });
@@ -61,7 +61,7 @@ describe("InstitutionalFeaturesController", function () {
 
   it("should remove projectId and clientId", async function () {
     const controller = await createController(INIT_STATE);
-    controller.deleteComplianceAuthData();
+    await controller.deleteComplianceAuthData();
     const state = controller.store.getState();
     expect(state.institutionalFeatures.complianceClientId).toBe(undefined);
     expect(controller.getComplianceProjectId()).toBe(undefined);
@@ -92,7 +92,7 @@ describe("InstitutionalFeaturesController", function () {
       },
     };
     jest.spyOn(controller, "showConfirmRequest");
-    controller.handleMmiAuthenticate(connectRequest);
+    await controller.handleMmiAuthenticate(connectRequest);
     expect(controller.showConfirmRequest).toHaveBeenCalled();
     const state = controller.store.getState();
     expect(state.institutionalFeatures.connectRequests[0]).toStrictEqual({
@@ -119,7 +119,7 @@ describe("InstitutionalFeaturesController", function () {
       },
     };
     jest.spyOn(controller, "showConfirmRequest");
-    controller.handleMmiAuthenticate(connectRequest);
+    await controller.handleMmiAuthenticate(connectRequest);
     expect(controller.showConfirmRequest).toHaveBeenCalled();
     const state = controller.store.getState();
     expect(state.institutionalFeatures.connectRequests[0]).toStrictEqual({
@@ -197,7 +197,7 @@ describe("InstitutionalFeaturesController", function () {
         ],
       },
     });
-    controller.removeConnectInstitutionalFeature({
+    await controller.removeConnectInstitutionalFeature({
       origin: "origin",
       projectId: "projectId",
     });
@@ -245,7 +245,7 @@ describe("InstitutionalFeaturesController", function () {
       },
     });
     controller.complianceClient.addReportToQueue = jest.fn(() => true);
-    controller.syncReportsInProgress({
+    await controller.syncReportsInProgress({
       address: "address2",
       historicalReports: [
         {
@@ -276,7 +276,7 @@ describe("InstitutionalFeaturesController", function () {
         },
       },
     });
-    controller.handleReportProgress({
+    await controller.handleReportProgress({
       address: "address",
       reportId: "test",
       progressPercent: 10,
@@ -301,7 +301,7 @@ describe("InstitutionalFeaturesController", function () {
         },
       },
     });
-    controller.handleReportComplete({
+    await controller.handleReportComplete({
       address: "address",
       reportId: "test",
     });
@@ -313,7 +313,7 @@ describe("InstitutionalFeaturesController", function () {
     const controller = await createController({
       institutionalFeatures: INIT_STATE.institutionalFeatures,
     });
-    controller.authenticateToCodefiCompliance(
+    await controller.authenticateToCodefiCompliance(
       "testOrigin.com",
       "token",
       [{ key: "key", value: "value" }],
@@ -331,7 +331,7 @@ describe("InstitutionalFeaturesController", function () {
         connectRequests: [{ origin: "testOrigin.com", token: "token", apiUrl: "http://" }],
       },
     });
-    controller.removeAddTokenConnectRequest({
+    await controller.removeAddTokenConnectRequest({
       origin: "testOrigin.com",
       apiUrl: "http://",
       token: "token",
@@ -347,7 +347,7 @@ describe("InstitutionalFeaturesController", function () {
         connectRequests: [{ origin: "testOrigin.com", token: "token", apiUrl: "http://" }],
       },
     });
-    controller.removeAddTokenConnectRequest({
+    await controller.removeAddTokenConnectRequest({
       origin: "testOrigin.com",
       apiUrl: "not-the-same",
       token: "token",
@@ -363,7 +363,7 @@ describe("InstitutionalFeaturesController", function () {
         connectRequests: [{ origin: "testOrigin.com", token: "token", apiUrl: "http://" }],
       },
     });
-    controller.removeAddTokenConnectRequest({
+    await controller.removeAddTokenConnectRequest({
       origin: "testOrigin.com",
       apiUrl: "http://",
       token: "not-token",
