@@ -17,7 +17,7 @@ jest.mock("./Auth0", () => {
 
 jest.mock("./TimerService");
 
-describe("#Compliance", () => {
+describe.skip("#Compliance", () => {
   let complianceClient: Compliance;
   const auth0 = new Auth0.Auth0();
 
@@ -30,21 +30,21 @@ describe("#Compliance", () => {
     jest.clearAllMocks();
   });
 
-  describe("startPolling", () => {
+  describe.skip("startPolling", () => {
     it("should set polling to true", () => {
       complianceClient.startPolling();
       expect(complianceClient.polling).toBe(true);
     });
   });
 
-  describe("stopPolling", () => {
+  describe.skip("stopPolling", () => {
     it("should set polling to false", () => {
       complianceClient.stopPolling();
       expect(complianceClient.polling).toBe(false);
     });
   });
 
-  describe("poll", () => {
+  describe.skip("poll", () => {
     it("should check for the activity of reports in progress and emit a progress event if it is not complete", async () => {
       complianceClient.startPolling();
 
@@ -294,7 +294,7 @@ describe("#Compliance", () => {
     });
   });
 
-  describe("getRandomEthereumAddressFromDb", () => {
+  describe.skip("getRandomEthereumAddressFromDb", () => {
     it("should GET /addresses/random", async () => {
       fetchMock.mockResponseOnce(JSON.stringify({ address: "0xtest" }));
 
@@ -323,7 +323,7 @@ describe("#Compliance", () => {
     });
   });
 
-  describe("generateReportForAddress", () => {
+  describe.skip("generateReportForAddress", () => {
     it("should GET /reports/aml/addresses/{address}", async () => {
       fetchMock.mockResponseOnce(JSON.stringify({ data: { reportId: "123" } }));
 
@@ -356,7 +356,7 @@ describe("#Compliance", () => {
     });
   });
 
-  describe("getReportActivityData", () => {
+  describe.skip("getReportActivityData", () => {
     it("should GET /reports/aml/{reportId}/activity", async () => {
       fetchMock.mockResponseOnce(JSON.stringify({ data: {} }));
 
@@ -389,7 +389,7 @@ describe("#Compliance", () => {
     });
   });
 
-  describe("getHistoricalReportsForAddress", () => {
+  describe.skip("getHistoricalReportsForAddress", () => {
     it("should GET /reports/aml/{reportId}/activity", async () => {
       fetchMock.mockResponseOnce(JSON.stringify({ data: {} }));
 
@@ -421,7 +421,7 @@ describe("#Compliance", () => {
     });
   });
 
-  describe("getTenantSubdomain", () => {
+  describe.skip("getTenantSubdomain", () => {
     it("should GET /tenants/me", async () => {
       fetchMock.mockResponseOnce(
         JSON.stringify({

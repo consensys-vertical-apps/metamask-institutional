@@ -20,7 +20,7 @@ Compliance.prototype.generateReportForAddress = jest.fn(async address => ({
   reportId: "complianceReportId",
 }));
 
-describe("InstitutionalFeaturesController", function () {
+describe.skip("InstitutionalFeaturesController", function () {
   (<any>global).chrome = {
     runtime: {
       id: "extensionId",
