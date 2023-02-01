@@ -26,8 +26,8 @@ jobs:
           monorepo-tags: true
           token: ${{ secrets.BUILD_SVC_PAT }}
 
-        if: ${{ steps.release.outputs.release_created }}
       - name: "Checkout" # Download code from the repository
+        if: ${{ steps.release.outputs.release_created }}
         uses: actions/checkout@v3
         with:
           fetch-depth: 0 # Checkout all branches and tags
@@ -36,6 +36,7 @@ jobs:
 
       # setup .npmrc using NODE_AUTH_TOKEN
       - name: Setup .npmrc file for publish
+        if: ${{ steps.release.outputs.release_created }}
         uses: actions/setup-node@v3
         with:
           node-version: 16
