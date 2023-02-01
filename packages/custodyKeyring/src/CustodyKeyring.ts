@@ -1,39 +1,39 @@
-import { EventEmitter } from "events";
-import crypto from "crypto";
-import { toChecksumAddress } from "@ethereumjs/util";
 import { FeeMarketEIP1559Transaction, Transaction } from "@ethereumjs/tx";
+import { toChecksumAddress } from "@ethereumjs/util";
 import { MMISDK } from "@metamask-institutional/sdk";
 import {
+  AddressType,
+  AuthDetails,
+  AuthTypes,
   ICustodianAccount,
+  ICustodianTransactionLink,
+  ICustodianType,
+  IEIP1559TxParams,
   IExtensionCustodianAccount,
+  IInteractiveRefreshTokenChangeEvent,
+  ILegacyTXParams,
+  IMetamaskContractMetadata,
+  IRefreshTokenAuthDetails,
+  IRefreshTokenChangeEvent,
+  ISignatureDetails,
+  ITokenAuthDetails,
   ITransactionDetails,
   ITransactionStatusMap,
-  IMetamaskContractMetadata,
-  IEIP1559TxParams,
-  ILegacyTXParams,
-  AuthTypes,
-  AuthDetails,
-  IRefreshTokenAuthDetails,
-  ITokenAuthDetails,
-  ICustodianType,
-  ICustodianTransactionLink,
-  AddressType,
-  ISignatureDetails,
-  IRefreshTokenChangeEvent,
-  IInteractiveRefreshTokenChangeEvent,
   MetamaskTransaction,
 } from "@metamask-institutional/types";
-import { MmiConfigurationController } from "./mmiConfiguration";
+import crypto from "crypto";
+import { EventEmitter } from "events";
+
 import {
   DEFAULT_MAX_CACHE_AGE,
-  REFRESH_TOKEN_CHANGE_EVENT,
   INTERACTIVE_REPLACEMENT_TOKEN_CHANGE_EVENT,
+  REFRESH_TOKEN_CHANGE_EVENT,
 } from "./constants";
-import { ISerializedKeyring } from "./interfaces/ISerializedKeyring";
 import { ICustodyKeyringOptions } from "./interfaces/ICustodyKeyringOptions";
-
-import { Migrator } from "./migrations/migrator";
+import { ISerializedKeyring } from "./interfaces/ISerializedKeyring";
 import { migrations } from "./migrations";
+import { Migrator } from "./migrations/migrator";
+import { MmiConfigurationController } from "./mmiConfiguration";
 
 export type UniqueAccountDetails = {
   hash: string;

@@ -1,18 +1,19 @@
-import { EventEmitter } from "events";
-import { ObservableStore } from "@metamask/obs-store";
+import { CustodyKeyring, MMIConfiguration, MmiConfigurationController } from "@metamask-institutional/custody-keyring";
+import { mapTransactionStatus } from "@metamask-institutional/sdk";
 import {
   ICustodianUpdate,
-  ITokenAuthDetails,
   IRefreshTokenAuthDetails,
-  ITransactionDetails,
   ISignatureDetails,
+  ITokenAuthDetails,
+  ITransactionDetails,
 } from "@metamask-institutional/types";
 import { WebsocketClientController } from "@metamask-institutional/websocket-client";
-import { mapTransactionStatus } from "@metamask-institutional/sdk";
-import { CustodyKeyring, MMIConfiguration, MmiConfigurationController } from "@metamask-institutional/custody-keyring";
+import { ObservableStore } from "@metamask/obs-store";
+import { EventEmitter } from "events";
+
 import { POLL_TRANSACTION_RETRIES, TRANSACTION_POLLING_INTERVAL } from "./constants";
-import { IWatchedTransaction } from "./interfaces/IWatchedTransaction";
 import { ITransactionUpdateControllerOptions } from "./interfaces/ITransactionUpdateControllerOptions";
+import { IWatchedTransaction } from "./interfaces/IWatchedTransaction";
 
 export class TransactionUpdateController extends EventEmitter {
   public store;

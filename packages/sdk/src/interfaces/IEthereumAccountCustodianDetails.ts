@@ -1,3 +1,3 @@
 export interface IEthereumAccountCustodianDetails {
-  empty?: string
+  empty?: string;
 }

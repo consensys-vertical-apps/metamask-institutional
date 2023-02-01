@@ -1,4 +1,5 @@
 import fetchMock from "jest-fetch-mock";
+
 import { setDashboardCookie } from "./utils";
 
 fetchMock.enableMocks();

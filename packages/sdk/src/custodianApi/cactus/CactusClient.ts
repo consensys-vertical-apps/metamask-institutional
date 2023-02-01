@@ -1,15 +1,16 @@
-import { CustodianApiError } from "../../errors/CustodianApiError";
-import { IEIP1559TxParams, ILegacyTXParams } from "@metamask-institutional/types";
-import { ICactusTransaction } from "./interfaces/ICactusTransaction";
-import { ICactusEthereumAccount } from "./interfaces/ICactusEthereumAccount";
-import { ICactusTxDetails } from "./interfaces/ICactusTxDetails";
-import { ICactusCustomerProof } from "./interfaces/ICactusCustomerProof";
-import { ICactusSignatureRequest } from "./interfaces/ICactusSignatureRequest";
-import { MessageTypes, TypedMessage } from "../../interfaces/ITypedMessage";
-import { ICactusSignatureResponse } from "./interfaces/ICactusSignatureResponse";
-import { ICactusAccessTokenResponse } from "./interfaces/ICactusAccessTokenResponse";
 import { SimpleCache } from "@metamask-institutional/simplecache";
+import { IEIP1559TxParams, ILegacyTXParams } from "@metamask-institutional/types";
+
+import { CustodianApiError } from "../../errors/CustodianApiError";
+import { MessageTypes, TypedMessage } from "../../interfaces/ITypedMessage";
+import { ICactusAccessTokenResponse } from "./interfaces/ICactusAccessTokenResponse";
 import { ICactusChainIdsResponse } from "./interfaces/ICactusChainIdsResponse";
+import { ICactusCustomerProof } from "./interfaces/ICactusCustomerProof";
+import { ICactusEthereumAccount } from "./interfaces/ICactusEthereumAccount";
+import { ICactusSignatureRequest } from "./interfaces/ICactusSignatureRequest";
+import { ICactusSignatureResponse } from "./interfaces/ICactusSignatureResponse";
+import { ICactusTransaction } from "./interfaces/ICactusTransaction";
+import { ICactusTxDetails } from "./interfaces/ICactusTxDetails";
 
 const CACTUS_CACHE_AGE = 120 * 60;
 

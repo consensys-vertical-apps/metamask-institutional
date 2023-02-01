@@ -1,16 +1,17 @@
-import { EventEmitter } from "events";
 import { SimpleCache } from "@metamask-institutional/simplecache";
-import { COMPLIANCE_API_URL, COMPLIANCE_POLLING_INTERVAL } from "./constants";
+import { EventEmitter } from "events";
+
+import { Auth0 } from "./Auth0";
 import { ComplianceError } from "./ComplianceError";
+import { COMPLIANCE_API_URL, COMPLIANCE_POLLING_INTERVAL } from "./constants";
+import { TimerService } from "./TimerService";
 import {
   IComplianceActivityReport,
-  ICompliancePaginatedItems,
   IComplianceHistoricalReport,
-  IComplianceReportProgress,
+  ICompliancePaginatedItems,
   IComplianceReportInProgress,
+  IComplianceReportProgress,
 } from "./types";
-import { TimerService } from "./TimerService";
-import { Auth0 } from "./Auth0";
 
 const COMPLIANCE_CACHE_TIME = 3600 * 10; // 10 hours is the lifetime of the id_token
 

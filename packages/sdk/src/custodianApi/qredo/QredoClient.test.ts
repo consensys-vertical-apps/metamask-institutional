@@ -1,12 +1,13 @@
 import fetchMock from "jest-fetch-mock";
+
 import { CustodianApiError } from "../../errors/CustodianApiError";
 import { MessageTypes, TypedMessage } from "../../interfaces/ITypedMessage";
 import { qredoAccountsMock } from "./mocks/qredoAccountsMock";
 import { qredoCustomerProofMock } from "./mocks/qredoCustomerProofMock";
 import { qredoGetAccessTokenMock } from "./mocks/qredoGetAccessTokenMock";
 import { qredoNetworksMock } from "./mocks/qredoNetworksMock";
-
 import { QredoClient } from "./QredoClient";
+
 fetchMock.enableMocks();
 
 describe("#QredoClient", () => {

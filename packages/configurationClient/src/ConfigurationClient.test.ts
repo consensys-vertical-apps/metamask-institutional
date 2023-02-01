@@ -1,7 +1,8 @@
 import fetchMock from "jest-fetch-mock";
-import { MMI_CONFIGURATION_API_URL } from "./constants";
 
 import { ConfigurationClient } from "./ConfigurationClient";
+import { MMI_CONFIGURATION_API_URL } from "./constants";
+
 fetchMock.enableMocks();
 
 describe("ConfigurationClient", () => {

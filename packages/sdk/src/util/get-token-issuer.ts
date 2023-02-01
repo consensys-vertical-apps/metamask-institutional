@@ -1,4 +1,5 @@
 import jwt from "jsonwebtoken";
+
 export function getTokenIssuer(token: string) {
   const decoded = jwt.decode(token.trim());
   // @ts-ignore

@@ -1,9 +1,9 @@
-import { JsonRpcCustodianApi, ICustodianApi } from "@metamask-institutional/sdk";
+import { ICustodianApi, JsonRpcCustodianApi } from "@metamask-institutional/sdk";
+import { WebSocket as MockWebSocket, Server } from "mock-socket";
+
 import { WebsocketClientController } from "./WebsocketClient";
 
 jest.mock("@metamask-institutional/sdk");
-
-import { WebSocket as MockWebSocket, Server } from "mock-socket";
 
 global.WebSocket = MockWebSocket;
 

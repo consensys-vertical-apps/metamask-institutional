@@ -1,21 +1,21 @@
-import { JupiterClient } from "./JupiterClient";
+import { AuthTypes, ITransactionDetails } from "@metamask-institutional/types";
 import { mocked } from "ts-jest/utils";
 
-jest.mock("./JupiterClient");
+import { MessageTypes, TypedMessage } from "../../interfaces/ITypedMessage";
 import { getTokenIssuer } from "../../util/get-token-issuer";
+import { JupiterClient } from "./JupiterClient";
+import { JupiterCustodianApi } from "./JupiterCustodianApi";
+import { jupiterAccountsMock } from "./mocks/jupiterAccountsMock";
+import { jupiterCreateEIP712SignatureMock } from "./mocks/jupiterCreateEIP712SignatureMock";
+import { jupiterCreatePersonalSignatureMock } from "./mocks/jupiterCreatePersonalSignatureMock";
+import { jupiterCustomerProofMock } from "./mocks/jupiterCustomerProofMock";
+import { jupiterTransactionMock } from "./mocks/jupiterTransactionMock";
+
+jest.mock("./JupiterClient");
 
 jest.mock("../../util/get-token-issuer", () => ({
   getTokenIssuer: jest.fn().mockReturnValue("some_website"),
 }));
-
-import { JupiterCustodianApi } from "./JupiterCustodianApi";
-import { ITransactionDetails, AuthTypes } from "@metamask-institutional/types";
-import { MessageTypes, TypedMessage } from "../../interfaces/ITypedMessage";
-import { jupiterAccountsMock } from "./mocks/jupiterAccountsMock";
-import { jupiterCustomerProofMock } from "./mocks/jupiterCustomerProofMock";
-import { jupiterTransactionMock } from "./mocks/jupiterTransactionMock";
-import { jupiterCreateEIP712SignatureMock } from "./mocks/jupiterCreateEIP712SignatureMock";
-import { jupiterCreatePersonalSignatureMock } from "./mocks/jupiterCreatePersonalSignatureMock";
 
 describe("JupiterCustodianApi", () => {
   let jupiterCustodianApi: JupiterCustodianApi;
