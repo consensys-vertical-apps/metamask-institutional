@@ -1,8 +1,9 @@
-import { ObservableStore } from "@metamask/obs-store";
 import { CUSTODIAN_TYPES } from "@metamask-institutional/custody-keyring";
-import { IComplianceHistoricalReport, ICompliancePaginatedItems } from "./types";
+import { ObservableStore } from "@metamask/obs-store";
+
 import { Auth0 } from "./Auth0";
 import { Compliance } from "./Compliance";
+import { IComplianceHistoricalReport, ICompliancePaginatedItems } from "./types";
 
 /**
  * @typedef {Object} InstitutionalFeaturesOptions
@@ -379,7 +380,7 @@ export class InstitutionalFeaturesController {
       clientId: clientId,
       // eslint-disable-next-line no-undef
       // @ts-ignore
-      redirect_uri: `chrome-extension://${(<any>global).chrome.runtime.id}`, // This has to be set individually for every extension instance nad has to be whitelisted in Auth0
+      redirect_uri: `chrome-extension://${global.chrome.runtime.id}`, // This has to be set individually for every extension instance nad has to be whitelisted in Auth0
       audience: "https://admin.codefi.network",
     });
     this.complianceClient = new Compliance(projectId, auth0);

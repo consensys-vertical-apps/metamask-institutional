@@ -1,5 +1,5 @@
-import { Compliance } from "./Compliance";
 import { Auth0 } from "./Auth0";
+import { Compliance } from "./Compliance";
 import { InstitutionalFeaturesController } from "./institutional-features";
 
 jest.mock("@auth0/auth0-spa-js", () => {
@@ -20,8 +20,8 @@ Compliance.prototype.generateReportForAddress = jest.fn(async address => ({
   reportId: "complianceReportId",
 }));
 
-describe.skip("InstitutionalFeaturesController", function () {
-  (<any>global).chrome = {
+describe("InstitutionalFeaturesController", function () {
+  global.chrome = {
     runtime: {
       id: "extensionId",
     },
@@ -37,7 +37,7 @@ describe.skip("InstitutionalFeaturesController", function () {
   };
 
   const createController = async initState => {
-    return await new InstitutionalFeaturesController({
+    return new InstitutionalFeaturesController({
       initState,
       showConfirmRequest: () => "mock",
     });
@@ -61,7 +61,7 @@ describe.skip("InstitutionalFeaturesController", function () {
 
   it("should remove projectId and clientId", async function () {
     const controller = await createController(INIT_STATE);
-    await controller.deleteComplianceAuthData();
+    controller.deleteComplianceAuthData();
     const state = controller.store.getState();
     expect(state.institutionalFeatures.complianceClientId).toBe(undefined);
     expect(controller.getComplianceProjectId()).toBe(undefined);
@@ -92,7 +92,7 @@ describe.skip("InstitutionalFeaturesController", function () {
       },
     };
     jest.spyOn(controller, "showConfirmRequest");
-    await controller.handleMmiAuthenticate(connectRequest);
+    controller.handleMmiAuthenticate(connectRequest);
     expect(controller.showConfirmRequest).toHaveBeenCalled();
     const state = controller.store.getState();
     expect(state.institutionalFeatures.connectRequests[0]).toStrictEqual({
@@ -119,7 +119,7 @@ describe.skip("InstitutionalFeaturesController", function () {
       },
     };
     jest.spyOn(controller, "showConfirmRequest");
-    await controller.handleMmiAuthenticate(connectRequest);
+    controller.handleMmiAuthenticate(connectRequest);
     expect(controller.showConfirmRequest).toHaveBeenCalled();
     const state = controller.store.getState();
     expect(state.institutionalFeatures.connectRequests[0]).toStrictEqual({
@@ -197,7 +197,7 @@ describe.skip("InstitutionalFeaturesController", function () {
         ],
       },
     });
-    await controller.removeConnectInstitutionalFeature({
+    controller.removeConnectInstitutionalFeature({
       origin: "origin",
       projectId: "projectId",
     });
@@ -245,7 +245,7 @@ describe.skip("InstitutionalFeaturesController", function () {
       },
     });
     controller.complianceClient.addReportToQueue = jest.fn(() => true);
-    await controller.syncReportsInProgress({
+    controller.syncReportsInProgress({
       address: "address2",
       historicalReports: [
         {
@@ -276,7 +276,7 @@ describe.skip("InstitutionalFeaturesController", function () {
         },
       },
     });
-    await controller.handleReportProgress({
+    controller.handleReportProgress({
       address: "address",
       reportId: "test",
       progressPercent: 10,
@@ -301,7 +301,7 @@ describe.skip("InstitutionalFeaturesController", function () {
         },
       },
     });
-    await controller.handleReportComplete({
+    controller.handleReportComplete({
       address: "address",
       reportId: "test",
     });
@@ -313,7 +313,7 @@ describe.skip("InstitutionalFeaturesController", function () {
     const controller = await createController({
       institutionalFeatures: INIT_STATE.institutionalFeatures,
     });
-    await controller.authenticateToCodefiCompliance(
+    controller.authenticateToCodefiCompliance(
       "testOrigin.com",
       "token",
       [{ key: "key", value: "value" }],
@@ -331,7 +331,7 @@ describe.skip("InstitutionalFeaturesController", function () {
         connectRequests: [{ origin: "testOrigin.com", token: "token", apiUrl: "http://" }],
       },
     });
-    await controller.removeAddTokenConnectRequest({
+    controller.removeAddTokenConnectRequest({
       origin: "testOrigin.com",
       apiUrl: "http://",
       token: "token",
@@ -347,7 +347,7 @@ describe.skip("InstitutionalFeaturesController", function () {
         connectRequests: [{ origin: "testOrigin.com", token: "token", apiUrl: "http://" }],
       },
     });
-    await controller.removeAddTokenConnectRequest({
+    controller.removeAddTokenConnectRequest({
       origin: "testOrigin.com",
       apiUrl: "not-the-same",
       token: "token",
@@ -363,7 +363,7 @@ describe.skip("InstitutionalFeaturesController", function () {
         connectRequests: [{ origin: "testOrigin.com", token: "token", apiUrl: "http://" }],
       },
     });
-    await controller.removeAddTokenConnectRequest({
+    controller.removeAddTokenConnectRequest({
       origin: "testOrigin.com",
       apiUrl: "http://",
       token: "not-token",
