@@ -1,12 +1,8 @@
 name: Publish to npmJS
 
 on:
-  # When Release Pull Request is merged
-  pull_request:
-    branches:
-      - development
-      - main
-    types: [closed]
+  release:
+    types: [published]
 
 permissions:
   contents: write # for checkout and tag
@@ -51,7 +47,7 @@ jobs:
         run: yarn build
 
       - name: "Publish to npmJS"
-        run: yarn run publish --yes
+        run: yarn run publish --yes --conventional-commits
 
         env:
           NODE_AUTH_TOKEN: "${{secrets.npm_token}}"
