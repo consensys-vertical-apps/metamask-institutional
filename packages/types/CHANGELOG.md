@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 1.0.0 (2023-02-01)
+
+
+### Bug Fixes
+
+* **simplecache:** fixing access publish && git push ([#37](https://github.com/consensys-vertical-apps/metamask-institutional/issues/37)) ([d668eae](https://github.com/consensys-vertical-apps/metamask-institutional/commit/d668eae8d3995241a4dbd873a0aea0172a19700a))
+
 ## [0.1.28](https://github.com/consensys-vertical-apps/metamask-institutional/compare/@metamask-institutional/types@0.1.27...@metamask-institutional/types@0.1.28) (2023-01-26)
 
 **Note:** Version bump only for package @metamask-institutional/types
