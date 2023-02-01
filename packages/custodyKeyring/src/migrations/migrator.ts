@@ -1,4 +1,5 @@
 import { EventEmitter } from "events";
+
 import { IMigration } from "../interfaces/IMigration";
 import { IMigratorOptions } from "../interfaces/IMigratorOptions";
 

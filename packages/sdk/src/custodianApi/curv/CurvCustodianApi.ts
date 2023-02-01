@@ -1,21 +1,22 @@
+import {
+  AuthTypes,
+  ICustodianTransactionLink,
+  IEIP1559TxParams,
+  ILegacyTXParams,
+  IMetamaskContractMetadata,
+  IRefreshTokenAuthDetails,
+  ITokenAuthDetails,
+  ITransactionDetails,
+} from "@metamask-institutional/types";
 import { EventEmitter } from "events";
+
 import { AccountHierarchyNode } from "../../classes/AccountHierarchyNode";
 import { NetworkMappings } from "../../classes/NetworkMappings";
 import { ICustodianApi } from "../../interfaces/ICustodianApi";
 import { IEthereumAccount } from "../../interfaces/IEthereumAccount";
 import { IEthereumAccountCustodianDetails } from "../../interfaces/IEthereumAccountCustodianDetails";
 import { IGasPrices } from "../../interfaces/IGasPrices";
-import {
-  AuthTypes,
-  ITokenAuthDetails,
-  IMetamaskContractMetadata,
-  ITransactionDetails,
-  IEIP1559TxParams,
-  ILegacyTXParams,
-  ICustodianTransactionLink,
-  IRefreshTokenAuthDetails,
-} from "@metamask-institutional/types";
-import { TypedMessage, MessageTypes } from "../../interfaces/ITypedMessage";
+import { MessageTypes, TypedMessage } from "../../interfaces/ITypedMessage";
 import { IJupiterEthereumAccountCustodianDetails } from "../jupiter/interfaces/IJupiterEthereumAccountCustodianDetails";
 
 export class CurvCustodianApi extends EventEmitter implements ICustodianApi {

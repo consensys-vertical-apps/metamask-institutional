@@ -1,4 +1,4 @@
-import { isHexString, addHexPrefix, toChecksumAddress } from "@ethereumjs/util";
+import { addHexPrefix, isHexString, toChecksumAddress } from "@ethereumjs/util";
 
 export function toChecksumHexAddress(address: string): string {
   if (!address) {

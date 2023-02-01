@@ -33,58 +33,42 @@ describe("AccountHierarchyNode", () => {
   describe("AccountHierarchyNode#findItemWithId", () => {
     it("Recursively traverse tree depth first looking for an ID, and return that node (and its children) (depth 1)", () => {
       const mockACHN = getMockAccountHierarchy();
-      const expectResultSerialized = JSON.stringify(
-        mockACHN.children[1].serialize()
-      );
+      const expectResultSerialized = JSON.stringify(mockACHN.children[1].serialize());
 
-      const result = mockACHN.findItemWithId(mockACHN.children[1].id || '');
+      const result = mockACHN.findItemWithId(mockACHN.children[1].id || "");
 
       expect(JSON.stringify(result)).toEqual(expectResultSerialized);
     });
     it("Recursively traverse tree depth first looking for an ID, and return that node (and its children) (depth 2)", () => {
       const mockACHN = getMockAccountHierarchy();
-      const expectResultSerialized = JSON.stringify(
-        mockACHN.children[1].children[0].serialize()
-      );
+      const expectResultSerialized = JSON.stringify(mockACHN.children[1].children[0].serialize());
 
-      const result = mockACHN.findItemWithId(
-        mockACHN.children[1].children[0].id || ''
-      );
+      const result = mockACHN.findItemWithId(mockACHN.children[1].children[0].id || "");
 
       expect(JSON.stringify(result)).toEqual(expectResultSerialized);
     });
     it("Recursively traverses tree depth first looking for an ID, and return that node (and its children) (depth 3)", () => {
       const mockACHN = getMockAccountHierarchy();
-      const expectResultSerialized = JSON.stringify(
-        mockACHN.children[1].children[0].children[0].serialize()
-      );
+      const expectResultSerialized = JSON.stringify(mockACHN.children[1].children[0].children[0].serialize());
 
-      const result = mockACHN.findItemWithId(
-        mockACHN.children[1].children[0].children[0].id || ''
-      );
+      const result = mockACHN.findItemWithId(mockACHN.children[1].children[0].children[0].id || "");
 
       expect(JSON.stringify(result)).toEqual(expectResultSerialized);
     });
     it("Recursively traverses tree depth first looking for an ID, and return that node (and its children) (alternate branch)", () => {
       const mockACHN = getMockAccountHierarchy();
-      const expectResultSerialized = JSON.stringify(
-        mockACHN.children[0].serialize()
-      );
+      const expectResultSerialized = JSON.stringify(mockACHN.children[0].serialize());
 
-      const result = mockACHN.findItemWithId(mockACHN.children[0].id || '');
+      const result = mockACHN.findItemWithId(mockACHN.children[0].id || "");
 
       expect(JSON.stringify(result)).toEqual(expectResultSerialized);
     });
 
     it("Recursively traverses tree depth first looking for an ID, and return that node (and its children) (alternate branch depth 2)", () => {
       const mockACHN = getMockAccountHierarchy();
-      const expectResultSerialized = JSON.stringify(
-        mockACHN.children[0].children[1].serialize()
-      );
+      const expectResultSerialized = JSON.stringify(mockACHN.children[0].children[1].serialize());
 
-      const result = mockACHN.findItemWithId(
-        mockACHN.children[0].children[1].id || ''
-      );
+      const result = mockACHN.findItemWithId(mockACHN.children[0].children[1].id || "");
 
       expect(JSON.stringify(result)).toEqual(expectResultSerialized);
     });

@@ -1,10 +1,11 @@
 import { ICustodianType } from "@metamask-institutional/types";
-import { CactusCustodyKeyring } from "./cactus/CactusCustodyKeyring";
-import { JupiterCustodyKeyring } from "./jupiter/JupiterCustodyKeyring";
-import { QredoCustodyKeyring } from "./qredo/QredoCustodyKeyring";
+
 import { BitgoCustodyKeyring } from "./bitgo/BitgoCustodyKeyring";
+import { CactusCustodyKeyring } from "./cactus/CactusCustodyKeyring";
 import { CurvCustodyKeyring } from "./curv/CurvCustodyKeyring";
 import { JsonRpcCustodyKeyring } from "./json-rpc/JsonRpcCustodyKeyring";
+import { JupiterCustodyKeyring } from "./jupiter/JupiterCustodyKeyring";
+import { QredoCustodyKeyring } from "./qredo/QredoCustodyKeyring";
 
 export const CUSTODIAN_TYPES: { [key: string]: ICustodianType } = {
   JUPITER: {

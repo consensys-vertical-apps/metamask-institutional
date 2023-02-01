@@ -1,8 +1,9 @@
 import fetchMock from "jest-fetch-mock";
-import { Compliance } from "./Compliance";
-import { COMPLIANCE_API_URL } from "./constants";
-import { ComplianceError } from "./ComplianceError";
+
 import * as Auth0 from "./Auth0";
+import { Compliance } from "./Compliance";
+import { ComplianceError } from "./ComplianceError";
+import { COMPLIANCE_API_URL } from "./constants";
 
 fetchMock.enableMocks();
 

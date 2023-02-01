@@ -1,4 +1,5 @@
 import fetchMock from "jest-fetch-mock";
+
 import factory from "./json-rpc-call";
 
 fetchMock.enableMocks();

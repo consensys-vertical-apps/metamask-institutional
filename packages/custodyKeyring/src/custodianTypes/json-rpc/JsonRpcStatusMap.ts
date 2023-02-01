@@ -1,4 +1,4 @@
-import { MetaMaskTransactionStatuses, ITransactionStatusMap } from "@metamask-institutional/types";
+import { ITransactionStatusMap, MetaMaskTransactionStatuses } from "@metamask-institutional/types";
 
 // FIXME: This is temporary until we can get the
 // status objects as defined in the JSON RPC spec

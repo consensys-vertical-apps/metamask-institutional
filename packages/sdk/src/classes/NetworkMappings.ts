@@ -1,4 +1,3 @@
-
 import { INetwork } from "../interfaces/INetwork";
 
 const defaultMappings: INetwork[] = [
@@ -39,11 +38,8 @@ export class NetworkMappings {
   populateMappings(newMappings: INetwork[]): void {
     this.mappings = this.mappings.concat(
       newMappings.filter(
-        (mapping) =>
-          !this.mappings.find(
-            (existingMapping) => mapping.chainId === existingMapping.chainId
-          )
-      )
+        mapping => !this.mappings.find(existingMapping => mapping.chainId === existingMapping.chainId),
+      ),
     );
   }
 
@@ -58,14 +54,12 @@ export class NetworkMappings {
   }
 
   getMappingByChainId(chainId: string): INetwork {
-    const network = this.mappings.find((mapping) => mapping.chainId == chainId);
+    const network = this.mappings.find(mapping => mapping.chainId == chainId);
     return network || this.unsupportedMapping(chainId);
   }
 
   getMappingByCustodianName(custodianName: string): INetwork {
-    const network = this.mappings.find(
-      (mapping) => mapping.custodianName == custodianName
-    );
+    const network = this.mappings.find(mapping => mapping.custodianName == custodianName);
     return network || this.unsupportedMapping(custodianName);
   }
 }

@@ -382,3 +382,7 @@ dist
 junit.xml
 test-report.xml
 
+# pipeline reports
+**/junit.xml
+# Test results
+test-results/
