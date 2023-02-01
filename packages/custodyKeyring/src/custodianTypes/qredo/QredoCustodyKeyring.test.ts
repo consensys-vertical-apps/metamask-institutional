@@ -1,9 +1,10 @@
+import { MMISDK, mmiSDKFactory } from "@metamask-institutional/sdk";
+import { IExtensionCustodianAccount, IRefreshTokenAuthDetails } from "@metamask-institutional/types";
 import crypto, { Hash } from "crypto";
 import { mocked } from "ts-jest/utils";
-import { IExtensionCustodianAccount, IRefreshTokenAuthDetails } from "@metamask-institutional/types";
-import { mmiSDKFactory, MMISDK } from "@metamask-institutional/sdk";
-import { QredoStatusMap } from "./QredoStatusMap";
+
 import { QredoCustodyKeyring } from "./QredoCustodyKeyring";
+import { QredoStatusMap } from "./QredoStatusMap";
 
 jest.mock("@metamask-institutional/sdk");
 

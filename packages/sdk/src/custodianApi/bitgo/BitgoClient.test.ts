@@ -1,7 +1,8 @@
 import fetchMock from "jest-fetch-mock";
-import { CustodianApiError } from "../../errors/CustodianApiError";
 
+import { CustodianApiError } from "../../errors/CustodianApiError";
 import { BitgoClient } from "./BitgoClient";
+
 fetchMock.enableMocks();
 
 describe("BitgoClient", () => {

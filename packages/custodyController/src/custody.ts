@@ -1,8 +1,9 @@
-import { ObservableStore } from "@metamask/obs-store";
 import { CUSTODIAN_TYPES } from "@metamask-institutional/custody-keyring";
 import { ITransactionStatusMap } from "@metamask-institutional/types";
-import { toChecksumHexAddress } from "./utils";
+import { ObservableStore } from "@metamask/obs-store";
+
 import { CustodyAccountDetails } from "./types";
+import { toChecksumHexAddress } from "./utils";
 
 /**
  * @typedef {Object} CustodyOptions

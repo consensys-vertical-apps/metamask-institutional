@@ -1,17 +1,18 @@
-import { EventEmitter } from "events";
+import { SimpleCache } from "@metamask-institutional/simplecache";
 import {
-  ICustodianTransactionLink,
-  ISignatureDetails,
   AuthTypes,
-  IRefreshTokenAuthDetails,
-  IMetamaskContractMetadata,
-  ITransactionDetails,
+  ICustodianTransactionLink,
   IEIP1559TxParams,
   ILegacyTXParams,
+  IMetamaskContractMetadata,
+  IRefreshTokenAuthDetails,
+  ISignatureDetails,
+  ITransactionDetails,
 } from "@metamask-institutional/types";
+import { EventEmitter } from "events";
+
 import { AccountHierarchyNode } from "../../classes/AccountHierarchyNode";
-import { SimpleCache } from "@metamask-institutional/simplecache";
-import { REFRESH_TOKEN_CHANGE_EVENT, INTERACTIVE_REPLACEMENT_TOKEN_CHANGE_EVENT } from "../../constants/constants";
+import { INTERACTIVE_REPLACEMENT_TOKEN_CHANGE_EVENT, REFRESH_TOKEN_CHANGE_EVENT } from "../../constants/constants";
 import { ICustodianApi } from "../../interfaces/ICustodianApi";
 import { IEthereumAccount } from "../../interfaces/IEthereumAccount";
 import { IEthereumAccountCustodianDetails } from "../../interfaces/IEthereumAccountCustodianDetails";

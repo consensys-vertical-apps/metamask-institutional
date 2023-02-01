@@ -1,13 +1,14 @@
+import { JupiterCustodianApi, MMISDK, mmiSDKFactory } from "@metamask-institutional/sdk";
 import {
-  ITransactionStatusMap,
+  AddressType,
   AuthDetails,
   AuthTypes,
-  AddressType,
   ICustodianTransactionLink,
+  ITransactionStatusMap,
 } from "@metamask-institutional/types";
-import { JupiterCustodianApi, mmiSDKFactory, MMISDK } from "@metamask-institutional/sdk";
-import { ICustodyKeyringOptions } from "../../interfaces/ICustodyKeyringOptions";
+
 import { CustodyKeyring } from "../../CustodyKeyring";
+import { ICustodyKeyringOptions } from "../../interfaces/ICustodyKeyringOptions";
 import { JupiterStatusMap } from "./JupiterStatusMap";
 
 export class JupiterCustodyKeyring extends CustodyKeyring {

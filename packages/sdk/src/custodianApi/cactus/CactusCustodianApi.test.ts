@@ -1,22 +1,22 @@
-import { CactusClient } from "./CactusClient";
+import { AuthTypes, ISignatureDetails, ITransactionDetails } from "@metamask-institutional/types";
 import { mocked } from "ts-jest/utils";
+
+import { MessageTypes, TypedMessage } from "../../interfaces/ITypedMessage";
+import { CactusClient } from "./CactusClient";
+import { CactusCustodianApi } from "./CactusCustodianApi";
+import { mockCactusCreateSignatureResponse } from "./mocks/mockCactusCreateSignatureResponse";
+import { mockCactusCreateTransactionResult } from "./mocks/mockCactusCreateTransactionResult";
+import { mockCactusGetChainIdsResponse } from "./mocks/mockCactusGetChainIdsResponse";
+import { mockCactusGetCustomerProofResponse } from "./mocks/mockCactusGetCustomerProofResponse";
+import { mockCactusGetEthereumAccountsResponse } from "./mocks/mockCactusGetEthereumAccountsResponse";
+import { mockCactusGetSignedMessageResponse } from "./mocks/mockCactusGetSignedMessageResponse";
+import { mockCactusGetTransactionsResult } from "./mocks/mockCactusGetTransactionsResult";
 
 jest.mock("./CactusClient");
 
 jest.mock("../../util/get-token-issuer", () => ({
   getTokenIssuer: jest.fn().mockReturnValue("some_website"),
 }));
-
-import { CactusCustodianApi } from "./CactusCustodianApi";
-import { ITransactionDetails, AuthTypes, ISignatureDetails } from "@metamask-institutional/types";
-import { MessageTypes, TypedMessage } from "../../interfaces/ITypedMessage";
-import { mockCactusGetEthereumAccountsResponse } from "./mocks/mockCactusGetEthereumAccountsResponse";
-import { mockCactusGetTransactionsResult } from "./mocks/mockCactusGetTransactionsResult";
-import { mockCactusCreateTransactionResult } from "./mocks/mockCactusCreateTransactionResult";
-import { mockCactusGetCustomerProofResponse } from "./mocks/mockCactusGetCustomerProofResponse";
-import { mockCactusCreateSignatureResponse } from "./mocks/mockCactusCreateSignatureResponse";
-import { mockCactusGetChainIdsResponse } from "./mocks/mockCactusGetChainIdsResponse";
-import { mockCactusGetSignedMessageResponse } from "./mocks/mockCactusGetSignedMessageResponse";
 
 describe("CactusCustodianApi", () => {
   let cactusCustodianApi: CactusCustodianApi;

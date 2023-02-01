@@ -1,8 +1,9 @@
-import { IWebsocketClientControllerOptions } from "./interfaces/IWebsocketClientControllerOptions";
 import { MmiConfigurationController } from "@metamask-institutional/custody-keyring";
 import { EventEmitter } from "events";
+
 import { WEBSOCKET_REQUEST_TIMEOUT } from "./constants";
 import { IRequestStreamResponse } from "./interfaces/IRequestStreamResponse";
+import { IWebsocketClientControllerOptions } from "./interfaces/IWebsocketClientControllerOptions";
 
 export class WebsocketClientController extends EventEmitter {
   public websocketCLientId: number;

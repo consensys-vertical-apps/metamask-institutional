@@ -1,5 +1,5 @@
-import { IEthereumAccountCustodianDetails } from "../interfaces/IEthereumAccountCustodianDetails";
 import { IEthereumAccount } from "../interfaces/IEthereumAccount";
+import { IEthereumAccountCustodianDetails } from "../interfaces/IEthereumAccountCustodianDetails";
 
 export class AccountHierarchyNode {
   type: string;
@@ -9,12 +9,7 @@ export class AccountHierarchyNode {
   account?: IEthereumAccount<IEthereumAccountCustodianDetails>;
   parent: AccountHierarchyNode;
 
-  constructor(
-    type: string,
-    id: string,
-    name: string,
-    parent: AccountHierarchyNode = null
-  ) {
+  constructor(type: string, id: string, name: string, parent: AccountHierarchyNode = null) {
     this.type = type;
     this.name = name;
     this.id = id;
@@ -32,7 +27,7 @@ export class AccountHierarchyNode {
   removeParents(): void {
     this.parent = undefined;
     if (this.children.length) {
-      this.children.forEach((child) => child.removeParents());
+      this.children.forEach(child => child.removeParents());
     }
   }
 
@@ -53,7 +48,7 @@ export class AccountHierarchyNode {
 
   // Recursively traverse depth first looking for ethereum accounts, and ultimately return an array of them
   getEthereumAccounts(
-    stack: IEthereumAccount<IEthereumAccountCustodianDetails>[] = []
+    stack: IEthereumAccount<IEthereumAccountCustodianDetails>[] = [],
   ): IEthereumAccount<IEthereumAccountCustodianDetails>[] {
     if (this.account) {
       stack.push(this.account);

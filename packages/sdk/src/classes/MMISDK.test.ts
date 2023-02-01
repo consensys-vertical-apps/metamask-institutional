@@ -1,8 +1,9 @@
-import { mocked } from "ts-jest/utils";
 import { AuthTypes } from "@metamask-institutional/types";
-import { MMISDK } from "./MMISDK";
-import { MessageTypes, TypedMessage } from "../interfaces/ITypedMessage";
+import { mocked } from "ts-jest/utils";
+
 import { JupiterCustodianApi } from "../custodianApi/jupiter/JupiterCustodianApi";
+import { MessageTypes, TypedMessage } from "../interfaces/ITypedMessage";
+import { MMISDK } from "./MMISDK";
 
 jest.mock("../custodianApi/jupiter/JupiterCustodianApi");
 

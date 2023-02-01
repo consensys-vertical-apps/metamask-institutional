@@ -1,10 +1,11 @@
-import fs from "fs";
-import { strict as assert } from "assert";
-import { cloneDeep } from "lodash";
 import { AuthTypes } from "@metamask-institutional/types";
+import { strict as assert } from "assert";
+import fs from "fs";
+import { cloneDeep } from "lodash";
+
 import { migrations as liveMigrations } from ".";
-import { Migrator } from "./migrator";
 import { CUSTODIAN_TYPES } from "..";
+import { Migrator } from "./migrator";
 
 const stubMigrations = [
   {

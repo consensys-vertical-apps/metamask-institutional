@@ -1,22 +1,23 @@
-import { EventEmitter } from "events";
-import { AccountHierarchyNode } from "../../classes/AccountHierarchyNode";
 import {
   AuthTypes,
-  ITokenAuthDetails,
-  IMetamaskContractMetadata,
-  ITransactionDetails,
+  ICustodianTransactionLink,
   IEIP1559TxParams,
   ILegacyTXParams,
-  ICustodianTransactionLink,
+  IMetamaskContractMetadata,
   IRefreshTokenAuthDetails,
   ISignatureDetails,
+  ITokenAuthDetails,
+  ITransactionDetails,
 } from "@metamask-institutional/types";
+import { EventEmitter } from "events";
+
+import { AccountHierarchyNode } from "../../classes/AccountHierarchyNode";
 import { ICustodianApi } from "../../interfaces/ICustodianApi";
 import { IEthereumAccount } from "../../interfaces/IEthereumAccount";
 import { MessageTypes, TypedMessage } from "../../interfaces/ITypedMessage";
+import { BitgoClient } from "./BitgoClient";
 import { DefaultBitgoCustodianDetails } from "./DefaultBitgoCustodianDetails";
 import { IBitgoEthereumAccountCustodianDetails } from "./interfaces/IBitgoEthereumAccountCustodianDetails";
-import { BitgoClient } from "./BitgoClient";
 
 const BITGO_ADDITIONAL_GAS = 100000;
 

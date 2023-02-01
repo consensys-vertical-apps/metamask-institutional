@@ -20,8 +20,7 @@ interface ICustodianAccountProto {
 
 // The type actually used in CustodyKeyring
 
-export interface ICustodianAccount<T extends AuthDetails = AuthDetails>
-  extends ICustodianAccountProto {
+export interface ICustodianAccount<T extends AuthDetails = AuthDetails> extends ICustodianAccountProto {
   authDetails: T;
 }
 
