@@ -58,8 +58,8 @@ export class JsonRpcCustodyKeyring extends CustodyKeyring {
 
       return transactionLink;
     } catch (e) {
-      console.error(`Unable to get transction link for ${txId}`);
-      console.error(e);
+      console.log(`Unable to get transction link for ${txId}`);
+      console.log(e);
       return null;
     }
   };

@@ -125,7 +125,7 @@ export class TransactionUpdateController extends EventEmitter {
             console.log("Custodian does not support customer proof");
           } else {
             this.captureException(e);
-            console.error(`Unable to obtain or verify customer proof for ${address}`, e);
+            console.log(`Unable to obtain or verify customer proof for ${address}`, e);
           }
 
           // Remove this address from customerProofAddresses
@@ -181,8 +181,8 @@ export class TransactionUpdateController extends EventEmitter {
       }
     } catch (e) {
       this.captureException(e);
-      console.error("Enabling polling because an exception occured while connecting to the websocket server");
-      console.error(e);
+      console.log("Enabling polling because an exception occured while connecting to the websocket server");
+      console.log(e);
       this.startPolling();
       return;
     }
@@ -260,11 +260,11 @@ export class TransactionUpdateController extends EventEmitter {
         await this.pollForTransaction(watchedTransaction);
       } catch (e) {
         this.captureException(e);
-        console.error(`Error fetching transaction ${watchedTransaction.custodianTransactionId}`, e);
+        console.log(`Error fetching transaction ${watchedTransaction.custodianTransactionId}`, e);
         watchedTransaction.attempts++;
 
         if (watchedTransaction.attempts >= POLL_TRANSACTION_RETRIES) {
-          console.error("Giving up on transaction", watchedTransaction.custodianTransactionId);
+          console.log("Giving up on transaction", watchedTransaction.custodianTransactionId);
           watchedTransaction.failed = true;
         }
       }

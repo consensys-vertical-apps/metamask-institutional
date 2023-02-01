@@ -45,7 +45,7 @@ export class Compliance extends EventEmitter {
 
   addReportToQueue({ reportId, address }: IComplianceReportInProgress): void {
     if (!reportId) {
-      console.error(`Tried to add an undefined reportId for ${address}`);
+      console.log(`Tried to add an undefined reportId for ${address}`);
       return;
     }
 
@@ -71,7 +71,7 @@ export class Compliance extends EventEmitter {
       try {
         progress = await this.getReportActivityData(reportInProgress.reportId);
       } catch (e) {
-        console.error(e.detail);
+        console.log(e.detail);
 
         // If it's a 500 error, give up
         if (e.detail.code === 500 || e.detail.code === 424 || e.detail.code === 404) {

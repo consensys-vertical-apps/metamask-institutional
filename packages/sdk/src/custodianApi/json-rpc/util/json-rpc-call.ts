@@ -31,7 +31,7 @@ export default function (jsonRpcEndpoint: string) {
       responseJson = await response.json();
 
       if ((responseJson as JsonRpcError).error) {
-        console.error("JSON-RPC <", method, requestId, responseJson, jsonRpcEndpoint);
+        console.log("JSON-RPC <", method, requestId, responseJson, jsonRpcEndpoint);
         throw new Error((responseJson as JsonRpcError).error.message);
       }
 
@@ -40,7 +40,7 @@ export default function (jsonRpcEndpoint: string) {
       // FIXME: Handle the various error types
       // TODO: How do we handle an expired token?
 
-      console.error("JSON-RPC <", method, requestId, e, jsonRpcEndpoint);
+      console.log("JSON-RPC <", method, requestId, e, jsonRpcEndpoint);
 
       throw e;
     }

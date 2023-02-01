@@ -18,7 +18,7 @@ export async function setDashboardCookie(
     await Promise.all(promiseArray);
     return true;
   } catch (e) {
-    console.error("Error setting dashboard cookie:", e.message, e.stack, e.response);
+    console.log("Error setting dashboard cookie:", e.message, e.stack, e.response);
     return false;
   }
 }
