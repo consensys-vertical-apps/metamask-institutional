@@ -30,21 +30,21 @@ describe("#Compliance", () => {
     jest.clearAllMocks();
   });
 
-  describe.skip("startPolling", () => {
+  describe("startPolling", () => {
     it("should set polling to true", () => {
       complianceClient.startPolling();
       expect(complianceClient.polling).toBe(true);
     });
   });
 
-  describe.skip("stopPolling", () => {
+  describe("stopPolling", () => {
     it("should set polling to false", () => {
       complianceClient.stopPolling();
       expect(complianceClient.polling).toBe(false);
     });
   });
 
-  describe.skip("poll", () => {
+  describe("poll", () => {
     it("should check for the activity of reports in progress and emit a progress event if it is not complete", async () => {
       complianceClient.startPolling();
 
@@ -294,7 +294,7 @@ describe("#Compliance", () => {
     });
   });
 
-  describe.skip("getRandomEthereumAddressFromDb", () => {
+  describe("getRandomEthereumAddressFromDb", () => {
     it("should GET /addresses/random", async () => {
       fetchMock.mockResponseOnce(JSON.stringify({ address: "0xtest" }));
 
@@ -323,7 +323,7 @@ describe("#Compliance", () => {
     });
   });
 
-  describe.skip("generateReportForAddress", () => {
+  describe("generateReportForAddress", () => {
     it("should GET /reports/aml/addresses/{address}", async () => {
       fetchMock.mockResponseOnce(JSON.stringify({ data: { reportId: "123" } }));
 
@@ -356,7 +356,7 @@ describe("#Compliance", () => {
     });
   });
 
-  describe.skip("getReportActivityData", () => {
+  describe("getReportActivityData", () => {
     it("should GET /reports/aml/{reportId}/activity", async () => {
       fetchMock.mockResponseOnce(JSON.stringify({ data: {} }));
 
@@ -389,7 +389,7 @@ describe("#Compliance", () => {
     });
   });
 
-  describe.skip("getHistoricalReportsForAddress", () => {
+  describe("getHistoricalReportsForAddress", () => {
     it("should GET /reports/aml/{reportId}/activity", async () => {
       fetchMock.mockResponseOnce(JSON.stringify({ data: {} }));
 
@@ -421,7 +421,7 @@ describe("#Compliance", () => {
     });
   });
 
-  describe.skip("getTenantSubdomain", () => {
+  describe("getTenantSubdomain", () => {
     it("should GET /tenants/me", async () => {
       fetchMock.mockResponseOnce(
         JSON.stringify({
