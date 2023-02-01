@@ -1,0 +1,18 @@
+{
+  "plugins": ["node-workspace"],
+  "bump-minor-pre-major": true,
+  "bump-patch-for-minor-pre-major": true,
+  "packages": {
+    "packages/configurationClient": {},
+    "packages/custodyController": {},
+    "packages/custodyKeyring": {},
+    "packages/institutionalFeatures": {},
+    "packages/portfolioDashboard": {},
+    "packages/rpcAllowlist": {},
+    "packages/sdk": {},
+    "packages/simpleCache": {},
+    "packages/transactionUpdate": {},
+    "packages/types": {},
+    "packages/websocketClient": {}
+  }
+}
