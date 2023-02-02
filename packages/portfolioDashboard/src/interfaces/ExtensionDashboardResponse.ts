@@ -3,7 +3,6 @@ export interface ExtensionDashboardResponseAccount {
   name: string;
   custodyType: string;
 }
-
 export interface ExtensionDashboardResponse {
   accounts: ExtensionDashboardResponseAccount[];
   networks: number[];
