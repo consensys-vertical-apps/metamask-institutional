@@ -33,7 +33,7 @@ import { ICustodyKeyringOptions } from "./interfaces/ICustodyKeyringOptions";
 import { ISerializedKeyring } from "./interfaces/ISerializedKeyring";
 import { migrations } from "./migrations";
 import { Migrator } from "./migrations/migrator";
-import { MmiConfigurationController } from "./mmiConfiguration";
+import { MmiConfigurationController } from "./MmiConfiguration";
 
 export type UniqueAccountDetails = {
   hash: string;
