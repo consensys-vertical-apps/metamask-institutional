@@ -1,6 +1,6 @@
 import { CUSTODIAN_TYPES } from "./custodianTypes";
 import { IMmiConfigurationControllerOptions } from "./interfaces/IMmiConfigurationControllerOptions";
-import { MmiConfigurationController } from "./mmiConfiguration";
+import { MmiConfigurationController } from "./MmiConfiguration";
 
 const missingV1Custodian = {
   apiBaseUrl: "",
