@@ -1,4 +1,4 @@
-name: generate-changelog
+name: Generate changelog
 on:
   workflow_dispatch:
   push:
