@@ -7,6 +7,13 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
+## [0.0.17](https://github.com/consensys-vertical-apps/metamask-institutional/compare/custody-keyring-v0.0.16...custody-keyring-v0.0.17) (2023-02-02)
+
+
+### Bug Fixes
+
+* **mmiconfiguration:** fixes the name of mmiconfiguration to start with uppercase letter ([#106](https://github.com/consensys-vertical-apps/metamask-institutional/issues/106)) ([772f9b2](https://github.com/consensys-vertical-apps/metamask-institutional/commit/772f9b28ea4e30279235b8de760e61f9cce88c36))
+
 ## [0.0.15](https://github.com/consensys-vertical-apps/metamask-institutional/compare/@metamask-institutional/custody-keyring@0.0.10...@metamask-institutional/custody-keyring@0.0.15) (2023-02-02)
 
 **Note:** Version bump only for package @metamask-institutional/custody-keyring
