@@ -32,6 +32,6 @@
     "jest-fetch-mock": "^3.0.3"
   },
   "dependencies": {
-    "@metamask-institutional/custody-keyring": "^0.0.16"
+    "@metamask-institutional/custody-keyring": "^0.0.17"
   }
 }

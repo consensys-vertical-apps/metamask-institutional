@@ -1943,6 +1943,20 @@
     npmlog "^6.0.2"
     write-file-atomic "^4.0.1"
 
+"@metamask-institutional/custody-keyring@^0.0.17":
+  version "0.0.17"
+  resolved "https://registry.yarnpkg.com/@metamask-institutional/custody-keyring/-/custody-keyring-0.0.17.tgz#5e34c1050c747826f78cfa73854c5b24daecc332"
+  integrity sha512-a7psoT9Dpnu6NBdNbUWjp1SzaC5WPnnln2uNsKr9yjsKFf4fczCM0o8GVyVCBVfoBSSfyMz6DpjG6n3kYgDOTg==
+  dependencies:
+    "@ethereumjs/tx" "^4.0.2"
+    "@ethereumjs/util" "^8.0.3"
+    "@metamask-institutional/configuration-client" "^1.0.4"
+    "@metamask-institutional/sdk" "^0.1.13"
+    "@metamask-institutional/types" "^1.0.1"
+    "@metamask/obs-store" "^7.0.0"
+    crypto "^1.0.1"
+    lodash "^4.17.21"
+
 "@metamask/obs-store@^7.0.0":
   version "7.0.0"
   resolved "https://registry.yarnpkg.com/@metamask/obs-store/-/obs-store-7.0.0.tgz#6cae5f28306bb3e83a381bc9ae22682316095bd3"
