@@ -5,21 +5,11 @@ export const getMockAccountHierarchy = (): AccountHierarchyNode => {
   rootNode.children = (() => {
     return [
       (() => {
-        const achn1 = new AccountHierarchyNode(
-          "first",
-          "1",
-          "first-name-1",
-          rootNode
-        );
+        const achn1 = new AccountHierarchyNode("first", "1", "first-name-1", rootNode);
         achn1.children = (() => {
           return [
             (() => {
-              const achn11 = new AccountHierarchyNode(
-                "second",
-                "11",
-                "second-name-1-1",
-                achn1
-              );
+              const achn11 = new AccountHierarchyNode("second", "11", "second-name-1-1", achn1);
               achn11.account = {
                 address: "0x11",
                 name: "second-name-1-1-account",
@@ -30,12 +20,7 @@ export const getMockAccountHierarchy = (): AccountHierarchyNode => {
               return achn11;
             })(),
             (() => {
-              const achn12 = new AccountHierarchyNode(
-                "second",
-                "12",
-                "second-name-1-2",
-                achn1
-              );
+              const achn12 = new AccountHierarchyNode("second", "12", "second-name-1-2", achn1);
               achn12.account = {
                 address: "0x12",
                 name: "second-name-1-2-account",
@@ -50,30 +35,15 @@ export const getMockAccountHierarchy = (): AccountHierarchyNode => {
         return achn1;
       })(),
       (() => {
-        const achn2 = new AccountHierarchyNode(
-          "first",
-          "2",
-          "first-name-2",
-          rootNode
-        );
+        const achn2 = new AccountHierarchyNode("first", "2", "first-name-2", rootNode);
         achn2.children = (() => {
           return [
             (() => {
-              const achn21 = new AccountHierarchyNode(
-                "second",
-                "21",
-                "second-name-2-1",
-                achn2
-              );
+              const achn21 = new AccountHierarchyNode("second", "21", "second-name-2-1", achn2);
               achn21.children = (() => {
                 return [
                   (() => {
-                    const achn211 = new AccountHierarchyNode(
-                      "third",
-                      "211",
-                      "second-name-2-1-1",
-                      achn21
-                    );
+                    const achn211 = new AccountHierarchyNode("third", "211", "second-name-2-1-1", achn21);
                     achn211.account = {
                       address: "0x211",
                       name: "third-name-2-1-1-account",

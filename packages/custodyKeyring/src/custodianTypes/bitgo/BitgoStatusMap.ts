@@ -1,4 +1,4 @@
-import { MetaMaskTransactionStatuses, ITransactionStatusMap } from "@metamask-institutional/types";
+import { ITransactionStatusMap, MetaMaskTransactionStatuses } from "@metamask-institutional/types";
 
 export const BitgoStatusMap: ITransactionStatusMap = {
   created: {

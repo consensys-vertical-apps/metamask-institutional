@@ -1,24 +1,25 @@
+import { SimpleCache } from "@metamask-institutional/simplecache";
+import {
+  AuthTypes,
+  ICustodianTransactionLink,
+  IEIP1559TxParams,
+  ILegacyTXParams,
+  IMetamaskContractMetadata,
+  IRefreshTokenAuthDetails,
+  ISignatureDetails,
+  ITransactionDetails,
+  TransactionStatus,
+} from "@metamask-institutional/types";
 import { EventEmitter } from "events";
-import { mapTransactionStatus } from "../../util/map-status";
+
 import { AccountHierarchyNode } from "../../classes/AccountHierarchyNode";
 import { NetworkMappings } from "../../classes/NetworkMappings";
-import { SimpleCache } from "@metamask-institutional/simplecache";
 import { REFRESH_TOKEN_CHANGE_EVENT } from "../../constants/constants";
 import { ICustodianApi } from "../../interfaces/ICustodianApi";
 import { IEthereumAccount } from "../../interfaces/IEthereumAccount";
-import {
-  ICustodianTransactionLink,
-  ISignatureDetails,
-  AuthTypes,
-  IRefreshTokenAuthDetails,
-  IMetamaskContractMetadata,
-  ITransactionDetails,
-  TransactionStatus,
-  IEIP1559TxParams,
-  ILegacyTXParams,
-} from "@metamask-institutional/types";
 import { MessageTypes, TypedMessage } from "../../interfaces/ITypedMessage";
 import { CreateTransactionMetadata } from "../../types/CreateTransactionMetadata";
+import { mapTransactionStatus } from "../../util/map-status";
 import { DefaultQredoCustodianDetails } from "./DefaultQredoCustodianDetails";
 import { IQredoEthereumAccountCustodianDetails } from "./interfaces/IQredoEthereumAccountCustodianDetails";
 import { qredoNetworkMappings } from "./qredo-network-mappings";

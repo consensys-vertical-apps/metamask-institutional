@@ -2,13 +2,13 @@
  * @typedef {Object} MMIPortfolioOptions
  * @property {Object} initState The initial controller state
  */
-
-import { ObservableStore } from "@metamask/obs-store";
 import { ConfigurationClient } from "@metamask-institutional/configuration-client";
-import { IMmiConfigurationControllerOptions } from "./interfaces/IMmiConfigurationControllerOptions";
-import { IConfiguration } from "./interfaces/IConfiguration";
-import { MMIConfiguration } from "./types/MMIConfiguration";
+import { ObservableStore } from "@metamask/obs-store";
+
 import { CUSTODIAN_TYPES } from "./custodianTypes";
+import { IConfiguration } from "./interfaces/IConfiguration";
+import { IMmiConfigurationControllerOptions } from "./interfaces/IMmiConfigurationControllerOptions";
+import { MMIConfiguration } from "./types/MMIConfiguration";
 
 /**
  * Background controller responsible for maintaining

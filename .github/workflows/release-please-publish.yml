@@ -1,0 +1,68 @@
+name: Generate changelog and publish to npmjs
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write # for checkout and tag
+  pull-requests: write # for comments
+  packages: write # for publish
+
+jobs:
+  release-please:
+    permissions:
+      contents: write
+    runs-on: ubuntu-latest
+    env:
+      NODE_AUTH_TOKEN: ${{ secrets.npm_token }} # set this token manually
+    steps:
+      - uses: google-github-actions/release-please-action@v3
+        id: release
+        with:
+          command: manifest
+          monorepo-tags: true
+          token: ${{ secrets.BUILD_SVC_PAT }}
+
+      - name: "Checkout" # Download code from the repository
+        if: ${{ steps.release.outputs.release_created }}
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0 # Checkout all branches and tags
+          ref: "${{ github.event.pull_request.base.ref }}"
+          token: ${{ secrets.BUILD_SVC_PAT }} # this is a PAT token generated with a personal user
+
+      # setup .npmrc using NODE_AUTH_TOKEN
+      - name: Setup .npmrc file for publish
+        if: ${{ steps.release.outputs.release_created }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          registry-url: "https://registry.npmjs.org"
+
+      - name: Configure Git User
+        if: ${{ steps.release.outputs.release_created }}
+        run: |
+          git config --global user.email "${GITHUB_ACTOR}"
+          git config --global user.name "${GITHUB_ACTOR}@users.noreply.github.com"
+
+      - name: Check if able to publish changes
+        if: ${{ steps.release.outputs.release_created }}
+        run: npm whoami # will throw and exit if npm is not ready to publish
+
+      - name: "Install dependencies"
+        if: ${{ steps.release.outputs.release_created }}
+        run: yarn install --immutable --immutable-cache --check-cache
+
+      - name: Build Packages for Release
+        if: ${{ steps.release.outputs.release_created }}
+        run: yarn build
+
+      - name: "Publish to npmJS"
+        if: ${{ steps.release.outputs.release_created }}
+        run: yarn run publish --yes
+
+        env:
+          NODE_AUTH_TOKEN: "${{secrets.npm_token}}"

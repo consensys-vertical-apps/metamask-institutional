@@ -1,6 +1,7 @@
 import { ITransactionStatus } from "@metamask-institutional/types";
-import { CustodyAccountDetails } from "./types";
+
 import { CustodyController } from "./custody";
+import { CustodyAccountDetails } from "./types";
 
 describe("CustodyController", function () {
   const INIT_STATE = {

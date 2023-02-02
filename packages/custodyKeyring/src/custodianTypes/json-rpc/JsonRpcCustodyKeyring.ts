@@ -1,11 +1,12 @@
+import { JsonRpcCustodianApi, MMISDK, mmiSDKFactory } from "@metamask-institutional/sdk";
 import {
-  ITransactionStatusMap,
-  AuthTypes,
   AddressType,
-  IRefreshTokenAuthDetails,
+  AuthTypes,
   ICustodianTransactionLink,
+  IRefreshTokenAuthDetails,
+  ITransactionStatusMap,
 } from "@metamask-institutional/types";
-import { mmiSDKFactory, MMISDK, JsonRpcCustodianApi } from "@metamask-institutional/sdk";
+
 import { CustodyKeyring } from "../../CustodyKeyring";
 import { ICustodyKeyringOptions } from "../../interfaces/ICustodyKeyringOptions";
 import { JsonRpcStatusMap } from "./JsonRpcStatusMap";

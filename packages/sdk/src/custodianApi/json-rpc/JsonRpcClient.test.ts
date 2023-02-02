@@ -1,5 +1,15 @@
+import { SimpleCache } from "@metamask-institutional/simplecache";
+import fetchMock from "jest-fetch-mock";
 import { mocked } from "ts-jest/utils";
+
 import { INTERACTIVE_REPLACEMENT_TOKEN_CHANGE_EVENT } from "../../constants/constants";
+import { JsonRpcClient } from "./JsonRpcClient";
+import { mockJsonRpcCreateTransactionPayload } from "./mocks/mockJsonRpcCreateTransactionPayload";
+import { mockJsonRpcGetSignedMessageByIdPayload } from "./mocks/mockJsonRpcGetSignedMessageByIdPayload";
+import { mockJsonRpcGetTransactionByIdPayload } from "./mocks/mockJsonRpcGetTransactionByIdPayload";
+import { mockJsonRpcGetTransactionLinkPayload } from "./mocks/mockJsonRpcGetTransactionLinkPayload";
+import { mockJsonRpcSignPayload } from "./mocks/mockJsonRpcSignPayload";
+import { mockJsonRpcSignTypedDataPayload } from "./mocks/mockJsonRpcSignTypedDataPayload";
 
 // So that we can access the method returned by the call factory
 const jsonRpcCall = jest.fn().mockImplementation((_method: string, _params: any, _accessToken: string) => {
@@ -14,18 +24,8 @@ jest.mock("./util/json-rpc-call", () => ({
   default: (_url: string) => jsonRpcCall,
 }));
 
-import { SimpleCache } from "@metamask-institutional/simplecache";
-
 jest.mock("@metamask-institutional/simplecache");
 
-import { JsonRpcClient } from "./JsonRpcClient";
-import fetchMock from "jest-fetch-mock";
-import { mockJsonRpcCreateTransactionPayload } from "./mocks/mockJsonRpcCreateTransactionPayload";
-import { mockJsonRpcSignPayload } from "./mocks/mockJsonRpcSignPayload";
-import { mockJsonRpcSignTypedDataPayload } from "./mocks/mockJsonRpcSignTypedDataPayload";
-import { mockJsonRpcGetSignedMessageByIdPayload } from "./mocks/mockJsonRpcGetSignedMessageByIdPayload";
-import { mockJsonRpcGetTransactionByIdPayload } from "./mocks/mockJsonRpcGetTransactionByIdPayload";
-import { mockJsonRpcGetTransactionLinkPayload } from "./mocks/mockJsonRpcGetTransactionLinkPayload";
 fetchMock.enableMocks();
 
 describe("JsonRpcClient", () => {

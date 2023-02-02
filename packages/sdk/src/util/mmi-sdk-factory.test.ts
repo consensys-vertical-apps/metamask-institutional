@@ -1,8 +1,9 @@
 import { AuthTypes } from "@metamask-institutional/types";
-import { mmiSDKFactory } from "./mmi-sdk-factory";
-import { JupiterCustodianApi } from "../custodianApi/jupiter/JupiterCustodianApi";
+
 import { MMISDK } from "../classes/MMISDK";
 import { DEFAULT_MAX_CACHE_AGE } from "../constants/constants";
+import { JupiterCustodianApi } from "../custodianApi/jupiter/JupiterCustodianApi";
+import { mmiSDKFactory } from "./mmi-sdk-factory";
 
 jest.mock("../custodianApi/jupiter/JupiterCustodianApi");
 

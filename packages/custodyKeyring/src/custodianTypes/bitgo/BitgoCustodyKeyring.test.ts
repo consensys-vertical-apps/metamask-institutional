@@ -1,10 +1,11 @@
+import { MMISDK, mmiSDKFactory } from "@metamask-institutional/sdk";
+import { IExtensionCustodianAccount, IRefreshTokenAuthDetails } from "@metamask-institutional/types";
 import crypto, { Hash } from "crypto";
 import { mocked } from "ts-jest/utils";
-import { IExtensionCustodianAccount, IRefreshTokenAuthDetails } from "@metamask-institutional/types";
-import { mmiSDKFactory, MMISDK } from "@metamask-institutional/sdk";
 
-import { BitgoStatusMap } from "./BitgoStatusMap";
 import { BitgoCustodyKeyring } from "./BitgoCustodyKeyring";
+import { BitgoStatusMap } from "./BitgoStatusMap";
+
 jest.mock("@metamask-institutional/sdk");
 
 const mockedMmiSdkFactory = mocked(mmiSDKFactory, true);

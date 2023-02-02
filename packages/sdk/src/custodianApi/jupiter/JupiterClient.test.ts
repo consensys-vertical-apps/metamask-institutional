@@ -1,8 +1,9 @@
 import fetchMock from "jest-fetch-mock";
+
 import { CustodianApiError } from "../../errors/CustodianApiError";
 import { MessageTypes, TypedMessage } from "../../interfaces/ITypedMessage";
-
 import { JupiterClient } from "./JupiterClient";
+
 fetchMock.enableMocks();
 
 describe("JupiterClient", () => {
