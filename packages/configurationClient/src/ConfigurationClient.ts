@@ -13,7 +13,7 @@ export class ConfigurationClient {
       const configData = await response.json();
       return configData as IConfiguration;
     } catch (e) {
-      console.error(`Error fetching MMI configuration`);
+      console.log(`Error fetching MMI configuration`);
       throw new Error(e);
     }
   }
