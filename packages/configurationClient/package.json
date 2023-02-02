@@ -30,5 +30,8 @@
   "gitHead": "62ed7639b9145658a4fa1273e35e99d300acdc99",
   "devDependencies": {
     "jest-fetch-mock": "^3.0.3"
+  },
+  "dependencies": {
+    "@metamask-institutional/custody-keyring": "^0.0.16"
   }
 }
