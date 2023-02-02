@@ -3,29 +3,33 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-### Dependencies
+## [0.0.15](https://github.com/consensys-vertical-apps/metamask-institutional/compare/@metamask-institutional/custody-keyring@0.0.10...@metamask-institutional/custody-keyring@0.0.15) (2023-02-02)
 
-* The following workspace dependencies were updated
-  * dependencies
-    * @metamask-institutional/configuration-client bumped from ^0.1.8 to ^1.0.0
+**Note:** Version bump only for package @metamask-institutional/custody-keyring
 
 ### Dependencies
 
-* The following workspace dependencies were updated
-  * dependencies
-    * @metamask-institutional/configuration-client bumped from ^1.0.0 to ^1.0.1
+- The following workspace dependencies were updated
+  - dependencies
+    - @metamask-institutional/configuration-client bumped from ^0.1.8 to ^1.0.0
 
 ### Dependencies
 
-* The following workspace dependencies were updated
-  * dependencies
-    * @metamask-institutional/configuration-client bumped from ^1.0.1 to ^1.0.2
+- The following workspace dependencies were updated
+  - dependencies
+    - @metamask-institutional/configuration-client bumped from ^1.0.0 to ^1.0.1
 
 ### Dependencies
 
-* The following workspace dependencies were updated
-  * dependencies
-    * @metamask-institutional/configuration-client bumped from ^1.0.2 to ^1.0.3
+- The following workspace dependencies were updated
+  - dependencies
+    - @metamask-institutional/configuration-client bumped from ^1.0.1 to ^1.0.2
+
+### Dependencies
+
+- The following workspace dependencies were updated
+  - dependencies
+    - @metamask-institutional/configuration-client bumped from ^1.0.2 to ^1.0.3
 
 ## [0.0.10](https://github.com/consensys-vertical-apps/metamask-institutional/compare/@metamask-institutional/custody-keyring@0.0.8...@metamask-institutional/custody-keyring@0.0.10) (2023-02-01)
 
