@@ -37,14 +37,12 @@ describe("selectors", () => {
       },
     },
   };
-
   describe("getMmiPortfolioEnabled", () => {
     it("extracts a state property", () => {
       const result = getMmiPortfolioEnabled(state);
       expect(result).toEqual(state.metamask.mmiConfiguration.portfolio.enabled);
     });
   });
-
   describe("getMmiPortfolioUrl", () => {
     it("extracts a state property", () => {
       const result = getMmiPortfolioUrl(state);
