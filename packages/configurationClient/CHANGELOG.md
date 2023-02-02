@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.4](https://github.com/consensys-vertical-apps/metamask-institutional/compare/configuration-client-v1.0.3...configuration-client-v1.0.4) (2023-02-02)
+
+
+### Bug Fixes
+
+* **configurationclient:** fixing changelog generator ([#100](https://github.com/consensys-vertical-apps/metamask-institutional/issues/100)) ([d3e4b3f](https://github.com/consensys-vertical-apps/metamask-institutional/commit/d3e4b3f0fd3cedf82186bf5d470719c653c19548))
+
 ## [1.0.4](https://github.com/consensys-vertical-apps/metamask-institutional/compare/@metamask-institutional/configuration-client@0.1.8...@metamask-institutional/configuration-client@1.0.4) (2023-02-02)
 
 ### Bug Fixes
