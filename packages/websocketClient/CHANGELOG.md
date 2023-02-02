@@ -7,19 +7,35 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 * The following workspace dependencies were updated
   * dependencies
-    * @metamask-institutional/custody-keyring bumped from ^0.0.10 to ^0.0.11
+    * @metamask-institutional/custody-keyring bumped from ^0.0.15 to ^0.0.16
+
+## [0.1.12](https://github.com/consensys-vertical-apps/metamask-institutional/compare/@metamask-institutional/websocket-client@0.1.7...@metamask-institutional/websocket-client@0.1.12) (2023-02-02)
+
+**Note:** Version bump only for package @metamask-institutional/websocket-client
 
 ### Dependencies
 
-* The following workspace dependencies were updated
-  * dependencies
-    * @metamask-institutional/custody-keyring bumped from ^0.0.11 to ^0.0.12
+- The following workspace dependencies were updated
+  - dependencies
+    - @metamask-institutional/custody-keyring bumped from ^0.0.10 to ^0.0.11
 
 ### Dependencies
 
-* The following workspace dependencies were updated
-  * dependencies
-    * @metamask-institutional/custody-keyring bumped from ^0.0.12 to ^0.0.13
+- The following workspace dependencies were updated
+  - dependencies
+    - @metamask-institutional/custody-keyring bumped from ^0.0.11 to ^0.0.12
+
+### Dependencies
+
+- The following workspace dependencies were updated
+  - dependencies
+    - @metamask-institutional/custody-keyring bumped from ^0.0.12 to ^0.0.13
+
+### Dependencies
+
+- The following workspace dependencies were updated
+  - dependencies
+    - @metamask-institutional/custody-keyring bumped from ^0.0.13 to ^0.0.14
 
 ## [0.1.7](https://github.com/consensys-vertical-apps/metamask-institutional/compare/@metamask-institutional/websocket-client@0.1.5...@metamask-institutional/websocket-client@0.1.7) (2023-02-01)
 

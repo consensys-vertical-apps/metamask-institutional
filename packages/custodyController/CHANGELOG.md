@@ -7,19 +7,35 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 * The following workspace dependencies were updated
   * dependencies
-    * @metamask-institutional/custody-keyring bumped from ^0.0.10 to ^0.0.11
+    * @metamask-institutional/custody-keyring bumped from ^0.0.15 to ^0.0.16
+
+## [0.1.13](https://github.com/consensys-vertical-apps/metamask-institutional/compare/@metamask-institutional/custody-controller@0.1.8...@metamask-institutional/custody-controller@0.1.13) (2023-02-02)
+
+**Note:** Version bump only for package @metamask-institutional/custody-controller
 
 ### Dependencies
 
-* The following workspace dependencies were updated
-  * dependencies
-    * @metamask-institutional/custody-keyring bumped from ^0.0.11 to ^0.0.12
+- The following workspace dependencies were updated
+  - dependencies
+    - @metamask-institutional/custody-keyring bumped from ^0.0.10 to ^0.0.11
 
 ### Dependencies
 
-* The following workspace dependencies were updated
-  * dependencies
-    * @metamask-institutional/custody-keyring bumped from ^0.0.12 to ^0.0.13
+- The following workspace dependencies were updated
+  - dependencies
+    - @metamask-institutional/custody-keyring bumped from ^0.0.11 to ^0.0.12
+
+### Dependencies
+
+- The following workspace dependencies were updated
+  - dependencies
+    - @metamask-institutional/custody-keyring bumped from ^0.0.12 to ^0.0.13
+
+### Dependencies
+
+- The following workspace dependencies were updated
+  - dependencies
+    - @metamask-institutional/custody-keyring bumped from ^0.0.13 to ^0.0.14
 
 ## [0.1.8](https://github.com/consensys-vertical-apps/metamask-institutional/compare/@metamask-institutional/custody-controller@0.1.6...@metamask-institutional/custody-controller@0.1.8) (2023-02-01)
 

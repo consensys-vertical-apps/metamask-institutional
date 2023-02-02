@@ -50,7 +50,7 @@ jobs:
         run: yarn build
 
       - name: "Publish to npmJS"
-        run: yarn run publish --yes
+        run: yarn run publish from-package --yes
 
         env:
           NODE_AUTH_TOKEN: "${{secrets.npm_token}}"
