@@ -98,7 +98,7 @@ export class WebsocketClientController extends EventEmitter {
       !msg.error.requestId /* dont kill the connection for response, because we might handle errors cleverly */
     ) {
       this.captureException(new Error(msg.error));
-      console.error(msg.error);
+      console.log(msg.error);
 
       this.onFailure();
     }
@@ -141,7 +141,7 @@ export class WebsocketClientController extends EventEmitter {
   // if an error occurs, first an event with the name 'error' is sent here to the WS object,
   // and then the CloseEvent is sent to indicate the reason for the connection closing.
   public onError(event: any): void {
-    console.error(`[error] ${JSON.stringify(event)}`);
+    console.log(`[error] ${JSON.stringify(event)}`);
 
     this.ws.close();
   }

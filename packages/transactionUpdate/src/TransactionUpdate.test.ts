@@ -197,7 +197,7 @@ describe("TransactionUpdateController", () => {
         tearDown: jest.fn(),
         handleUpdateEvent: jest.fn(),
         mmiConfigurationController: mockMmiConfigurationController,
-        captureException: jest.fn().mockImplementation(e => console.error(e)),
+        captureException: jest.fn().mockImplementation(e => console.log(e)),
         isWSConnectionOpen: false,
         websocketClient: {
           connectWS: jest.fn(),

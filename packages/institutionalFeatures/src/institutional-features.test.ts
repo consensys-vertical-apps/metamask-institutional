@@ -1,5 +1,5 @@
-import { Compliance } from "./Compliance";
 import { Auth0 } from "./Auth0";
+import { Compliance } from "./Compliance";
 import { InstitutionalFeaturesController } from "./institutional-features";
 
 jest.mock("@auth0/auth0-spa-js", () => {
@@ -21,7 +21,7 @@ Compliance.prototype.generateReportForAddress = jest.fn(async address => ({
 }));
 
 describe("InstitutionalFeaturesController", function () {
-  (<any>global).chrome = {
+  global.chrome = {
     runtime: {
       id: "extensionId",
     },
