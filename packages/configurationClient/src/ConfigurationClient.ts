@@ -1,5 +1,7 @@
+import { IJsonRpcCustodian } from "@metamask-institutional/custody-keyring";
+
 import { MMI_CONFIGURATION_API_URL } from "./constants";
-import { IConfiguration, IJsonRpcCustodian } from "./types";
+import { IConfiguration } from "./types";
 
 export class ConfigurationClient {
   constructor(public configurationApiUrl: string = MMI_CONFIGURATION_API_URL) {}
