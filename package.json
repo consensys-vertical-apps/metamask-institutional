@@ -11,7 +11,7 @@
     "packages/*"
   ],
   "scripts": {
-    "prepare": "husky install",
+    "prepare": "node ./scripts/prepare.ts",
     "updated": "lerna updated",
     "test": "lerna run test --stream",
     "test:watch": "jest --watchAll",
