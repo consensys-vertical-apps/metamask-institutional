@@ -1,4 +1,4 @@
-name: Publish to npmJS
+name: Publish to npmjs
 
 on:
   # When Release Pull Request is merged
@@ -14,7 +14,7 @@ permissions:
 
 jobs:
   publish-npm:
-    if: github.event.pull_request.merged == true && ${{ contains(github.event.head_commit.message, "release main") }}
+    if: github.event.pull_request.merged == true && ${{ contains(github.event.head_commit.message, 'release main') }}
     permissions:
       contents: write
     runs-on: ubuntu-latest
