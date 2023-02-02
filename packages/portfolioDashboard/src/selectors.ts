@@ -1,5 +1,3 @@
-// Exports extension selectors
-
 export function getMmiPortfolioEnabled(state): boolean {
   return state.metamask.mmiConfiguration?.portfolio?.enabled;
 }
