@@ -183,12 +183,12 @@ export class WebsocketClientController extends EventEmitter {
     }, this.retryDelay);
   }
 
-  public sendAcknowledgement(updateId: string): void {
+  public sendAcknowledgement(traceId: string): void {
     this.ws.send(
       JSON.stringify({
-        event: "custodian_update_acknowledement",
+        event: "custodian_update_acknowledgement",
         data: {
-          updateId,
+          traceId,
         },
       }),
     );
