@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.0](https://github.com/consensys-vertical-apps/metamask-institutional/compare/portfolio-dashboard-v1.0.0...portfolio-dashboard-v1.1.0) (2023-02-07)
+
+
+### Features
+
+* **portfolio-dashboard:** moving pd logic from extension to monorepo ([#117](https://github.com/consensys-vertical-apps/metamask-institutional/issues/117)) ([317d476](https://github.com/consensys-vertical-apps/metamask-institutional/commit/317d47681b5c31fa30c626a8549d5faeda14b9e9))
+
 ## 1.0.0 (2023-02-02)
 
 
