@@ -37,5 +37,5 @@ export async function handleMmiPortfolio({
     },
   };
 
-  setDashboardCookie(mmiDashboardData, cookieSetUrls);
+  await setDashboardCookie(mmiDashboardData, cookieSetUrls);
 }
