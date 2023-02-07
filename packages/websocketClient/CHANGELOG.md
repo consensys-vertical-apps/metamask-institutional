@@ -15,6 +15,13 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
   * dependencies
     * @metamask-institutional/custody-keyring bumped from ^0.0.16 to ^0.0.17
 
+## [0.1.15](https://github.com/consensys-vertical-apps/metamask-institutional/compare/websocket-client-v0.1.14...websocket-client-v0.1.15) (2023-02-07)
+
+
+### Bug Fixes
+
+* **websocket:** fixes a spelling error ([#109](https://github.com/consensys-vertical-apps/metamask-institutional/issues/109)) ([b057d48](https://github.com/consensys-vertical-apps/metamask-institutional/commit/b057d4890a4822c4bbcd4a9c5559b6731f6e3755))
+
 ## [0.1.12](https://github.com/consensys-vertical-apps/metamask-institutional/compare/@metamask-institutional/websocket-client@0.1.7...@metamask-institutional/websocket-client@0.1.12) (2023-02-02)
 
 **Note:** Version bump only for package @metamask-institutional/websocket-client

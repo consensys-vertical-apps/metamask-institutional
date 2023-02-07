@@ -1,6 +1,6 @@
 {
   "name": "@metamask-institutional/transaction-update",
-  "version": "0.1.11",
+  "version": "0.1.12",
   "description": "This package will export transactionUpdate, responsible for handling transaction updates",
   "author": "Antonio Regadas <apregadas@gmail.com>",
   "homepage": "https://github.com/consensys-vertical-apps/metamask-institutional#readme",
@@ -32,7 +32,7 @@
     "@metamask-institutional/custody-keyring": "^0.0.17",
     "@metamask-institutional/sdk": "^0.1.13",
     "@metamask-institutional/types": "^1.0.1",
-    "@metamask-institutional/websocket-client": "^0.1.14",
+    "@metamask-institutional/websocket-client": "^0.1.15",
     "@metamask/obs-store": "^7.0.0"
   },
   "devDependencies": {
