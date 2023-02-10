@@ -52,7 +52,6 @@ Alternatively, another way to install dependencies is by going to the root of a 
 ```javascript
 cd packages/types
 $ yarn add react
-
 ```
 
 ## Create new packages
