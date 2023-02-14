@@ -15,6 +15,13 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
   * dependencies
     * @metamask-institutional/custody-keyring bumped from ^0.0.16 to ^0.0.17
 
+## [0.2.0](https://github.com/consensys-vertical-apps/metamask-institutional/compare/custody-controller-v0.1.15...custody-controller-v0.2.0) (2023-02-14)
+
+
+### Features
+
+* **custody-controller:** added handleMmiCheckIfTokenIsPresent method ([#121](https://github.com/consensys-vertical-apps/metamask-institutional/issues/121)) ([3523e1d](https://github.com/consensys-vertical-apps/metamask-institutional/commit/3523e1d395f5082f396e70cb12f9f2e0ba617aa1))
+
 ## [0.1.13](https://github.com/consensys-vertical-apps/metamask-institutional/compare/@metamask-institutional/custody-controller@0.1.8...@metamask-institutional/custody-controller@0.1.13) (2023-02-02)
 
 **Note:** Version bump only for package @metamask-institutional/custody-controller
