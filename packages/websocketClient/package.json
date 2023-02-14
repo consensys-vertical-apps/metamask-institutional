@@ -32,6 +32,6 @@
     "@metamask-institutional/custody-keyring": "^0.0.17",
     "@metamask-institutional/sdk": "^0.1.13",
     "@metamask-institutional/types": "^1.0.1",
-    "mock-socket": "^9.1.5"
+    "mock-socket": "^9.2.0"
   }
 }
