@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.12](https://github.com/consensys-vertical-apps/metamask-institutional/compare/sdk-v0.1.11...sdk-v0.1.12) (2023-02-15)
+
+
+### Bug Fixes
+
+* **sdk:** fetch is not working as axios so we moved our logic outside catch ([#140](https://github.com/consensys-vertical-apps/metamask-institutional/issues/140)) ([b9391aa](https://github.com/consensys-vertical-apps/metamask-institutional/commit/b9391aa2ea24b9e80b2e555253b165ad60f468d4))
+
 ## [0.1.13](https://github.com/consensys-vertical-apps/metamask-institutional/compare/@metamask-institutional/sdk@0.1.12...@metamask-institutional/sdk@0.1.13) (2023-02-02)
 
 **Note:** Version bump only for package @metamask-institutional/sdk
