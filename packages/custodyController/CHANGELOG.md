@@ -15,6 +15,13 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
   * dependencies
     * @metamask-institutional/custody-keyring bumped from ^0.0.16 to ^0.0.17
 
+## [0.2.1](https://github.com/consensys-vertical-apps/metamask-institutional/compare/custody-controller-v0.2.0...custody-controller-v0.2.1) (2023-02-15)
+
+
+### Bug Fixes
+
+* **custody-controller:** fixed handleMmiCheckIfTokenIsPresent errors ([#136](https://github.com/consensys-vertical-apps/metamask-institutional/issues/136)) ([31c5227](https://github.com/consensys-vertical-apps/metamask-institutional/commit/31c5227b9ba1a6c55d337204f0f56dc209ba2fba))
+
 ## [0.2.0](https://github.com/consensys-vertical-apps/metamask-institutional/compare/custody-controller-v0.1.15...custody-controller-v0.2.0) (2023-02-14)
 
 
