@@ -1,6 +1,6 @@
 {
   "name": "@metamask-institutional/sdk",
-  "version": "0.1.13",
+  "version": "0.1.12",
   "description": "The MMISDK, is a collection of custodian API clients, it allows for interaction between Keyring and their APIs.",
   "author": "Antonio Regadas <apregadas@gmail.com>",
   "homepage": "https://github.com/consensys-vertical-apps/metamask-institutional#readme",
