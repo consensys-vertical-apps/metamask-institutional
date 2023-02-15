@@ -78,6 +78,22 @@ export class JsonRpcClient extends EventEmitter {
         credentials: "same-origin", // this is the default value for "withCredentials" in the Fetch API
       });
 
+      if (response?.status === 401) {
+        const url = response?.url;
+        const oldRefreshToken = this.refreshToken;
+        const hashedToken = crypto
+          .createHash("sha256")
+          .update(oldRefreshToken + url)
+          .digest("hex");
+
+        this.emit(INTERACTIVE_REPLACEMENT_TOKEN_CHANGE_EVENT, {
+          url,
+          oldRefreshToken: hashedToken,
+        });
+
+        throw new Error("Custodian session expired");
+      }
+
       const responseJson = await response.json();
 
       this.cacheAge = responseJson.expires_in;
@@ -104,22 +120,6 @@ export class JsonRpcClient extends EventEmitter {
 
       return responseJson.access_token;
     } catch (e) {
-      if (e.response?.status === 401) {
-        const url = e.response?.data?.url;
-        const oldRefreshToken = this.refreshToken;
-        const hashedToken = crypto
-          .createHash("sha256")
-          .update(oldRefreshToken + url)
-          .digest("hex");
-
-        this.emit(INTERACTIVE_REPLACEMENT_TOKEN_CHANGE_EVENT, {
-          url,
-          oldRefreshToken: hashedToken,
-        });
-
-        throw new Error("Custodian session expired");
-      }
-
       // TODO: More sophisticated error handling
       // It will really depend on what custodians actually implement
       throw new Error(e);
