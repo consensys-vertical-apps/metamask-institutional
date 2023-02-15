@@ -173,27 +173,19 @@ export class CustodyController {
   async handleMmiCheckIfTokenIsPresent({
     token,
     apiUrl,
-    getUnlockPromise,
-    addKeyringIfNotExists,
+    keyring,
   }: {
     token: string;
     apiUrl: string;
-    getUnlockPromise: (arg0: boolean) => Promise<boolean>;
-    addKeyringIfNotExists: (arg0: string) => any;
+    keyring: any;
   }): Promise<boolean> {
     // FIXME: we are not currently storing environment (aka custodian name) in the keyring accountsDetails
     // We should be doing this and comparing environment instead of apiUrl
     // But this would require migrations
     // See MMI-2119
 
-    // This can only work if the extension is unlocked
-    await getUnlockPromise(true);
-
-    const custodyType = "Custody - JSONRPC"; // Only JSONRPC is supported for now
-
-    const keyring = await addKeyringIfNotExists(custodyType);
-
     const accounts = await keyring.getAccounts();
+
     for (const address of accounts) {
       const accountDetails = keyring.getAccountDetails(address);
 
