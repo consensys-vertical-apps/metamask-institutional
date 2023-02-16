@@ -3,7 +3,7 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-## [0.1.14](https://github.com/consensys-vertical-apps/metamask-institutional/compare/sdk-v0.1.11...sdk-v0.1.12) (2023-02-15)
+## [0.1.14](https://github.com/consensys-vertical-apps/metamask-institutional/compare/sdk-v0.1.13...sdk-v0.1.14) (2023-02-15)
 
 ### Bug Fixes
 
