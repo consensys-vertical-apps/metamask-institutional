@@ -37,6 +37,12 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
   * dependencies
     * @metamask-institutional/websocket-client bumped from ^0.1.16 to ^0.1.17
 
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @metamask-institutional/websocket-client bumped from ^0.1.17 to ^0.1.18
+
 ## [0.1.15](https://github.com/consensys-vertical-apps/metamask-institutional/compare/transaction-update-v0.1.14...transaction-update-v0.1.15) (2023-02-17)
 
 
