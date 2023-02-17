@@ -37,6 +37,13 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
   * dependencies
     * @metamask-institutional/websocket-client bumped from ^0.1.16 to ^0.1.17
 
+## [0.1.15](https://github.com/consensys-vertical-apps/metamask-institutional/compare/transaction-update-v0.1.14...transaction-update-v0.1.15) (2023-02-17)
+
+
+### Bug Fixes
+
+* **transactionupdate:** fix console log in transactionUpdate ([#146](https://github.com/consensys-vertical-apps/metamask-institutional/issues/146)) ([8b1c752](https://github.com/consensys-vertical-apps/metamask-institutional/commit/8b1c752639d4fc09a5874ede6388d0e2570a14b1))
+
 ## [0.1.9](https://github.com/consensys-vertical-apps/metamask-institutional/compare/@metamask-institutional/transaction-update@0.1.4...@metamask-institutional/transaction-update@0.1.9) (2023-02-02)
 
 **Note:** Version bump only for package @metamask-institutional/transaction-update
