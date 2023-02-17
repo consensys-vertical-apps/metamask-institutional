@@ -164,9 +164,10 @@ export class TransactionUpdateController extends EventEmitter {
   }
 
   public async attemptWebsocketConnection(): Promise<void> {
-    console.log("Attempting to connect to websocket server");
     try {
       if (!this.isWSConnectionOpen) {
+        console.log("Attempting to connect to websocket server");
+
         this.websocketClient = new WebsocketClientController({
           handleUpdateEvent: this.handleWebsocketEvent.bind(this),
           onFailure: this.startPolling.bind(this),
