@@ -47,8 +47,6 @@ export class WebsocketClientController extends EventEmitter {
   }
 
   public connectWS(): void {
-    // creates a WebSocket object
-
     const websocketApiUrl = this.mmiConfigurationController.getWebsocketApiUrl();
 
     try {
