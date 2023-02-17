@@ -63,6 +63,7 @@ export class WebsocketClientController extends EventEmitter {
 
       this.keepAlive();
       this.RETRY_ATTEMPTS = 0;
+      this.retryDelay = 1000;
     } catch (error) {
       console.log("[error] WS connection error", error);
       this.tryToReconnect();
@@ -156,6 +157,7 @@ export class WebsocketClientController extends EventEmitter {
 
   tryToReconnect() {
     if (this.ws.readyState === this.ws.OPEN) {
+      console.log(`[tryToReconnect] WS connection is still OPEN`);
       return;
     }
 
@@ -171,6 +173,7 @@ export class WebsocketClientController extends EventEmitter {
       return;
     }
 
+    console.log(`[tryToReconnect] Going to retry again...`);
     // Random number between 0 and 5
     const randomSeconds = Math.random() * 5;
 
@@ -180,6 +183,7 @@ export class WebsocketClientController extends EventEmitter {
     // Will try to reconnect after the calculated delay
     setTimeout(() => {
       this.connectWS();
+      console.log(`[tryToReconnect] establishing a new WS connection`);
     }, this.retryDelay);
   }
 
