@@ -1,6 +1,6 @@
 {
   "name": "@metamask-institutional/websocket-client",
-  "version": "0.1.16",
+  "version": "0.1.17",
   "description": "This package will export WebsocketClient, responsible for establishing a connection to the WebSocket API and handle all the messages for transaction updates.",
   "author": "Antonio Regadas <apregadas@gmail.com>",
   "homepage": "https://github.com/consensys-vertical-apps/metamask-institutional#readme",
