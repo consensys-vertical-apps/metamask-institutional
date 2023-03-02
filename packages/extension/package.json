@@ -1,0 +1,42 @@
+{
+  "name": "@metamask-institutional/extension",
+  "version": "0.1.0",
+  "description": "This package will export extension blocks used across the old @codefi/mmi-sdk library",
+  "author": "Antonio Regadas <apregadas@gmail.com>",
+  "homepage": "https://github.com/consensys-vertical-apps/metamask-institutional#readme",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "directory": "packages/extension",
+    "url": "git+https://github.com/consensys-vertical-apps/metamask-institutional.git"
+  },
+  "scripts": {
+    "clean": "rimraf dist && rimraf tsconfig.tsbuildinfo",
+    "prepack": "yarn build",
+    "build": "yarn clean && tsc --build && cp \"./package.json\" ./dist/",
+    "test": "yarn jest",
+    "lint": "eslint 'src/**/*.ts'",
+    "lint:fix": "eslint --fix 'src/**/*.ts'",
+    "pre-commit": "lint-staged"
+  },
+  "bugs": {
+    "url": "https://github.com/consensys-vertical-apps/metamask-institutional/issues"
+  },
+  "gitHead": "",
+  "dependencies": {
+    "@ethereumjs/util": "^8.0.5",
+    "@metamask-institutional/custody-controller": "^0.2.2",
+    "@metamask-institutional/custody-keyring": "^0.0.18",
+    "@metamask-institutional/portfolio-dashboard": "^1.1.0",
+    "@metamask-institutional/sdk": "^0.1.14",
+    "@metamask-institutional/transaction-update": "^0.1.16",
+    "@metamask-institutional/types": "^1.0.1",
+    "jest-create-mock-instance": "^2.0.0",
+    "jest-fetch-mock": "3.0.3"
+  }
+}
