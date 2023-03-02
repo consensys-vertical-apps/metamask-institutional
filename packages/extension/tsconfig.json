@@ -18,7 +18,7 @@
     "@metamask-institutional/sdk": ["../sdk/src/index.ts"],
     "@metamask-institutional/transaction-update": ["../transactionUpdate/src/index.ts"],
     "@metamask-institutional/types": ["../types/src/index.ts"],
-    "@metamask-institutional/portfolio-dashboard": ["../portfolioDashboard/src/index.ts"],
+    "@metamask-institutional/portfolio-dashboard": ["../portfolioDashboard/src/index.ts"]
   },
   "references": [
     {
