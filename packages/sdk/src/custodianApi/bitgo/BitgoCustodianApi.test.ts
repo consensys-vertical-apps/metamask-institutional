@@ -240,6 +240,7 @@ describe("BitgoCustodianApi", () => {
         buffer,
         bitgoGetAccountsMock.data[0].custodianDetails.coin,
         bitgoGetAccountsMock.data[0].custodianDetails.id,
+        "V4"
       );
     });
   });
