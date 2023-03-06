@@ -148,12 +148,14 @@ export class BitgoClient {
     message: TypedMessage<MessageTypes>,
     coinId: string,
     walletId: string,
+    version: string
   ): Promise<IBitgoEIP712Response> {
     const headers = await this.getHeaders();
 
     const payload: IBitgoEIP712Request = {
       address: fromAddress,
       payload: message,
+      encodingVersion: version || "v4",
     };
 
     try {
