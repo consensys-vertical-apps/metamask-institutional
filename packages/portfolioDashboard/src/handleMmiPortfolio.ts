@@ -1,11 +1,8 @@
-import { setDashboardCookie } from "./utils";
-
 export async function handleMmiPortfolio({
   keyringAccounts,
   identities,
   metaMetricsId,
   networks,
-  cookieSetUrls,
   getAccountDetails,
   extensionId,
 }) {
@@ -28,7 +25,7 @@ export async function handleMmiPortfolio({
     return { address, name, custodyType: null };
   });
 
-  const mmiDashboardData = {
+  return {
     accounts,
     networks,
     metrics: {
@@ -36,6 +33,4 @@ export async function handleMmiPortfolio({
       extensionId,
     },
   };
-
-  await setDashboardCookie(mmiDashboardData, cookieSetUrls);
 }
