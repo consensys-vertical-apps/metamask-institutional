@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.1](https://github.com/consensys-vertical-apps/metamask-institutional/compare/portfolio-dashboard-v1.1.0...portfolio-dashboard-v1.1.1) (2023-03-23)
+
+
+### Bug Fixes
+
+* **portfoliodashboard:** fixes handleMmiPortfolio method ([#192](https://github.com/consensys-vertical-apps/metamask-institutional/issues/192)) ([51bb808](https://github.com/consensys-vertical-apps/metamask-institutional/commit/51bb808dcac6e75af1dd3b5bf8bb5368d06a811b))
+
 ## [1.1.0](https://github.com/consensys-vertical-apps/metamask-institutional/compare/portfolio-dashboard-v1.0.0...portfolio-dashboard-v1.1.0) (2023-02-07)
 
 
