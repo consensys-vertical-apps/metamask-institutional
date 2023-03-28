@@ -204,7 +204,11 @@ export class WebsocketClientController extends EventEmitter {
 
   keepAlive() {
     if (this.ws.readyState == this.ws.OPEN) {
-      this.ws.send("Marco");
+      this.ws.send(
+        JSON.stringify({
+          event: "marco",
+        }),
+      );
     }
     this.timerID = setTimeout(this.keepAlive.bind(this), 20000);
   }
