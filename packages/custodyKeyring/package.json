@@ -39,6 +39,6 @@
     "lodash": "^4.17.21"
   },
   "devDependencies": {
-    "ts-jest": "26.4.4"
+    "ts-jest": "29.1.0"
   }
 }
