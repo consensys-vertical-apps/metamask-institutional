@@ -31,7 +31,7 @@
   "dependencies": {
     "@auth0/auth0-spa-js": "^2.0.3",
     "@metamask-institutional/custody-keyring": "^0.0.18",
-    "@metamask/obs-store": "^7.0.0"
+    "@metamask/obs-store": "^8.0.0"
   },
   "devDependencies": {
     "jest-fetch-mock": "^3.0.3"
