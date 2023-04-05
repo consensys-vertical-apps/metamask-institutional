@@ -22,6 +22,13 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
     * @metamask-institutional/custody-keyring bumped from ^0.0.17 to ^0.0.18
     * @metamask-institutional/sdk bumped from ^0.1.13 to ^0.1.12
 
+## [0.1.19](https://github.com/consensys-vertical-apps/metamask-institutional/compare/websocket-client-v0.1.18...websocket-client-v0.1.19) (2023-03-28)
+
+
+### Bug Fixes
+
+* **websocketclient:** marco event ([#207](https://github.com/consensys-vertical-apps/metamask-institutional/issues/207)) ([1788152](https://github.com/consensys-vertical-apps/metamask-institutional/commit/1788152b1a9f2b77d8c5ad0b2e8824a3401c5ba1))
+
 ## [0.1.18](https://github.com/consensys-vertical-apps/metamask-institutional/compare/websocket-client-v0.1.17...websocket-client-v0.1.18) (2023-02-17)
 
 

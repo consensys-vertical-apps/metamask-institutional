@@ -29,12 +29,12 @@
   },
   "gitHead": "62ed7639b9145658a4fa1273e35e99d300acdc99",
   "dependencies": {
-    "@ethereumjs/tx": "^4.0.2",
-    "@ethereumjs/util": "^8.0.3",
+    "@ethereumjs/tx": "^4.1.1",
+    "@ethereumjs/util": "^8.0.5",
     "@metamask-institutional/configuration-client": "^1.0.4",
     "@metamask-institutional/sdk": "^0.1.12",
     "@metamask-institutional/types": "^1.0.1",
-    "@metamask/obs-store": "^7.0.0",
+    "@metamask/obs-store": "^8.0.0",
     "crypto": "^1.0.1",
     "lodash": "^4.17.21"
   },
