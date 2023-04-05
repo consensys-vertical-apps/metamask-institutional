@@ -5,56 +5,55 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Dependencies
 
-* The following workspace dependencies were updated
-  * dependencies
-    * @metamask-institutional/custody-keyring bumped from ^0.0.15 to ^0.0.16
-    * @metamask-institutional/websocket-client bumped from ^0.1.12 to ^0.1.13
+- The following workspace dependencies were updated
+  - dependencies
+    - @metamask-institutional/custody-keyring bumped from ^0.0.15 to ^0.0.16
+    - @metamask-institutional/websocket-client bumped from ^0.1.12 to ^0.1.13
 
 ### Dependencies
 
-* The following workspace dependencies were updated
-  * dependencies
-    * @metamask-institutional/custody-keyring bumped from ^0.0.16 to ^0.0.17
-    * @metamask-institutional/websocket-client bumped from ^0.1.13 to ^0.1.14
+- The following workspace dependencies were updated
+  - dependencies
+    - @metamask-institutional/custody-keyring bumped from ^0.0.16 to ^0.0.17
+    - @metamask-institutional/websocket-client bumped from ^0.1.13 to ^0.1.14
 
 ### Dependencies
 
-* The following workspace dependencies were updated
-  * dependencies
-    * @metamask-institutional/websocket-client bumped from ^0.1.14 to ^0.1.15
+- The following workspace dependencies were updated
+  - dependencies
+    - @metamask-institutional/websocket-client bumped from ^0.1.14 to ^0.1.15
 
 ### Dependencies
 
-* The following workspace dependencies were updated
-  * dependencies
-    * @metamask-institutional/custody-keyring bumped from ^0.0.17 to ^0.0.18
-    * @metamask-institutional/sdk bumped from ^0.1.13 to ^0.1.12
-    * @metamask-institutional/websocket-client bumped from ^0.1.15 to ^0.1.16
+- The following workspace dependencies were updated
+  - dependencies
+    - @metamask-institutional/custody-keyring bumped from ^0.0.17 to ^0.0.18
+    - @metamask-institutional/sdk bumped from ^0.1.13 to ^0.1.12
+    - @metamask-institutional/websocket-client bumped from ^0.1.15 to ^0.1.16
 
 ### Dependencies
 
-* The following workspace dependencies were updated
-  * dependencies
-    * @metamask-institutional/websocket-client bumped from ^0.1.16 to ^0.1.17
+- The following workspace dependencies were updated
+  - dependencies
+    - @metamask-institutional/websocket-client bumped from ^0.1.16 to ^0.1.17
 
 ### Dependencies
 
-* The following workspace dependencies were updated
-  * dependencies
-    * @metamask-institutional/websocket-client bumped from ^0.1.17 to ^0.1.18
+- The following workspace dependencies were updated
+  - dependencies
+    - @metamask-institutional/websocket-client bumped from ^0.1.17 to ^0.1.18
 
 ### Dependencies
 
-* The following workspace dependencies were updated
-  * dependencies
-    * @metamask-institutional/websocket-client bumped from ^0.1.18 to ^0.1.19
+- The following workspace dependencies were updated
+  - dependencies
+    - @metamask-institutional/websocket-client bumped from ^0.1.18 to ^0.1.19
 
 ## [0.1.15](https://github.com/consensys-vertical-apps/metamask-institutional/compare/transaction-update-v0.1.14...transaction-update-v0.1.15) (2023-02-17)
 
-
 ### Bug Fixes
 
-* **transactionupdate:** fix console log in transactionUpdate ([#146](https://github.com/consensys-vertical-apps/metamask-institutional/issues/146)) ([8b1c752](https://github.com/consensys-vertical-apps/metamask-institutional/commit/8b1c752639d4fc09a5874ede6388d0e2570a14b1))
+- **transactionupdate:** fix console log in transactionUpdate ([#146](https://github.com/consensys-vertical-apps/metamask-institutional/issues/146)) ([8b1c752](https://github.com/consensys-vertical-apps/metamask-institutional/commit/8b1c752639d4fc09a5874ede6388d0e2570a14b1))
 
 ## [0.1.9](https://github.com/consensys-vertical-apps/metamask-institutional/compare/@metamask-institutional/transaction-update@0.1.4...@metamask-institutional/transaction-update@0.1.9) (2023-02-02)
 
