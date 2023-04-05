@@ -5,50 +5,46 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Dependencies
 
-* The following workspace dependencies were updated
-  * dependencies
-    * @metamask-institutional/custody-keyring bumped from ^0.0.15 to ^0.0.16
+- The following workspace dependencies were updated
+  - dependencies
+    - @metamask-institutional/custody-keyring bumped from ^0.0.15 to ^0.0.16
 
 ### Dependencies
 
-* The following workspace dependencies were updated
-  * dependencies
-    * @metamask-institutional/custody-keyring bumped from ^0.0.16 to ^0.0.17
+- The following workspace dependencies were updated
+  - dependencies
+    - @metamask-institutional/custody-keyring bumped from ^0.0.16 to ^0.0.17
 
 ### Dependencies
 
-* The following workspace dependencies were updated
-  * dependencies
-    * @metamask-institutional/custody-keyring bumped from ^0.0.17 to ^0.0.18
-    * @metamask-institutional/sdk bumped from ^0.1.13 to ^0.1.12
+- The following workspace dependencies were updated
+  - dependencies
+    - @metamask-institutional/custody-keyring bumped from ^0.0.17 to ^0.0.18
+    - @metamask-institutional/sdk bumped from ^0.1.13 to ^0.1.12
 
 ## [0.1.19](https://github.com/consensys-vertical-apps/metamask-institutional/compare/websocket-client-v0.1.18...websocket-client-v0.1.19) (2023-03-28)
 
-
 ### Bug Fixes
 
-* **websocketclient:** marco event ([#207](https://github.com/consensys-vertical-apps/metamask-institutional/issues/207)) ([1788152](https://github.com/consensys-vertical-apps/metamask-institutional/commit/1788152b1a9f2b77d8c5ad0b2e8824a3401c5ba1))
+- **websocketclient:** marco event ([#207](https://github.com/consensys-vertical-apps/metamask-institutional/issues/207)) ([1788152](https://github.com/consensys-vertical-apps/metamask-institutional/commit/1788152b1a9f2b77d8c5ad0b2e8824a3401c5ba1))
 
 ## [0.1.18](https://github.com/consensys-vertical-apps/metamask-institutional/compare/websocket-client-v0.1.17...websocket-client-v0.1.18) (2023-02-17)
 
-
 ### Bug Fixes
 
-* clean up ([#148](https://github.com/consensys-vertical-apps/metamask-institutional/issues/148)) ([0133989](https://github.com/consensys-vertical-apps/metamask-institutional/commit/01339892273692e8e6652407d07dc2a77d338999))
+- clean up ([#148](https://github.com/consensys-vertical-apps/metamask-institutional/issues/148)) ([0133989](https://github.com/consensys-vertical-apps/metamask-institutional/commit/01339892273692e8e6652407d07dc2a77d338999))
 
 ## [0.1.17](https://github.com/consensys-vertical-apps/metamask-institutional/compare/websocket-client-v0.1.16...websocket-client-v0.1.17) (2023-02-17)
 
-
 ### Bug Fixes
 
-* **websocketclient:** resets retryDelay ([#143](https://github.com/consensys-vertical-apps/metamask-institutional/issues/143)) ([f2a5b1e](https://github.com/consensys-vertical-apps/metamask-institutional/commit/f2a5b1e1e9c8eefa5f38331668857042ba0bd235))
+- **websocketclient:** resets retryDelay ([#143](https://github.com/consensys-vertical-apps/metamask-institutional/issues/143)) ([f2a5b1e](https://github.com/consensys-vertical-apps/metamask-institutional/commit/f2a5b1e1e9c8eefa5f38331668857042ba0bd235))
 
 ## [0.1.15](https://github.com/consensys-vertical-apps/metamask-institutional/compare/websocket-client-v0.1.14...websocket-client-v0.1.15) (2023-02-07)
 
-
 ### Bug Fixes
 
-* **websocket:** fixes a spelling error ([#109](https://github.com/consensys-vertical-apps/metamask-institutional/issues/109)) ([b057d48](https://github.com/consensys-vertical-apps/metamask-institutional/commit/b057d4890a4822c4bbcd4a9c5559b6731f6e3755))
+- **websocket:** fixes a spelling error ([#109](https://github.com/consensys-vertical-apps/metamask-institutional/issues/109)) ([b057d48](https://github.com/consensys-vertical-apps/metamask-institutional/commit/b057d4890a4822c4bbcd4a9c5559b6731f6e3755))
 
 ## [0.1.12](https://github.com/consensys-vertical-apps/metamask-institutional/compare/@metamask-institutional/websocket-client@0.1.7...@metamask-institutional/websocket-client@0.1.12) (2023-02-02)
 

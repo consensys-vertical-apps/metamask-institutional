@@ -29,9 +29,9 @@
   },
   "gitHead": "62ed7639b9145658a4fa1273e35e99d300acdc99",
   "dependencies": {
-    "@auth0/auth0-spa-js": "^2.0.3",
+    "@auth0/auth0-spa-js": "^2.0.4",
     "@metamask-institutional/custody-keyring": "^0.0.18",
-    "@metamask/obs-store": "^7.0.0"
+    "@metamask/obs-store": "^8.0.0"
   },
   "devDependencies": {
     "jest-fetch-mock": "^3.0.3"
