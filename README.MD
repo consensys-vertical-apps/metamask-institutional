@@ -118,6 +118,16 @@ packages
 ✔   found 0 problems, 0 warnings
 ```
 
+#### Release PR
+
+The Release PR, made possible by [release-please](https://github.com/googleapis/release-please), is automatically created from the latest `main` branch, and it will create a "Release Pull Request" from the Conventional Commit Messages. In order for it to be triggered, one of the following prefixes has to be used in the previously merged PR:
+- chore: updating grunt tasks etc.; no production code change
+- feat: a new feature
+- fix: a bug fix
+
+This PR will contain the changelog update, based on the commit messages used, [example PR](https://github.com/consensys-vertical-apps/metamask-institutional/pull/208).
+Also, while the Release PR is open, if the developer merges other PRs to `main` with more updates, the current existing Release PR will auto-update.
+
 ### Publish
 
 We are using an [automation](https://github.com/consensys-vertical-apps/metamask-institutional/actions/workflows/npm-publish.yml) for this. The steps that are needed to publish a new version are:
