@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.5](https://github.com/consensys-vertical-apps/metamask-institutional/compare/configuration-client-v1.0.4...configuration-client-v1.0.5) (2023-04-20)
+
+
+### Bug Fixes
+
+* **check null values:** checking null values in signedMEssage and transaction ([#233](https://github.com/consensys-vertical-apps/metamask-institutional/issues/233)) ([3e21fb9](https://github.com/consensys-vertical-apps/metamask-institutional/commit/3e21fb95f764a9ffe6aea1e459737f7cf62408f7))
+
 ## [1.0.4](https://github.com/consensys-vertical-apps/metamask-institutional/compare/configuration-client-v1.0.3...configuration-client-v1.0.4) (2023-02-02)
 
 ### Bug Fixes
