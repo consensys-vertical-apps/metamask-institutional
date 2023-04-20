@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.13](https://github.com/consensys-vertical-apps/metamask-institutional/compare/sdk-v0.1.12...sdk-v0.1.13) (2023-04-20)
+
+
+### Bug Fixes
+
+* **check null values:** checking null values in signedMEssage and transaction ([#233](https://github.com/consensys-vertical-apps/metamask-institutional/issues/233)) ([3e21fb9](https://github.com/consensys-vertical-apps/metamask-institutional/commit/3e21fb95f764a9ffe6aea1e459737f7cf62408f7))
+
 ## [0.1.14](https://github.com/consensys-vertical-apps/metamask-institutional/compare/sdk-v0.1.13...sdk-v0.1.14) (2023-02-15)
 
 ### Bug Fixes

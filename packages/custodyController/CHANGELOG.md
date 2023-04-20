@@ -22,6 +22,21 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
     - @metamask-institutional/custody-keyring bumped from ^0.0.17 to ^0.0.18
     - @metamask-institutional/sdk bumped from ^0.1.13 to ^0.1.12
 
+## [0.2.3](https://github.com/consensys-vertical-apps/metamask-institutional/compare/custody-controller-v0.2.2...custody-controller-v0.2.3) (2023-04-20)
+
+
+### Bug Fixes
+
+* **check null values:** checking null values in signedMEssage and transaction ([#233](https://github.com/consensys-vertical-apps/metamask-institutional/issues/233)) ([3e21fb9](https://github.com/consensys-vertical-apps/metamask-institutional/commit/3e21fb95f764a9ffe6aea1e459737f7cf62408f7))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @metamask-institutional/custody-keyring bumped from ^0.0.18 to ^0.0.19
+    * @metamask-institutional/sdk bumped from ^0.1.12 to ^0.1.13
+
 ## [0.2.1](https://github.com/consensys-vertical-apps/metamask-institutional/compare/custody-controller-v0.2.0...custody-controller-v0.2.1) (2023-02-15)
 
 ### Bug Fixes
