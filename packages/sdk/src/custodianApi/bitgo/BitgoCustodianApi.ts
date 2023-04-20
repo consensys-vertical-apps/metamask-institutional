@@ -197,7 +197,7 @@ export class BitgoCustodianApi extends EventEmitter implements ICustodianApi {
   async signTypedData_v4(
     address: string,
     message: TypedMessage<MessageTypes>,
-    version: string
+    version: string,
   ): Promise<ITransactionDetails> {
     const accounts = await this.getEthereumAccountsByAddress(address);
 
