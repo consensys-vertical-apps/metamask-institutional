@@ -148,7 +148,7 @@ export class BitgoClient {
     message: TypedMessage<MessageTypes>,
     coinId: string,
     walletId: string,
-    version: string
+    version: string,
   ): Promise<IBitgoEIP712Response> {
     const headers = await this.getHeaders();
 

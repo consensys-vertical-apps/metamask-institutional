@@ -123,9 +123,17 @@ export function custodianEventHandlerFactory({
 }: CustodianEventHandlerFactoryParameters): (txData: ICustodianUpdate) => void {
   return async (txData: ICustodianUpdate) => {
     let address;
-    if (Object.prototype.hasOwnProperty.call(txData, "transaction")) {
+    if (
+      Object.hasOwnProperty.call(txData, "transaction") &&
+      txData.transaction !== null &&
+      Object.hasOwnProperty.call(txData.transaction, "from")
+    ) {
       address = txData.transaction.from;
-    } else if (Object.prototype.hasOwnProperty.call(txData, "signedMessage")) {
+    } else if (
+      Object.hasOwnProperty.call(txData, "signedMessage") &&
+      txData.signedMessage !== null &&
+      Object.hasOwnProperty.call(txData.signedMessage, "address")
+    ) {
       address = txData.signedMessage.address;
     }
     const custodyType = custodyController.getCustodyTypeByAddress(toChecksumHexAddress(address));
@@ -135,10 +143,10 @@ export function custodianEventHandlerFactory({
       return getState();
     }
 
-    if (!Object.prototype.hasOwnProperty.call(txData, "signedMessage") && !txData.transaction) {
+    if (!Object.hasOwnProperty.call(txData, "signedMessage") && !txData.transaction) {
       return getState();
     }
-    if (Object.prototype.hasOwnProperty.call(txData, "signedMessage")) {
+    if (Object.hasOwnProperty.call(txData, "signedMessage") && txData.signedMessage !== null) {
       console.log("Update for message:", txData.signedMessage.id, txData.signedMessage.status);
 
       // Close DeepLink modal if any kind of signature is signed from custodian side
