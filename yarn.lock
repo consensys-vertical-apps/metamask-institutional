@@ -581,7 +581,7 @@
   resolved "https://registry.yarnpkg.com/@ethereumjs/rlp/-/rlp-4.0.1.tgz#626fabfd9081baab3d0a3074b0c7ecaf674aaa41"
   integrity sha512-tqsQiBQDQdmPWE1xkkBq4rlSW5QZpLOUJ5RJh2/9fug+q9tnUhuZoVLk7s0scUIKTOzEtR72DFBXI4WiZcMpvw==
 
-"@ethereumjs/tx@^4.1.1":
+"@ethereumjs/tx@^4.0.2", "@ethereumjs/tx@^4.1.1":
   version "4.1.1"
   resolved "https://registry.yarnpkg.com/@ethereumjs/tx/-/tx-4.1.1.tgz#d1b5bf2c4fd3618f2f333b66e262848530d4686a"
   integrity sha512-QDj7nuROfoeyK83RObMA0XCZ+LUDdneNkSCIekO498uEKTY25FxI4Whduc/6j0wdd4IqpQvkq+/7vxSULjGIBQ==
@@ -593,7 +593,7 @@
     "@ethersproject/providers" "^5.7.2"
     ethereum-cryptography "^1.1.2"
 
-"@ethereumjs/util@^8.0.5":
+"@ethereumjs/util@^8.0.3", "@ethereumjs/util@^8.0.5":
   version "8.0.5"
   resolved "https://registry.yarnpkg.com/@ethereumjs/util/-/util-8.0.5.tgz#b9088fc687cc13f0c1243d6133d145dfcf3fe446"
   integrity sha512-259rXKK3b3D8HRVdRmlOEi6QFvwxdt304hhrEAmpZhsj7ufXEOTIc9JRZPMnXatKjECokdLNBcDOFBeBSzAIaw==
@@ -1229,6 +1229,40 @@
     write-file-atomic "4.0.1"
     write-pkg "4.0.0"
     yargs "16.2.0"
+
+"@metamask-institutional/custody-keyring@^0.0.18":
+  version "0.0.18"
+  resolved "https://registry.yarnpkg.com/@metamask-institutional/custody-keyring/-/custody-keyring-0.0.18.tgz#97076050f4a07a6e7e6440f29bbb5b5ef8e052f2"
+  integrity sha512-3vQrfhy/Z3F3Cv2B5L1fk43WL6S2daekUGuLcsD8i2WIKDTCXect6wGm267fs5ouktbUjxhWPMPgz6SmSREssw==
+  dependencies:
+    "@ethereumjs/tx" "^4.0.2"
+    "@ethereumjs/util" "^8.0.3"
+    "@metamask-institutional/configuration-client" "^1.0.4"
+    "@metamask-institutional/sdk" "^0.1.12"
+    "@metamask-institutional/types" "^1.0.1"
+    "@metamask/obs-store" "^7.0.0"
+    crypto "^1.0.1"
+    lodash "^4.17.21"
+
+"@metamask-institutional/sdk@^0.1.14":
+  version "0.1.14"
+  resolved "https://registry.yarnpkg.com/@metamask-institutional/sdk/-/sdk-0.1.14.tgz#0ea7c6a3086c9f08c59b0dba330053aa18a1f05e"
+  integrity sha512-JxYR+3LbS+kRlAHZFkscTsukUGSN1NC6cjSVyvnz3VTIcUj21tGN7JmHz2s80W6aNKZHdZlYZcYNWL6qZBIPRA==
+  dependencies:
+    "@metamask-institutional/simplecache" "^1.0.1"
+    "@metamask-institutional/types" "^1.0.1"
+    "@types/jsonwebtoken" "^9.0.1"
+    "@types/node" "^18.13.0"
+    bignumber.js "^9.1.1"
+    jsonwebtoken "^9.0.0"
+
+"@metamask/obs-store@^7.0.0":
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/@metamask/obs-store/-/obs-store-7.0.0.tgz#6cae5f28306bb3e83a381bc9ae22682316095bd3"
+  integrity sha512-Tr61Uu9CGXkCg5CZwOYRMQERd+y6fbtrtLd/PzDTPHO5UJpmSbU+7MPcQK7d1DwZCOCeCIvhmZSUCvYliC8uGw==
+  dependencies:
+    "@metamask/safe-event-emitter" "^2.0.0"
+    through2 "^2.0.3"
 
 "@metamask/obs-store@^8.0.0":
   version "8.1.0"
@@ -1955,6 +1989,11 @@
   version "18.15.11"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-18.15.11.tgz#b3b790f09cb1696cffcec605de025b088fa4225f"
   integrity sha512-E5Kwq2n4SbMzQOn6wnmBjuK9ouqlURrcZDVfbo9ftDDTFt3nk7ZKK4GMOzoYgnpQJKcxwQw+lGaBvvlMo0qN/Q==
+
+"@types/node@^18.13.0":
+  version "18.15.12"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-18.15.12.tgz#833756634e78c829e1254db006468dadbb0c696b"
+  integrity sha512-Wha1UwsB3CYdqUm2PPzh/1gujGCNtWVUYF0mB00fJFoR4gTyWTDPjSm+zBF787Ahw8vSGgBja90MkgFwvB86Dg==
 
 "@types/normalize-package-data@^2.4.0":
   version "2.4.1"
@@ -5281,10 +5320,10 @@ lines-and-columns@~2.0.3:
   resolved "https://registry.yarnpkg.com/lines-and-columns/-/lines-and-columns-2.0.3.tgz#b2f0badedb556b747020ab8ea7f0373e22efac1b"
   integrity sha512-cNOjgCnLB+FnvWWtyRTzmB3POJ+cXxTA81LoW7u8JdmhfXzriropYwpjShnz1QLLWsQwY7nIxoDmcPTwphDK9w==
 
-lint-staged@^13.1.2:
-  version "13.2.0"
-  resolved "https://registry.yarnpkg.com/lint-staged/-/lint-staged-13.2.0.tgz#b7abaf79c91cd36d824f17b23a4ce5209206126a"
-  integrity sha512-GbyK5iWinax5Dfw5obm2g2ccUiZXNGtAS4mCbJ0Lv4rq6iEtfBSjOYdcbOtAIFtM114t0vdpViDDetjVTSd8Vw==
+lint-staged@^13.2.1:
+  version "13.2.1"
+  resolved "https://registry.yarnpkg.com/lint-staged/-/lint-staged-13.2.1.tgz#9d30a14e3e42897ef417bc98556fb757f75cae87"
+  integrity sha512-8gfzinVXoPfga5Dz/ZOn8I2GOhf81Wvs+KwbEXQn/oWZAvCVS2PivrXfVbFJc93zD16uC0neS47RXHIjXKYZQw==
   dependencies:
     chalk "5.2.0"
     cli-truncate "^3.1.0"
