@@ -24,9 +24,7 @@
     "lint:fix": "eslint --fix 'src/**/*.ts'",
     "pre-commit": "lint-staged"
   },
-  "bugs": {
-    "url": "https://github.com/consensys-vertical-apps/metamask-institutional/issues"
-  },
+  "bugs": "https://github.com/consensys-vertical-apps/metamask-institutional/issues",
   "gitHead": "",
   "devDependencies": {
     "jest-fetch-mock": "^3.0.3"
