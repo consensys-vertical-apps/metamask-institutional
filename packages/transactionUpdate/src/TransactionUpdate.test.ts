@@ -99,11 +99,11 @@ describe("TransactionUpdateController", () => {
 
       mockedWebsocketClientControllerInstance = mockedWebsocketClientController.mock.results[0].value;
 
-      await transactionUpdateController.getCustomerProofForAddresses(["address"]);
+      await transactionUpdateController.getCustomerProofForAddresses(["0xc0ffee254729296a45a3885639AC7E10F9d54979"]);
 
-      expect(mockCustodyKeyring.getAccountDetails).toHaveBeenCalledWith("address");
+      expect(mockCustodyKeyring.getAccountDetails).toHaveBeenCalledWith("0xc0ffee254729296a45a3885639AC7E10F9d54979");
 
-      expect(mockCustodyKeyring.getCustomerProof).toHaveBeenCalledWith("address");
+      expect(mockCustodyKeyring.getCustomerProof).toHaveBeenCalledWith("0xc0ffee254729296a45a3885639AC7E10F9d54979");
 
       expect(mockedWebsocketClientControllerInstance.requestStreamForCustomerProof).toHaveBeenCalledWith("token");
     });
@@ -113,9 +113,12 @@ describe("TransactionUpdateController", () => {
 
       mockedWebsocketClientControllerInstance = mockedWebsocketClientController.mock.results[0].value;
 
-      await transactionUpdateController.getCustomerProofForAddresses(["address", "address2"]); //getCustomerProof will return `token`both times
+      await transactionUpdateController.getCustomerProofForAddresses([
+        "0xc0ffee254729296a45a3885639AC7E10F9d54979",
+        "0x1",
+      ]); //getCustomerProof will return `token`both times
 
-      expect(mockCustodyKeyring.getAccountDetails).toHaveBeenCalledWith("address");
+      expect(mockCustodyKeyring.getAccountDetails).toHaveBeenCalledWith("0xc0ffee254729296a45a3885639AC7E10F9d54979");
 
       expect(mockCustodyKeyring.getCustomerProof).toHaveBeenCalledTimes(1);
     });
@@ -129,9 +132,9 @@ describe("TransactionUpdateController", () => {
         Promise.reject(new Error("Something went wrong")),
       );
 
-      await transactionUpdateController.getCustomerProofForAddresses(["address"]);
+      await transactionUpdateController.getCustomerProofForAddresses(["0xc0ffee254729296a45a3885639AC7E10F9d54979"]);
 
-      expect(transactionUpdateController.pollAddresses).toEqual(["address"]);
+      expect(transactionUpdateController.pollAddresses).toEqual(["0xc0ffee254729296a45a3885639AC7E10F9d54979"]);
 
       jest.spyOn(transactionUpdateController, "captureException");
 
@@ -145,9 +148,9 @@ describe("TransactionUpdateController", () => {
 
       mockCustodyKeyring.getCustomerProof.mockImplementationOnce(() => Promise.reject(new Error("Method not found")));
 
-      await transactionUpdateController.getCustomerProofForAddresses(["address"]);
+      await transactionUpdateController.getCustomerProofForAddresses(["0xc0ffee254729296a45a3885639AC7E10F9d54979"]);
 
-      expect(transactionUpdateController.pollAddresses).toEqual(["address"]);
+      expect(transactionUpdateController.pollAddresses).toEqual(["0xc0ffee254729296a45a3885639AC7E10F9d54979"]);
 
       jest.spyOn(transactionUpdateController, "captureException");
 
@@ -172,9 +175,9 @@ describe("TransactionUpdateController", () => {
 
       mockedWebsocketClientControllerInstance.requestStreamForCustomerProof.mockRejectedValueOnce(new Error("no"));
 
-      await transactionUpdateController.getCustomerProofForAddresses(["address"]);
+      await transactionUpdateController.getCustomerProofForAddresses(["0xc0ffee254729296a45a3885639AC7E10F9d54979"]);
 
-      expect(transactionUpdateController.pollAddresses).toEqual(["address"]);
+      expect(transactionUpdateController.pollAddresses).toEqual(["0xc0ffee254729296a45a3885639AC7E10F9d54979"]);
     });
   });
 
@@ -246,7 +249,8 @@ describe("TransactionUpdateController", () => {
 
   describe("addTransactionToWatchList", () => {
     it("should add a transaction to the watch list", async () => {
-      transactionUpdateController.addTransactionToWatchList("123");
+      const address = "0xc0ffee254729296a45a3885639AC7E10F9d54979".toLocaleLowerCase();
+      await transactionUpdateController.addTransactionToWatchList("123", address);
 
       expect(transactionUpdateController.watchedTransactions).toEqual([
         {
@@ -256,9 +260,19 @@ describe("TransactionUpdateController", () => {
           attempts: 0,
           isSignedMessage: false,
           bufferType: "",
-          from: "",
+          from: "0xc0ffee254729296a45a3885639AC7E10F9d54979",
         },
       ]);
+    });
+  });
+
+  describe("pollForAddress", () => {
+    it("should add a transaction to the watch list", async () => {
+      const address = "0xc0ffee254729296a45a3885639AC7E10F9d54979".toLocaleLowerCase();
+
+      transactionUpdateController.pollForAddress(address);
+
+      expect(transactionUpdateController.pollAddresses).toContain("0xc0ffee254729296a45a3885639AC7E10F9d54979");
     });
   });
 
