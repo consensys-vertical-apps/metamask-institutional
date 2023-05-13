@@ -11,6 +11,13 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
   - dependencies
     - @metamask-institutional/sdk bumped from ^0.1.13 to ^0.1.12
 
+## [0.0.20](https://github.com/consensys-vertical-apps/metamask-institutional/compare/custody-keyring-v0.0.19...custody-keyring-v0.0.20) (2023-05-13)
+
+
+### Bug Fixes
+
+* **lodash:** removes the full lodash package to install only the method needed ([#263](https://github.com/consensys-vertical-apps/metamask-institutional/issues/263)) ([f5c7f4f](https://github.com/consensys-vertical-apps/metamask-institutional/commit/f5c7f4fd23017e8be7e353349dacc72370e33317))
+
 ## [0.0.19](https://github.com/consensys-vertical-apps/metamask-institutional/compare/custody-keyring-v0.0.18...custody-keyring-v0.0.19) (2023-04-20)
 
 
