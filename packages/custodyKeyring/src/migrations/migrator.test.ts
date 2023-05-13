@@ -1,7 +1,7 @@
 import { AuthTypes } from "@metamask-institutional/types";
 import { strict as assert } from "assert";
 import fs from "fs";
-import { cloneDeep } from "lodash";
+import cloneDeep from "lodash.clonedeep";
 
 import { migrations as liveMigrations } from ".";
 import { CUSTODIAN_TYPES } from "..";
