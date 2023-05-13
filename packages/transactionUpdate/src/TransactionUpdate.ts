@@ -9,6 +9,7 @@ import {
 } from "@metamask-institutional/types";
 import { WebsocketClientController } from "@metamask-institutional/websocket-client";
 import { ObservableStore } from "@metamask/obs-store";
+import { toChecksumAddress } from "ethereumjs-util";
 import { EventEmitter } from "events";
 
 import { POLL_TRANSACTION_RETRIES, TRANSACTION_POLLING_INTERVAL } from "./constants";
@@ -142,8 +143,9 @@ export class TransactionUpdateController extends EventEmitter {
   }
 
   public pollForAddress(address: string): void {
-    console.log("Polling for address", address);
-    this.pollAddresses.push(address);
+    const checkSumAdddress = toChecksumAddress(address);
+    console.log("Polling for address", checkSumAdddress);
+    this.pollAddresses.push(checkSumAdddress);
   }
 
   public async subscribeToEvents(): Promise<void> {
@@ -217,9 +219,11 @@ export class TransactionUpdateController extends EventEmitter {
       this.startPollingTask();
     }
 
+    const fromAddress = toChecksumAddress(from);
+
     console.log(
-      `Adding transaction or signed message to watch list: ${custodianTransactionId} from ${from} with bufferType ${bufferType} and isSignedMessage ${isSignedMessage}. Polling enabled for this address? ${this.pollAddresses.includes(
-        from,
+      `Adding transaction or signed message to watch list: ${custodianTransactionId} from ${fromAddress} with bufferType ${bufferType} and isSignedMessage ${isSignedMessage}. Polling enabled for this address? ${this.pollAddresses.includes(
+        fromAddress,
       )} Global polling enabled? ${this.pollForEveryAddress}`,
     );
 
@@ -228,7 +232,7 @@ export class TransactionUpdateController extends EventEmitter {
       attempts: 0,
       complete: false,
       failed: false,
-      from,
+      from: fromAddress,
       bufferType,
       isSignedMessage,
     });
