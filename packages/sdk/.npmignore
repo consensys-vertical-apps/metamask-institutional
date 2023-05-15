@@ -1,4 +1,6 @@
 tsconfig.tsbuildinfo
+junit.xml
+test-report.xml
 
 *.test.ts
 *.test.js
