@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.2](https://github.com/consensys-vertical-apps/metamask-institutional/compare/portfolio-dashboard-v1.1.1...portfolio-dashboard-v1.1.2) (2023-05-15)
+
+
+### Bug Fixes
+
+* **npmignore:** clean up ([#271](https://github.com/consensys-vertical-apps/metamask-institutional/issues/271)) ([a4bbae1](https://github.com/consensys-vertical-apps/metamask-institutional/commit/a4bbae1887ef3cead82b58bd2ec14fbfcd40f662))
+
 ## [1.1.1](https://github.com/consensys-vertical-apps/metamask-institutional/compare/portfolio-dashboard-v1.1.0...portfolio-dashboard-v1.1.1) (2023-03-23)
 
 ### Bug Fixes

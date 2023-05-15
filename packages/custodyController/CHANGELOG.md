@@ -28,6 +28,21 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
   * dependencies
     * @metamask-institutional/custody-keyring bumped from ^0.0.19 to ^0.0.20
 
+## [0.2.5](https://github.com/consensys-vertical-apps/metamask-institutional/compare/custody-controller-v0.2.4...custody-controller-v0.2.5) (2023-05-15)
+
+
+### Bug Fixes
+
+* **npmignore:** clean up ([#271](https://github.com/consensys-vertical-apps/metamask-institutional/issues/271)) ([a4bbae1](https://github.com/consensys-vertical-apps/metamask-institutional/commit/a4bbae1887ef3cead82b58bd2ec14fbfcd40f662))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @metamask-institutional/custody-keyring bumped from ^0.0.20 to ^0.0.21
+    * @metamask-institutional/sdk bumped from ^0.1.13 to ^0.1.14
+
 ## [0.2.3](https://github.com/consensys-vertical-apps/metamask-institutional/compare/custody-controller-v0.2.2...custody-controller-v0.2.3) (2023-04-20)
 
 
