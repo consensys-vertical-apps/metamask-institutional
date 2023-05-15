@@ -1294,17 +1294,19 @@
     crypto "^1.0.1"
     lodash "^4.17.21"
 
-"@metamask-institutional/sdk@^0.1.14":
-  version "0.1.14"
-  resolved "https://registry.yarnpkg.com/@metamask-institutional/sdk/-/sdk-0.1.14.tgz#0ea7c6a3086c9f08c59b0dba330053aa18a1f05e"
-  integrity sha512-JxYR+3LbS+kRlAHZFkscTsukUGSN1NC6cjSVyvnz3VTIcUj21tGN7JmHz2s80W6aNKZHdZlYZcYNWL6qZBIPRA==
+"@metamask-institutional/custody-keyring@^0.0.21":
+  version "0.0.21"
+  resolved "https://registry.yarnpkg.com/@metamask-institutional/custody-keyring/-/custody-keyring-0.0.21.tgz#84a998c64b8543cd6786d1fc1da84b0e7f2d5f61"
+  integrity sha512-Q91l3413YoRlpHGNWoidhkk7yUolgANTHGKRKoruAPXpecmmN9oPAB5fkE00hCt4xZM6Ug8vmjGgHLHlPtCbVw==
   dependencies:
-    "@metamask-institutional/simplecache" "^1.0.1"
+    "@ethereumjs/tx" "^4.1.1"
+    "@ethereumjs/util" "^8.0.5"
+    "@metamask-institutional/configuration-client" "^1.0.6"
+    "@metamask-institutional/sdk" "^0.1.14"
     "@metamask-institutional/types" "^1.0.1"
-    "@types/jsonwebtoken" "^9.0.1"
-    "@types/node" "^18.13.0"
-    bignumber.js "^9.1.1"
-    jsonwebtoken "^9.0.0"
+    "@metamask/obs-store" "^8.0.0"
+    crypto "^1.0.1"
+    lodash.clonedeep "^4.5.0"
 
 "@metamask/obs-store@^7.0.0":
   version "7.0.0"
@@ -2071,15 +2073,10 @@
   resolved "https://registry.yarnpkg.com/@types/mocha/-/mocha-10.0.1.tgz#2f4f65bb08bc368ac39c96da7b2f09140b26851b"
   integrity sha512-/fvYntiO1GeICvqbQ3doGDIP97vWmvFt83GKguJ6prmQM2iXZfFcq6YE8KteFyRtX2/h5Hf91BYvPodJKFYv5Q==
 
-"@types/node@*", "@types/node@^18.15.11":
-  version "18.15.11"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-18.15.11.tgz#b3b790f09cb1696cffcec605de025b088fa4225f"
-  integrity sha512-E5Kwq2n4SbMzQOn6wnmBjuK9ouqlURrcZDVfbo9ftDDTFt3nk7ZKK4GMOzoYgnpQJKcxwQw+lGaBvvlMo0qN/Q==
-
-"@types/node@^18.13.0":
-  version "18.16.8"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-18.16.8.tgz#fcd9bd0a793aba2701caff4aeae7c988d4da6ce5"
-  integrity sha512-p0iAXcfWCOTCBbsExHIDFCfwsqFwBTgETJveKMT+Ci3LY9YqQCI91F5S+TB20+aRCXpcWfvx5Qr5EccnwCm2NA==
+"@types/node@*", "@types/node@^20.1.4":
+  version "20.1.4"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-20.1.4.tgz#83f148d2d1f5fe6add4c53358ba00d97fc4cdb71"
+  integrity sha512-At4pvmIOki8yuwLtd7BNHl3CiWNbtclUbNtScGx4OHfBd4/oWoJC8KRCIxXwkdndzhxOsPXihrsOoydxBjlE9Q==
 
 "@types/normalize-package-data@^2.4.0":
   version "2.4.1"
