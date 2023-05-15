@@ -1,6 +1,8 @@
 tsconfig.tsbuildinfo
 junit.xml
 test-report.xml
+**/mocks
+**/custodianApi/**/mocks
 
 *.test.ts
 *.test.js
