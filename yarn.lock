@@ -1230,6 +1230,20 @@
     write-pkg "4.0.0"
     yargs "16.2.0"
 
+"@metamask-institutional/custody-keyring@^0.0.22":
+  version "0.0.22"
+  resolved "https://registry.yarnpkg.com/@metamask-institutional/custody-keyring/-/custody-keyring-0.0.22.tgz#c96eec7594ded5e0486aa96ebc95f4899d9cf5c6"
+  integrity sha512-Yl74QIyDC9Z4U/+Ty1f54IR3P+pcT2c+HBsCGCfbXKK+JReeKa9D0d1wXnHPVdI8J3U7CK+pXdsX8uCjGrBLNQ==
+  dependencies:
+    "@ethereumjs/tx" "^4.1.1"
+    "@ethereumjs/util" "^8.0.5"
+    "@metamask-institutional/configuration-client" "^1.0.6"
+    "@metamask-institutional/sdk" "^0.1.14"
+    "@metamask-institutional/types" "^1.0.1"
+    "@metamask/obs-store" "^8.0.0"
+    crypto "^1.0.1"
+    lodash.clonedeep "^4.5.0"
+
 "@metamask/obs-store@^8.0.0":
   version "8.1.0"
   resolved "https://registry.yarnpkg.com/@metamask/obs-store/-/obs-store-8.1.0.tgz#15a9e2f059104362b1b4c9a265c0730d3b3e83c7"
@@ -1958,10 +1972,10 @@
   resolved "https://registry.yarnpkg.com/@types/mocha/-/mocha-10.0.1.tgz#2f4f65bb08bc368ac39c96da7b2f09140b26851b"
   integrity sha512-/fvYntiO1GeICvqbQ3doGDIP97vWmvFt83GKguJ6prmQM2iXZfFcq6YE8KteFyRtX2/h5Hf91BYvPodJKFYv5Q==
 
-"@types/node@*", "@types/node@^18.15.11":
-  version "18.15.11"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-18.15.11.tgz#b3b790f09cb1696cffcec605de025b088fa4225f"
-  integrity sha512-E5Kwq2n4SbMzQOn6wnmBjuK9ouqlURrcZDVfbo9ftDDTFt3nk7ZKK4GMOzoYgnpQJKcxwQw+lGaBvvlMo0qN/Q==
+"@types/node@*", "@types/node@^20.1.7":
+  version "20.1.7"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-20.1.7.tgz#ce10c802f7731909d0a44ac9888e8b3a9125eb62"
+  integrity sha512-WCuw/o4GSwDGMoonES8rcvwsig77dGCMbZDrZr2x4ZZiNW4P/gcoZXe/0twgtobcTkmg9TuKflxYL/DuwDyJzg==
 
 "@types/normalize-package-data@^2.4.0":
   version "2.4.1"
