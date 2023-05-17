@@ -32,7 +32,7 @@
     "@ethereumjs/tx": "^4.1.1",
     "@ethereumjs/util": "^8.0.5",
     "@metamask-institutional/configuration-client": "^1.0.6",
-    "@metamask-institutional/sdk": "^0.1.16",
+    "@metamask-institutional/sdk": "^0.1.15",
     "@metamask-institutional/types": "^1.0.2",
     "@metamask/obs-store": "^8.0.0",
     "crypto": "^1.0.1",
