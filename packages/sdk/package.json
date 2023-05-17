@@ -29,8 +29,8 @@
   },
   "gitHead": "62ed7639b9145658a4fa1273e35e99d300acdc99",
   "dependencies": {
-    "@metamask-institutional/simplecache": "^1.0.1",
-    "@metamask-institutional/types": "^1.0.1",
+    "@metamask-institutional/simplecache": "^1.0.2",
+    "@metamask-institutional/types": "^1.0.2",
     "@types/jsonwebtoken": "^9.0.1",
     "@types/node": "^18.15.11",
     "bignumber.js": "^9.1.1",

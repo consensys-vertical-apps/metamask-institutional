@@ -29,9 +29,9 @@
   },
   "gitHead": "",
   "dependencies": {
-    "@metamask-institutional/custody-keyring": "^0.0.21",
-    "@metamask-institutional/sdk": "^0.1.14",
-    "@metamask-institutional/types": "^1.0.1",
+    "@metamask-institutional/custody-keyring": "^0.0.22",
+    "@metamask-institutional/sdk": "^0.1.16",
+    "@metamask-institutional/types": "^1.0.2",
     "mock-socket": "^9.2.1"
   }
 }
