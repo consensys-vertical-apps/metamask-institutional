@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.18](https://github.com/consensys-vertical-apps/metamask-institutional/compare/sdk-v0.1.17...sdk-v0.1.18) (2023-05-17)
+
+
+### Bug Fixes
+
+* **check null values:** checking null values in signedMEssage and transaction ([#233](https://github.com/consensys-vertical-apps/metamask-institutional/issues/233)) ([3e21fb9](https://github.com/consensys-vertical-apps/metamask-institutional/commit/3e21fb95f764a9ffe6aea1e459737f7cf62408f7))
+* **npmignore:** clean up ([#271](https://github.com/consensys-vertical-apps/metamask-institutional/issues/271)) ([a4bbae1](https://github.com/consensys-vertical-apps/metamask-institutional/commit/a4bbae1887ef3cead82b58bd2ec14fbfcd40f662))
+* **sdk:** fetch is not working as axios so we moved our logic outside catch ([#140](https://github.com/consensys-vertical-apps/metamask-institutional/issues/140)) ([b9391aa](https://github.com/consensys-vertical-apps/metamask-institutional/commit/b9391aa2ea24b9e80b2e555253b165ad60f468d4))
+* **updates packages:** updates packages to the latest versions ([#278](https://github.com/consensys-vertical-apps/metamask-institutional/issues/278)) ([0dc78c5](https://github.com/consensys-vertical-apps/metamask-institutional/commit/0dc78c5321d8b686320a7d83bd45eae93fefb36a))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @metamask-institutional/simplecache bumped from ^1.0.2 to ^1.1.0
+    * @metamask-institutional/types bumped from ^1.0.2 to ^1.0.3
+
 ## [0.1.17](https://github.com/consensys-vertical-apps/metamask-institutional/compare/sdk-v0.1.14...sdk-v0.1.17) (2023-05-17)
 
 
