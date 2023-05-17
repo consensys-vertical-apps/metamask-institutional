@@ -11,6 +11,7 @@
     "packages/simpleCache": {},
     "packages/transactionUpdate": {},
     "packages/types": {},
-    "packages/websocketClient": {}
+    "packages/websocketClient": {},
+    "packages/extension": {}
   }
 }

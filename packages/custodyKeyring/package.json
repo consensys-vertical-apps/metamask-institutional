@@ -1,6 +1,6 @@
 {
   "name": "@metamask-institutional/custody-keyring",
-  "version": "0.0.22",
+  "version": "0.0.23",
   "description": "The Custody Keyring Class is the initial point of contact with a custodian, it gets access to the sdk and all methods of interaction with a custodian, like custodian accounts, sign a tx, account details, tx details.",
   "author": "Albert Olive <albertolivecorbella@gmail.com>",
   "homepage": "https://github.com/consensys-vertical-apps/metamask-institutional#readme",
@@ -32,7 +32,7 @@
     "@ethereumjs/tx": "^4.1.1",
     "@ethereumjs/util": "^8.0.5",
     "@metamask-institutional/configuration-client": "^1.0.6",
-    "@metamask-institutional/sdk": "^0.1.16",
+    "@metamask-institutional/sdk": "^0.1.15",
     "@metamask-institutional/types": "^1.0.2",
     "@metamask/obs-store": "^8.0.0",
     "crypto": "^1.0.1",
