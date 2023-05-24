@@ -1,0 +1,14 @@
+tsconfig.tsbuildinfo
+junit.xml
+test-report.xml
+
+*.test.ts
+*.test.js
+
+*.test.d.ts
+
+*.test.d.ts.map
+*.test.js.map
+
+*.d.ts.map
+*.js.map
