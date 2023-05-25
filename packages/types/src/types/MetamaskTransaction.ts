@@ -7,6 +7,7 @@ import { IEIP1559TxParams, ILegacyTXParams } from "../ITXParams";
 
 export type MetamaskTransaction = {
   chainId: string;
+  custodyId: string;
   custodyStatus: string;
   dappSuggestedGasFees: {
     gas: string;
