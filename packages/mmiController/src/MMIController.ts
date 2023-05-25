@@ -5,8 +5,9 @@ import { InstitutionalFeaturesController } from "@metamask-institutional/institu
 import { handleMmiPortfolio } from "@metamask-institutional/portfolio-dashboard";
 import { INTERACTIVE_REPLACEMENT_TOKEN_CHANGE_EVENT, REFRESH_TOKEN_CHANGE_EVENT } from "@metamask-institutional/sdk";
 import { TransactionUpdateController } from "@metamask-institutional/transaction-update";
-import { toChecksumHexAddress } from "@metamask/controller-utils";
+import { NetworkType, toChecksumHexAddress } from "@metamask/controller-utils";
 import { PersonalMessageManager, TypedMessageManager } from "@metamask/message-manager";
+import { NetworkConfiguration, NetworkController } from "@metamask/network-controller";
 import { PreferencesController } from "@metamask/preferences-controller";
 import { TransactionMeta } from "@metamask/transaction-controller";
 import EventEmitter from "events";
@@ -30,10 +31,10 @@ export class MMIController extends EventEmitter {
   public getPendingNonce: any;
   public accountTracker: any;
   public metaMetricsController: any;
-  public networkController: any;
   public platform: any;
   public extension: any;
   public preferencesController: PreferencesController;
+  public networkController: NetworkController;
   public transactionUpdateController: TransactionUpdateController;
   public custodyController: CustodyController;
   public institutionalFeaturesController: InstitutionalFeaturesController;
@@ -44,6 +45,7 @@ export class MMIController extends EventEmitter {
   constructor(
     opts: MMIControllerOptions,
     preferencesController: PreferencesController,
+    networkController: NetworkController,
     mmiConfigurationController: MmiConfigurationController,
     custodyController: CustodyController,
     institutionalFeaturesController: InstitutionalFeaturesController,
@@ -61,6 +63,7 @@ export class MMIController extends EventEmitter {
     this.personalMessageManager = personalMessageManager;
 
     this.preferencesController = preferencesController;
+    this.networkController = networkController;
     this.appStateController = opts.appStateController;
 
     this.transactionUpdateController = opts.transactionUpdateController;
@@ -71,7 +74,6 @@ export class MMIController extends EventEmitter {
     this.getPendingNonce = opts.getPendingNonce;
     this.accountTracker = opts.accountTracker;
     this.metaMetricsController = opts.metaMetricsController;
-    this.networkController = opts.networkController;
     this.platform = opts.platform;
     this.extension = opts.extension;
 
@@ -524,22 +526,39 @@ export class MMIController extends EventEmitter {
     });
   }
 
-  async setAccountAndNetwork(origin: string, address: string, chainId: number) {
+  async setAccountAndNetwork(origin: string, address: string, chainId: any) {
     await this.appStateController.getUnlockPromise(true);
     const selectedAddress = this.preferencesController.state.selectedAddress;
     if (selectedAddress.toLowerCase() !== address.toLowerCase()) {
       this.preferencesController.setSelectedAddress(address);
     }
-    const selectedChainId = parseInt(this.networkController.getCurrentChainId(), 16);
-    if (selectedChainId !== chainId && chainId === 1) {
-      this.networkController.setProviderType("mainnet");
+
+    const { networkConfigurations } = this.networkController.state;
+
+    const selectedChainId = Object.values(networkConfigurations).find(
+      networkConfiguration => networkConfiguration.chainId,
+    );
+
+    if (selectedChainId !== chainId && chainId === "1") {
+      this.networkController.setProviderType(NetworkType.mainnet);
     } else if (selectedChainId !== chainId) {
       // @Shane T this doesn't exist here in core
-      const network = this.preferencesController
-        .getFrequentRpcListDetail()
-        .find(item => parseInt(item.chainId, 16) === chainId);
-      this.networkController.setRpcTarget(network.rpcUrl, network.chainId, network.ticker, network.nickname);
+      // const network = this.preferencesController
+      //   .getFrequentRpcListDetail()
+      //   .find(item => parseInt(item.chainId, 16) === chainId);
+
+      // New way of doing the above?
+      const matchingNetworkConfig: NetworkConfiguration = Object.values(networkConfigurations).find(
+        networkConfiguration => networkConfiguration.chainId === chainId,
+      );
+
+      this.networkController.upsertNetworkConfiguration(matchingNetworkConfig, {
+        setActive: false,
+        referrer: "",
+        source: "",
+      });
     }
+
     // @Shane T this doesn't exist here in core
     getPermissionBackgroundApiMethods(this.permissionController).addPermittedAccount(origin, address);
 
