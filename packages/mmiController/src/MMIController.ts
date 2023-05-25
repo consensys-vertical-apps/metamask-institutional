@@ -6,25 +6,39 @@ import { handleMmiPortfolio } from "@metamask-institutional/portfolio-dashboard"
 import { INTERACTIVE_REPLACEMENT_TOKEN_CHANGE_EVENT, REFRESH_TOKEN_CHANGE_EVENT } from "@metamask-institutional/sdk";
 import { TransactionUpdateController } from "@metamask-institutional/transaction-update";
 import { NetworkType, toChecksumHexAddress } from "@metamask/controller-utils";
-import { PersonalMessageManager, TypedMessageManager } from "@metamask/message-manager";
+import { PersonalMessageManager, SecurityProviderRequest, TypedMessageManager } from "@metamask/message-manager";
 import { NetworkConfiguration, NetworkController } from "@metamask/network-controller";
 import { PreferencesController } from "@metamask/preferences-controller";
-import { TransactionMeta } from "@metamask/transaction-controller";
+import { KeyringController as EthKeyringController } from '@metamask/eth-keyring-controller';
+import { TransactionController, TransactionMeta } from "@metamask/transaction-controller";
 import EventEmitter from "events";
 import log from "loglevel";
 
 import { CHAIN_IDS, FINALIZED_TRANSACTION_STATUSES } from "./transaction";
 import { MMIControllerOptions } from "./types";
+import { MetamaskTransaction } from "@metamask-institutional/types";
 
 const BUILD_QUOTE_ROUTE = "/swaps/build-quote";
 const CONNECT_HARDWARE_ROUTE = "/new-account/connect";
 
+
+type OldTransactionController = {
+  setTxHash: (txId: string, txHash: string) => void;
+  _trackTransactionMetricsEvent: (txMeta: MetamaskTransaction, event: string) => void;
+  txStateManager:  {
+    getTransactions: (a: any, b: any, c: any) => any;
+    getTransaction: (txId: string) => MetamaskTransaction;
+  },
+  getTransaction: (txId: string) => MetamaskTransaction;
+}
+
+
 export class MMIController extends EventEmitter {
   public mmiConfigurationController: MmiConfigurationController;
   // @Shane T, what shoould we do with all these types
-  public keyringController: any;
-  public txController: any;
-  public securityProviderRequest: any;
+  public keyringController: EthKeyringController;
+  public txController: OldTransactionController;
+  public securityProviderRequest: SecurityProviderRequest;
   public appStateController: any;
   public addKeyringIfNotExists: any;
   public getState: any;
