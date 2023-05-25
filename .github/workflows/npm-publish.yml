@@ -19,7 +19,7 @@ jobs:
       contents: write
     runs-on: ubuntu-latest
     env:
-      NODE_AUTH_TOKEN: ${{ secrets.npm_token }} # set this token manually
+      NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }} # set this token manually
     steps:
       - name: "Checkout" # Download code from the repository
         uses: actions/checkout@v3
@@ -53,4 +53,4 @@ jobs:
         run: yarn run publish from-package --yes
 
         env:
-          NODE_AUTH_TOKEN: "${{secrets.npm_token}}"
+          NODE_AUTH_TOKEN: "${{secrets.NPM_TOKEN}}"
