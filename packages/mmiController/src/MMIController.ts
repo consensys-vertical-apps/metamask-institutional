@@ -5,60 +5,56 @@ import { InstitutionalFeaturesController } from "@metamask-institutional/institu
 import { handleMmiPortfolio } from "@metamask-institutional/portfolio-dashboard";
 import { INTERACTIVE_REPLACEMENT_TOKEN_CHANGE_EVENT, REFRESH_TOKEN_CHANGE_EVENT } from "@metamask-institutional/sdk";
 import { TransactionUpdateController } from "@metamask-institutional/transaction-update";
+import { MetamaskTransaction } from "@metamask-institutional/types";
 import { NetworkType, toChecksumHexAddress } from "@metamask/controller-utils";
+import { KeyringController as EthKeyringController } from "@metamask/eth-keyring-controller";
 import { PersonalMessageManager, SecurityProviderRequest, TypedMessageManager } from "@metamask/message-manager";
 import { NetworkConfiguration, NetworkController } from "@metamask/network-controller";
+import {
+  CaveatSpecificationConstraint,
+  PermissionController,
+  PermissionSpecificationConstraint,
+} from "@metamask/permission-controller";
 import { PreferencesController } from "@metamask/preferences-controller";
-import { KeyringController as EthKeyringController } from '@metamask/eth-keyring-controller';
-import { TransactionController, TransactionMeta } from "@metamask/transaction-controller";
 import EventEmitter from "events";
 import log from "loglevel";
 
-import { CHAIN_IDS, FINALIZED_TRANSACTION_STATUSES } from "./transaction";
-import { MMIControllerOptions } from "./types";
-import { MetamaskTransaction } from "@metamask-institutional/types";
+import { CHAIN_IDS } from "./transaction";
+import { MMIControllerOptions, OldTransactionController } from "./types";
 
 const BUILD_QUOTE_ROUTE = "/swaps/build-quote";
 const CONNECT_HARDWARE_ROUTE = "/new-account/connect";
 
-
-type OldTransactionController = {
-  setTxHash: (txId: string, txHash: string) => void;
-  _trackTransactionMetricsEvent: (txMeta: MetamaskTransaction, event: string) => void;
-  txStateManager:  {
-    getTransactions: (a: any, b: any, c: any) => any;
-    getTransaction: (txId: string) => MetamaskTransaction;
-  },
-  getTransaction: (txId: string) => MetamaskTransaction;
-}
-
-
 export class MMIController extends EventEmitter {
   public mmiConfigurationController: MmiConfigurationController;
-  // @Shane T, what shoould we do with all these types
   public keyringController: EthKeyringController;
   public txController: OldTransactionController;
   public securityProviderRequest: SecurityProviderRequest;
+  public getPermissionBackgroundApiMethods: (permissionController: any) => {
+    addPermittedAccount: (origin: any, account: any) => void;
+    removePermittedAccount: (origin: any, account: any) => void;
+    requestAccountsPermissionWithId: (origin: any) => Promise<any>;
+  };
   public appStateController: any;
-  public addKeyringIfNotExists: any;
-  public getState: any;
-  public getPendingNonce: any;
+  public getState: () => void;
+  public getPendingNonce: (address: string) => Promise<number>;
   public accountTracker: any;
   public metaMetricsController: any;
   public platform: any;
   public extension: any;
   public preferencesController: PreferencesController;
+  public permissionController: PermissionController<PermissionSpecificationConstraint, CaveatSpecificationConstraint>;
   public networkController: NetworkController;
   public transactionUpdateController: TransactionUpdateController;
   public custodyController: CustodyController;
   public institutionalFeaturesController: InstitutionalFeaturesController;
-
   public typedMessageManager: TypedMessageManager;
   public personalMessageManager: PersonalMessageManager;
 
   constructor(
     opts: MMIControllerOptions,
     preferencesController: PreferencesController,
+    permissionController: PermissionController<PermissionSpecificationConstraint, CaveatSpecificationConstraint>,
     networkController: NetworkController,
     mmiConfigurationController: MmiConfigurationController,
     custodyController: CustodyController,
@@ -67,29 +63,44 @@ export class MMIController extends EventEmitter {
     personalMessageManager: PersonalMessageManager,
   ) {
     super();
-
-    this.mmiConfigurationController = mmiConfigurationController;
+    /**
+     * MMIControllerOptions options listed bellow,should be passed from MM-Controller
+     */
     this.keyringController = opts.keyringController;
     this.txController = opts.txController;
+    this.appStateController = opts.appStateController;
+    this.accountTracker = opts.accountTracker;
+    this.metaMetricsController = opts.metaMetricsController;
+    this.transactionUpdateController = opts.transactionUpdateController;
+    this.platform = opts.platform;
+    this.extension = opts.extension;
     this.securityProviderRequest = opts.securityProviderRequest;
+    this.getState = opts.getState;
+    this.getPendingNonce = opts.getPendingNonce;
+    this.getPermissionBackgroundApiMethods = opts.getPermissionBackgroundApiMethods;
 
+    /**
+     * TypedMessageManager & PersonalMessageManager
+     * come from @metamask/message-manager in Core monorepo
+     */
     this.typedMessageManager = typedMessageManager;
     this.personalMessageManager = personalMessageManager;
 
-    this.preferencesController = preferencesController;
-    this.networkController = networkController;
-    this.appStateController = opts.appStateController;
-
-    this.transactionUpdateController = opts.transactionUpdateController;
+    /**
+     * MmiConfigurationController, CustodyController & InstitutionalFeaturesController
+     * come from @metamask-institutional
+     */
+    this.mmiConfigurationController = mmiConfigurationController;
     this.custodyController = custodyController;
     this.institutionalFeaturesController = institutionalFeaturesController;
-    this.addKeyringIfNotExists = opts.addKeyringIfNotExists;
-    this.getState = opts.getState;
-    this.getPendingNonce = opts.getPendingNonce;
-    this.accountTracker = opts.accountTracker;
-    this.metaMetricsController = opts.metaMetricsController;
-    this.platform = opts.platform;
-    this.extension = opts.extension;
+
+    /**
+     * PreferencesController & PermissionController & NetworkController
+     * come from @metamask in Core monorepo
+     */
+    this.preferencesController = preferencesController;
+    this.permissionController = permissionController;
+    this.networkController = networkController;
 
     // Prepare event listener after transactionUpdateController gets initiated
     this.transactionUpdateController.prepareEventListener(this.custodianEventHandlerFactory.bind(this));
@@ -109,24 +120,28 @@ export class MMIController extends EventEmitter {
     this.keyringController.persistAllKeyrings();
   }
 
-  async trackTransactionEventFromCustodianEvent(txMeta: TransactionMeta, event: string) {
+  async trackTransactionEventFromCustodianEvent(txMeta: MetamaskTransaction, event: string) {
     this.txController._trackTransactionMetricsEvent(txMeta, event);
+  }
+
+  async addKeyringIfNotExists(type: string) {
+    let keyring = await this.keyringController.getKeyringsByType(type)[0];
+    if (!keyring) {
+      keyring = await this.keyringController.addNewKeyring(type);
+    }
+    return keyring;
   }
 
   custodianEventHandlerFactory() {
     return custodianEventHandlerFactory({
       log,
-      // @ts-ignore
-      FINALIZED_TRANSACTION_STATUSES,
       getState: () => this.getState(),
-      addKeyringIfNotExists: (type: string) => this.addKeyringIfNotExists(type),
       getPendingNonce: address => this.getPendingNonce(address),
       setTxHash: (txId, txHash) => this.txController.setTxHash(txId, txHash),
       typedMessageManager: this.typedMessageManager,
       personalMessageManager: this.personalMessageManager,
       txStateManager: this.txController.txStateManager,
       custodyController: this.custodyController,
-      // @ts-ignore
       trackTransactionEvent: this.trackTransactionEventFromCustodianEvent.bind(this),
     });
   }
@@ -518,8 +533,6 @@ export class MMIController extends EventEmitter {
     const keyringAccounts = await this.keyringController.getAccounts();
     const { identities } = this.preferencesController.state;
     const { metaMetricsId } = this.metaMetricsController.store.getState();
-    const { mmiConfiguration } = this.mmiConfigurationController.store.getState();
-    const { cookieSetUrls } = mmiConfiguration && mmiConfiguration.portfolio;
     const getAccountDetails = (address: string) => this.custodyController.getAccountDetails(address);
     const extensionId = this.extension.runtime.id;
     const networks = [
@@ -533,8 +546,6 @@ export class MMIController extends EventEmitter {
       identities,
       metaMetricsId,
       networks,
-      // @ts-ignore
-      cookieSetUrls,
       getAccountDetails,
       extensionId,
     });
@@ -556,12 +567,6 @@ export class MMIController extends EventEmitter {
     if (selectedChainId !== chainId && chainId === "1") {
       this.networkController.setProviderType(NetworkType.mainnet);
     } else if (selectedChainId !== chainId) {
-      // @Shane T this doesn't exist here in core
-      // const network = this.preferencesController
-      //   .getFrequentRpcListDetail()
-      //   .find(item => parseInt(item.chainId, 16) === chainId);
-
-      // New way of doing the above?
       const matchingNetworkConfig: NetworkConfiguration = Object.values(networkConfigurations).find(
         networkConfiguration => networkConfiguration.chainId === chainId,
       );
@@ -573,9 +578,7 @@ export class MMIController extends EventEmitter {
       });
     }
 
-    // @Shane T this doesn't exist here in core
-    getPermissionBackgroundApiMethods(this.permissionController).addPermittedAccount(origin, address);
-
+    this.getPermissionBackgroundApiMethods(this.permissionController).addPermittedAccount(origin, address);
     return true;
   }
 
