@@ -1,0 +1,49 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "rootDir": "./src",
+    "outDir": "./dist",
+    "baseUrl": ".",
+    "sourceMap": true,
+    "resolveJsonModule": true,
+    "composite": true,
+    "allowJs": false,
+    "declaration": true,
+    "declarationMap": true,
+    "allowSyntheticDefaultImports": true
+  },
+  "paths": {
+    "@metamask-institutional/custody-controller": ["../custodyController/src/index.ts"],
+    "@metamask-institutional/custody-keyring": ["../custodyKeyring/src/index.ts"],
+    "@metamask-institutional/sdk": ["../sdk/src/index.ts"],
+    "@metamask-institutional/institutional-features": ["../institutionalFeatures/src/index.ts"],
+    "@metamask-institutional/extension": ["../extension/src/index.ts"],
+    "@metamask-institutional/transaction-update": ["../transactionUpdate/src/index.ts"],
+    "@metamask-institutional/portfolio-dashboard": ["../portfolioDashboard/src/index.ts"]
+  },
+  "references": [
+    {
+      "path": "../custodyController"
+    },
+    {
+      "path": "../custodyKeyring"
+    },
+    {
+      "path": "../sdk"
+    },
+    {
+      "path": "../institutionalFeatures"
+    },
+    {
+      "path": "../extension"
+    },
+    {
+      "path": "../transactionUpdate"
+    },
+    {
+      "path": "../portfolioDashboard"
+    }
+  ],
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist"]
+}
