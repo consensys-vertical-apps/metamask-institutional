@@ -1,6 +1,6 @@
 {
   "name": "@metamask-institutional/institutional-features",
-  "version": "1.1.8",
+  "version": "1.1.9",
   "description": "This package will export Compliance institutional feature used across the old @codefi/mmi-sdk library",
   "author": "Albert Olive <albertolivecorbella@gmail.com>",
   "homepage": "https://github.com/consensys-vertical-apps/metamask-institutional#readme",
@@ -30,7 +30,7 @@
   "gitHead": "62ed7639b9145658a4fa1273e35e99d300acdc99",
   "dependencies": {
     "@auth0/auth0-spa-js": "^2.0.4",
-    "@metamask-institutional/custody-keyring": "^0.0.22",
+    "@metamask-institutional/custody-keyring": "^0.0.24",
     "@metamask/obs-store": "^8.0.0"
   },
   "devDependencies": {

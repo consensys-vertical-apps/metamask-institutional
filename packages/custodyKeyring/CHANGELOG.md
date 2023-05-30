@@ -11,6 +11,25 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
   - dependencies
     - @metamask-institutional/sdk bumped from ^0.1.13 to ^0.1.12
 
+## [0.0.24](https://github.com/consensys-vertical-apps/metamask-institutional/compare/custody-keyring-v0.0.23...custody-keyring-v0.0.24) (2023-05-25)
+
+
+### Bug Fixes
+
+* **check null values:** checking null values in signedMEssage and transaction ([#233](https://github.com/consensys-vertical-apps/metamask-institutional/issues/233)) ([3e21fb9](https://github.com/consensys-vertical-apps/metamask-institutional/commit/3e21fb95f764a9ffe6aea1e459737f7cf62408f7))
+* **lodash:** removes the full lodash package to install only the method needed ([#263](https://github.com/consensys-vertical-apps/metamask-institutional/issues/263)) ([f5c7f4f](https://github.com/consensys-vertical-apps/metamask-institutional/commit/f5c7f4fd23017e8be7e353349dacc72370e33317))
+* **mmiconfiguration:** fixes the name of mmiconfiguration to start with uppercase letter ([#106](https://github.com/consensys-vertical-apps/metamask-institutional/issues/106)) ([772f9b2](https://github.com/consensys-vertical-apps/metamask-institutional/commit/772f9b28ea4e30279235b8de760e61f9cce88c36))
+* **npmignore:** clean up ([#271](https://github.com/consensys-vertical-apps/metamask-institutional/issues/271)) ([a4bbae1](https://github.com/consensys-vertical-apps/metamask-institutional/commit/a4bbae1887ef3cead82b58bd2ec14fbfcd40f662))
+* **updates packages:** updates packages to the latest versions ([#278](https://github.com/consensys-vertical-apps/metamask-institutional/issues/278)) ([0dc78c5](https://github.com/consensys-vertical-apps/metamask-institutional/commit/0dc78c5321d8b686320a7d83bd45eae93fefb36a))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @metamask-institutional/sdk bumped from ^0.1.15 to ^0.1.18
+    * @metamask-institutional/types bumped from ^1.0.2 to ^1.0.3
+
 ## [0.0.23](https://github.com/consensys-vertical-apps/metamask-institutional/compare/custody-keyring-v0.0.21...custody-keyring-v0.0.23) (2023-05-17)
 
 
