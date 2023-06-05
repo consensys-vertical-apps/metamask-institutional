@@ -1,5 +1,11 @@
 # Changelog
 
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @metamask-institutional/portfolio-dashboard bumped from ^1.3.0 to ^1.4.0
+
 ## [0.1.4](https://github.com/consensys-vertical-apps/metamask-institutional/compare/extension-v0.1.3...extension-v0.1.4) (2023-05-25)
 
 
