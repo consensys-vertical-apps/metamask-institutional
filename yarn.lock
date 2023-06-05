@@ -1310,11 +1310,6 @@
     crypto "^1.0.1"
     lodash.clonedeep "^4.5.0"
 
-"@metamask-institutional/types@^1.0.3":
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/@metamask-institutional/types/-/types-1.0.3.tgz#a774fb6e6babb58e702d8c56ee078e8f437d8a27"
-  integrity sha512-XPE53SI5uXxOhrc+3rbAVFqpJUL3qoAMKK4M9qj8efSyFkw0/tuy7zGdEP8JTPr/oCvumo1uROBZCmcvskZEUQ==
-
 "@metamask/approval-controller@^2.1.1":
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/@metamask/approval-controller/-/approval-controller-2.1.1.tgz#c8731ddaaa8e29c1ab5355f87116b3f20a7e6c0d"
@@ -1334,17 +1329,38 @@
     "@metamask/controller-utils" "^3.0.0"
     immer "^9.0.6"
 
+"@metamask/base-controller@^3.0.0":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@metamask/base-controller/-/base-controller-3.0.0.tgz#8da8022c24e2f27fb054884d6f86b0f4e8309877"
+  integrity sha512-WmbWQI7dRCMr57BWztQGfhjIkZYhUQbosEPcGEp/KUTJSrIr6iLKSUSrQkOZvoTiA6GkkT7tGAtTYwZcEeCFlQ==
+  dependencies:
+    "@metamask/utils" "^5.0.2"
+    immer "^9.0.6"
+
 "@metamask/browser-passworder@^4.0.2":
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/@metamask/browser-passworder/-/browser-passworder-4.1.0.tgz#d515db2ffd69ecab813a688e2b7553f2766c5e79"
   integrity sha512-FBvah1mPte5HudQdkgqAh2+Zc75T9kYxey+dCtHIj9gKohkHDcIA1bTOPLk0bBH+6PnOzYNPG8devvH04GOmPA==
 
-"@metamask/controller-utils@^3.0.0", "@metamask/controller-utils@^3.1.0", "@metamask/controller-utils@^3.4.0":
+"@metamask/controller-utils@^3.0.0", "@metamask/controller-utils@^3.4.0":
   version "3.4.0"
   resolved "https://registry.yarnpkg.com/@metamask/controller-utils/-/controller-utils-3.4.0.tgz#3714799a3e2648cd758272612578238749e3e11b"
   integrity sha512-/++y7qXUd9+aRzOklypfzmehO87QVKndlJXsbLRk36W5L5DJo4lrR2pd/IBbwbWEhFJWHhlfbMD+T+gEBvIftw==
   dependencies:
     "@metamask/utils" "^5.0.1"
+    "@spruceid/siwe-parser" "1.1.3"
+    eth-ens-namehash "^2.0.8"
+    eth-rpc-errors "^4.0.2"
+    ethereumjs-util "^7.0.10"
+    ethjs-unit "^0.1.6"
+    fast-deep-equal "^3.1.3"
+
+"@metamask/controller-utils@^4.0.0":
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/@metamask/controller-utils/-/controller-utils-4.0.0.tgz#148ff2b61e324d2590e8a88457bb2c4052b1de64"
+  integrity sha512-PA4wkxojYgURxURc7G0EXhtU/mN6Rdx7vdlf5qmhtVYRUmZsSSt8DKZSvUg4HLlBDkcxaLkaEQzKGw5eqMrozg==
+  dependencies:
+    "@metamask/utils" "^5.0.2"
     "@spruceid/siwe-parser" "1.1.3"
     eth-ens-namehash "^2.0.8"
     eth-rpc-errors "^4.0.2"
@@ -1462,13 +1478,13 @@
     json-rpc-engine "^6.1.0"
     nanoid "^3.1.31"
 
-"@metamask/preferences-controller@^3.0.0":
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/@metamask/preferences-controller/-/preferences-controller-3.0.0.tgz#ef3f5e9c49fb508a5bcdcc2ad7cf3d966af9809b"
-  integrity sha512-vqtU1DMg2ywzetAOOyvfi3BUvrBQxK1+q58/xnbHMEEHUqn2BsEod3itub/qTNbNoHNR8+b+uVG+2OAM+PBzWg==
+"@metamask/preferences-controller@^4.0.0":
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/@metamask/preferences-controller/-/preferences-controller-4.0.0.tgz#7a7bbbf1f0513e105e6fb73a6de9a15a05bf40b2"
+  integrity sha512-i0KJQvHQhCP3KQ4HCPx8RR7l5I8/oraJn04auMQXyFfAfRrYKDr2ALO+wg9ZwpSc4zPIFPG6qyuUQK+J0Nm8ng==
   dependencies:
-    "@metamask/base-controller" "^2.0.0"
-    "@metamask/controller-utils" "^3.1.0"
+    "@metamask/base-controller" "^3.0.0"
+    "@metamask/controller-utils" "^4.0.0"
 
 "@metamask/safe-event-emitter@^2.0.0":
   version "2.0.0"
@@ -1512,7 +1528,7 @@
   resolved "https://registry.yarnpkg.com/@metamask/types/-/types-1.1.0.tgz#9bd14b33427932833c50c9187298804a18c2e025"
   integrity sha512-EEV/GjlYkOSfSPnYXfOosxa3TqYtIW3fhg6jdw+cok/OhMgNn4wCfbENFqjytrHMU2f7ZKtBAvtiP5V8H44sSw==
 
-"@metamask/utils@^5.0.1":
+"@metamask/utils@^5.0.1", "@metamask/utils@^5.0.2":
   version "5.0.2"
   resolved "https://registry.yarnpkg.com/@metamask/utils/-/utils-5.0.2.tgz#140ba5061d90d9dac0280c19cab101bc18c8857c"
   integrity sha512-yfmE79bRQtnMzarnKfX7AEJBwFTxvTyw3nBQlu/5rmGXrjAeAMltoGxO62TFurxrQAFMNa/fEjIHNvungZp0+g==
