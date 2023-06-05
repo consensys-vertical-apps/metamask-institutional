@@ -6,7 +6,7 @@ export async function handleMmiPortfolio({
   getAccountDetails,
   extensionId,
 }) {
-  networks.forEach(item => parseInt(item.chainId, 16));
+  const parsedNetworks = networks.map(item => parseInt(item.chainId, 16));
   const accounts = keyringAccounts.map(address => {
     const accountDetails = getAccountDetails(address);
 
@@ -27,7 +27,7 @@ export async function handleMmiPortfolio({
 
   return {
     accounts,
-    networks,
+    networks: parsedNetworks,
     metrics: {
       metaMetricsId,
       extensionId,
