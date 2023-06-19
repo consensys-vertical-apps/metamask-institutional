@@ -1310,11 +1310,6 @@
     crypto "^1.0.1"
     lodash.clonedeep "^4.5.0"
 
-"@metamask-institutional/types@^1.0.3":
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/@metamask-institutional/types/-/types-1.0.3.tgz#a774fb6e6babb58e702d8c56ee078e8f437d8a27"
-  integrity sha512-XPE53SI5uXxOhrc+3rbAVFqpJUL3qoAMKK4M9qj8efSyFkw0/tuy7zGdEP8JTPr/oCvumo1uROBZCmcvskZEUQ==
-
 "@metamask/approval-controller@^2.1.1":
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/@metamask/approval-controller/-/approval-controller-2.1.1.tgz#c8731ddaaa8e29c1ab5355f87116b3f20a7e6c0d"
@@ -1334,6 +1329,14 @@
     "@metamask/controller-utils" "^3.0.0"
     immer "^9.0.6"
 
+"@metamask/base-controller@^3.0.0":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@metamask/base-controller/-/base-controller-3.0.0.tgz#8da8022c24e2f27fb054884d6f86b0f4e8309877"
+  integrity sha512-WmbWQI7dRCMr57BWztQGfhjIkZYhUQbosEPcGEp/KUTJSrIr6iLKSUSrQkOZvoTiA6GkkT7tGAtTYwZcEeCFlQ==
+  dependencies:
+    "@metamask/utils" "^5.0.2"
+    immer "^9.0.6"
+
 "@metamask/browser-passworder@^4.0.2":
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/@metamask/browser-passworder/-/browser-passworder-4.1.0.tgz#d515db2ffd69ecab813a688e2b7553f2766c5e79"
@@ -1345,6 +1348,19 @@
   integrity sha512-/++y7qXUd9+aRzOklypfzmehO87QVKndlJXsbLRk36W5L5DJo4lrR2pd/IBbwbWEhFJWHhlfbMD+T+gEBvIftw==
   dependencies:
     "@metamask/utils" "^5.0.1"
+    "@spruceid/siwe-parser" "1.1.3"
+    eth-ens-namehash "^2.0.8"
+    eth-rpc-errors "^4.0.2"
+    ethereumjs-util "^7.0.10"
+    ethjs-unit "^0.1.6"
+    fast-deep-equal "^3.1.3"
+
+"@metamask/controller-utils@^4.0.0":
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/@metamask/controller-utils/-/controller-utils-4.0.0.tgz#148ff2b61e324d2590e8a88457bb2c4052b1de64"
+  integrity sha512-PA4wkxojYgURxURc7G0EXhtU/mN6Rdx7vdlf5qmhtVYRUmZsSSt8DKZSvUg4HLlBDkcxaLkaEQzKGw5eqMrozg==
+  dependencies:
+    "@metamask/utils" "^5.0.2"
     "@spruceid/siwe-parser" "1.1.3"
     eth-ens-namehash "^2.0.8"
     eth-rpc-errors "^4.0.2"
@@ -1407,13 +1423,14 @@
     ethereum-cryptography "^1.1.2"
     randombytes "^2.1.0"
 
-"@metamask/message-manager@^5.0.0":
-  version "5.0.0"
-  resolved "https://registry.yarnpkg.com/@metamask/message-manager/-/message-manager-5.0.0.tgz#1f419ad5b24c8f5ae8b07f0772376d96a939ac5e"
-  integrity sha512-p/7Q6n/g3dsSDowjDWJjrONOmQHkx99sK62He6FUxVvkS45RzB1SZuz4Lvg4uCgbVdl9HzBjb+BlTsfYD9wHvQ==
+"@metamask/message-manager@^7.0.0":
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/@metamask/message-manager/-/message-manager-7.0.0.tgz#8f11e41a1b34b89a25198f408c2745f302dedbea"
+  integrity sha512-wynr2ApGbJJ1ZwhMASI0hxbSwDNQmS5yMn5/xqdLQwRyv/fcGHGrcz3jW3iRj2/JD3FDmsD5yi8FQ0h8Uxf7Kg==
   dependencies:
-    "@metamask/base-controller" "^2.0.0"
-    "@metamask/controller-utils" "^3.4.0"
+    "@metamask/base-controller" "^3.0.0"
+    "@metamask/controller-utils" "^4.0.0"
+    "@metamask/utils" "^5.0.2"
     "@types/uuid" "^8.3.0"
     eth-sig-util "^3.0.0"
     ethereumjs-util "^7.0.10"
@@ -1512,7 +1529,7 @@
   resolved "https://registry.yarnpkg.com/@metamask/types/-/types-1.1.0.tgz#9bd14b33427932833c50c9187298804a18c2e025"
   integrity sha512-EEV/GjlYkOSfSPnYXfOosxa3TqYtIW3fhg6jdw+cok/OhMgNn4wCfbENFqjytrHMU2f7ZKtBAvtiP5V8H44sSw==
 
-"@metamask/utils@^5.0.1":
+"@metamask/utils@^5.0.1", "@metamask/utils@^5.0.2":
   version "5.0.2"
   resolved "https://registry.yarnpkg.com/@metamask/utils/-/utils-5.0.2.tgz#140ba5061d90d9dac0280c19cab101bc18c8857c"
   integrity sha512-yfmE79bRQtnMzarnKfX7AEJBwFTxvTyw3nBQlu/5rmGXrjAeAMltoGxO62TFurxrQAFMNa/fEjIHNvungZp0+g==
@@ -4286,15 +4303,7 @@ ethereum-cryptography@^2.0.0:
     "@scure/bip32" "1.3.0"
     "@scure/bip39" "1.2.0"
 
-ethereumjs-abi@^0.6.8:
-  version "0.6.8"
-  resolved "https://registry.yarnpkg.com/ethereumjs-abi/-/ethereumjs-abi-0.6.8.tgz#71bc152db099f70e62f108b7cdfca1b362c6fcae"
-  integrity sha512-Tx0r/iXI6r+lRsdvkFDlut0N08jWMnKRZ6Gkq+Nmw75lZe4e6o3EkSnkaBP5NF6+m5PTGAr9JP43N3LyeoglsA==
-  dependencies:
-    bn.js "^4.11.8"
-    ethereumjs-util "^6.0.0"
-
-"ethereumjs-abi@git+https://github.com/ethereumjs/ethereumjs-abi.git":
+ethereumjs-abi@^0.6.8, "ethereumjs-abi@git+https://github.com/ethereumjs/ethereumjs-abi.git":
   version "0.6.8"
   resolved "git+https://github.com/ethereumjs/ethereumjs-abi.git#ee3994657fa7a427238e6ba92a84d0b529bbcde0"
   dependencies:
