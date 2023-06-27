@@ -1,6 +1,6 @@
 {
   "name": "@metamask-institutional/mmi-controller",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "This package will export MMI Controller, responsible for the interaction with MM Controller and Core",
   "author": "António Regadas <apregadas@gmail.com>",
   "homepage": "https://github.com/consensys-vertical-apps/metamask-institutional#readme",
