@@ -23,8 +23,8 @@ export class JsonRpcCustodyKeyring extends CustodyKeyring {
     name: "JSONRPC",
     displayName: "JSON-RPC",
     apiUrl: "https://saturn-custody.codefi.network/eth",
-    imgSrc: "images/json-rpc.svg",
-    icon: "images/json-rpc.svg",
+    imgSrc: "https://saturn-custody-ui.metamask-institutional.io/saturn.svg",
+    icon: "https://saturn-custody-ui.metamask-institutional.io/saturn.svg",
     keyringClass: JsonRpcCustodyKeyring,
     production: false,
     hidden: true, // Since this is the prototype, we don't want to show it in the UI
