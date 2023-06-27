@@ -11,5 +11,5 @@
   "packages/portfolioDashboard": "1.4.0",
   "packages/rpcAllowlist": "1.0.0",
   "packages/extension": "0.1.6",
-  "packages/mmiController": "0.1.0"
+  "packages/mmiController": "0.1.1"
 }
