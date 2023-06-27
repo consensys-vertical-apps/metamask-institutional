@@ -6,6 +6,14 @@
   * dependencies
     * @metamask-institutional/portfolio-dashboard bumped from ^1.3.0 to ^1.4.0
 
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @metamask-institutional/custody-controller bumped from ^0.2.7 to ^0.2.8
+    * @metamask-institutional/custody-keyring bumped from ^0.0.24 to ^0.0.25
+    * @metamask-institutional/transaction-update bumped from ^0.1.22 to ^0.1.23
+
 ## [0.1.4](https://github.com/consensys-vertical-apps/metamask-institutional/compare/extension-v0.1.3...extension-v0.1.4) (2023-05-25)
 
 
