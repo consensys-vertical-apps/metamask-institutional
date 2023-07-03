@@ -1310,18 +1310,13 @@
     crypto "^1.0.1"
     lodash.clonedeep "^4.5.0"
 
-"@metamask-institutional/types@^1.0.3":
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/@metamask-institutional/types/-/types-1.0.3.tgz#a774fb6e6babb58e702d8c56ee078e8f437d8a27"
-  integrity sha512-XPE53SI5uXxOhrc+3rbAVFqpJUL3qoAMKK4M9qj8efSyFkw0/tuy7zGdEP8JTPr/oCvumo1uROBZCmcvskZEUQ==
-
-"@metamask/approval-controller@^2.1.1":
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/@metamask/approval-controller/-/approval-controller-2.1.1.tgz#c8731ddaaa8e29c1ab5355f87116b3f20a7e6c0d"
-  integrity sha512-hWYJV10RLREgJScpoUCZao5EK+0ZExLBZ+dIS4Mq+kibJV8KyzuhUb5sNwek9hqvNFBHJxCNiBYwL+BAI/zQgg==
+"@metamask/approval-controller@^3.3.0":
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/@metamask/approval-controller/-/approval-controller-3.3.0.tgz#8e98de054ea92af82e50d90d300dc5222c444f3b"
+  integrity sha512-UlnNWm/mewteLbVNv+e4yepPkwov1cxHGtJWa5OKN+jE8ZoxX1MGUFBr6G4JczyOmv6JSR03mx0jP7T04ZN0nw==
   dependencies:
-    "@metamask/base-controller" "^2.0.0"
-    "@metamask/controller-utils" "^3.4.0"
+    "@metamask/base-controller" "^3.0.0"
+    "@metamask/utils" "^5.0.2"
     eth-rpc-errors "^4.0.2"
     immer "^9.0.6"
     nanoid "^3.1.31"
@@ -1332,6 +1327,14 @@
   integrity sha512-DppA4/HCabsphVucNRpWA3/mp6m2KhZr/8gidSlpUNLMFqljOKA81GW9nemN3HDqH1RoZdXusI82/4SPEbdbaA==
   dependencies:
     "@metamask/controller-utils" "^3.0.0"
+    immer "^9.0.6"
+
+"@metamask/base-controller@^3.0.0":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@metamask/base-controller/-/base-controller-3.0.0.tgz#8da8022c24e2f27fb054884d6f86b0f4e8309877"
+  integrity sha512-WmbWQI7dRCMr57BWztQGfhjIkZYhUQbosEPcGEp/KUTJSrIr6iLKSUSrQkOZvoTiA6GkkT7tGAtTYwZcEeCFlQ==
+  dependencies:
+    "@metamask/utils" "^5.0.2"
     immer "^9.0.6"
 
 "@metamask/browser-passworder@^4.0.2":
@@ -1347,6 +1350,21 @@
     "@metamask/utils" "^5.0.1"
     "@spruceid/siwe-parser" "1.1.3"
     eth-ens-namehash "^2.0.8"
+    eth-rpc-errors "^4.0.2"
+    ethereumjs-util "^7.0.10"
+    ethjs-unit "^0.1.6"
+    fast-deep-equal "^3.1.3"
+
+"@metamask/controller-utils@^4.0.1":
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/@metamask/controller-utils/-/controller-utils-4.0.1.tgz#b60ff08a515b445b55061939cd7e11d96a60a896"
+  integrity sha512-eH4U+xNBKBtnHsR16ALu/dM1zp6J/vvrHrnNjFYMuVoKstfIsIITAjrO6g5NuLcthdDOjc0dZMkBVC1Ksb/r5A==
+  dependencies:
+    "@metamask/utils" "^5.0.2"
+    "@spruceid/siwe-parser" "1.1.3"
+    babel-runtime "^6.26.0"
+    eth-ens-namehash "^2.0.8"
+    eth-query "^2.1.2"
     eth-rpc-errors "^4.0.2"
     ethereumjs-util "^7.0.10"
     ethjs-unit "^0.1.6"
@@ -1446,15 +1464,15 @@
     "@metamask/safe-event-emitter" "^2.0.0"
     through2 "^2.0.3"
 
-"@metamask/permission-controller@^3.2.0":
-  version "3.2.0"
-  resolved "https://registry.yarnpkg.com/@metamask/permission-controller/-/permission-controller-3.2.0.tgz#dfd25b01e5c089b314fdceee1f8b1b3da922c841"
-  integrity sha512-/nMpEolJWwVa7WOymTZcfbOikUj9IYa3mBsOb7Wb5gOIJTn0tvW2L0MmPIi4GB8tsofGxSQOOi+nHJdQub9hCA==
+"@metamask/permission-controller@^4.0.1":
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/@metamask/permission-controller/-/permission-controller-4.0.1.tgz#b3eee18b49cd9be9e7241e1038fd0df30d546867"
+  integrity sha512-LMhD2+3QHmrYQzs81/ZUf473or+B+HmKLpVwpC0L1FfAeSrEpcDrfxWbGtYwiMo9wqNqwN2UAH7ifNy5rudtsA==
   dependencies:
-    "@metamask/approval-controller" "^2.1.1"
-    "@metamask/base-controller" "^2.0.0"
-    "@metamask/controller-utils" "^3.4.0"
-    "@metamask/types" "^1.1.0"
+    "@metamask/approval-controller" "^3.3.0"
+    "@metamask/base-controller" "^3.0.0"
+    "@metamask/controller-utils" "^4.0.1"
+    "@metamask/utils" "^5.0.2"
     "@types/deep-freeze-strict" "^1.1.0"
     deep-freeze-strict "^1.1.1"
     eth-rpc-errors "^4.0.2"
@@ -1507,12 +1525,7 @@
     nonce-tracker "^1.1.0"
     uuid "^8.3.2"
 
-"@metamask/types@^1.1.0":
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@metamask/types/-/types-1.1.0.tgz#9bd14b33427932833c50c9187298804a18c2e025"
-  integrity sha512-EEV/GjlYkOSfSPnYXfOosxa3TqYtIW3fhg6jdw+cok/OhMgNn4wCfbENFqjytrHMU2f7ZKtBAvtiP5V8H44sSw==
-
-"@metamask/utils@^5.0.1":
+"@metamask/utils@^5.0.1", "@metamask/utils@^5.0.2":
   version "5.0.2"
   resolved "https://registry.yarnpkg.com/@metamask/utils/-/utils-5.0.2.tgz#140ba5061d90d9dac0280c19cab101bc18c8857c"
   integrity sha512-yfmE79bRQtnMzarnKfX7AEJBwFTxvTyw3nBQlu/5rmGXrjAeAMltoGxO62TFurxrQAFMNa/fEjIHNvungZp0+g==
