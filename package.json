@@ -52,7 +52,7 @@
     "nx": "^15.9.2",
     "prettier": "^2.8.7",
     "rimraf": "^4.4.1",
-    "ts-jest": "^29.0.5",
+    "ts-jest": "^29.1.1",
     "typescript": "^5.0.3"
   },
   "lint-staged": {
