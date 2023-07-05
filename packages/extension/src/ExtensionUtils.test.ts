@@ -518,7 +518,6 @@ describe("ExtensionUtils", () => {
         mmiActions: {
           getCustodianSignMessageDeepLink: jest.fn(),
           getCustodianConfirmDeepLink: jest.fn(),
-          showCustodyConfirmLink: jest.fn(),
           setWaitForConfirmDeepLinkDialog: jest.fn(),
         },
         txId: "txId",
@@ -528,6 +527,7 @@ describe("ExtensionUtils", () => {
         custodyId: undefined,
         onDeepLinkFetched: jest.fn(),
         onDeepLinkShown: jest.fn(),
+        showCustodyConfirmLink: jest.fn(),
       };
       await showCustodianDeepLink(params);
       expect(params.mmiActions.getCustodianConfirmDeepLink).toBeCalled();
@@ -539,7 +539,6 @@ describe("ExtensionUtils", () => {
         mmiActions: {
           getCustodianSignMessageDeepLink: jest.fn(),
           getCustodianConfirmDeepLink: jest.fn(),
-          showCustodyConfirmLink: jest.fn(),
           setWaitForConfirmDeepLinkDialog: jest.fn(),
         },
         txId: undefined,
@@ -549,6 +548,7 @@ describe("ExtensionUtils", () => {
         custodyId: "custodyId",
         onDeepLinkFetched: jest.fn(),
         onDeepLinkShown: jest.fn(),
+        showCustodyConfirmLink: jest.fn(),
       };
       await showCustodianDeepLink(params);
       expect(params.mmiActions.getCustodianSignMessageDeepLink).toBeCalled();
