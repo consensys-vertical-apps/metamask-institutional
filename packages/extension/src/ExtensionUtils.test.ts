@@ -515,7 +515,7 @@ describe("ExtensionUtils", () => {
     it("will run getCustodianConfirmDeepLink and onDeepLinkShown", async () => {
       const params = {
         dispatch: jest.fn(() => ({ deepLink: "link", custodyId: "custodyId" })),
-        MMIActions: {
+        mmiActions: {
           getCustodianSignMessageDeepLink: jest.fn(),
           getCustodianConfirmDeepLink: jest.fn(),
           showCustodyConfirmLink: jest.fn(),
@@ -530,13 +530,13 @@ describe("ExtensionUtils", () => {
         onDeepLinkShown: jest.fn(),
       };
       await showCustodianDeepLink(params);
-      expect(params.MMIActions.getCustodianConfirmDeepLink).toBeCalled();
+      expect(params.mmiActions.getCustodianConfirmDeepLink).toBeCalled();
       expect(params.onDeepLinkShown).toBeCalled();
     });
     it("will run getCustodianSignMessageDeepLink and onDeepLinkShown", async () => {
       const params = {
         dispatch: jest.fn(() => ({ deepLink: "link", custodyId: "custodyId" })),
-        MMIActions: {
+        mmiActions: {
           getCustodianSignMessageDeepLink: jest.fn(),
           getCustodianConfirmDeepLink: jest.fn(),
           showCustodyConfirmLink: jest.fn(),
@@ -551,7 +551,7 @@ describe("ExtensionUtils", () => {
         onDeepLinkShown: jest.fn(),
       };
       await showCustodianDeepLink(params);
-      expect(params.MMIActions.getCustodianSignMessageDeepLink).toBeCalled();
+      expect(params.mmiActions.getCustodianSignMessageDeepLink).toBeCalled();
       expect(params.onDeepLinkShown).toBeCalled();
     });
   });

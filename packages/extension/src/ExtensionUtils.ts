@@ -11,13 +11,12 @@ import { ICustodianUpdate, MetamaskTransaction, MetaMaskTransactionStatuses } fr
 
 const TRANSACTION_EVENTS: { [key in MetaMaskTransactionStatuses]: string } = {
   [MetaMaskTransactionStatuses.APPROVED]: "Transaction Approved",
-  [MetaMaskTransactionStatuses.SIGNED]: "Transaction Finalized",
+  [MetaMaskTransactionStatuses.SIGNED]: "Transaction Signed",
   [MetaMaskTransactionStatuses.REJECTED]: "Transaction Rejected",
   [MetaMaskTransactionStatuses.FAILED]: "Transaction Failed",
   [MetaMaskTransactionStatuses.SUBMITTED]: "Transaction Submitted",
   [MetaMaskTransactionStatuses.CONFIRMED]: "Transaction Confirmed",
   [MetaMaskTransactionStatuses.UNAPPROVED]: "Transaction Unapproved",
-  [MetaMaskTransactionStatuses.SIGNED]: "Transaction Signed",
   [MetaMaskTransactionStatuses.DROPPED]: "Transaction Dropped",
 };
 
@@ -201,7 +200,7 @@ export function custodianEventHandlerFactory({
 
 interface ShowCustodianDeepLinkParameters {
   dispatch: (any) => any;
-  MMIActions: any;
+  mmiActions: any;
   txId: string;
   fromAddress: string;
   closeNotification: boolean;
@@ -209,11 +208,12 @@ interface ShowCustodianDeepLinkParameters {
   custodyId: string;
   onDeepLinkFetched: () => any;
   onDeepLinkShown: () => any;
+  showCustodyConfirmLink: (any) => any;
 }
 
 export async function showCustodianDeepLink({
   dispatch,
-  MMIActions,
+  mmiActions,
   txId,
   fromAddress,
   closeNotification,
@@ -221,31 +221,32 @@ export async function showCustodianDeepLink({
   custodyId,
   onDeepLinkFetched,
   onDeepLinkShown,
+  showCustodyConfirmLink,
 }: ShowCustodianDeepLinkParameters): Promise<void> {
   let deepLink;
   let custodianTxId = custodyId;
   if (isSignature) {
-    const link = await dispatch(MMIActions.getCustodianSignMessageDeepLink(fromAddress, custodyId));
+    const link = await dispatch(mmiActions.getCustodianSignMessageDeepLink(fromAddress, custodyId));
     deepLink = link;
   } else {
-    const result = await dispatch(MMIActions.getCustodianConfirmDeepLink(txId));
+    const result = await dispatch(mmiActions.getCustodianConfirmDeepLink(txId));
     deepLink = result.deepLink;
     custodianTxId = result.custodyId;
   }
   onDeepLinkFetched();
   try {
     await dispatch(
-      MMIActions.showCustodyConfirmLink({
+      showCustodyConfirmLink({
         link: deepLink,
         address: fromAddress,
         closeNotification: closeNotification,
         custodyId: custodianTxId,
       }),
     );
-    dispatch(MMIActions.setWaitForConfirmDeepLinkDialog(true));
+    dispatch(mmiActions.setWaitForConfirmDeepLinkDialog(true));
     onDeepLinkShown();
   } catch (e) {
-    dispatch(MMIActions.setWaitForConfirmDeepLinkDialog(false));
+    dispatch(mmiActions.setWaitForConfirmDeepLinkDialog(false));
   }
 }
 
