@@ -1310,11 +1310,6 @@
     crypto "^1.0.1"
     lodash.clonedeep "^4.5.0"
 
-"@metamask-institutional/types@^1.0.3":
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/@metamask-institutional/types/-/types-1.0.3.tgz#a774fb6e6babb58e702d8c56ee078e8f437d8a27"
-  integrity sha512-XPE53SI5uXxOhrc+3rbAVFqpJUL3qoAMKK4M9qj8efSyFkw0/tuy7zGdEP8JTPr/oCvumo1uROBZCmcvskZEUQ==
-
 "@metamask/approval-controller@^2.1.1":
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/@metamask/approval-controller/-/approval-controller-2.1.1.tgz#c8731ddaaa8e29c1ab5355f87116b3f20a7e6c0d"
