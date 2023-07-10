@@ -38,7 +38,7 @@
     "@metamask-institutional/transaction-update": "^0.1.21",
     "@metamask-institutional/types": "^1.0.3",
     "@metamask/controller-utils": "^3.4.0",
-    "@metamask/eth-keyring-controller": "^10.0.1",
+    "@metamask/eth-keyring-controller": "^12.0.0",
     "@metamask/message-manager": "^5.0.0",
     "@metamask/network-controller": "^8.0.0",
     "@metamask/preferences-controller": "^3.0.0",
