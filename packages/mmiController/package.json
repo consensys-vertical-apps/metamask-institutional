@@ -40,7 +40,7 @@
     "@metamask/controller-utils": "^3.4.0",
     "@metamask/eth-keyring-controller": "^10.0.1",
     "@metamask/message-manager": "^5.0.0",
-    "@metamask/network-controller": "^8.0.0",
+    "@metamask/network-controller": "^10.3.0",
     "@metamask/preferences-controller": "^3.0.0",
     "@metamask/transaction-controller": "^5.0.0",
     "@metamask/permission-controller": "^3.2.0",
