@@ -1,5 +1,11 @@
 # Changelog
 
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @metamask-institutional/extension bumped from ^0.1.3 to ^0.2.1
+
 ## [0.1.1](https://github.com/consensys-vertical-apps/metamask-institutional/compare/mmi-controller-v0.1.0...mmi-controller-v0.1.1) (2023-06-27)
 
 
