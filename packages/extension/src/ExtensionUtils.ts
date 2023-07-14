@@ -154,7 +154,7 @@ export function custodianEventHandlerFactory({
       const allMessages = signatureController.messages;
       const filteredItem = Object.keys(allMessages)
         .map(key => allMessages[key])
-        .find(item => item.metadata.custodian_transactionId === txData.signedMessage.id);
+        .find(item => item.metadata?.custodian_transactionId === txData.signedMessage.id);
 
       if (!filteredItem) {
         return;
