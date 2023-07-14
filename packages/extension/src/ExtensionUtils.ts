@@ -100,8 +100,7 @@ interface CustodianEventHandlerFactoryParameters {
   log: any;
   getPendingNonce: (string) => Promise<number>;
   setTxHash: (number, string) => void;
-  typedMessageManager: any;
-  personalMessageManager: any;
+  signatureController: any;
   txStateManager: any;
   custodyController: CustodyController;
   trackTransactionEvent: (txMeta: MetamaskTransaction, string) => void;
@@ -114,8 +113,7 @@ export function custodianEventHandlerFactory({
   log,
   getPendingNonce,
   setTxHash,
-  typedMessageManager,
-  personalMessageManager,
+  signatureController,
   txStateManager,
   custodyController,
   trackTransactionEvent,
@@ -153,25 +151,23 @@ export function custodianEventHandlerFactory({
         custodyController.setWaitForConfirmDeepLinkDialog(false);
       }
 
-      if (!/personal/.test(txData.signedMessage.signatureVersion)) {
-        // EIP-712 signature
-        const msgId = typedMessageManager.getMsgByCustodyId(txData.signedMessage.id)?.id;
+      const allMessages = signatureController.messages;
+      const filteredItem = Object.keys(allMessages)
+        .map(key => allMessages[key])
+        .find(item => item.metadata?.custodian_transactionId === txData.signedMessage.id);
 
-        if (txData.signedMessage.signature && txData.signedMessage.signature != "0x") {
-          typedMessageManager.setMsgStatusSigned(msgId, txData.signedMessage.signature);
-        } else if (txData.signedMessage.status.finished && !txData.signedMessage.status.success) {
-          typedMessageManager.rejectMsg(msgId);
-        }
-      } else {
-        const msgId = personalMessageManager.getMsgByCustodyId(txData.signedMessage.id)?.id;
-        console.log(personalMessageManager.getMsgByCustodyId(txData.signedMessage.id));
-
-        if (txData.signedMessage.signature && txData.signedMessage.signature != "0x") {
-          personalMessageManager.setMsgStatusSigned(msgId, txData.signedMessage.signature);
-        } else if (txData.signedMessage.status.finished && !txData.signedMessage.status.success) {
-          personalMessageManager.rejectMsg(msgId);
-        }
+      if (!filteredItem) {
+        return;
       }
+
+      const messageId = filteredItem.id;
+
+      if (txData.signedMessage.signature && txData.signedMessage.signature != "0x") {
+        signatureController.setMessageStatusSigned(messageId, txData.signedMessage.signature);
+      } else if (txData.signedMessage.status.finished && !txData.signedMessage.status.success) {
+        signatureController.cancelAbstractMessage(messageId);
+      }
+
       return;
     }
 
