@@ -1357,7 +1357,7 @@
   resolved "https://registry.yarnpkg.com/@metamask/browser-passworder/-/browser-passworder-4.1.0.tgz#d515db2ffd69ecab813a688e2b7553f2766c5e79"
   integrity sha512-FBvah1mPte5HudQdkgqAh2+Zc75T9kYxey+dCtHIj9gKohkHDcIA1bTOPLk0bBH+6PnOzYNPG8devvH04GOmPA==
 
-"@metamask/controller-utils@^3.0.0", "@metamask/controller-utils@^3.1.0", "@metamask/controller-utils@^3.4.0":
+"@metamask/controller-utils@^3.0.0", "@metamask/controller-utils@^3.4.0":
   version "3.4.0"
   resolved "https://registry.yarnpkg.com/@metamask/controller-utils/-/controller-utils-3.4.0.tgz#3714799a3e2648cd758272612578238749e3e11b"
   integrity sha512-/++y7qXUd9+aRzOklypfzmehO87QVKndlJXsbLRk36W5L5DJo4lrR2pd/IBbwbWEhFJWHhlfbMD+T+gEBvIftw==
@@ -1550,13 +1550,13 @@
     json-rpc-engine "^6.1.0"
     nanoid "^3.1.31"
 
-"@metamask/preferences-controller@^3.0.0":
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/@metamask/preferences-controller/-/preferences-controller-3.0.0.tgz#ef3f5e9c49fb508a5bcdcc2ad7cf3d966af9809b"
-  integrity sha512-vqtU1DMg2ywzetAOOyvfi3BUvrBQxK1+q58/xnbHMEEHUqn2BsEod3itub/qTNbNoHNR8+b+uVG+2OAM+PBzWg==
+"@metamask/preferences-controller@^4.2.0":
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/@metamask/preferences-controller/-/preferences-controller-4.2.0.tgz#82665c55cb2eac44f4b4472d4a91291d33121619"
+  integrity sha512-Or+Qu4r3WifgpJRIknrFb2m5/nmbt4KUsawWpn8scI7TPxa6xLnlLeOlrcTDRISYVbKL6LgpV+Dna2FyJSubnw==
   dependencies:
-    "@metamask/base-controller" "^2.0.0"
-    "@metamask/controller-utils" "^3.1.0"
+    "@metamask/base-controller" "^3.0.0"
+    "@metamask/controller-utils" "^4.1.0"
 
 "@metamask/safe-event-emitter@^2.0.0":
   version "2.0.0"
