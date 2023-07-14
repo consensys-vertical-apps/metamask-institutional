@@ -1310,6 +1310,21 @@
     crypto "^1.0.1"
     lodash.clonedeep "^4.5.0"
 
+"@metamask-institutional/extension@^0.1.3":
+  version "0.1.6"
+  resolved "https://registry.yarnpkg.com/@metamask-institutional/extension/-/extension-0.1.6.tgz#fcfbd923d266749ae828d47051b49cfe43dc8e68"
+  integrity sha512-kckH95z5qcX0tkn3SZjL2vyq7ZkDhRs9om5jNu3XakdKmvSw0+K3CC+/Gql/CniGvYpk+2qNWU++4uQpjRcUWg==
+  dependencies:
+    "@ethereumjs/util" "^8.0.5"
+    "@metamask-institutional/custody-controller" "^0.2.8"
+    "@metamask-institutional/custody-keyring" "^0.0.25"
+    "@metamask-institutional/portfolio-dashboard" "^1.4.0"
+    "@metamask-institutional/sdk" "^0.1.18"
+    "@metamask-institutional/transaction-update" "^0.1.23"
+    "@metamask-institutional/types" "^1.0.3"
+    jest-create-mock-instance "^2.0.0"
+    jest-fetch-mock "3.0.3"
+
 "@metamask/approval-controller@^2.1.1":
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/@metamask/approval-controller/-/approval-controller-2.1.1.tgz#c8731ddaaa8e29c1ab5355f87116b3f20a7e6c0d"
@@ -1329,12 +1344,20 @@
     "@metamask/controller-utils" "^3.0.0"
     immer "^9.0.6"
 
+"@metamask/base-controller@^3.0.0":
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/@metamask/base-controller/-/base-controller-3.1.0.tgz#0f56575e561d5c2c34ab9fd850a4446c861c2417"
+  integrity sha512-glVxlXByURdk7bBkpqkiv3qslvwl5n3EB+PmteT/qTK01/eU3eygyWG7NvPBhWNGUUeIRQUJp++Prjk55nh6nQ==
+  dependencies:
+    "@metamask/utils" "^5.0.2"
+    immer "^9.0.6"
+
 "@metamask/browser-passworder@^4.0.2":
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/@metamask/browser-passworder/-/browser-passworder-4.1.0.tgz#d515db2ffd69ecab813a688e2b7553f2766c5e79"
   integrity sha512-FBvah1mPte5HudQdkgqAh2+Zc75T9kYxey+dCtHIj9gKohkHDcIA1bTOPLk0bBH+6PnOzYNPG8devvH04GOmPA==
 
-"@metamask/controller-utils@^3.0.0", "@metamask/controller-utils@^3.1.0", "@metamask/controller-utils@^3.4.0":
+"@metamask/controller-utils@^3.0.0", "@metamask/controller-utils@^3.4.0":
   version "3.4.0"
   resolved "https://registry.yarnpkg.com/@metamask/controller-utils/-/controller-utils-3.4.0.tgz#3714799a3e2648cd758272612578238749e3e11b"
   integrity sha512-/++y7qXUd9+aRzOklypfzmehO87QVKndlJXsbLRk36W5L5DJo4lrR2pd/IBbwbWEhFJWHhlfbMD+T+gEBvIftw==
@@ -1342,6 +1365,21 @@
     "@metamask/utils" "^5.0.1"
     "@spruceid/siwe-parser" "1.1.3"
     eth-ens-namehash "^2.0.8"
+    eth-rpc-errors "^4.0.2"
+    ethereumjs-util "^7.0.10"
+    ethjs-unit "^0.1.6"
+    fast-deep-equal "^3.1.3"
+
+"@metamask/controller-utils@^4.1.0":
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/@metamask/controller-utils/-/controller-utils-4.2.0.tgz#1df31f9796be1a6709c20dd38e4dc3fb05963a95"
+  integrity sha512-6xb7BN8ih5z1qq22LoTmvCQCba68z9RUz5EIji/ikJ57uW+Zi56zFwu9Ek3mV/jqqkklhOD4mjpEe5efIguIKw==
+  dependencies:
+    "@metamask/utils" "^5.0.2"
+    "@spruceid/siwe-parser" "1.1.3"
+    babel-runtime "^6.26.0"
+    eth-ens-namehash "^2.0.8"
+    eth-query "^2.1.2"
     eth-rpc-errors "^4.0.2"
     ethereumjs-util "^7.0.10"
     ethjs-unit "^0.1.6"
@@ -1457,13 +1495,13 @@
     json-rpc-engine "^6.1.0"
     nanoid "^3.1.31"
 
-"@metamask/preferences-controller@^3.0.0":
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/@metamask/preferences-controller/-/preferences-controller-3.0.0.tgz#ef3f5e9c49fb508a5bcdcc2ad7cf3d966af9809b"
-  integrity sha512-vqtU1DMg2ywzetAOOyvfi3BUvrBQxK1+q58/xnbHMEEHUqn2BsEod3itub/qTNbNoHNR8+b+uVG+2OAM+PBzWg==
+"@metamask/preferences-controller@^4.2.0":
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/@metamask/preferences-controller/-/preferences-controller-4.2.0.tgz#82665c55cb2eac44f4b4472d4a91291d33121619"
+  integrity sha512-Or+Qu4r3WifgpJRIknrFb2m5/nmbt4KUsawWpn8scI7TPxa6xLnlLeOlrcTDRISYVbKL6LgpV+Dna2FyJSubnw==
   dependencies:
-    "@metamask/base-controller" "^2.0.0"
-    "@metamask/controller-utils" "^3.1.0"
+    "@metamask/base-controller" "^3.0.0"
+    "@metamask/controller-utils" "^4.1.0"
 
 "@metamask/safe-event-emitter@^2.0.0":
   version "2.0.0"
@@ -1507,7 +1545,7 @@
   resolved "https://registry.yarnpkg.com/@metamask/types/-/types-1.1.0.tgz#9bd14b33427932833c50c9187298804a18c2e025"
   integrity sha512-EEV/GjlYkOSfSPnYXfOosxa3TqYtIW3fhg6jdw+cok/OhMgNn4wCfbENFqjytrHMU2f7ZKtBAvtiP5V8H44sSw==
 
-"@metamask/utils@^5.0.1":
+"@metamask/utils@^5.0.1", "@metamask/utils@^5.0.2":
   version "5.0.2"
   resolved "https://registry.yarnpkg.com/@metamask/utils/-/utils-5.0.2.tgz#140ba5061d90d9dac0280c19cab101bc18c8857c"
   integrity sha512-yfmE79bRQtnMzarnKfX7AEJBwFTxvTyw3nBQlu/5rmGXrjAeAMltoGxO62TFurxrQAFMNa/fEjIHNvungZp0+g==
