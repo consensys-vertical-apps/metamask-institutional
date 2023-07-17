@@ -1344,7 +1344,7 @@
     "@metamask/controller-utils" "^3.0.0"
     immer "^9.0.6"
 
-"@metamask/base-controller@^3.1.0":
+"@metamask/base-controller@^3.0.0", "@metamask/base-controller@^3.1.0":
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/@metamask/base-controller/-/base-controller-3.1.0.tgz#0f56575e561d5c2c34ab9fd850a4446c861c2417"
   integrity sha512-glVxlXByURdk7bBkpqkiv3qslvwl5n3EB+PmteT/qTK01/eU3eygyWG7NvPBhWNGUUeIRQUJp++Prjk55nh6nQ==
@@ -1370,7 +1370,7 @@
     ethjs-unit "^0.1.6"
     fast-deep-equal "^3.1.3"
 
-"@metamask/controller-utils@^4.2.0":
+"@metamask/controller-utils@^4.1.0", "@metamask/controller-utils@^4.2.0":
   version "4.2.0"
   resolved "https://registry.yarnpkg.com/@metamask/controller-utils/-/controller-utils-4.2.0.tgz#1df31f9796be1a6709c20dd38e4dc3fb05963a95"
   integrity sha512-6xb7BN8ih5z1qq22LoTmvCQCba68z9RUz5EIji/ikJ57uW+Zi56zFwu9Ek3mV/jqqkklhOD4mjpEe5efIguIKw==
@@ -1395,40 +1395,6 @@
     "@metamask/scure-bip39" "^2.0.3"
     ethereum-cryptography "^1.1.2"
 
-"@metamask/eth-json-rpc-infura@^8.1.0":
-  version "8.1.1"
-  resolved "https://registry.yarnpkg.com/@metamask/eth-json-rpc-infura/-/eth-json-rpc-infura-8.1.1.tgz#e877284634fb0727b347575115c74dc9ddd4400c"
-  integrity sha512-Ey05VRIMqvF845+pbJeptPm4RrzwHSfmT3QiJfQGWLG4yKdkhvlgOJ7xxYxqbdvPIywA5qCLI7Kszk0gAbWiKA==
-  dependencies:
-    "@metamask/eth-json-rpc-provider" "^1.0.0"
-    "@metamask/utils" "^4.0.0"
-    eth-rpc-errors "^4.0.3"
-    json-rpc-engine "^6.1.0"
-    node-fetch "^2.6.7"
-
-"@metamask/eth-json-rpc-middleware@^11.0.0":
-  version "11.0.1"
-  resolved "https://registry.yarnpkg.com/@metamask/eth-json-rpc-middleware/-/eth-json-rpc-middleware-11.0.1.tgz#b7f0b62a4afc26f17c369149b805b62bc702e872"
-  integrity sha512-Gti6rquLvbb3BSVNT2rLX8TS/fB+senPn6pEDGxCxYI7JheWYTZn3gZoRY8u1KxKIbkylc/id9+aAc0sFnc4Rw==
-  dependencies:
-    "@metamask/eth-json-rpc-provider" "^1.0.0"
-    "@metamask/eth-sig-util" "^5.0.0"
-    "@metamask/utils" "^5.0.1"
-    clone "^2.1.1"
-    eth-block-tracker "^7.0.1"
-    eth-rpc-errors "^4.0.3"
-    json-rpc-engine "^6.1.0"
-    pify "^3.0.0"
-    safe-stable-stringify "^2.3.2"
-
-"@metamask/eth-json-rpc-provider@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@metamask/eth-json-rpc-provider/-/eth-json-rpc-provider-1.0.0.tgz#bb245491fff98dde74d4d13e58b88497692abd2a"
-  integrity sha512-Bl9FbSNctgh1FRjUX0Gpoo4BwFXBKplcZ198y9/gysUhgOBD4MKqe3V4XzaYXuvB7VhVA9TNH0ZsaK1MnolpWg==
-  dependencies:
-    "@metamask/safe-event-emitter" "^2.0.0"
-    json-rpc-engine "^6.1.0"
-
 "@metamask/eth-keyring-controller@^10.0.1":
   version "10.0.1"
   resolved "https://registry.yarnpkg.com/@metamask/eth-keyring-controller/-/eth-keyring-controller-10.0.1.tgz#732ccd7156b0139da352b028cd921dfbed05992e"
@@ -1452,7 +1418,7 @@
     tweetnacl "^1.0.3"
     tweetnacl-util "^0.15.1"
 
-"@metamask/eth-sig-util@^5.0.0", "@metamask/eth-sig-util@^5.0.1", "@metamask/eth-sig-util@^5.0.2":
+"@metamask/eth-sig-util@^5.0.1", "@metamask/eth-sig-util@^5.0.2":
   version "5.1.0"
   resolved "https://registry.yarnpkg.com/@metamask/eth-sig-util/-/eth-sig-util-5.1.0.tgz#a47f62800ee1917fef976ba67544a0ccd7d1bd6b"
   integrity sha512-mlgziIHYlA9pi/XZerChqg4NocdOgBPB9NmxgXWQO2U2hH8RGOJQrz6j/AIKkYxgCMIE2PY000+joOwXfzeTDQ==
@@ -1498,27 +1464,6 @@
     "@types/uuid" "^8.3.0"
     ethereumjs-util "^7.0.10"
     jsonschema "^1.2.4"
-    uuid "^8.3.2"
-
-"@metamask/network-controller@^10.3.1":
-  version "10.3.1"
-  resolved "https://registry.yarnpkg.com/@metamask/network-controller/-/network-controller-10.3.1.tgz#ca0e9134b2600bd834c5193ce0f06e973ec3b152"
-  integrity sha512-ohx9DnVI0a07yrYqxtMD460oBlXqsy+fcORRI5foiTLk3LudM4fdjLUG8u5JvYHUeEoIl8bkMZuwWxOFrqHB2g==
-  dependencies:
-    "@metamask/base-controller" "^3.1.0"
-    "@metamask/controller-utils" "^4.2.0"
-    "@metamask/eth-json-rpc-infura" "^8.1.0"
-    "@metamask/eth-json-rpc-middleware" "^11.0.0"
-    "@metamask/eth-json-rpc-provider" "^1.0.0"
-    "@metamask/swappable-obj-proxy" "^2.1.0"
-    "@metamask/utils" "^5.0.2"
-    async-mutex "^0.2.6"
-    babel-runtime "^6.26.0"
-    eth-block-tracker "^7.0.1"
-    eth-query "^2.1.2"
-    eth-rpc-errors "^4.0.2"
-    immer "^9.0.6"
-    json-rpc-engine "^6.1.0"
     uuid "^8.3.2"
 
 "@metamask/network-controller@^8.0.0":
@@ -1576,11 +1521,6 @@
   resolved "https://registry.yarnpkg.com/@metamask/safe-event-emitter/-/safe-event-emitter-2.0.0.tgz#af577b477c683fad17c619a78208cede06f9605c"
   integrity sha512-/kSXhY692qiV1MXu6EeOZvg5nECLclxNXcKCxJ3cXQgYuRymRHpdx/t7JXfsK+JLjwA1e1c1/SBrlQYpusC29Q==
 
-"@metamask/safe-event-emitter@^3.0.0":
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/@metamask/safe-event-emitter/-/safe-event-emitter-3.0.0.tgz#8c2b9073fe0722d48693143b0dc8448840daa3bd"
-  integrity sha512-j6Z47VOmVyGMlnKXZmL0fyvWfEYtKWCA9yGZkU3FCsGZUT5lHGmvaV9JA5F2Y+010y7+ROtR3WMXIkvl/nVzqQ==
-
 "@metamask/scure-bip39@^2.0.3":
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/@metamask/scure-bip39/-/scure-bip39-2.1.0.tgz#13456884736e56ede15e471bd93c0aa0acdedd0b"
@@ -1617,16 +1557,6 @@
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/@metamask/types/-/types-1.1.0.tgz#9bd14b33427932833c50c9187298804a18c2e025"
   integrity sha512-EEV/GjlYkOSfSPnYXfOosxa3TqYtIW3fhg6jdw+cok/OhMgNn4wCfbENFqjytrHMU2f7ZKtBAvtiP5V8H44sSw==
-
-"@metamask/utils@^4.0.0":
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/@metamask/utils/-/utils-4.0.0.tgz#9fe302aba111c68168ab088ea2a069247fb2380d"
-  integrity sha512-BqLx6UWkzTn33ICbzssC4gI7N++dPJAEy/oXJD8LFY02MP0ORwulXMdHT9fQO1i8r/oi0wSMCPxAaT/IYiy8YA==
-  dependencies:
-    "@types/debug" "^4.1.7"
-    debug "^4.3.4"
-    semver "^7.3.8"
-    superstruct "^1.0.3"
 
 "@metamask/utils@^5.0.1", "@metamask/utils@^5.0.2":
   version "5.0.2"
@@ -2168,71 +2098,71 @@
   dependencies:
     apg-js "^4.1.1"
 
-"@swc/core-darwin-arm64@1.3.46":
-  version "1.3.46"
-  resolved "https://registry.yarnpkg.com/@swc/core-darwin-arm64/-/core-darwin-arm64-1.3.46.tgz#810a60fc330190e38c2da39ecae304ba3e44c2d6"
-  integrity sha512-kY4ASe7SsntDw2B1T70H9K1CFmK8POi+LyIpeCyC96EB9wbH2Sax+ploBB/wZALbYzr/dMJzOCU8QXzdmVS4Rg==
+"@swc/core-darwin-arm64@1.3.69":
+  version "1.3.69"
+  resolved "https://registry.yarnpkg.com/@swc/core-darwin-arm64/-/core-darwin-arm64-1.3.69.tgz#e22032471244ec80c22bee8efc2100e456bb9488"
+  integrity sha512-IjZTf12zIPWkV3D7toaLDoJPSkLhQ4fDH8G6/yCJUI27cBFOI3L8LXqptYmISoN5yYdrcnNpdqdapD09JPuNJg==
 
-"@swc/core-darwin-x64@1.3.46":
-  version "1.3.46"
-  resolved "https://registry.yarnpkg.com/@swc/core-darwin-x64/-/core-darwin-x64-1.3.46.tgz#d419c195191fbe230db5c34c08a5433901258dc9"
-  integrity sha512-kE3PMk8xW+2BZ3oZiTxxsUU/GzrGwM+qS4frOBz9TYHZe+W1dTtj4F9vBit4PFJ+tv4O6DPt9neGobzdq0UmRw==
+"@swc/core-darwin-x64@1.3.69":
+  version "1.3.69"
+  resolved "https://registry.yarnpkg.com/@swc/core-darwin-x64/-/core-darwin-x64-1.3.69.tgz#4c2034ba409b9e061b9e8ad56a762b8bb7815f18"
+  integrity sha512-/wBO0Rn5oS5dJI/L9kJRkPAdksVwl5H9nleW/NM3A40N98VV8T7h/i1nO051mxIjq0R6qXVGOWFbBoLrPYucJg==
 
-"@swc/core-linux-arm-gnueabihf@1.3.46":
-  version "1.3.46"
-  resolved "https://registry.yarnpkg.com/@swc/core-linux-arm-gnueabihf/-/core-linux-arm-gnueabihf-1.3.46.tgz#5e3bfd927bb5402f91a1784f03c7137ad82c2ea2"
-  integrity sha512-7TbiUr9MYxT+mC7sVrayag/isFoaZUG/ogkEK8B/ouA1pnIYqWh3N5ifqCzfcSRiOURt+vVqPyoO1puSiNzVuQ==
+"@swc/core-linux-arm-gnueabihf@1.3.69":
+  version "1.3.69"
+  resolved "https://registry.yarnpkg.com/@swc/core-linux-arm-gnueabihf/-/core-linux-arm-gnueabihf-1.3.69.tgz#3d89053b6de2fd8553ce5c5808251246f2870e1e"
+  integrity sha512-NShCjMv6Xn8ckMKBRqmprXvUF14+jXY0TcNKXwjYErzoIUFOnG72M36HxT4QEeAtKZ4Eg4CZFE4zlJ27fDp1gg==
 
-"@swc/core-linux-arm64-gnu@1.3.46":
-  version "1.3.46"
-  resolved "https://registry.yarnpkg.com/@swc/core-linux-arm64-gnu/-/core-linux-arm64-gnu-1.3.46.tgz#da599aabfb2eae96f48cb2aae2949588af119316"
-  integrity sha512-Ycw4LU/wsUK9R+Y/2qFOPQseZDfM5D5gbWGrrYj5RoTm57FbnUsSsO26QeZxUNvams1oAQDkZDuerCc9qBRzIQ==
+"@swc/core-linux-arm64-gnu@1.3.69":
+  version "1.3.69"
+  resolved "https://registry.yarnpkg.com/@swc/core-linux-arm64-gnu/-/core-linux-arm64-gnu-1.3.69.tgz#df12d3befc5e86555ee561202dc9c279d8865bf3"
+  integrity sha512-VRPOJj4idopSHIj1bOVXX0SgaB18R8yZNunb7eXS5ZcjVxAcdvqyIz3RdQX1zaJFCGzcdPLzBRP32DZWWGE8Ng==
 
-"@swc/core-linux-arm64-musl@1.3.46":
-  version "1.3.46"
-  resolved "https://registry.yarnpkg.com/@swc/core-linux-arm64-musl/-/core-linux-arm64-musl-1.3.46.tgz#f4a9b50594b9e60a179fe80a9f03e6d126475909"
-  integrity sha512-cBclyr6IW1PBr8l9D4FkebgbqlkiIYnSJCbY84J/6PfTzQlD6w9a1TAoYxdGZpJ7SGHdmB0oDiZS1rhxCSCV/Q==
+"@swc/core-linux-arm64-musl@1.3.69":
+  version "1.3.69"
+  resolved "https://registry.yarnpkg.com/@swc/core-linux-arm64-musl/-/core-linux-arm64-musl-1.3.69.tgz#8372222a3298fdd0bd18da564a3009614a6c0920"
+  integrity sha512-QxeSiZqo5x1X8vq8oUWLibq+IZJcxl9vy0sLUmzdjF2b/Z+qxKP3gutxnb2tzJaHqPVBbEZaILERIGy1qWdumQ==
 
-"@swc/core-linux-x64-gnu@1.3.46":
-  version "1.3.46"
-  resolved "https://registry.yarnpkg.com/@swc/core-linux-x64-gnu/-/core-linux-x64-gnu-1.3.46.tgz#13a0407eac724a862165cfaf5f872f2cf5b0359c"
-  integrity sha512-amqMhTA2CXB6t11hVAZSSPKq4DZ9/sWbW3wYYQHxzqrMJML0726OJs4pt0XnlU7FzdP/9M9j2B/gWCRaCMxXVA==
+"@swc/core-linux-x64-gnu@1.3.69":
+  version "1.3.69"
+  resolved "https://registry.yarnpkg.com/@swc/core-linux-x64-gnu/-/core-linux-x64-gnu-1.3.69.tgz#6879057d28f261b051fac52daca6c256f3a7fb7d"
+  integrity sha512-b+DUlVxYox3BwD3PyTwhLvqtu6TYZtW+S6O0FnttH11o4skHN0XyJ/cUZSI0X2biSmfDsizRDUt1PWPFM+F7SA==
 
-"@swc/core-linux-x64-musl@1.3.46":
-  version "1.3.46"
-  resolved "https://registry.yarnpkg.com/@swc/core-linux-x64-musl/-/core-linux-x64-musl-1.3.46.tgz#4ce5b648ce14d11dcae4b1dfcbe60854c992343c"
-  integrity sha512-WOQZTIkJ9khIj5Z2unf6OTrWV9k8br+HZ93RvnamEmJBlLPUuT9IjB+agNhjaDgOpz9/ZldSGqV7vzl5FGQl1Q==
+"@swc/core-linux-x64-musl@1.3.69":
+  version "1.3.69"
+  resolved "https://registry.yarnpkg.com/@swc/core-linux-x64-musl/-/core-linux-x64-musl-1.3.69.tgz#bf4f9a74156524211472bb713d34f0bb7265669f"
+  integrity sha512-QXjsI+f8n9XPZHUvmGgkABpzN4M9kdSbhqBOZmv3o0AsDGNCA4uVowQqgZoPFAqlJTpwHeDmrv5sQ13HN+LOGw==
 
-"@swc/core-win32-arm64-msvc@1.3.46":
-  version "1.3.46"
-  resolved "https://registry.yarnpkg.com/@swc/core-win32-arm64-msvc/-/core-win32-arm64-msvc-1.3.46.tgz#165a396cf0fba25008f4e458ea30dc28971db9a9"
-  integrity sha512-4JSREbqaTRQ6QO0EeoiB6G5vuFT8zI8aTOLu5At7Cvlw+X7bOGNO+wJ3Tqw7O+68OL+0bPHzHGTXKL9kUccY1A==
+"@swc/core-win32-arm64-msvc@1.3.69":
+  version "1.3.69"
+  resolved "https://registry.yarnpkg.com/@swc/core-win32-arm64-msvc/-/core-win32-arm64-msvc-1.3.69.tgz#8242e4a406d11f0e078da39cf9962695e6b73d2d"
+  integrity sha512-wn7A8Ws1fyviuCUB2Vg6IotiZeuqiO1Mz3d+YDae2EYyNpj1kNHvjBip8GHkfGzZG+jVrvG6NHsDo0KO/pGb8A==
 
-"@swc/core-win32-ia32-msvc@1.3.46":
-  version "1.3.46"
-  resolved "https://registry.yarnpkg.com/@swc/core-win32-ia32-msvc/-/core-win32-ia32-msvc-1.3.46.tgz#c2522bce504efef73f8d813eb3e1defb4940aaae"
-  integrity sha512-kC8dIDzcArm1e85yHJsEZFxcNq5NztLkrqkP1nVOQ+9QXD9DKhjbZtWy2gnpclinii6KEGng8SieWiJiOA0CBQ==
+"@swc/core-win32-ia32-msvc@1.3.69":
+  version "1.3.69"
+  resolved "https://registry.yarnpkg.com/@swc/core-win32-ia32-msvc/-/core-win32-ia32-msvc-1.3.69.tgz#68dbd41e200e5db71aa6644d793acff3607862f0"
+  integrity sha512-LsFBXtXqxEcVaaOGEZ9X3qdMzobVoJqKv8DnksuDsWcBk+9WCeTz2u/iB+7yZ2HGuPXkCqTRqhFo6FX9aC00kQ==
 
-"@swc/core-win32-x64-msvc@1.3.46":
-  version "1.3.46"
-  resolved "https://registry.yarnpkg.com/@swc/core-win32-x64-msvc/-/core-win32-x64-msvc-1.3.46.tgz#46fae36cc69b68ee26a41704e1b6a862ea0a8927"
-  integrity sha512-rrSAfq+DvpJioBxUsnuH+sKl0eXid1DwkwNzkVGHEreN9GoP7GospWtFq7VDcO6DrS/s3HtR4/TzoIYFEBCRIg==
+"@swc/core-win32-x64-msvc@1.3.69":
+  version "1.3.69"
+  resolved "https://registry.yarnpkg.com/@swc/core-win32-x64-msvc/-/core-win32-x64-msvc-1.3.69.tgz#304e1050d59bae21215a15839b05668d48a92837"
+  integrity sha512-ieBscU0gUgKjaseFI07tAaGqHvKyweNknPeSYEZOasVZUczhD6fK2GRnVREhv2RB2qdKC/VGFBsgRDMgzq1VLw==
 
-"@swc/core@^1.3.44":
-  version "1.3.46"
-  resolved "https://registry.yarnpkg.com/@swc/core/-/core-1.3.46.tgz#7c49230113dfcce79b778d4d70e23e93e667350a"
-  integrity sha512-WxzgJMWUBVJ95HsvEqlWzM3Qxp2FQrPa4QdAkQQuuvCMnfdctGUbhX/c3LiSRlWrl2LIkYAi4bLansTOol4QcQ==
+"@swc/core@^1.3.69":
+  version "1.3.69"
+  resolved "https://registry.yarnpkg.com/@swc/core/-/core-1.3.69.tgz#b4a41e84de11832c233fbe714c6e412d8404bab0"
+  integrity sha512-Khc/DE9D5+2tYTHgAIp5DZARbs8kldWg3b0Jp6l8FQLjelcLFmlQWSwKhVZrgv4oIbgZydIp8jInsvTalMHqnQ==
   optionalDependencies:
-    "@swc/core-darwin-arm64" "1.3.46"
-    "@swc/core-darwin-x64" "1.3.46"
-    "@swc/core-linux-arm-gnueabihf" "1.3.46"
-    "@swc/core-linux-arm64-gnu" "1.3.46"
-    "@swc/core-linux-arm64-musl" "1.3.46"
-    "@swc/core-linux-x64-gnu" "1.3.46"
-    "@swc/core-linux-x64-musl" "1.3.46"
-    "@swc/core-win32-arm64-msvc" "1.3.46"
-    "@swc/core-win32-ia32-msvc" "1.3.46"
-    "@swc/core-win32-x64-msvc" "1.3.46"
+    "@swc/core-darwin-arm64" "1.3.69"
+    "@swc/core-darwin-x64" "1.3.69"
+    "@swc/core-linux-arm-gnueabihf" "1.3.69"
+    "@swc/core-linux-arm64-gnu" "1.3.69"
+    "@swc/core-linux-arm64-musl" "1.3.69"
+    "@swc/core-linux-x64-gnu" "1.3.69"
+    "@swc/core-linux-x64-musl" "1.3.69"
+    "@swc/core-win32-arm64-msvc" "1.3.69"
+    "@swc/core-win32-ia32-msvc" "1.3.69"
+    "@swc/core-win32-x64-msvc" "1.3.69"
 
 "@swc/jest@^0.2.24":
   version "0.2.24"
@@ -4257,17 +4187,6 @@ eth-block-tracker@^5.0.1:
     json-rpc-random-id "^1.0.1"
     pify "^3.0.0"
 
-eth-block-tracker@^7.0.1:
-  version "7.1.0"
-  resolved "https://registry.yarnpkg.com/eth-block-tracker/-/eth-block-tracker-7.1.0.tgz#dfc16085c6817cc30caabba381deb8d204c1c766"
-  integrity sha512-8YdplnuE1IK4xfqpf4iU7oBxnOYAc35934o083G8ao+8WM8QQtt/mVlAY6yIAdY1eMeLqg4Z//PZjJGmWGPMRg==
-  dependencies:
-    "@metamask/eth-json-rpc-provider" "^1.0.0"
-    "@metamask/safe-event-emitter" "^3.0.0"
-    "@metamask/utils" "^5.0.1"
-    json-rpc-random-id "^1.0.1"
-    pify "^3.0.0"
-
 eth-ens-namehash@^2.0.8:
   version "2.0.8"
   resolved "https://registry.yarnpkg.com/eth-ens-namehash/-/eth-ens-namehash-2.0.8.tgz#229ac46eca86d52e0c991e7cb2aef83ff0f68bcf"
@@ -4337,7 +4256,7 @@ eth-rpc-errors@^3.0.0:
   dependencies:
     fast-safe-stringify "^2.0.6"
 
-eth-rpc-errors@^4.0.2, eth-rpc-errors@^4.0.3:
+eth-rpc-errors@^4.0.2:
   version "4.0.3"
   resolved "https://registry.yarnpkg.com/eth-rpc-errors/-/eth-rpc-errors-4.0.3.tgz#6ddb6190a4bf360afda82790bb7d9d5e724f423a"
   integrity sha512-Z3ymjopaoft7JDoxZcEb3pwdGh7yiYMhOwm2doUt6ASXlMavpNlK6Cre0+IMl2VSGyEU9rkiperQhp5iRxn5Pg==
@@ -8641,11 +8560,6 @@ safe-event-emitter@^1.0.1:
   integrity sha512-e1wFe99A91XYYxoQbcq2ZJUWurxEyP8vfz7A7vuUe1s95q8r5ebraVaA1BukYJcpM6V16ugWoD9vngi8Ccu5fg==
   dependencies:
     events "^3.0.0"
-
-safe-stable-stringify@^2.3.2:
-  version "2.4.3"
-  resolved "https://registry.yarnpkg.com/safe-stable-stringify/-/safe-stable-stringify-2.4.3.tgz#138c84b6f6edb3db5f8ef3ef7115b8f55ccbf886"
-  integrity sha512-e2bDA2WJT0wxseVd4lsDP4+3ONX6HpMXQa1ZhFQ7SU+GjvORCmShbCMltrtIDfkYhVHrOcPtj+KhmDBdPdZD1g==
 
 "safer-buffer@>= 2.1.2 < 3", "safer-buffer@>= 2.1.2 < 3.0.0", safer-buffer@^2.0.2, safer-buffer@^2.1.0, safer-buffer@~2.1.0:
   version "2.1.2"
