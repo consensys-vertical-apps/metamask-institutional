@@ -163,9 +163,9 @@ export function custodianEventHandlerFactory({
       const messageId = filteredItem.id;
 
       if (txData.signedMessage.signature && txData.signedMessage.signature != "0x") {
-        signatureController.setMessageStatusSigned(messageId, txData.signedMessage.signature);
+        return signatureController.setDeferredSignSuccess(messageId, txData.signedMessage.signature);
       } else if (txData.signedMessage.status.finished && !txData.signedMessage.status.success) {
-        signatureController.cancelAbstractMessage(messageId);
+        return signatureController.setDeferredSignError(messageId);
       }
 
       return;
