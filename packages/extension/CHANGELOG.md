@@ -14,6 +14,15 @@
     * @metamask-institutional/custody-keyring bumped from ^0.0.24 to ^0.0.25
     * @metamask-institutional/transaction-update bumped from ^0.1.22 to ^0.1.23
 
+## [0.2.1](https://github.com/consensys-vertical-apps/metamask-institutional/compare/extension-v0.2.0...extension-v0.2.1) (2023-07-18)
+
+
+### Bug Fixes
+
+* **check null values:** checking null values in signedMEssage and transaction ([#233](https://github.com/consensys-vertical-apps/metamask-institutional/issues/233)) ([3e21fb9](https://github.com/consensys-vertical-apps/metamask-institutional/commit/3e21fb95f764a9ffe6aea1e459737f7cf62408f7))
+* **npmignore:** clean up ([#271](https://github.com/consensys-vertical-apps/metamask-institutional/issues/271)) ([a4bbae1](https://github.com/consensys-vertical-apps/metamask-institutional/commit/a4bbae1887ef3cead82b58bd2ec14fbfcd40f662))
+* **updates packages:** updates packages to the latest versions ([#278](https://github.com/consensys-vertical-apps/metamask-institutional/issues/278)) ([0dc78c5](https://github.com/consensys-vertical-apps/metamask-institutional/commit/0dc78c5321d8b686320a7d83bd45eae93fefb36a))
+
 ## [0.1.4](https://github.com/consensys-vertical-apps/metamask-institutional/compare/extension-v0.1.3...extension-v0.1.4) (2023-05-25)
 
 
