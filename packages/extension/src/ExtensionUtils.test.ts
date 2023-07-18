@@ -37,8 +37,8 @@ describe("ExtensionUtils", () => {
           },
         },
       },
-      setMessageStatusSigned: jest.fn(),
-      cancelAbstractMessage: jest.fn(),
+      setDeferredSignSuccess: jest.fn(),
+      setDeferredSignError: jest.fn(),
     },
     txStateManager: {
       getTransactions: jest.fn(() => [
@@ -169,7 +169,7 @@ describe("ExtensionUtils", () => {
           },
         },
       });
-      expect(params.signatureController.setMessageStatusSigned).toHaveBeenCalled();
+      expect(params.signatureController.setDeferredSignSuccess).toHaveBeenCalled();
     });
 
     it("can handle a personal_sign rejected message", async () => {
@@ -205,7 +205,7 @@ describe("ExtensionUtils", () => {
 
       await eventHandler(event as unknown as ICustodianUpdate);
 
-      expect(params.signatureController.setMessageStatusSigned).toHaveBeenCalledTimes(0);
+      expect(params.signatureController.setDeferredSignSuccess).toHaveBeenCalledTimes(0);
     });
 
     it("can handle a sign message that failed", async () => {
@@ -241,7 +241,7 @@ describe("ExtensionUtils", () => {
 
       await eventHandler(event as unknown as ICustodianUpdate);
 
-      expect(params.signatureController.setMessageStatusSigned).toHaveBeenCalledTimes(0);
+      expect(params.signatureController.setDeferredSignSuccess).toHaveBeenCalledTimes(0);
     });
 
     it("will process an update", async () => {
@@ -264,8 +264,8 @@ describe("ExtensionUtils", () => {
         setTxHash: jest.fn(),
         signatureController: {
           messages: {},
-          setMessageStatusSigned: jest.fn(),
-          cancelAbstractMessage: jest.fn(),
+          setDeferredSignSuccess: jest.fn(),
+          setDeferredSignError: jest.fn(),
         },
         txStateManager: {
           getTransactions: jest.fn(() => [
@@ -341,8 +341,8 @@ describe("ExtensionUtils", () => {
         setTxHash: jest.fn(),
         signatureController: {
           messages: {},
-          setMessageStatusSigned: jest.fn(),
-          cancelAbstractMessage: jest.fn(),
+          setDeferredSignSuccess: jest.fn(),
+          setDeferredSignError: jest.fn(),
         },
         txStateManager: {
           getTransactions: jest.fn(() => [
@@ -399,8 +399,8 @@ describe("ExtensionUtils", () => {
         setTxHash: jest.fn(),
         signatureController: {
           messages: {},
-          setMessageStatusSigned: jest.fn(),
-          cancelAbstractMessage: jest.fn(),
+          setDeferredSignSuccess: jest.fn(),
+          setDeferredSignError: jest.fn(),
         },
         txStateManager: {
           getTransactions: jest.fn(() => [
@@ -459,8 +459,8 @@ describe("ExtensionUtils", () => {
         setTxHash: jest.fn(),
         signatureController: {
           messages: {},
-          setMessageStatusSigned: jest.fn(),
-          cancelAbstractMessage: jest.fn(),
+          setDeferredSignSuccess: jest.fn(),
+          setDeferredSignError: jest.fn(),
         },
         txStateManager: {
           getTransactions: jest.fn(() => [
