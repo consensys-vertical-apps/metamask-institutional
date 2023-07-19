@@ -6,6 +6,21 @@
   * dependencies
     * @metamask-institutional/extension bumped from ^0.1.3 to ^0.2.1
 
+## [0.2.0](https://github.com/consensys-vertical-apps/metamask-institutional/compare/mmi-controller-v0.1.2...mmi-controller-v0.2.0) (2023-07-19)
+
+
+### Features
+
+* **institutional-features:** removed compliance feature ([#398](https://github.com/consensys-vertical-apps/metamask-institutional/issues/398)) ([79c57b6](https://github.com/consensys-vertical-apps/metamask-institutional/commit/79c57b67b77459ce70594e9f0edc04c13ca9064d))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @metamask-institutional/extension bumped from ^0.2.1 to ^0.3.0
+    * @metamask-institutional/institutional-features bumped from ^1.1.8 to ^1.2.0
+
 ## [0.1.1](https://github.com/consensys-vertical-apps/metamask-institutional/compare/mmi-controller-v0.1.0...mmi-controller-v0.1.1) (2023-06-27)
 
 
