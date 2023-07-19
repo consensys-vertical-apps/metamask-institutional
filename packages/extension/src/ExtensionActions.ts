@@ -86,16 +86,6 @@ export function mmiActionsFactory({
     getCustodianJWTList: custody => createAsyncAction("getCustodianJWTList", [custody], forceUpdateMetamaskState),
     setWaitForConfirmDeepLinkDialog: waitForConfirmDeepLinkDialog =>
       createAction("setWaitForConfirmDeepLinkDialog", waitForConfirmDeepLinkDialog),
-    setComplianceAuthData: ({ clientId, projectId }) =>
-      createAsyncAction("setComplianceAuthData", [{ clientId, projectId }]),
-    deleteComplianceAuthData: () => createAsyncAction("deleteComplianceAuthData", []),
-    generateComplianceReport: address => createAction("generateComplianceReport", address),
-    getComplianceHistoricalReportsByAddress: (address, projectId) =>
-      createAsyncAction("getComplianceHistoricalReportsByAddress", [address, projectId]),
-    syncReportsInProgress: ({ address, historicalReports }) =>
-      createAction("syncReportsInProgress", { address, historicalReports }),
-    removeConnectInstitutionalFeature: ({ origin, projectId }) =>
-      createAction("removeConnectInstitutionalFeature", { origin, projectId }),
     removeAddTokenConnectRequest: ({ origin, apiUrl, token }) =>
       createAction("removeAddTokenConnectRequest", { origin, apiUrl, token }),
     setCustodianConnectRequest: ({ token, apiUrl, custodianType, custodianName }) =>
