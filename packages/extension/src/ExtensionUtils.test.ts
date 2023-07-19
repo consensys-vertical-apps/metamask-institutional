@@ -29,15 +29,16 @@ describe("ExtensionUtils", () => {
     addKeyringIfNotExists: () => keyring,
     getPendingNonce: jest.fn(() => Promise.resolve(2)),
     setTxHash: jest.fn(),
-    typedMessageManager: {
-      getMsgByCustodyId: jest.fn(() => "msgId"),
-      setMsgStatusSigned: jest.fn(),
-      rejectMsg: jest.fn(),
-    },
-    personalMessageManager: {
-      getMsgByCustodyId: jest.fn(() => "msgId"),
-      setMsgStatusSigned: jest.fn(),
-      rejectMsg: jest.fn(),
+    signatureController: {
+      messages: {
+        0: {
+          metadata: {
+            custodian_transactionId: "0x1",
+          },
+        },
+      },
+      setDeferredSignSuccess: jest.fn(),
+      setDeferredSignError: jest.fn(),
     },
     txStateManager: {
       getTransactions: jest.fn(() => [
@@ -148,7 +149,7 @@ describe("ExtensionUtils", () => {
           id: "0x1", // This must match the signature ID from the custodian_sign or custodian_signTypeData method
           address: "0x1", // Hexlified
           signatureVersion: "personal",
-          signature: "0xdeadbeef",
+          signature: "jfndiwkdk",
           status: {
             finished: true,
             signed: true,
@@ -161,8 +162,14 @@ describe("ExtensionUtils", () => {
 
       await eventHandler(event as ICustodianUpdate);
 
-      expect(params.personalMessageManager.getMsgByCustodyId).toHaveBeenCalledWith(event.signedMessage.id);
-      expect(params.personalMessageManager.setMsgStatusSigned).toHaveBeenCalled();
+      expect(params.signatureController.messages).toStrictEqual({
+        0: {
+          metadata: {
+            custodian_transactionId: "0x1",
+          },
+        },
+      });
+      expect(params.signatureController.setDeferredSignSuccess).toHaveBeenCalled();
     });
 
     it("can handle a personal_sign rejected message", async () => {
@@ -198,7 +205,7 @@ describe("ExtensionUtils", () => {
 
       await eventHandler(event as unknown as ICustodianUpdate);
 
-      expect(params.personalMessageManager.setMsgStatusSigned).toHaveBeenCalledTimes(0);
+      expect(params.signatureController.setDeferredSignSuccess).toHaveBeenCalledTimes(0);
     });
 
     it("can handle a sign message that failed", async () => {
@@ -234,7 +241,7 @@ describe("ExtensionUtils", () => {
 
       await eventHandler(event as unknown as ICustodianUpdate);
 
-      expect(params.personalMessageManager.setMsgStatusSigned).toHaveBeenCalledTimes(0);
+      expect(params.signatureController.setDeferredSignSuccess).toHaveBeenCalledTimes(0);
     });
 
     it("will process an update", async () => {
@@ -255,15 +262,10 @@ describe("ExtensionUtils", () => {
         addKeyringIfNotExists: () => keyring,
         getPendingNonce: jest.fn(() => Promise.resolve(2)),
         setTxHash: jest.fn(),
-        typedMessageManager: {
-          getMsgByCustodyId: jest.fn(() => "msgId"),
-          setMsgStatusSigned: jest.fn(),
-          rejectMsg: jest.fn(),
-        },
-        personalMessageManager: {
-          getMsgByCustodyId: jest.fn(() => "msgId"),
-          setMsgStatusSigned: jest.fn(),
-          rejectMsg: jest.fn(),
+        signatureController: {
+          messages: {},
+          setDeferredSignSuccess: jest.fn(),
+          setDeferredSignError: jest.fn(),
         },
         txStateManager: {
           getTransactions: jest.fn(() => [
@@ -337,15 +339,10 @@ describe("ExtensionUtils", () => {
         addKeyringIfNotExists: () => keyring,
         getPendingNonce: jest.fn(() => Promise.resolve(2)),
         setTxHash: jest.fn(),
-        typedMessageManager: {
-          getMsgByCustodyId: jest.fn(() => "msgId"),
-          setMsgStatusSigned: jest.fn(),
-          rejectMsg: jest.fn(),
-        },
-        personalMessageManager: {
-          getMsgByCustodyId: jest.fn(() => "msgId"),
-          setMsgStatusSigned: jest.fn(),
-          rejectMsg: jest.fn(),
+        signatureController: {
+          messages: {},
+          setDeferredSignSuccess: jest.fn(),
+          setDeferredSignError: jest.fn(),
         },
         txStateManager: {
           getTransactions: jest.fn(() => [
@@ -400,15 +397,10 @@ describe("ExtensionUtils", () => {
         addKeyringIfNotExists: () => keyring,
         getPendingNonce: jest.fn(() => Promise.resolve(2)),
         setTxHash: jest.fn(),
-        typedMessageManager: {
-          getMsgByCustodyId: jest.fn(() => "msgId"),
-          setMsgStatusSigned: jest.fn(),
-          rejectMsg: jest.fn(),
-        },
-        personalMessageManager: {
-          getMsgByCustodyId: jest.fn(() => "msgId"),
-          setMsgStatusSigned: jest.fn(),
-          rejectMsg: jest.fn(),
+        signatureController: {
+          messages: {},
+          setDeferredSignSuccess: jest.fn(),
+          setDeferredSignError: jest.fn(),
         },
         txStateManager: {
           getTransactions: jest.fn(() => [
@@ -465,15 +457,10 @@ describe("ExtensionUtils", () => {
         addKeyringIfNotExists: () => keyring,
         getPendingNonce: jest.fn(() => Promise.resolve(2)),
         setTxHash: jest.fn(),
-        typedMessageManager: {
-          getMsgByCustodyId: jest.fn(() => "msgId"),
-          setMsgStatusSigned: jest.fn(),
-          rejectMsg: jest.fn(),
-        },
-        personalMessageManager: {
-          getMsgByCustodyId: jest.fn(() => "msgId"),
-          setMsgStatusSigned: jest.fn(),
-          rejectMsg: jest.fn(),
+        signatureController: {
+          messages: {},
+          setDeferredSignSuccess: jest.fn(),
+          setDeferredSignError: jest.fn(),
         },
         txStateManager: {
           getTransactions: jest.fn(() => [

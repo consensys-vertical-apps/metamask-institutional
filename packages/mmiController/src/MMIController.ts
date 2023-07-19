@@ -1,6 +1,9 @@
+// @TODO Do not use this controller
+// needs to be updated with the latest version in:
+// https://github.com/MetaMask/metamask-extension/blob/develop/app/scripts/controllers/mmi-controller.js
 import { CustodyController } from "@metamask-institutional/custody-controller";
 import { CUSTODIAN_TYPES, MmiConfigurationController } from "@metamask-institutional/custody-keyring";
-import { custodianEventHandlerFactory, updateCustodianTransactions } from "@metamask-institutional/extension";
+import { updateCustodianTransactions } from "@metamask-institutional/extension";
 import { InstitutionalFeaturesController } from "@metamask-institutional/institutional-features";
 import { handleMmiPortfolio } from "@metamask-institutional/portfolio-dashboard";
 import { INTERACTIVE_REPLACEMENT_TOKEN_CHANGE_EVENT, REFRESH_TOKEN_CHANGE_EVENT } from "@metamask-institutional/sdk";
@@ -103,7 +106,7 @@ export class MMIController extends EventEmitter {
     this.networkController = networkController;
 
     // Prepare event listener after transactionUpdateController gets initiated
-    this.transactionUpdateController.prepareEventListener(this.custodianEventHandlerFactory.bind(this));
+    // this.transactionUpdateController.prepareEventListener(this.custodianEventHandlerFactory.bind(this));
 
     // Get configuration from MMIConfig controller
     if (!process.env.IN_TEST) {
@@ -132,19 +135,19 @@ export class MMIController extends EventEmitter {
     return keyring;
   }
 
-  custodianEventHandlerFactory() {
-    return custodianEventHandlerFactory({
-      log,
-      getState: () => this.getState(),
-      getPendingNonce: address => this.getPendingNonce(address),
-      setTxHash: (txId, txHash) => this.txController.setTxHash(txId, txHash),
-      typedMessageManager: this.typedMessageManager,
-      personalMessageManager: this.personalMessageManager,
-      txStateManager: this.txController.txStateManager,
-      custodyController: this.custodyController,
-      trackTransactionEvent: this.trackTransactionEventFromCustodianEvent.bind(this),
-    });
-  }
+  // custodianEventHandlerFactory() {
+  //   return custodianEventHandlerFactory({
+  //     log,
+  //     getState: () => this.getState(),
+  //     getPendingNonce: address => this.getPendingNonce(address),
+  //     setTxHash: (txId, txHash) => this.txController.setTxHash(txId, txHash),
+  //     typedMessageManager: this.typedMessageManager,
+  //     personalMessageManager: this.personalMessageManager,
+  //     txStateManager: this.txController.txStateManager,
+  //     custodyController: this.custodyController,
+  //     trackTransactionEvent: this.trackTransactionEventFromCustodianEvent.bind(this),
+  //   });
+  // }
 
   async storeCustodianSupportedChains(address: string) {
     const custodyType = this.custodyController.getCustodyTypeByAddress(toChecksumHexAddress(address));
