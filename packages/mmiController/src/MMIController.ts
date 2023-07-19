@@ -239,15 +239,6 @@ export class MMIController extends EventEmitter {
     if (mmiConfigData && mmiConfigData.mmiConfiguration.features?.websocketApi) {
       this.transactionUpdateController.getCustomerProofForAddresses(addresses);
     }
-
-    try {
-      if (this.institutionalFeaturesController.getComplianceProjectId()) {
-        this.institutionalFeaturesController.startPolling();
-      }
-    } catch (e) {
-      log.error("Failed to start Compliance polling");
-      log.error(e);
-    }
   }
 
   async connectCustodyAddresses(custodianType: string, custodianName: string, accounts: any) {
