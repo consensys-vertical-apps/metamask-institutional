@@ -1291,20 +1291,6 @@
     write-pkg "4.0.0"
     yargs "16.2.0"
 
-"@metamask-institutional/custody-keyring@^0.0.22":
-  version "0.0.22"
-  resolved "https://registry.yarnpkg.com/@metamask-institutional/custody-keyring/-/custody-keyring-0.0.22.tgz#c96eec7594ded5e0486aa96ebc95f4899d9cf5c6"
-  integrity sha512-Yl74QIyDC9Z4U/+Ty1f54IR3P+pcT2c+HBsCGCfbXKK+JReeKa9D0d1wXnHPVdI8J3U7CK+pXdsX8uCjGrBLNQ==
-  dependencies:
-    "@ethereumjs/tx" "^4.1.1"
-    "@ethereumjs/util" "^8.0.5"
-    "@metamask-institutional/configuration-client" "^1.0.6"
-    "@metamask-institutional/sdk" "^0.1.14"
-    "@metamask-institutional/types" "^1.0.1"
-    "@metamask/obs-store" "^8.0.0"
-    crypto "^1.0.1"
-    lodash.clonedeep "^4.5.0"
-
 "@metamask/approval-controller@^2.1.1":
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/@metamask/approval-controller/-/approval-controller-2.1.1.tgz#c8731ddaaa8e29c1ab5355f87116b3f20a7e6c0d"
