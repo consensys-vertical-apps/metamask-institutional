@@ -43,7 +43,7 @@
     "@metamask/network-controller": "^8.0.0",
     "@metamask/preferences-controller": "^4.2.0",
     "@metamask/transaction-controller": "^5.0.0",
-    "@metamask/permission-controller": "^3.2.0",
+    "@metamask/permission-controller": "^4.1.0",
     "loglevel": "^1.8.1"
   }
 }
