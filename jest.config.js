@@ -31,7 +31,16 @@ module.exports = {
 
   // An array of glob patterns indicating a set of files for which coverage information should be collected
   collectCoverageFrom: [
-    "**/*.{js,jsx,ts,tsx}",
+    "**/*.{ts,tsx}",
+    '!**/dist/**',
+    '!**/constants/**',
+    '!**/interfaces/**',
+    '!**/migrations/**',
+    '!**/custodianTypes/**',
+    '!**/mmiController/**',
+    '!**/rpcAllowlist/**',
+    '!**/node_modules/**',
+    '!**/packages/types/**',
     "!./index.ts",
     "!./integration/**",
     "!./constants/**",
@@ -45,7 +54,7 @@ module.exports = {
   ],
 
   // The directory where Jest should output its coverage files
-  coverageDirectory: "../../coverage",
+  coverageDirectory: "coverage",
 
   // An array of regexp pattern strings used to skip coverage collection
   // coveragePathIgnorePatterns: [
@@ -55,16 +64,15 @@ module.exports = {
   // A list of reporter names that Jest uses when writing coverage reports
   coverageReporters: ["json", "html"],
 
-  // @TODO come back later
   // An object that configures minimum threshold enforcement for coverage results
-  // coverageThreshold: {
-  //   global: {
-  //     statements: 80,
-  //     branches: 0,
-  //     functions: 80,
-  //     lines: 80,
-  //   },
-  // },
+  coverageThreshold: {
+    global: {
+      statements: 80,
+      branches: 0,
+      functions: 80,
+      lines: 80,
+    },
+  },
 
   // A path to a custom dependency extractor
   // dependencyExtractor: null,
@@ -95,7 +103,7 @@ module.exports = {
     ...packages.reduce(
       (acc, name) => ({
         ...acc,
-        [`@metamask-institutional/${name}(.*)$`]: `<rootDir>/packages/../../${name}/src/$1`,
+        [`@metamask-institutional/${name}(.*)$`]: `<rootDir>/packages/${name}/src/$1`,
       }),
       {},
     ),
@@ -174,7 +182,7 @@ module.exports = {
   // ],
 
   // An array of regexp pattern strings that are matched against all test paths, matched tests are skipped
-  testPathIgnorePatterns: ["dist"],
+  testPathIgnorePatterns: ["dist", 'packages/custodyKeyring/src/migrations'],
 
   // The regexp pattern or array of patterns that Jest uses to detect test files
   // testRegex: [],
