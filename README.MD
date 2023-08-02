@@ -1,3 +1,9 @@
+![Coverage lines](https://img.shields.io/badge/Coverage:lines-89.54%25-green.svg)
+![Coverage functions](https://img.shields.io/badge/Coverage:functions-87.36%25-yellow.svg)
+![Coverage branches](https://img.shields.io/badge/Coverage:branches-74.86%25-red.svg)
+![Coverage statements](https://img.shields.io/badge/Coverage:statements-89.4%25-green.svg)
+
+
 # Instructions
 
 ## Setup the project
