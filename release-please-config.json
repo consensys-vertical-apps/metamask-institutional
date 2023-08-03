@@ -12,7 +12,6 @@
     "packages/transactionUpdate": {},
     "packages/types": {},
     "packages/websocketClient": {},
-    "packages/extension": {},
-    "packages/mmiController": {}
+    "packages/extension": {}
   }
 }
