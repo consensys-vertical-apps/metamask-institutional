@@ -1,1 +1,0 @@
-export { MMIController } from "./MMIController";
