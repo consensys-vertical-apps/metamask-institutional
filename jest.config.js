@@ -37,7 +37,6 @@ module.exports = {
     '!**/interfaces/**',
     '!**/migrations/**',
     '!**/custodianTypes/**',
-    '!**/mmiController/**',
     '!**/rpcAllowlist/**',
     '!**/node_modules/**',
     '!**/packages/types/**',
