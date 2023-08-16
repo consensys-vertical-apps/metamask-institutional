@@ -22,6 +22,13 @@
     * @metamask-institutional/custody-keyring bumped from ^0.0.25 to ^0.0.26
     * @metamask-institutional/transaction-update bumped from ^0.1.23 to ^0.1.24
 
+## [0.3.2](https://github.com/consensys-vertical-apps/metamask-institutional/compare/extension-v0.3.1...extension-v0.3.2) (2023-08-16)
+
+
+### Bug Fixes
+
+* **rely on mm block tracker for transaction confirmed:** rely on MM block tracker ([#444](https://github.com/consensys-vertical-apps/metamask-institutional/issues/444)) ([85dc4af](https://github.com/consensys-vertical-apps/metamask-institutional/commit/85dc4af99cb099a2eefa13f78969a72160f1ee31))
+
 ## [0.3.0](https://github.com/consensys-vertical-apps/metamask-institutional/compare/extension-v0.2.1...extension-v0.3.0) (2023-07-19)
 
 

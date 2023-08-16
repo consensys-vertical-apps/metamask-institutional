@@ -10,5 +10,5 @@
   "packages/configurationClient": "1.0.6",
   "packages/portfolioDashboard": "1.4.0",
   "packages/rpcAllowlist": "1.0.0",
-  "packages/extension": "0.3.1"
+  "packages/extension": "0.3.2"
 }
