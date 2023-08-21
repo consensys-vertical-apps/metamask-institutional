@@ -29,7 +29,7 @@
   },
   "gitHead": "",
   "dependencies": {
-    "@ethereumjs/util": "^8.0.5",
+    "@ethereumjs/util": "^9.0.0",
     "@metamask-institutional/custody-controller": "^0.2.10",
     "@metamask-institutional/custody-keyring": "^0.0.27",
     "@metamask-institutional/portfolio-dashboard": "^1.4.0",
