@@ -4,7 +4,7 @@ import cloneDeep from "lodash.clonedeep";
 import { CustodyKeyring } from "../CustodyKeyring";
 
 const version = 1;
-const keyringTypesToChange = ["Custody - Curv", "Custody - Qredo", "Custody - Jupiter"];
+const keyringTypesToChange = []; // Do not actually change any keyrings - 21 Aug 2023 - we only keep this old migration file around as an example
 
 export default {
   version,
