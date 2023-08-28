@@ -32,7 +32,7 @@
     "@metamask-institutional/simplecache": "^1.1.0",
     "@metamask-institutional/types": "^1.0.3",
     "@types/jsonwebtoken": "^9.0.1",
-    "@types/node": "^20.4.2",
+    "@types/node": "^20.5.7",
     "bignumber.js": "^9.1.1",
     "jsonwebtoken": "^9.0.0"
   },
