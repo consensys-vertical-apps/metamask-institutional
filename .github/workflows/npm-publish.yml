@@ -22,7 +22,7 @@ jobs:
       NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }} # set this token manually
     steps:
       - name: "Checkout" # Download code from the repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0 # Checkout all branches and tags
           ref: "${{ github.event.pull_request.base.ref }}"
