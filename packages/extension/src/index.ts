@@ -2,7 +2,6 @@ export {
   updateCustodianTransactions,
   custodianEventHandlerFactory,
   showCustodianDeepLink,
-  setDashboardCookie,
 } from "./ExtensionUtils";
 
 export {
