@@ -7,6 +7,7 @@ import { ObservableStore } from "@metamask/obs-store";
 
 import { CUSTODIAN_TYPES } from "./custodianTypes";
 import { IConfiguration } from "./interfaces/IConfiguration";
+import { IJsonRpcCustodian } from "./interfaces/IJsonRpcCustodian";
 import { IMmiConfigurationControllerOptions } from "./interfaces/IMmiConfigurationControllerOptions";
 import { MMIConfiguration } from "./types/MMIConfiguration";
 
@@ -64,13 +65,14 @@ export class MmiConfigurationController {
     const configuredCustodians = configuration.custodians;
 
     // Mutate custodians by adding information from the hardcoded types
-
     const custodians = [
       ...Object.values(CUSTODIAN_TYPES)
         .filter(custodian => custodian.hidden === false)
         .map(custodian => ({
           type: custodian.name,
           name: custodian.name.toLowerCase(),
+          website: null,
+          envName: null,
           apiUrl: custodian.apiUrl,
           iconUrl: custodian.imgSrc,
           displayName: custodian.displayName,
@@ -83,38 +85,38 @@ export class MmiConfigurationController {
     ];
 
     // Loop through the custodians from the API
-
-    for (const custodian of configuredCustodians) {
-      if (!custodian.apiBaseUrl) {
-        // Ignore the "stand ins" for V1 custodians for now
-
-        // Version 1 custodians should still support note to trader
-        // Find the legacy custodians in the list of custodians we are building
-        const legacyCustodian = custodians.find(
-          legacyCustodian => legacyCustodian.name.toLowerCase() == custodian.name,
-        );
-
-        if (!legacyCustodian) {
-          console.warn(`Missing legacy custodian ${custodian.name}`);
-        } else {
-          legacyCustodian.isNoteToTraderSupported = custodian.isNoteToTraderSupported;
+    configuredCustodians.forEach(custodian => {
+      custodian.environments.forEach(environment => {
+        if (!environment.apiBaseUrl) {
+          // Version 1 custodians should still support note to trader
+          // Find the legacy custodians in the list of custodians we are building
+          const legacyCustodian = custodians.find(
+            legacyCustodian => legacyCustodian.name.toLowerCase() === environment.name,
+          );
+          if (!legacyCustodian) {
+            console.warn(`Missing legacy custodian ${environment.name}`);
+          } else {
+            legacyCustodian.isNoteToTraderSupported = environment.isNoteToTraderSupported;
+          }
+          return; // Use return instead of continue
         }
 
-        continue;
-      }
-      custodians.push({
-        type: "JSONRPC", // Until we fix all the "Custody -" references to custody types
-        name: custodian.name,
-        apiUrl: custodian.apiBaseUrl,
-        iconUrl: custodian.iconUrl,
-        displayName: custodian.displayName,
-        production: custodian.enabled,
-        refreshTokenUrl: custodian.refreshTokenUrl,
-        websocketApiUrl: custodian.websocketApiUrl,
-        isNoteToTraderSupported: custodian.isNoteToTraderSupported,
-        version: 2,
+        custodians.push({
+          type: "JSONRPC",
+          iconUrl: custodian.iconUrl,
+          name: custodian.name,
+          website: custodian.website,
+          envName: environment.name,
+          apiUrl: environment.apiBaseUrl,
+          displayName: environment.displayName,
+          production: environment.enabled,
+          refreshTokenUrl: environment.refreshTokenUrl,
+          websocketApiUrl: environment.websocketApiUrl,
+          isNoteToTraderSupported: environment.isNoteToTraderSupported,
+          version: 2,
+        });
       });
-    }
+    });
 
     this.store.updateState({
       mmiConfiguration: {

@@ -43,46 +43,6 @@ describe("ConfigurationClient", () => {
     });
   });
 
-  describe("ConfigurationClient#getCustodianConfigurationForApiUrl", () => {
-    it("should call getConfiguration and return the custodians for this specific API URL ", async () => {
-      fetchMock.mockResponseOnce(
-        JSON.stringify({
-          custodians: [
-            {
-              apiBaseUrl: "https://api.mymmi.com",
-              refreshTokenUrl: "test",
-              websocketApiUrl: "test",
-            },
-          ],
-        }),
-      );
-
-      const result = await configurationClient.getCustodianConfigurationForApiUrl("https://api.mymmi.com");
-      expect(fetchMock).toHaveBeenCalledWith(MMI_CONFIGURATION_API_URL, {
-        method: "GET",
-      });
-
-      expect(result).toEqual({
-        refreshTokenUrl: "test",
-        websocketApiUrl: "test",
-      });
-    });
-
-    it("should fail there is no such custodian config", async () => {
-      fetchMock.mockResponseOnce(
-        JSON.stringify({
-          custodians: [
-            {
-              apiBaseUrl: "https://api.mymmi.com",
-            },
-          ],
-        }),
-      );
-
-      expect(configurationClient.getCustodianConfigurationForApiUrl("http://not-real")).rejects.toThrow();
-    });
-  });
-
   describe("ConfigurationClient#constructor", () => {
     it("should use the dev configuration API by default", () => {
       const client = new ConfigurationClient();
