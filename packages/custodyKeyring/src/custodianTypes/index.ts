@@ -8,6 +8,29 @@ import { JupiterCustodyKeyring } from "./jupiter/JupiterCustodyKeyring";
 import { QredoCustodyKeyring } from "./qredo/QredoCustodyKeyring";
 
 export const CUSTODIAN_TYPES: { [key: string]: ICustodianType } = {
+  JUPITER: {
+    name: "Jupiter",
+    displayName: "Jupiter Custody",
+    apiUrl: "https://jupiter-custody.codefi.network",
+    imgSrc: "https://saturn-custody-ui.metamask-institutional.io/saturn.svg",
+    icon: "https://saturn-custody-ui.metamask-institutional.io/saturn.svg",
+    website: '',
+    envName: '',
+    keyringClass: JupiterCustodyKeyring,
+    production: true,
+    hidden: false,
+    origins: [/^https:\/\/jupiter-custody-ui.codefi.network\//],
+    environmentMapping: [
+      {
+        pattern: /^http:\/\/test-pattern/,
+        mmiApiUrl: "http://test-url",
+      },
+      {
+        pattern: /^http:\/\/localhost.*$/,
+        mmiApiUrl: "http://localhost:3000/v1",
+      },
+    ],
+  },
   QREDO: {
     name: "Qredo",
     displayName: "Qredo",
