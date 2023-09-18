@@ -21,6 +21,8 @@ export class CactusCustodyKeyring extends CustodyKeyring {
     apiUrl: "https://api.mycactus.com/custody/v1/mmi-api",
     imgSrc: "https://dashboard.metamask-institutional.io/custodian-icons/cactus-icon.svg",
     icon: "https://dashboard.metamask-institutional.io/custodian-icons/cactus-icon.svg",
+    website: 'https://www.mycactus.com',
+    envName: 'cactus',
     keyringClass: CactusCustodyKeyring,
     production: true,
     hidden: false,
