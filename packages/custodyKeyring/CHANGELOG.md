@@ -11,6 +11,24 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
   - dependencies
     - @metamask-institutional/sdk bumped from ^0.1.13 to ^0.1.12
 
+## [1.0.0](https://github.com/consensys-vertical-apps/metamask-institutional/compare/custody-keyring-v0.0.27...custody-keyring-v1.0.0) (2023-09-18)
+
+
+### ⚠ BREAKING CHANGES
+
+* **configuration api v2:** Configuration API V2 has changed the whole structure for custodians, introducing environments noew
+
+### Features
+
+* **configuration api v2:** updated configClient and custodyKeyring ([#472](https://github.com/consensys-vertical-apps/metamask-institutional/issues/472)) ([504a633](https://github.com/consensys-vertical-apps/metamask-institutional/commit/504a6333a491a841062081211ffa15bae36f4c39))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @metamask-institutional/configuration-client bumped from ^1.0.6 to ^2.0.0
+
 ## [0.0.27](https://github.com/consensys-vertical-apps/metamask-institutional/compare/custody-keyring-v0.0.26...custody-keyring-v0.0.27) (2023-08-21)
 
 
