@@ -1,14 +1,14 @@
 {
-  "packages/institutionalFeatures": "1.2.3",
+  "packages/institutionalFeatures": "1.2.4",
   "packages/simpleCache": "1.1.0",
   "packages/types": "1.0.3",
-  "packages/custodyController": "0.2.11",
-  "packages/custodyKeyring": "1.0.0",
+  "packages/custodyController": "0.2.12",
+  "packages/custodyKeyring": "1.0.1",
   "packages/sdk": "0.1.18",
-  "packages/transactionUpdate": "0.1.26",
-  "packages/websocketClient": "0.1.28",
+  "packages/transactionUpdate": "0.1.27",
+  "packages/websocketClient": "0.1.29",
   "packages/configurationClient": "2.0.0",
   "packages/portfolioDashboard": "1.4.0",
   "packages/rpcAllowlist": "1.0.0",
-  "packages/extension": "0.3.4"
+  "packages/extension": "0.3.5"
 }
