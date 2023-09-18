@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.0](https://github.com/consensys-vertical-apps/metamask-institutional/compare/configuration-client-v1.0.6...configuration-client-v2.0.0) (2023-09-18)
+
+
+### ⚠ BREAKING CHANGES
+
+* **configuration api v2:** Configuration API V2 has changed the whole structure for custodians, introducing environments noew
+
+### Features
+
+* **configuration api v2:** updated configClient and custodyKeyring ([#472](https://github.com/consensys-vertical-apps/metamask-institutional/issues/472)) ([504a633](https://github.com/consensys-vertical-apps/metamask-institutional/commit/504a6333a491a841062081211ffa15bae36f4c39))
+
 ## [1.0.6](https://github.com/consensys-vertical-apps/metamask-institutional/compare/configuration-client-v1.0.5...configuration-client-v1.0.6) (2023-05-15)
 
 
