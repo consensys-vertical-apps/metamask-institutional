@@ -25,6 +25,8 @@ export class JupiterCustodyKeyring extends CustodyKeyring {
     apiUrl: "https://jupiter-custody.codefi.network",
     imgSrc: "images/jupiter.svg",
     icon: "images/jupiter.svg",
+    website: '',
+    envName: '',
     keyringClass: JupiterCustodyKeyring,
     production: true,
     hidden: false,
