@@ -71,8 +71,8 @@ export class MmiConfigurationController {
         .map(custodian => ({
           type: custodian.name,
           name: custodian.name.toLowerCase(),
-          website: null,
-          envName: null,
+          website: custodian.website,
+          envName: custodian.envName,
           apiUrl: custodian.apiUrl,
           iconUrl: custodian.imgSrc,
           displayName: custodian.displayName,

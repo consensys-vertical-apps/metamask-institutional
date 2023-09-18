@@ -8,33 +8,14 @@ import { JupiterCustodyKeyring } from "./jupiter/JupiterCustodyKeyring";
 import { QredoCustodyKeyring } from "./qredo/QredoCustodyKeyring";
 
 export const CUSTODIAN_TYPES: { [key: string]: ICustodianType } = {
-  JUPITER: {
-    name: "Jupiter",
-    displayName: "Jupiter Custody",
-    apiUrl: "https://jupiter-custody.codefi.network",
-    imgSrc: "https://saturn-custody-ui.metamask-institutional.io/saturn.svg",
-    icon: "https://saturn-custody-ui.metamask-institutional.io/saturn.svg",
-    keyringClass: JupiterCustodyKeyring,
-    production: true,
-    hidden: false,
-    origins: [/^https:\/\/jupiter-custody-ui.codefi.network\//],
-    environmentMapping: [
-      {
-        pattern: /^http:\/\/test-pattern/,
-        mmiApiUrl: "http://test-url",
-      },
-      {
-        pattern: /^http:\/\/localhost.*$/,
-        mmiApiUrl: "http://localhost:3000/v1",
-      },
-    ],
-  },
   QREDO: {
     name: "Qredo",
     displayName: "Qredo",
     apiUrl: "https://api.qredo.network",
     imgSrc: "https://dashboard.metamask-institutional.io/custodian-icons/qredo-icon.svg",
     icon: "https://dashboard.metamask-institutional.io/custodian-icons/qredo-icon.svg",
+    website: '',
+    envName: '',
     keyringClass: QredoCustodyKeyring,
     production: true,
     hidden: false,
@@ -56,6 +37,8 @@ export const CUSTODIAN_TYPES: { [key: string]: ICustodianType } = {
     apiUrl: "https://api.mycactus.com/custody/v1/mmi-api",
     imgSrc: "https://dashboard.metamask-institutional.io/custodian-icons/cactus-icon.svg",
     icon: "https://dashboard.metamask-institutional.io/custodian-icons/cactus-icon.svg",
+    website: 'https://www.mycactus.com',
+    envName: 'cactus',
     keyringClass: CactusCustodyKeyring,
     production: true,
     hidden: false,
@@ -77,6 +60,8 @@ export const CUSTODIAN_TYPES: { [key: string]: ICustodianType } = {
     apiUrl: "https://app.bitgo.com/defi/v2",
     imgSrc: "https://dashboard.metamask-institutional.io/custodian-icons/bitgo-icon.svg",
     icon: "https://dashboard.metamask-institutional.io/custodian-icons/bitgo-icon.svg",
+    website: 'https://www.bitgo.com',
+    envName: 'bitgo',
     keyringClass: BitgoCustodyKeyring,
     production: true,
     hidden: false,
@@ -105,6 +90,8 @@ export const CUSTODIAN_TYPES: { [key: string]: ICustodianType } = {
     apiUrl: "https://saturn-custody.codefi.network/eth",
     imgSrc: "https://saturn-custody-ui.metamask-institutional.io/saturn.svg",
     icon: "https://saturn-custody-ui.metamask-institutional.io/saturn.svg",
+    website: 'https://saturn-custody-ui.metamask-institutional.io/',
+    envName: 'saturn-prod',
     keyringClass: JsonRpcCustodyKeyring,
     production: false,
     hidden: true, // Since this is the prototype, we don't want to show it in the UI
@@ -120,6 +107,8 @@ export const CUSTODIAN_TYPES: { [key: string]: ICustodianType } = {
     apiUrl: "https://app.curv.co",
     imgSrc: "images/curv-logo-horizontal-black.svg",
     icon: "images/curv-logo.svg",
+    website: '',
+    envName: '',
     keyringClass: CurvCustodyKeyring,
     production: false,
     hidden: true,
