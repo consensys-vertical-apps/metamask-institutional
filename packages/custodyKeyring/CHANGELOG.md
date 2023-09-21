@@ -11,6 +11,13 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
   - dependencies
     - @metamask-institutional/sdk bumped from ^0.1.13 to ^0.1.12
 
+## [1.0.2](https://github.com/consensys-vertical-apps/metamask-institutional/compare/custody-keyring-v1.0.1...custody-keyring-v1.0.2) (2023-09-21)
+
+
+### Bug Fixes
+
+* **custodykeyring:** the getAccounts method should return a new array of the accounts ([#482](https://github.com/consensys-vertical-apps/metamask-institutional/issues/482)) ([934f370](https://github.com/consensys-vertical-apps/metamask-institutional/commit/934f37001744a6537a1b6f77d134fe67b4e93224))
+
 ## [1.0.1](https://github.com/consensys-vertical-apps/metamask-institutional/compare/custody-keyring-v1.0.0...custody-keyring-v1.0.1) (2023-09-18)
 
 
