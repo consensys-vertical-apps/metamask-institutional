@@ -169,7 +169,7 @@ export abstract class CustodyKeyring extends EventEmitter {
   }
 
   getAccounts() {
-    return Promise.resolve(this.accounts);
+    return Promise.resolve(this.accounts.slice());
   }
 
   removeAccount(address: string): void {
