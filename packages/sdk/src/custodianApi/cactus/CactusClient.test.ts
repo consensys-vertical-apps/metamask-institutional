@@ -55,6 +55,9 @@ describe("CactusClient", () => {
       expect(fetchMock).toHaveBeenCalledWith(`${mockUrl}/tokens`, {
         body: '{"grantType":"refresh_token","refreshToken":"mock-refresh-token"}',
         method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
       });
     });
   });
@@ -74,6 +77,7 @@ describe("CactusClient", () => {
       expect(fetchMock).toHaveBeenCalledWith(`${mockUrl}/eth-accounts`, {
         headers: {
           Authorization: `Bearer 123`,
+          "Content-Type": "application/json",
         },
       });
 
@@ -121,6 +125,7 @@ describe("CactusClient", () => {
         body: '{"to":"test","from":"test","value":"test","data":"test","gasLimit":"test","note":"hello","gasPrice":"test"}',
         headers: {
           Authorization: "Bearer 123",
+          "Content-Type": "application/json",
         },
         method: "POST",
       });
@@ -153,6 +158,7 @@ describe("CactusClient", () => {
         body: '{"to":"test","from":"test","value":"test","data":"test","gasLimit":"test","note":"Hello","maxPriorityFeePerGas":"test","maxFeePerGas":"test"}',
         headers: {
           Authorization: "Bearer 123",
+          "Content-Type": "application/json",
         },
         method: "POST",
       });
@@ -193,6 +199,7 @@ describe("CactusClient", () => {
       expect(fetchMock).toHaveBeenCalledWith(`${mockUrl}/signatures?transactionId=xxx`, {
         headers: {
           Authorization: `Bearer 123`,
+          "Content-Type": "application/json",
         },
       });
 
@@ -230,6 +237,7 @@ describe("CactusClient", () => {
       expect(fetchMock).toHaveBeenCalledWith(`${mockUrl}/transactions?chainId=4`, {
         headers: {
           Authorization: `Bearer 123`,
+          "Content-Type": "application/json",
         },
       });
 
@@ -259,6 +267,7 @@ describe("CactusClient", () => {
       expect(fetchMock).toHaveBeenCalledWith(`${mockUrl}/transactions?transactionId=xxx`, {
         headers: {
           Authorization: `Bearer 123`,
+          "Content-Type": "application/json",
         },
       });
 
@@ -298,6 +307,7 @@ describe("CactusClient", () => {
         body: "{}",
         headers: {
           Authorization: "Bearer 123",
+          "Content-Type": "application/json",
         },
         method: "POST",
       });
@@ -338,6 +348,7 @@ describe("CactusClient", () => {
         body: '{"address":"test","payload":{"types":{"EIP712Domain":[]},"primaryType":"test","domain":{"name":"test"},"message":{}},"signatureVersion":"V4"}',
         headers: {
           Authorization: "Bearer 123",
+          "Content-Type": "application/json",
         },
         method: "POST",
       });
@@ -363,6 +374,7 @@ describe("CactusClient", () => {
         body: '{"address":"test","payload":{"types":{"EIP712Domain":[]},"primaryType":"test","domain":{"name":"test"},"message":{}},"signatureVersion":"V4"}',
         headers: {
           Authorization: "Bearer 123",
+          "Content-Type": "application/json",
         },
         method: "POST",
       });
@@ -405,6 +417,7 @@ describe("CactusClient", () => {
         body: '{"address":"test","payload":{"message":"0xdeadbeef"},"signatureVersion":"personalSign"}',
         headers: {
           Authorization: "Bearer 123",
+          "Content-Type": "application/json",
         },
         method: "POST",
       });
@@ -434,6 +447,7 @@ describe("CactusClient", () => {
       expect(fetchMock).toHaveBeenCalledWith(`${mockUrl}/chainIds`, {
         headers: {
           Authorization: "Bearer 123",
+          "Content-Type": "application/json",
         },
       });
     });

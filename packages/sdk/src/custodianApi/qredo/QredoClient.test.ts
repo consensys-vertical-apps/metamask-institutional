@@ -92,6 +92,7 @@ describe("#QredoClient", () => {
       expect(fetchMock).toHaveBeenCalledWith("https://qredo/connect/wallets", {
         headers: {
           Authorization: "Bearer 123",
+          "Content-Type": "application/json",
         },
       });
     });
@@ -142,7 +143,10 @@ describe("#QredoClient", () => {
 
       expect(fetchMock).toHaveBeenCalledWith(`https://qredo/connect/transaction`, {
         body: '{"to":"test","from":"0xtest","value":"test","data":"test","gasLimit":"test","chainID":"42","maxPriorityFeePerGas":"test","maxFeePerGas":"test"}',
-        headers: { Authorization: "Bearer 123" },
+        headers: {
+          Authorization: "Bearer 123",
+          "Content-Type": "application/json",
+        },
         method: "POST",
       });
     });
@@ -183,6 +187,7 @@ describe("#QredoClient", () => {
       expect(fetchMock).toHaveBeenCalledWith("https://qredo/connect/transaction/xxx", {
         headers: {
           Authorization: "Bearer 123",
+          "Content-Type": "application/json",
         },
       });
 
@@ -232,7 +237,10 @@ describe("#QredoClient", () => {
       await qredoClient.getCustomerProof();
 
       expect(fetchMock).toHaveBeenLastCalledWith("https://qredo/connect/customer-proof", {
-        headers: { Authorization: "Bearer 123" },
+        headers: {
+          Authorization: "Bearer 123",
+          "Content-Type": "application/json",
+        },
         method: "POST",
       });
     });
@@ -247,6 +255,7 @@ describe("#QredoClient", () => {
       expect(fetchMock).toHaveBeenCalledWith("https://qredo/connect/sign/xxx", {
         headers: {
           Authorization: "Bearer 123",
+          "Content-Type": "application/json",
         },
       });
 
@@ -276,6 +285,7 @@ describe("#QredoClient", () => {
       expect(fetchMock).toHaveBeenCalledWith("https://qredo/connect/networks", {
         headers: {
           Authorization: "Bearer 123",
+          "Content-Type": "application/json",
         },
       });
     });
@@ -306,6 +316,7 @@ describe("#QredoClient", () => {
         body: '{"from":"test","message":"0xdeadbeef"}',
         headers: {
           Authorization: "Bearer 123",
+          "Content-Type": "application/json",
         },
         method: "POST",
       });
@@ -347,6 +358,7 @@ describe("#QredoClient", () => {
         body: '{"from":"test","payload":{"types":{"EIP712Domain":[]},"primaryType":"test","domain":{"name":"test"},"message":{}}}',
         headers: {
           Authorization: "Bearer 123",
+          "Content-Type": "application/json",
         },
         method: "POST",
       });

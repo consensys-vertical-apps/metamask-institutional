@@ -25,6 +25,7 @@ export class CactusClient {
     });
 
     return {
+      "Content-Type": "application/json",
       Authorization: `Bearer ${accessToken}`,
     };
   }
@@ -33,6 +34,9 @@ export class CactusClient {
     try {
       const response = await fetch(`${this.apiUrl}/tokens`, {
         method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
         body: JSON.stringify({
           grantType: "refresh_token",
           refreshToken: this.refreshToken,
