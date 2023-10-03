@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.19](https://github.com/consensys-vertical-apps/metamask-institutional/compare/sdk-v0.1.18...sdk-v0.1.19) (2023-10-03)
+
+
+### Bug Fixes
+
+* **content-type:** setting content-type as json ([#494](https://github.com/consensys-vertical-apps/metamask-institutional/issues/494)) ([c1afa70](https://github.com/consensys-vertical-apps/metamask-institutional/commit/c1afa70c366576952b997ad025a46a77b5affdeb))
+
 ## [0.1.18](https://github.com/consensys-vertical-apps/metamask-institutional/compare/sdk-v0.1.17...sdk-v0.1.18) (2023-05-25)
 
 
