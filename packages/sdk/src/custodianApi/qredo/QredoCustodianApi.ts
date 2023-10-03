@@ -125,7 +125,7 @@ export class QredoCustodianApi extends EventEmitter implements ICustodianApi {
       gasPrice: result.gasPrice,
       maxFeePerGas: null,
       maxPriorityFeePerGas: null,
-      nonce: result.nonce.toString(10),
+      nonce: result.nonce?.toString(10),
       transactionHash: result.txHash,
     };
   }

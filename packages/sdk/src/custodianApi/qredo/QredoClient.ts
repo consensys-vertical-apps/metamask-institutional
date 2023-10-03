@@ -30,6 +30,7 @@ export class QredoClient extends EventEmitter {
     });
 
     return {
+      "Content-Type": "application/json",
       Authorization: `Bearer ${accessToken}`,
     };
   }
