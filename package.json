@@ -41,7 +41,7 @@
     "commitizen": "^4.3.0",
     "jest-coverage-badges": "^1.1.2",
     "cz-conventional-changelog": "^3.3.0",
-    "eslint": "^8.37.0",
+    "eslint": "^8.51.0",
     "eslint-config-prettier": "^8.8.0",
     "husky": "^8.0.0",
     "is-ci": "^3.0.1",
