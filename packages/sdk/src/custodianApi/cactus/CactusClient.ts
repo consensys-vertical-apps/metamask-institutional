@@ -43,6 +43,10 @@ export class CactusClient {
         }),
       });
 
+      if (!response.ok) {
+        throw new Error('Error fetching the access token');
+      }
+
       const data: ICactusAccessTokenResponse = await response.json();
 
       if (!data.jwt) {
@@ -62,6 +66,11 @@ export class CactusClient {
       const response = await fetch(`${this.apiUrl}/eth-accounts`, {
         headers,
       });
+
+      if (!response.ok) {
+        throw new Error('Error fetching accounts');
+      }
+
       const accounts: ICactusEthereumAccount[] = await response.json();
       return accounts;
     } catch (e) {
@@ -97,6 +106,11 @@ export class CactusClient {
         body: JSON.stringify(payload),
         headers,
       });
+
+      if (!response.ok) {
+        throw new Error('Error creating transaction');
+      }
+
       const data = await response.json();
       return data;
     } catch (e) {
@@ -112,6 +126,10 @@ export class CactusClient {
         headers,
       });
 
+      if (!response.ok) {
+        throw new Error(`Error getting signed message with id ${custodian_signedMessageId}`);
+      }
+      
       const data = await response.json();
 
       if (data.length) {
@@ -132,6 +150,10 @@ export class CactusClient {
         headers,
       });
 
+      if (!response.ok) {
+        throw new Error(`Error getting transaction with id ${custodian_transactionId}`);
+      }
+
       const data = await response.json();
 
       if (data.length) {
@@ -151,6 +173,10 @@ export class CactusClient {
         headers,
       });
 
+      if (!response.ok) {
+        throw new Error(`Error getting transactions with chainId ${chainId}`);
+      }
+
       const data = await response.json();
 
       return data;
@@ -168,6 +194,10 @@ export class CactusClient {
         headers,
         body: JSON.stringify({}),
       });
+
+      if (!response.ok) {
+        throw new Error('Error getting Custommer Proof');
+      }
 
       const customerProof = await response.json();
       return customerProof;
@@ -202,6 +232,11 @@ export class CactusClient {
         body: JSON.stringify(payload),
         headers,
       });
+
+      if (!response.ok) {
+        throw new Error('Error doing signTypedData');
+      }
+
       const data = await response.json();
       return data;
     } catch (e) {
@@ -226,6 +261,11 @@ export class CactusClient {
         body: JSON.stringify(payload),
         headers,
       });
+
+      if (!response.ok) {
+        throw new Error('Error doing signPersonalMessage');
+      }
+
       const data = await response.json();
       return data;
     } catch (e) {
@@ -241,6 +281,10 @@ export class CactusClient {
         headers,
       });
 
+      if (!response.ok) {
+        throw new Error('Error getting chainIds');
+      }
+      
       const data: ICactusChainIdsResponse = await response.json();
       return data;
     } catch (e) {
