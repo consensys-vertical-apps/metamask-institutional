@@ -43,6 +43,10 @@ export class QredoClient extends EventEmitter {
         body: `grant_type=refresh_token&refresh_token=${this.refreshToken}`,
       });
 
+      if (!response.ok) {
+        throw new Error('Error fetching the access token');
+      }
+  
       const data = (await response.json()) as IQredoAccessTokenResponse;
 
       if (!data.access_token) {
@@ -82,6 +86,10 @@ export class QredoClient extends EventEmitter {
         headers,
       });
 
+      if (!response.ok) {
+        throw new Error('Error fetching wallet accounts');
+      }
+
       const data = (await response.json()) as IQredoWalletsResponse;
 
       return data.wallets;
@@ -120,6 +128,10 @@ export class QredoClient extends EventEmitter {
         body: JSON.stringify(payload),
       });
 
+      if (!response.ok) {
+        throw new Error('Error creating transaction');
+      }
+
       const data = (await response.json()) as IQredoTransaction;
 
       return data;
@@ -135,6 +147,11 @@ export class QredoClient extends EventEmitter {
       const response = await fetch(`${this.apiUrl}/connect/transaction/${custodian_transactionId}`, {
         headers,
       });
+
+      if (!response.ok) {
+        throw new Error(`Error getting transaction with id ${custodian_transactionId}`);
+      }
+
       const data = (await response.json()) as IQredoTransaction;
 
       return data;
@@ -157,6 +174,10 @@ export class QredoClient extends EventEmitter {
         headers,
       });
 
+      if (!response.ok) {
+        throw new Error(`Error getting signed message with id ${custodian_signedMessageId}`);
+      }
+
       const data = (await response.json()) as IQredoSignatureResponse;
 
       return data;
@@ -173,6 +194,10 @@ export class QredoClient extends EventEmitter {
         method: "POST",
         headers,
       });
+
+      if (!response.ok) {
+        throw new Error('Error getting Custommer Proof');
+      }
 
       const data = (await response.json()) as IQredoCustomerProof;
 
@@ -194,6 +219,10 @@ export class QredoClient extends EventEmitter {
       const response = await fetch(`${this.apiUrl}/connect/networks`, {
         headers,
       });
+
+      if (!response.ok) {
+        throw new Error('Error getting Networks');
+      }
 
       const data = (await response.json()) as IQredoNetworksResponse;
 
@@ -217,6 +246,11 @@ export class QredoClient extends EventEmitter {
         body: JSON.stringify(payload),
         headers,
       });
+
+      if (!response.ok) {
+        throw new Error('Error doing signTypedData');
+      }
+
       const data = await response.json();
       return data;
     } catch (e) {
@@ -238,6 +272,11 @@ export class QredoClient extends EventEmitter {
         body: JSON.stringify(payload),
         headers,
       });
+
+      if (!response.ok) {
+        throw new Error('Error doing signPersonalMessage');
+      }
+
       const data = await response.json();
       return data;
     } catch (e) {

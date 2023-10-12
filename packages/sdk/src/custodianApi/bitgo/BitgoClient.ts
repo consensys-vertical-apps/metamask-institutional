@@ -37,6 +37,10 @@ export class BitgoClient {
         headers,
       });
 
+      if (!body.ok) {
+        throw new Error('Error fetching wallet accounts');
+      }
+
       const accounts: IBitgoGetEthereumAccountsResponse = await body.json();
       return accounts.data;
     } catch (e) {
@@ -51,6 +55,11 @@ export class BitgoClient {
       const body = await fetch(`${this.bitgoApiurl}/mmi/wallets/address/${address}`, {
         headers,
       });
+
+      if (!body.ok) {
+        throw new Error(`Error fetching account for address ${address}`);
+      }
+
       const accounts: IBitgoGetEthereumAccountsResponse = await body.json();
       if (accounts.data.length) {
         return accounts.data[0];
@@ -87,6 +96,10 @@ export class BitgoClient {
         },
       );
 
+      if (!response.ok) {
+        throw new Error('Error creating transaction');
+      }
+
       const resultWrapper: IBitgoCreateTransactionResponse = await response.json();
       return resultWrapper.data;
     } catch (e) {
@@ -102,6 +115,10 @@ export class BitgoClient {
         headers,
       });
 
+      if (!response.ok) {
+        throw new Error(`Error getting transaction with id ${custodian_transactionId}`);
+      }
+
       const transaction = await response.json();
       return transaction.data[0];
     } catch (e) {
@@ -116,6 +133,10 @@ export class BitgoClient {
       const response = await fetch(`${this.bitgoApiurl}/custodian/transaction`, {
         headers,
       });
+
+      if (!response.ok) {
+        throw new Error('Error getting transactions');
+      }
 
       const allTransactions = await response.json();
       return allTransactions.data;
@@ -135,6 +156,10 @@ export class BitgoClient {
           version: "n/a",
         }),
       });
+
+      if (!response.ok) {
+        throw new Error('Error getting Custommer Proof');
+      }
 
       const customerProof = await response.json();
       return customerProof;
@@ -164,6 +189,11 @@ export class BitgoClient {
         body: JSON.stringify(payload),
         headers,
       });
+
+      if (!response.ok) {
+        throw new Error('Error doing signTypedData');
+      }
+
       const data = await response.json();
       return data;
     } catch (e) {
@@ -190,6 +220,11 @@ export class BitgoClient {
         body: JSON.stringify(payload),
         headers,
       });
+
+      if (!response.ok) {
+        throw new Error('Error doing signPersonalMessage');
+      }
+
       const data = await response.json();
       return data;
     } catch (e) {
@@ -211,6 +246,10 @@ export class BitgoClient {
           headers,
         },
       );
+
+      if (!response.ok) {
+        throw new Error(`Error getting signed message with id ${custodian_signedMessageId}`);
+      }
 
       const data = await response.json();
 
