@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.20](https://github.com/consensys-vertical-apps/metamask-institutional/compare/sdk-v0.1.19...sdk-v0.1.20) (2023-10-12)
+
+
+### Bug Fixes
+
+* **fetchapi:** error handling with fetch api ([#500](https://github.com/consensys-vertical-apps/metamask-institutional/issues/500)) ([cf64009](https://github.com/consensys-vertical-apps/metamask-institutional/commit/cf6400906b1b34b1120370b0624448ade71cedb0))
+
 ## [0.1.19](https://github.com/consensys-vertical-apps/metamask-institutional/compare/sdk-v0.1.18...sdk-v0.1.19) (2023-10-03)
 
 
