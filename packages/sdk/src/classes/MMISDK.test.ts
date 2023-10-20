@@ -175,9 +175,12 @@ describe("MMISDK", () => {
         isSignedMessage: true,
       });
 
-      // await mmiSDK.signPersonalMessage("0x", "0x");
+      await mmiSDK.signPersonalMessage("0x", "0x", { chainId: null, originUrl: null });
 
-      // expect(mockedCustodianApiInstance.signPersonalMessage).toHaveBeenCalledWith("0x", "0x");
+      expect(mockedCustodianApiInstance.signPersonalMessage).toHaveBeenCalledWith("0x", "0x", {
+        chainId: null,
+        originUrl: null,
+      });
     });
   });
 
