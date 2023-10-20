@@ -7,6 +7,6 @@ export interface IEthereumAccount<T> {
   name?: string;
   address: string;
   custodianDetails: T;
-  labels: Label[];
+  labels?: Label[];
   balance?: string;
 }

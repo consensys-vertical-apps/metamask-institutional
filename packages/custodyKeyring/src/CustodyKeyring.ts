@@ -384,6 +384,8 @@ export abstract class CustodyKeyring extends EventEmitter {
       note,
       transactionCategory: txMeta.type,
       origin: txMeta.origin,
+      custodianPublishesTransaction: txMeta?.metadata?.custodianPublishesTransaction,
+      rpcUrl: txMeta?.metadata?.rpcUrl,
     });
 
     return result;
@@ -431,11 +433,17 @@ export abstract class CustodyKeyring extends EventEmitter {
     return signature;
   }
 
-  async signPersonalMessage(address: string, message: string, _opts = {}): Promise<ITransactionDetails> {
+  async signPersonalMessage(address: string, message: string, opts: any): Promise<ITransactionDetails> {
     const { authDetails, apiUrl } = this.getAccountDetails(address);
     const sdk = this.getSDK(authDetails, apiUrl);
 
-    return sdk.signPersonalMessage(address, message);
+    const signedMessageMetadata = {
+      chainId: null,
+      originUrl: null,
+      note: null,
+    };
+
+    return sdk.signPersonalMessage(address, message, signedMessageMetadata);
   }
 
   signMessage() {
@@ -469,14 +477,20 @@ export abstract class CustodyKeyring extends EventEmitter {
   async signTypedData(address: string, data: any, opts: any): Promise<ITransactionDetails> {
     // Explanation : signTypedDataV4 also works for V3 (the standard is backward compatible)
     // However, the custodian will treat it as V4, so we continue to name the SDK methods V4
-    if (opts.version !== "V4" && opts.version !== "V3") {
+    if (opts?.version !== "V4" && opts?.version !== "V3") {
       this.emit("error", "Only signedTypedData_v4 and signedTypedData_v3 is supported");
     }
 
     const { authDetails, apiUrl } = this.getAccountDetails(address);
     const sdk = this.getSDK(authDetails, apiUrl);
 
-    return sdk.signedTypedData_v4(address, data, opts.version);
+    const signedTypedMessageMetadata = {
+      chainId: null,
+      originUrl: null,
+      note: null,
+    };
+
+    return sdk.signedTypedData_v4(address, data, opts.version, signedTypedMessageMetadata);
   }
 
   getSupportedChains(address: string): Promise<string[]> {

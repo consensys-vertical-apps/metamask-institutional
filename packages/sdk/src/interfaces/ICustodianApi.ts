@@ -10,6 +10,12 @@ import {
   ITransactionDetails,
 } from "@metamask-institutional/types";
 import { EventEmitter } from "events";
+import { JsonRpcReplaceTransactionParams } from "src/custodianApi/eca3/rpc-payloads/JsonRpcReplaceTransactionPayload";
+import { JsonRpcListAccountsSignedResponse } from "src/custodianApi/eca3/rpc-responses/JsonRpcListAccountsSignedResponse";
+import { SignedMessageMetadata } from "src/types/SignedMessageMetadata";
+import { SignedMessageParams } from "src/types/SignedMessageParams";
+import { SignedTypedMessageMetadata } from "src/types/SignedTypedMessageMetadata";
+import { SignedTypedMessageParams } from "src/types/SignedTypedMessageParams";
 
 import { AccountHierarchyNode } from "../classes/AccountHierarchyNode";
 import { CreateTransactionMetadata } from "../types/CreateTransactionMetadata";
@@ -25,6 +31,8 @@ export interface ICustodianApi extends EventEmitter {
   integrationVersion: number;
 
   getAccountHierarchy(): Promise<AccountHierarchyNode>;
+
+  getListAccountsSigned?(): Promise<string>;
 
   getEthereumAccounts(chainId?: number): Promise<IEthereumAccount<IEthereumAccountCustodianDetails>[]>;
 
@@ -43,6 +51,8 @@ export interface ICustodianApi extends EventEmitter {
     txMeta: CreateTransactionMetadata,
   ): Promise<ITransactionDetails>;
 
+  replaceTransaction?(txParams: JsonRpcReplaceTransactionParams): Promise<{ transactionId: string }>;
+
   getTransaction(from: string, transactionId: string): Promise<ITransactionDetails>;
 
   getAllTransactions(): Promise<ITransactionDetails[]>;
@@ -50,9 +60,18 @@ export interface ICustodianApi extends EventEmitter {
   // Obtain a JWT from the custodian that we can use to authenticate to
   getCustomerProof(): Promise<string>;
 
-  signTypedData_v4(address: string, buffer: TypedMessage<MessageTypes>, version: string): Promise<ITransactionDetails>;
+  signTypedData_v4(
+    address: string,
+    data: TypedMessage<MessageTypes>,
+    version: string,
+    signedTypedMessageMetadata: SignedTypedMessageMetadata,
+  ): Promise<ITransactionDetails>;
 
-  signPersonalMessage(address: string, mesage: string): Promise<ITransactionDetails>;
+  signPersonalMessage(
+    address: string,
+    mesage: string,
+    signedMessageMetadata: SignedMessageMetadata,
+  ): Promise<ITransactionDetails>;
 
   getSupportedChains(address?: string): Promise<string[]>;
 

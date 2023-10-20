@@ -3,4 +3,6 @@ export type CreateTransactionMetadata = {
   note?: string;
   transactionCategory?: string;
   origin?: string;
+  custodianPublishesTransaction?: boolean;
+  rpcUrl?: string;
 };

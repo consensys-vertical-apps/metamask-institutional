@@ -938,7 +938,11 @@ describe("CustodyKeyring", () => {
         version: "V4",
       });
 
-      expect(mockMMISDK.signedTypedData_v4).toHaveBeenCalledWith(fromAddress, "data", "V4");
+      expect(mockMMISDK.signedTypedData_v4).toHaveBeenCalledWith(fromAddress, "data", "V4", {
+        chainId: null,
+        note: null,
+        originUrl: null,
+      });
     });
 
     it("throws an exception if an invalid version is specified", () => {
@@ -968,9 +972,13 @@ describe("CustodyKeyring", () => {
 
       const fromAddress = mockSelectedAddresses[0].address;
 
-      await custodyKeyring.signPersonalMessage(fromAddress, "data");
+      await custodyKeyring.signPersonalMessage(fromAddress, "data", null);
 
-      expect(mockMMISDK.signPersonalMessage).toHaveBeenCalledWith(fromAddress, "data");
+      expect(mockMMISDK.signPersonalMessage).toHaveBeenCalledWith(fromAddress, "data", {
+        chainId: null,
+        note: null,
+        originUrl: null,
+      });
     });
   });
 

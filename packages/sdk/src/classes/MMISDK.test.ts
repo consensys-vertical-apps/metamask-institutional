@@ -124,9 +124,12 @@ describe("MMISDK", () => {
         message: {},
       };
 
-      await mmiSDK.signedTypedData_v4("0x", buffer);
+      await mmiSDK.signedTypedData_v4("0x", buffer, "v4", { chainId: null, originUrl: null });
 
-      expect(mockedCustodianApiInstance.signTypedData_v4).toHaveBeenCalledWith("0x", buffer, "");
+      expect(mockedCustodianApiInstance.signTypedData_v4).toHaveBeenCalledWith("0x", buffer, "v4", {
+        chainId: null,
+        originUrl: null,
+      });
     });
   });
 
@@ -172,9 +175,12 @@ describe("MMISDK", () => {
         isSignedMessage: true,
       });
 
-      await mmiSDK.signPersonalMessage("0x", "0x");
+      await mmiSDK.signPersonalMessage("0x", "0x", { chainId: null, originUrl: null });
 
-      expect(mockedCustodianApiInstance.signPersonalMessage).toHaveBeenCalledWith("0x", "0x");
+      expect(mockedCustodianApiInstance.signPersonalMessage).toHaveBeenCalledWith("0x", "0x", {
+        chainId: null,
+        originUrl: null,
+      });
     });
   });
 
