@@ -968,7 +968,7 @@ describe("CustodyKeyring", () => {
 
       const fromAddress = mockSelectedAddresses[0].address;
 
-      await custodyKeyring.signPersonalMessage(fromAddress, "data");
+      await custodyKeyring.signPersonalMessage(fromAddress, "data", null);
 
       expect(mockMMISDK.signPersonalMessage).toHaveBeenCalledWith(fromAddress, "data");
     });

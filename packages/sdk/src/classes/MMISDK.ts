@@ -13,13 +13,15 @@ import {
 import { EventEmitter } from "events";
 
 import { INTERACTIVE_REPLACEMENT_TOKEN_CHANGE_EVENT, REFRESH_TOKEN_CHANGE_EVENT } from "../constants/constants";
-import { CustodianApiConstructor, ICustodianApi } from "../interfaces/ICustodianApi";
 import { IEthereumAccount } from "../interfaces/IEthereumAccount";
 import { IEthereumAccountCustodianDetails } from "../interfaces/IEthereumAccountCustodianDetails";
 import { MessageTypes, TypedMessage } from "../interfaces/ITypedMessage";
 import { CreateTransactionMetadata } from "../types/CreateTransactionMetadata";
-import { orderByProperty } from "../util/order-by-property";
 import { AccountHierarchyNode } from "./AccountHierarchyNode";
+import { JsonRpcReplaceTransactionParams } from "src/custodianApi/eca3/rpc-payloads/JsonRpcReplaceTransactionPayload";
+import { SignedMessageMetadata } from "src/types/SignedMessageMetadata";
+import { SignedTypedMessageMetadata } from "src/types/SignedTypedMessageMetadata";
+import { CustodianApiConstructor, ICustodianApi } from "src/interfaces/ICustodianApi";
 
 export class MMISDK extends EventEmitter {
   custodianApi: ICustodianApi;
@@ -58,6 +60,10 @@ export class MMISDK extends EventEmitter {
     return this.custodianApi.getAccountHierarchy();
   }
 
+  public async getListAccountsSigned(): Promise<string> {
+    return this.custodianApi.getListAccountsSigned();
+  }
+
   // Get ethereum accounts optionally based on the ID of the parent object
   public async getEthereumAccounts(
     maxCacheAgeSeconds = this.defaultCacheAgeSeconds,
@@ -71,7 +77,7 @@ export class MMISDK extends EventEmitter {
       maxCacheAgeSeconds,
       async () => {
         const accounts = await this.custodianApi.getEthereumAccounts();
-        return accounts.sort(orderByProperty("balance")).reverse();
+        return accounts;
       },
     );
   }
@@ -89,7 +95,7 @@ export class MMISDK extends EventEmitter {
       async () => {
         const accounts = await this.custodianApi.getEthereumAccountsByAddress(address);
 
-        return accounts.sort(orderByProperty("balance")).reverse();
+        return accounts;
       },
     );
   }
@@ -106,7 +112,7 @@ export class MMISDK extends EventEmitter {
       maxCacheAgeSeconds,
       async () => {
         const accounts = await this.custodianApi.getEthereumAccountsByLabelOrAddressName(name);
-        return accounts.sort(orderByProperty("balance")).reverse();
+        return accounts;
       },
     );
   }
@@ -116,6 +122,13 @@ export class MMISDK extends EventEmitter {
     txMeta?: CreateTransactionMetadata,
   ): Promise<ITransactionDetails> {
     const result = await this.custodianApi.createTransaction(txParams, txMeta);
+    return result;
+  }
+
+  public async replaceTransaction(
+    txParams: JsonRpcReplaceTransactionParams,
+  ): Promise<{transactionId: string;}> {
+    const result = await this.custodianApi.replaceTransaction(txParams);
     return result;
   }
 
@@ -133,16 +146,17 @@ export class MMISDK extends EventEmitter {
 
   public async signedTypedData_v4(
     address: string,
-    buffer: TypedMessage<MessageTypes>,
-    note = "",
+    data: TypedMessage<MessageTypes>,
+    version: string,
+    signedTypedMessageMetadata: SignedTypedMessageMetadata,
   ): Promise<ITransactionDetails> {
-    const result = await this.custodianApi.signTypedData_v4(address, buffer, note);
+    const result = await this.custodianApi.signTypedData_v4(address, data, version, signedTypedMessageMetadata);
 
     return result;
   }
 
-  public async signPersonalMessage(address: string, message: string): Promise<ITransactionDetails> {
-    const result = await this.custodianApi.signPersonalMessage(address, message);
+  public async signPersonalMessage(address: string, message: string, signedMessageMetadata: SignedMessageMetadata): Promise<ITransactionDetails> {
+    const result = await this.custodianApi.signPersonalMessage(address, message, signedMessageMetadata);
 
     return result;
   }

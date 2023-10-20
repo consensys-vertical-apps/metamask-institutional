@@ -6,6 +6,7 @@ import { CurvCustodyKeyring } from "./curv/CurvCustodyKeyring";
 import { JsonRpcCustodyKeyring } from "./json-rpc/JsonRpcCustodyKeyring";
 import { JupiterCustodyKeyring } from "./jupiter/JupiterCustodyKeyring";
 import { QredoCustodyKeyring } from "./qredo/QredoCustodyKeyring";
+import { ECA3CustodyKeyring } from "./eca3/ECA3CustodyKeyring";
 
 export const CUSTODIAN_TYPES: { [key: string]: ICustodianType } = {
   QREDO: {
@@ -120,6 +121,22 @@ export const CUSTODIAN_TYPES: { [key: string]: ICustodianType } = {
     origins: [],
     environmentMapping: [], // No environment mapping for JSON-RPC custodians as this is derived from the configuration service
   },
+
+    // All new custodians are an instance of this type
+    ECA3: {
+      name: "ECA3",
+      displayName: "ECA3",
+      apiUrl: "https://neptune-custody.codefi.network/eth",
+      imgSrc: "https://backend.vistan-brillen.de/storage/files/images/marken/changeme/header/changeme-logo-header.jpg",
+      icon: "https://backend.vistan-brillen.de/storage/files/images/marken/changeme/header/changeme-logo-header.jpg",
+      website: 'https://neptune-custody-ui.metamask-institutional.io/',
+      envName: 'neptune-custody',
+      keyringClass: ECA3CustodyKeyring,
+      production: false,
+      hidden: true, // Since this is the prototype, we don't want to show it in the UI
+      origins: [],
+      environmentMapping: [], // No environment mapping for JSON-RPC custodians as this is derived from the configuration service
+    },
 
   // Legacy Custodian
   CURV: {

@@ -7,6 +7,7 @@ export interface ICustodianType {
   name: string;
   displayName: string;
   apiUrl: string;
+  apiVersion?: string;
   imgSrc: string;
   icon: string;
   website: string;

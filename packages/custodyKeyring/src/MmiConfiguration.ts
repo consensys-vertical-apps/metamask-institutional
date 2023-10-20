@@ -74,12 +74,14 @@ export class MmiConfigurationController {
           website: custodian.website,
           envName: custodian.envName,
           apiUrl: custodian.apiUrl,
+          apiVersion: custodian.apiVersion,
           iconUrl: custodian.imgSrc,
           displayName: custodian.displayName,
           websocketApiUrl: null, // Legacy custodian
           production: custodian.production,
           refreshTokenUrl: null,
           isNoteToTraderSupported: false,
+          custodianPublishesTransaction: false,
           version: 1,
         })),
     ];
@@ -102,17 +104,19 @@ export class MmiConfigurationController {
         }
 
         custodians.push({
-          type: "JSONRPC",
+          type: environment.apiVersion === '3' ? 'ECA3': 'JSONRPC',
           iconUrl: custodian.iconUrl,
           name: custodian.name,
           website: custodian.website,
           envName: environment.name,
           apiUrl: environment.apiBaseUrl,
+          apiVersion: environment.apiVersion,
           displayName: environment.displayName,
           production: environment.enabled,
           refreshTokenUrl: environment.refreshTokenUrl,
           websocketApiUrl: environment.websocketApiUrl,
           isNoteToTraderSupported: environment.isNoteToTraderSupported,
+          custodianPublishesTransaction: environment.custodianPublishesTransaction,
           version: 2,
         });
       });

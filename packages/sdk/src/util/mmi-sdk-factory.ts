@@ -5,7 +5,7 @@ import { AuthDetails, AuthTypes } from "@metamask-institutional/types";
 
 import { MMISDK } from "../classes/MMISDK";
 import { DEFAULT_MAX_CACHE_AGE } from "../constants/constants";
-import { CustodianApiConstructor } from "../interfaces/ICustodianApi";
+import { CustodianApiConstructor } from "src/interfaces/ICustodianApi";
 
 export const mmiSDKFactory = function (
   custodianApi: CustodianApiConstructor,

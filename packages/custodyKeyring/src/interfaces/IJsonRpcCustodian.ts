@@ -5,8 +5,10 @@ interface IEnvironment {
   enabled: boolean;
   websocketApiUrl: string;
   apiBaseUrl: string;
+  apiVersion: string;
   iconUrl: string;
   isNoteToTraderSupported: boolean;
+  custodianPublishesTransaction: boolean;
 }
 
 export interface IJsonRpcCustodian {
@@ -22,6 +24,5 @@ export interface IJsonRpcCustodian {
   jwksUrl: string;
   refreshTokenUrl: string;
   websocketApiUrl: string;
-  isNoteToTraderSupported: boolean;
   environments: IEnvironment[];
 }

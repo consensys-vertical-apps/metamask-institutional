@@ -27,5 +27,7 @@ export type MetamaskTransaction = {
   hash: string;
   metadata?: {
     note?: string;
+    custodianPublishesTransaction?: boolean;
+    rpcUrl?: string;
   };
 };

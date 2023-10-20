@@ -17,6 +17,14 @@ export interface ITransactionDetails {
   data?: string; // Optional because it's not really needed and some custodians do not set this
 
   transactionStatusDisplayText?: string; // Optional because it's used for displayText from custodian transaction
+
+  transactionId?: string;
+  
+  chainId?: number;
+  custodianPublishesTransaction?: boolean;
+  signedRawTransaction?: string;
+  rpcUrl?: string;
+  note?: string;
 }
 
 export type TransactionStatus =
