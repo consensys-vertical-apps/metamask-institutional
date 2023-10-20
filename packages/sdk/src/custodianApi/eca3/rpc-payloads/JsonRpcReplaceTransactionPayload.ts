@@ -8,7 +8,9 @@ export interface JsonRpcReplaceTransactionParams {
 }
 
 export interface JsonRpcReplaceTransactionGasParams {
-  toBeAdded: string; // placeholder property
+  gas?: string;
+  maxPriorityFeePerGas?: string;
+  maxFeePerGas?: string;
 }
 
 export type JsonRpcReplaceTransactionPayload = [JsonRpcReplaceTransactionParams, JsonRpcReplaceTransactionGasParams];
