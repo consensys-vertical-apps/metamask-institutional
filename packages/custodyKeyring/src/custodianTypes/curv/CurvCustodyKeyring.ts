@@ -113,7 +113,7 @@ export class CurvCustodyKeyring extends CustodyKeyring {
     });
   }
 
-  txDeepLink = (custodianDetails, txId) => {
+  txDeepLink = (_custodianDetails, _txId) => {
     return null;
   };
 
