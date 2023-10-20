@@ -11,6 +11,10 @@ import {
   ITransactionDetails,
 } from "@metamask-institutional/types";
 import { EventEmitter } from "events";
+import { JsonRpcReplaceTransactionParams } from "src/custodianApi/eca3/rpc-payloads/JsonRpcReplaceTransactionPayload";
+import { CustodianApiConstructor, ICustodianApi } from "src/interfaces/ICustodianApi";
+import { SignedMessageMetadata } from "src/types/SignedMessageMetadata";
+import { SignedTypedMessageMetadata } from "src/types/SignedTypedMessageMetadata";
 
 import { INTERACTIVE_REPLACEMENT_TOKEN_CHANGE_EVENT, REFRESH_TOKEN_CHANGE_EVENT } from "../constants/constants";
 import { IEthereumAccount } from "../interfaces/IEthereumAccount";
@@ -18,10 +22,6 @@ import { IEthereumAccountCustodianDetails } from "../interfaces/IEthereumAccount
 import { MessageTypes, TypedMessage } from "../interfaces/ITypedMessage";
 import { CreateTransactionMetadata } from "../types/CreateTransactionMetadata";
 import { AccountHierarchyNode } from "./AccountHierarchyNode";
-import { JsonRpcReplaceTransactionParams } from "src/custodianApi/eca3/rpc-payloads/JsonRpcReplaceTransactionPayload";
-import { SignedMessageMetadata } from "src/types/SignedMessageMetadata";
-import { SignedTypedMessageMetadata } from "src/types/SignedTypedMessageMetadata";
-import { CustodianApiConstructor, ICustodianApi } from "src/interfaces/ICustodianApi";
 
 export class MMISDK extends EventEmitter {
   custodianApi: ICustodianApi;
@@ -125,9 +125,7 @@ export class MMISDK extends EventEmitter {
     return result;
   }
 
-  public async replaceTransaction(
-    txParams: JsonRpcReplaceTransactionParams,
-  ): Promise<{transactionId: string;}> {
+  public async replaceTransaction(txParams: JsonRpcReplaceTransactionParams): Promise<{ transactionId: string }> {
     const result = await this.custodianApi.replaceTransaction(txParams);
     return result;
   }
@@ -155,7 +153,11 @@ export class MMISDK extends EventEmitter {
     return result;
   }
 
-  public async signPersonalMessage(address: string, message: string, signedMessageMetadata: SignedMessageMetadata): Promise<ITransactionDetails> {
+  public async signPersonalMessage(
+    address: string,
+    message: string,
+    signedMessageMetadata: SignedMessageMetadata,
+  ): Promise<ITransactionDetails> {
     const result = await this.custodianApi.signPersonalMessage(address, message, signedMessageMetadata);
 
     return result;

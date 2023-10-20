@@ -9,7 +9,5 @@ export const mockJsonRpcSignPayload: JsonRpcSignedMessagePayload = [
     chainId: "0x1",
     originUrl: "metamask",
     note: "",
-  }
+  },
 ];
-
-

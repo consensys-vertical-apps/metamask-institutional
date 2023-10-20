@@ -10,6 +10,10 @@ import {
   ITransactionDetails,
 } from "@metamask-institutional/types";
 import { EventEmitter } from "events";
+import { SignedMessageMetadata } from "src/types/SignedMessageMetadata";
+import { SignedMessageParams } from "src/types/SignedMessageParams";
+import { SignedTypedMessageMetadata } from "src/types/SignedTypedMessageMetadata";
+import { SignedTypedMessageParams } from "src/types/SignedTypedMessageParams";
 
 import { AccountHierarchyNode } from "../../classes/AccountHierarchyNode";
 import { INTERACTIVE_REPLACEMENT_TOKEN_CHANGE_EVENT, REFRESH_TOKEN_CHANGE_EVENT } from "../../constants/constants";
@@ -20,14 +24,10 @@ import { MessageTypes, TypedMessage } from "../../interfaces/ITypedMessage";
 import { CreateTransactionMetadata } from "../../types/CreateTransactionMetadata";
 import { ECA3Client } from "./ECA3Client";
 import { JsonRpcTransactionParams } from "./rpc-payloads/JsonRpcCreateTransactionPayload";
-import { hexlify } from "./util/hexlify";
-import { mapStatusObjectToStatusText } from "./util/mapStatusObjectToStatusText";
 import { JsonRpcReplaceTransactionParams } from "./rpc-payloads/JsonRpcReplaceTransactionPayload";
 import { JsonRpcListAccountsSignedResponse } from "./rpc-responses/JsonRpcListAccountsSignedResponse";
-import { SignedMessageParams } from "src/types/SignedMessageParams";
-import { SignedMessageMetadata } from "src/types/SignedMessageMetadata";
-import { SignedTypedMessageParams } from "src/types/SignedTypedMessageParams";
-import { SignedTypedMessageMetadata } from "src/types/SignedTypedMessageMetadata";
+import { hexlify } from "./util/hexlify";
+import { mapStatusObjectToStatusText } from "./util/mapStatusObjectToStatusText";
 
 export class ECA3CustodianApi extends EventEmitter implements ICustodianApi {
   private client: ECA3Client;
@@ -74,7 +74,6 @@ export class ECA3CustodianApi extends EventEmitter implements ICustodianApi {
 
     return mappedAccounts;
   }
-  
 
   async getEthereumAccountsByAddress(address: string): Promise<IEthereumAccount<IEthereumAccountCustodianDetails>[]> {
     const accounts = await this.getEthereumAccounts();
@@ -168,10 +167,7 @@ export class ECA3CustodianApi extends EventEmitter implements ICustodianApi {
     };
   }
 
-  async replaceTransaction(
-    txParams: JsonRpcReplaceTransactionParams,
-  ): Promise<{transactionId: string;}> {
-
+  async replaceTransaction(txParams: JsonRpcReplaceTransactionParams): Promise<{ transactionId: string }> {
     const payload: Partial<JsonRpcReplaceTransactionParams> = {
       transactionId: txParams.transactionId,
       action: txParams.action,
@@ -252,7 +248,6 @@ export class ECA3CustodianApi extends EventEmitter implements ICustodianApi {
     return result.jwt;
   }
 
-
   async signTypedData_v4(
     address: string,
     data: TypedMessage<MessageTypes>,
@@ -271,9 +266,9 @@ export class ECA3CustodianApi extends EventEmitter implements ICustodianApi {
       {
         address,
         data,
-        version
+        version,
       },
-      signedTypedMessageMetadata
+      signedTypedMessageMetadata,
     ]);
 
     return {
@@ -283,7 +278,11 @@ export class ECA3CustodianApi extends EventEmitter implements ICustodianApi {
     };
   }
 
-  async signPersonalMessage(address: string, message: string, signedMessageMetadata: SignedMessageMetadata): Promise<ITransactionDetails> {
+  async signPersonalMessage(
+    address: string,
+    message: string,
+    signedMessageMetadata: SignedMessageMetadata,
+  ): Promise<ITransactionDetails> {
     const accounts = await this.getEthereumAccountsByAddress(address);
 
     if (!accounts.length) {
@@ -293,9 +292,9 @@ export class ECA3CustodianApi extends EventEmitter implements ICustodianApi {
     const { result } = await this.client.signPersonalMessage([
       {
         address,
-        message
+        message,
       },
-      signedMessageMetadata
+      signedMessageMetadata,
     ]);
 
     return {
@@ -306,7 +305,8 @@ export class ECA3CustodianApi extends EventEmitter implements ICustodianApi {
   }
 
   async eca3_signTypedData_v4(
-    signedTypedMessageParams: SignedTypedMessageParams, signedTypedMessageMetadata: SignedTypedMessageMetadata
+    signedTypedMessageParams: SignedTypedMessageParams,
+    signedTypedMessageMetadata: SignedTypedMessageMetadata,
   ): Promise<ITransactionDetails> {
     const accounts = await this.getEthereumAccountsByAddress(signedTypedMessageParams.address);
 
@@ -316,10 +316,7 @@ export class ECA3CustodianApi extends EventEmitter implements ICustodianApi {
 
     const version = signedTypedMessageParams.version.toLowerCase();
 
-    const { result } = await this.client.signTypedData([
-      signedTypedMessageParams,
-      signedTypedMessageMetadata
-    ]);
+    const { result } = await this.client.signTypedData([signedTypedMessageParams, signedTypedMessageMetadata]);
 
     return {
       custodian_transactionId: result,
@@ -328,17 +325,17 @@ export class ECA3CustodianApi extends EventEmitter implements ICustodianApi {
     };
   }
 
-  async eca3_signPersonalMessage(signedMessageParams: SignedMessageParams, signedMessageMetadata: SignedMessageMetadata): Promise<ITransactionDetails> {
+  async eca3_signPersonalMessage(
+    signedMessageParams: SignedMessageParams,
+    signedMessageMetadata: SignedMessageMetadata,
+  ): Promise<ITransactionDetails> {
     const accounts = await this.getEthereumAccountsByAddress(signedMessageParams.address);
 
     if (!accounts.length) {
       throw new Error("No such ethereum account!");
     }
 
-    const { result } = await this.client.signPersonalMessage([
-      signedMessageParams,
-      signedMessageMetadata
-    ]);
+    const { result } = await this.client.signPersonalMessage([signedMessageParams, signedMessageMetadata]);
 
     return {
       custodian_transactionId: result,

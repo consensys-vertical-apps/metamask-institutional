@@ -25,5 +25,5 @@ export interface JsonRpcGetTransactionByIdResponse {
     custodianPublishesTransaction: boolean;
     rpcUrl: string;
     note: string;
-  }
+  };
 }

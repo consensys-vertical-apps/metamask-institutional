@@ -7,25 +7,25 @@ import { INTERACTIVE_REPLACEMENT_TOKEN_CHANGE_EVENT, REFRESH_TOKEN_CHANGE_EVENT 
 import { JsonRpcResult } from "./interfaces/JsonRpcResult";
 import { JsonRpcCreateTransactionPayload } from "./rpc-payloads/JsonRpcCreateTransactionPayload";
 import { JsonRpcGetSignedMessageByIdPayload } from "./rpc-payloads/JsonRpcGetSignedMessageByIdPayload";
+import { JsonRpcGetSignedMessageLinkPayload } from "./rpc-payloads/JsonRpcGetSignedMessageLinkPayload";
 import { JsonRpcGetTransactionByIdPayload } from "./rpc-payloads/JsonRpcGetTransactionByIdPayload";
 import { JsonRpcGetTransactionLinkPayload } from "./rpc-payloads/JsonRpcGetTransactionLinkPayload";
 import { JsonRpcListAccountChainIdsPayload } from "./rpc-payloads/JsonRpcListAccountChainIdsPayload";
+import { JsonRpcReplaceTransactionPayload } from "./rpc-payloads/JsonRpcReplaceTransactionPayload";
 import { JsonRpcSignedMessagePayload } from "./rpc-payloads/JsonRpcSignPayload";
 import { JsonRpcSignTypedDataPayload } from "./rpc-payloads/JsonRpcSignTypedDataPayload";
 import { JsonRpcCreateTransactionResult } from "./rpc-responses/JsonRpcCreateTransactionResult";
 import { JsonRpcGetCustomerProofResponse } from "./rpc-responses/JsonRpcGetCustomerProofResponse";
 import { JsonRpcGetSignedMessageByIdResponse } from "./rpc-responses/JsonRpcGetSignedMessageByIdResponse";
+import { JsonRpcGetSignedMessageLinkResponse } from "./rpc-responses/JsonRpcGetSignedMessageLinkResponse";
 import { JsonRpcGetTransactionByIdResponse } from "./rpc-responses/JsonRpcGetTransactionByIdResponse";
 import { JsonRpcGetTransactionLinkResponse } from "./rpc-responses/JsonRpcGetTransactionLinkResponse";
 import { JsonRpcListAccountsResponse } from "./rpc-responses/JsonRpcListAccountsResponse";
+import { JsonRpcListAccountsSignedResponse } from "./rpc-responses/JsonRpcListAccountsSignedResponse";
+import { JsonRpcReplaceTransactionResponse } from "./rpc-responses/JsonRpcReplaceTransactionResponse";
 import { JsonRpcSignResponse } from "./rpc-responses/JsonRpcSignResponse";
 import { JsonRpcSignTypedDataResponse } from "./rpc-responses/JsonRpcSignTypedDataResponse";
 import factory from "./util/json-rpc-call";
-import { JsonRpcListAccountsSignedResponse } from "./rpc-responses/JsonRpcListAccountsSignedResponse";
-import { JsonRpcReplaceTransactionResponse } from "./rpc-responses/JsonRpcReplaceTransactionResponse";
-import { JsonRpcReplaceTransactionPayload } from "./rpc-payloads/JsonRpcReplaceTransactionPayload";
-import { JsonRpcGetSignedMessageLinkPayload } from "./rpc-payloads/JsonRpcGetSignedMessageLinkPayload";
-import { JsonRpcGetSignedMessageLinkResponse } from "./rpc-responses/JsonRpcGetSignedMessageLinkResponse";
 
 export class ECA3Client extends EventEmitter {
   private call: <T1, T2>(method: string, params: T1, accessToken: string) => Promise<JsonRpcResult<T2>>;
@@ -136,7 +136,7 @@ export class ECA3Client extends EventEmitter {
 
     return this.call("custodian_listAccounts", {}, accessToken);
   }
-  
+
   async listAccountsSigned(): Promise<JsonRpcResult<JsonRpcListAccountsSignedResponse>> {
     const accessToken = await this.getAccessToken();
 

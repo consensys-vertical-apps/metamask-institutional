@@ -2,10 +2,10 @@
  * Factory for MMI SDK to make testing easier
  */
 import { AuthDetails, AuthTypes } from "@metamask-institutional/types";
+import { CustodianApiConstructor } from "src/interfaces/ICustodianApi";
 
 import { MMISDK } from "../classes/MMISDK";
 import { DEFAULT_MAX_CACHE_AGE } from "../constants/constants";
-import { CustodianApiConstructor } from "src/interfaces/ICustodianApi";
 
 export const mmiSDKFactory = function (
   custodianApi: CustodianApiConstructor,

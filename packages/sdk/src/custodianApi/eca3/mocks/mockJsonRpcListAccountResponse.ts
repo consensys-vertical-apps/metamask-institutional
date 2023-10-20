@@ -16,8 +16,8 @@ export const mockJsonRpcListAccountResponse: JsonRpcResult<JsonRpcListAccountsRe
       metadata: {
         active: true,
         deleted: false,
-        isContract: false
-     }
+        isContract: false,
+      },
     },
     {
       name: "Elegantly Jittery Viper Fish",
@@ -31,8 +31,8 @@ export const mockJsonRpcListAccountResponse: JsonRpcResult<JsonRpcListAccountsRe
       metadata: {
         active: true,
         deleted: false,
-        isContract: false
-     }
+        isContract: false,
+      },
     },
     {
       name: "Accidentally Wasteful Narwhal",
@@ -46,8 +46,8 @@ export const mockJsonRpcListAccountResponse: JsonRpcResult<JsonRpcListAccountsRe
       metadata: {
         active: true,
         deleted: false,
-        isContract: false
-     }
+        isContract: false,
+      },
     },
     {
       name: "Inwardly Frail Caribou",
@@ -61,8 +61,8 @@ export const mockJsonRpcListAccountResponse: JsonRpcResult<JsonRpcListAccountsRe
       metadata: {
         active: true,
         deleted: false,
-        isContract: false
-     }
+        isContract: false,
+      },
     },
     {
       name: "Kiddingly Icy Monkey",
@@ -76,8 +76,8 @@ export const mockJsonRpcListAccountResponse: JsonRpcResult<JsonRpcListAccountsRe
       metadata: {
         active: true,
         deleted: false,
-        isContract: false
-     }
+        isContract: false,
+      },
     },
   ],
   id: 1,

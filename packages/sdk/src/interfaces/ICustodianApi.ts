@@ -10,18 +10,18 @@ import {
   ITransactionDetails,
 } from "@metamask-institutional/types";
 import { EventEmitter } from "events";
+import { JsonRpcReplaceTransactionParams } from "src/custodianApi/eca3/rpc-payloads/JsonRpcReplaceTransactionPayload";
+import { JsonRpcListAccountsSignedResponse } from "src/custodianApi/eca3/rpc-responses/JsonRpcListAccountsSignedResponse";
+import { SignedMessageMetadata } from "src/types/SignedMessageMetadata";
+import { SignedMessageParams } from "src/types/SignedMessageParams";
+import { SignedTypedMessageMetadata } from "src/types/SignedTypedMessageMetadata";
+import { SignedTypedMessageParams } from "src/types/SignedTypedMessageParams";
 
 import { AccountHierarchyNode } from "../classes/AccountHierarchyNode";
 import { CreateTransactionMetadata } from "../types/CreateTransactionMetadata";
 import { IEthereumAccount } from "./IEthereumAccount";
 import { IEthereumAccountCustodianDetails } from "./IEthereumAccountCustodianDetails";
 import { MessageTypes, TypedMessage } from "./ITypedMessage";
-import { JsonRpcReplaceTransactionParams } from "src/custodianApi/eca3/rpc-payloads/JsonRpcReplaceTransactionPayload";
-import { JsonRpcListAccountsSignedResponse } from "src/custodianApi/eca3/rpc-responses/JsonRpcListAccountsSignedResponse";
-import { SignedMessageParams } from "src/types/SignedMessageParams";
-import { SignedMessageMetadata } from "src/types/SignedMessageMetadata";
-import { SignedTypedMessageParams } from "src/types/SignedTypedMessageParams";
-import { SignedTypedMessageMetadata } from "src/types/SignedTypedMessageMetadata";
 
 export interface CustodianApiConstructor {
   new (authDetails: AuthDetails, authType: AuthTypes, apiUrl: string, cacheAge: number): ICustodianApi;
@@ -51,9 +51,7 @@ export interface ICustodianApi extends EventEmitter {
     txMeta: CreateTransactionMetadata,
   ): Promise<ITransactionDetails>;
 
-  replaceTransaction?(
-    txParams: JsonRpcReplaceTransactionParams,
-  ): Promise<{transactionId: string;}>
+  replaceTransaction?(txParams: JsonRpcReplaceTransactionParams): Promise<{ transactionId: string }>;
 
   getTransaction(from: string, transactionId: string): Promise<ITransactionDetails>;
 
@@ -62,9 +60,18 @@ export interface ICustodianApi extends EventEmitter {
   // Obtain a JWT from the custodian that we can use to authenticate to
   getCustomerProof(): Promise<string>;
 
-  signTypedData_v4(address: string, data: TypedMessage<MessageTypes>, version: string, signedTypedMessageMetadata: SignedTypedMessageMetadata): Promise<ITransactionDetails>;
+  signTypedData_v4(
+    address: string,
+    data: TypedMessage<MessageTypes>,
+    version: string,
+    signedTypedMessageMetadata: SignedTypedMessageMetadata,
+  ): Promise<ITransactionDetails>;
 
-  signPersonalMessage(address: string, mesage: string, signedMessageMetadata: SignedMessageMetadata): Promise<ITransactionDetails>;
+  signPersonalMessage(
+    address: string,
+    mesage: string,
+    signedMessageMetadata: SignedMessageMetadata,
+  ): Promise<ITransactionDetails>;
 
   getSupportedChains(address?: string): Promise<string[]>;
 
