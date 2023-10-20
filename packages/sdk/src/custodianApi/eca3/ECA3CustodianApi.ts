@@ -304,46 +304,6 @@ export class ECA3CustodianApi extends EventEmitter implements ICustodianApi {
     };
   }
 
-  async eca3_signTypedData_v4(
-    signedTypedMessageParams: SignedTypedMessageParams,
-    signedTypedMessageMetadata: SignedTypedMessageMetadata,
-  ): Promise<ITransactionDetails> {
-    const accounts = await this.getEthereumAccountsByAddress(signedTypedMessageParams.address);
-
-    if (!accounts.length) {
-      throw new Error("No such ethereum account!");
-    }
-
-    const version = signedTypedMessageParams.version.toLowerCase();
-
-    const { result } = await this.client.signTypedData([signedTypedMessageParams, signedTypedMessageMetadata]);
-
-    return {
-      custodian_transactionId: result,
-      transactionStatus: "created",
-      from: signedTypedMessageParams.address,
-    };
-  }
-
-  async eca3_signPersonalMessage(
-    signedMessageParams: SignedMessageParams,
-    signedMessageMetadata: SignedMessageMetadata,
-  ): Promise<ITransactionDetails> {
-    const accounts = await this.getEthereumAccountsByAddress(signedMessageParams.address);
-
-    if (!accounts.length) {
-      throw new Error("No such ethereum account!");
-    }
-
-    const { result } = await this.client.signPersonalMessage([signedMessageParams, signedMessageMetadata]);
-
-    return {
-      custodian_transactionId: result,
-      transactionStatus: "created",
-      from: accounts[0].address,
-    };
-  }
-
   // DEPRECATED
   async getErc20Tokens(): Promise<IMetamaskContractMetadata> {
     return {};
