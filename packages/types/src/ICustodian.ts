@@ -8,6 +8,7 @@ export interface ICustodianType {
   displayName: string;
   apiUrl: string;
   apiVersion?: string;
+  custodianPublishesTransaction?: boolean;
   imgSrc: string;
   icon: string;
   website: string;

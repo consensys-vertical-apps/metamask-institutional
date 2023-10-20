@@ -81,7 +81,7 @@ export class MmiConfigurationController {
           production: custodian.production,
           refreshTokenUrl: null,
           isNoteToTraderSupported: false,
-          custodianPublishesTransaction: false,
+          custodianPublishesTransaction: custodian.custodianPublishesTransaction,
           version: 1,
         })),
     ];
