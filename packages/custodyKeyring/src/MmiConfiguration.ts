@@ -104,7 +104,7 @@ export class MmiConfigurationController {
         }
 
         custodians.push({
-          type: environment.apiVersion === '3' ? 'ECA3': 'JSONRPC',
+          type: environment.apiVersion === "3" ? "ECA3" : "JSONRPC",
           iconUrl: custodian.iconUrl,
           name: custodian.name,
           website: custodian.website,

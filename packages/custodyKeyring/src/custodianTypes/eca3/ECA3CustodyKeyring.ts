@@ -25,14 +25,14 @@ export class ECA3CustodyKeyring extends CustodyKeyring {
     apiUrl: "https://neptune-custody.codefi.network/eth",
     imgSrc: "https://backend.vistan-brillen.de/storage/files/images/marken/changeme/header/changeme-logo-header.jpg",
     icon: "https://backend.vistan-brillen.de/storage/files/images/marken/changeme/header/changeme-logo-header.jpg",
-    website: 'https://neptune-custody-ui.metamask-institutional.io/',
-    envName: 'neptune-custody',
+    website: "https://neptune-custody-ui.metamask-institutional.io/",
+    envName: "neptune-custody",
     keyringClass: ECA3CustodyKeyring,
     production: false,
     hidden: true, // Since this is the prototype, we don't want to show it in the UI
     origins: [],
     environmentMapping: [], // No environment mapping for JSON-RPC custodians as this is derived from the configuration service
-  }
+  };
 
   sdkFactory = (authDetails: IRefreshTokenAuthDetails, apiUrl: string): MMISDK => {
     const store = this.mmiConfigurationController.store.getState();

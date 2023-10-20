@@ -437,12 +437,11 @@ export abstract class CustodyKeyring extends EventEmitter {
     const { authDetails, apiUrl } = this.getAccountDetails(address);
     const sdk = this.getSDK(authDetails, apiUrl);
 
-
     const signedMessageMetadata = {
       chainId: null,
       originUrl: null,
       note: null,
-    }
+    };
 
     return sdk.signPersonalMessage(address, message, signedMessageMetadata);
   }
@@ -489,7 +488,7 @@ export abstract class CustodyKeyring extends EventEmitter {
       chainId: null,
       originUrl: null,
       note: null,
-    }
+    };
 
     return sdk.signedTypedData_v4(address, data, opts.version, signedTypedMessageMetadata);
   }
