@@ -7,7 +7,6 @@ import { ObservableStore } from "@metamask/obs-store";
 
 import { CUSTODIAN_TYPES } from "./custodianTypes";
 import { IConfiguration } from "./interfaces/IConfiguration";
-import { IJsonRpcCustodian } from "./interfaces/IJsonRpcCustodian";
 import { IMmiConfigurationControllerOptions } from "./interfaces/IMmiConfigurationControllerOptions";
 import { MMIConfiguration } from "./types/MMIConfiguration";
 

@@ -7,6 +7,10 @@ export interface JsonRpcReplaceTransactionParams {
   gasLimit?: string;
 }
 
-export interface JsonRpcReplaceTransactionGasParams {}
+export interface JsonRpcReplaceTransactionGasParams {
+  gas?: string;
+  maxPriorityFeePerGas?: string;
+  maxFeePerGas?: string;
+}
 
 export type JsonRpcReplaceTransactionPayload = [JsonRpcReplaceTransactionParams, JsonRpcReplaceTransactionGasParams];
