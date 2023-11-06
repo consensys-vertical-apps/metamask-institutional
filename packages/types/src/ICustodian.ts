@@ -12,6 +12,7 @@ export interface ICustodianType {
   imgSrc: string;
   icon: string;
   website: string;
+  onboardingUrl: string;
   envName: string;
   keyringClass: any; // Would like to make this CustodyKeyring but not sure how
   production: boolean; // Show in store builds
