@@ -47,6 +47,7 @@ export class CurvCustodyKeyring extends CustodyKeyring {
     imgSrc: "images/curv-logo-horizontal-black.svg",
     icon: "images/curv-logo.svg",
     website: "",
+    onboardingUrl: "",
     envName: "",
     keyringClass: CurvCustodyKeyring,
     production: false,

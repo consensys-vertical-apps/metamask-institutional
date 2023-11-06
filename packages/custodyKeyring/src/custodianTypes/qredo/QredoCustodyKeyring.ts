@@ -22,6 +22,7 @@ export class QredoCustodyKeyring extends CustodyKeyring {
     imgSrc: "https://dashboard.metamask-institutional.io/custodian-icons/qredo-icon.svg",
     icon: "https://dashboard.metamask-institutional.io/custodian-icons/qredo-icon.svg",
     website: "https://www.qredo.com",
+    onboardingUrl: "https://www.qredo.com",
     envName: "qredo",
     keyringClass: QredoCustodyKeyring,
     production: true,
