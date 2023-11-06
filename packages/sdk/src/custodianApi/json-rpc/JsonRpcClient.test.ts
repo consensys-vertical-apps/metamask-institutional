@@ -129,7 +129,7 @@ describe("JsonRpcClient", () => {
           }, 100);
         });
 
-        expect(client.getAccessToken()).rejects.toThrow("Custodian session expired");
+        expect(client.getAccessToken()).rejects.toThrow("Refresh token provided is no longer valid.");
       }
     });
   });
