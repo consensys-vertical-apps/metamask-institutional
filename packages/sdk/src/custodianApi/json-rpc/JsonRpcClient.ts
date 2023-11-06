@@ -91,7 +91,7 @@ export class JsonRpcClient extends EventEmitter {
           oldRefreshToken: hashedToken,
         });
 
-        throw new Error("Custodian session expired");
+        throw new Error("Custodian session expired"); // 401 Unauthorized
       }
 
       const responseJson = await response.json();
