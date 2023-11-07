@@ -417,7 +417,7 @@ describe("CustodyKeyring", () => {
       } as unknown as MetamaskTransaction;
 
       await expect(custodyKeyring.signTransaction(fromAddress, ethTx, txMeta)).rejects.toThrowError(
-        "This network 777 is not supported by Jupiter",
+        "This network 777 is not configured or supported by Jupiter",
       );
     });
 
