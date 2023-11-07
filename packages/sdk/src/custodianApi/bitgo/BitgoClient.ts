@@ -33,15 +33,15 @@ export class BitgoClient {
     const headers = this.getHeaders();
 
     try {
-      const body = await fetch(`${this.bitgoApiurl}/wallets`, {
+      const response = await fetch(`${this.bitgoApiurl}/wallets`, {
         headers,
       });
 
-      if (!body.ok) {
-        throw new Error('Error fetching wallet accounts');
+      if (!response.ok) {
+        throw new Error(`Error fetching wallet accounts. Status: ${response.status} ${response.statusText}`);
       }
 
-      const accounts: IBitgoGetEthereumAccountsResponse = await body.json();
+      const accounts: IBitgoGetEthereumAccountsResponse = await response.json();
       return accounts.data;
     } catch (e) {
       throw new CustodianApiError(e);
@@ -52,15 +52,17 @@ export class BitgoClient {
     const headers = this.getHeaders();
 
     try {
-      const body = await fetch(`${this.bitgoApiurl}/mmi/wallets/address/${address}`, {
+      const response = await fetch(`${this.bitgoApiurl}/mmi/wallets/address/${address}`, {
         headers,
       });
 
-      if (!body.ok) {
-        throw new Error(`Error fetching account for address ${address}`);
+      if (!response.ok) {
+        throw new Error(
+          `Error fetching account for address ${address}. Status: ${response.status} ${response.statusText}`,
+        );
       }
 
-      const accounts: IBitgoGetEthereumAccountsResponse = await body.json();
+      const accounts: IBitgoGetEthereumAccountsResponse = await response.json();
       if (accounts.data.length) {
         return accounts.data[0];
       } else {
@@ -97,7 +99,7 @@ export class BitgoClient {
       );
 
       if (!response.ok) {
-        throw new Error('Error creating transaction');
+        throw new Error(`Error creating transaction. Status: ${response.status} ${response.statusText}`);
       }
 
       const resultWrapper: IBitgoCreateTransactionResponse = await response.json();
@@ -116,7 +118,9 @@ export class BitgoClient {
       });
 
       if (!response.ok) {
-        throw new Error(`Error getting transaction with id ${custodian_transactionId}`);
+        throw new Error(
+          `Error getting transaction with id ${custodian_transactionId}. Status: ${response.status} ${response.statusText}`,
+        );
       }
 
       const transaction = await response.json();
@@ -135,7 +139,7 @@ export class BitgoClient {
       });
 
       if (!response.ok) {
-        throw new Error('Error getting transactions');
+        throw new Error(`Error getting transactions. Status: ${response.status} ${response.statusText}`);
       }
 
       const allTransactions = await response.json();
@@ -158,7 +162,7 @@ export class BitgoClient {
       });
 
       if (!response.ok) {
-        throw new Error('Error getting Custommer Proof');
+        throw new Error(`Error getting Custommer Proof. Status: ${response.status} ${response.statusText}`);
       }
 
       const customerProof = await response.json();
@@ -191,7 +195,9 @@ export class BitgoClient {
       });
 
       if (!response.ok) {
-        throw new Error('Error doing signTypedData');
+        throw new Error(
+          `Error doing signTypedData from address: ${fromAddress}. Status: ${response.status} ${response.statusText}`,
+        );
       }
 
       const data = await response.json();
@@ -222,7 +228,9 @@ export class BitgoClient {
       });
 
       if (!response.ok) {
-        throw new Error('Error doing signPersonalMessage');
+        throw new Error(
+          `Error doing signPersonalMessage from address: ${fromAddress}. Status: ${response.status} ${response.statusText}`,
+        );
       }
 
       const data = await response.json();
@@ -248,7 +256,9 @@ export class BitgoClient {
       );
 
       if (!response.ok) {
-        throw new Error(`Error getting signed message with id ${custodian_signedMessageId}`);
+        throw new Error(
+          `Error getting signed message with id ${custodian_signedMessageId}. Status: ${response.status} ${response.statusText}`,
+        );
       }
 
       const data = await response.json();

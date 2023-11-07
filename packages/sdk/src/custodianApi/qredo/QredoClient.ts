@@ -44,9 +44,9 @@ export class QredoClient extends EventEmitter {
       });
 
       if (!response.ok) {
-        throw new Error('Error fetching the access token');
+        throw new Error(`Error fetching the access token. Status: ${response.status} ${response.statusText}`);
       }
-  
+
       const data = (await response.json()) as IQredoAccessTokenResponse;
 
       if (!data.access_token) {
@@ -87,7 +87,7 @@ export class QredoClient extends EventEmitter {
       });
 
       if (!response.ok) {
-        throw new Error('Error fetching wallet accounts');
+        throw new Error(`Error fetching wallet accounts. Status: ${response.status} ${response.statusText}`);
       }
 
       const data = (await response.json()) as IQredoWalletsResponse;
@@ -129,7 +129,7 @@ export class QredoClient extends EventEmitter {
       });
 
       if (!response.ok) {
-        throw new Error('Error creating transaction');
+        throw new Error(`Error creating transaction. Status: ${response.status} ${response.statusText}`);
       }
 
       const data = (await response.json()) as IQredoTransaction;
@@ -149,7 +149,9 @@ export class QredoClient extends EventEmitter {
       });
 
       if (!response.ok) {
-        throw new Error(`Error getting transaction with id ${custodian_transactionId}`);
+        throw new Error(
+          `Error getting transaction with id ${custodian_transactionId}. Status: ${response.status} ${response.statusText}`,
+        );
       }
 
       const data = (await response.json()) as IQredoTransaction;
@@ -175,7 +177,9 @@ export class QredoClient extends EventEmitter {
       });
 
       if (!response.ok) {
-        throw new Error(`Error getting signed message with id ${custodian_signedMessageId}`);
+        throw new Error(
+          `Error getting signed message with id ${custodian_signedMessageId}. Status: ${response.status} ${response.statusText}`,
+        );
       }
 
       const data = (await response.json()) as IQredoSignatureResponse;
@@ -196,7 +200,7 @@ export class QredoClient extends EventEmitter {
       });
 
       if (!response.ok) {
-        throw new Error('Error getting Custommer Proof');
+        throw new Error(`Error getting Custommer Proof. Status: ${response.status} ${response.statusText}`);
       }
 
       const data = (await response.json()) as IQredoCustomerProof;
@@ -221,7 +225,7 @@ export class QredoClient extends EventEmitter {
       });
 
       if (!response.ok) {
-        throw new Error('Error getting Networks');
+        throw new Error(`Error getting Networks. Status: ${response.status} ${response.statusText}`);
       }
 
       const data = (await response.json()) as IQredoNetworksResponse;
@@ -248,7 +252,9 @@ export class QredoClient extends EventEmitter {
       });
 
       if (!response.ok) {
-        throw new Error('Error doing signTypedData');
+        throw new Error(
+          `Error doing signTypedData from address: ${fromAddress}. Status: ${response.status} ${response.statusText}`,
+        );
       }
 
       const data = await response.json();
@@ -274,7 +280,9 @@ export class QredoClient extends EventEmitter {
       });
 
       if (!response.ok) {
-        throw new Error('Error doing signPersonalMessage');
+        throw new Error(
+          `Error doing signPersonalMessage from address: ${fromAddress}. Status: ${response.status} ${response.statusText}`,
+        );
       }
 
       const data = await response.json();

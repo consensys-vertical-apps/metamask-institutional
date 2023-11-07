@@ -83,6 +83,11 @@ export class ECA3Client extends EventEmitter {
         credentials: "same-origin", // this is the default value for "withCredentials" in the Fetch API
       });
 
+      /**
+       * If the server responds with a 401 status code when trying to get the access token,
+       * it means the refresh token provided is no longer valid.
+       * This could be due to the token being expired, revoked, or the token not being recognized by the server.
+       */
       if (response?.status === 401) {
         const url = response?.url;
         const oldRefreshToken = this.refreshToken;
@@ -96,7 +101,12 @@ export class ECA3Client extends EventEmitter {
           oldRefreshToken: hashedToken,
         });
 
-        throw new Error("Custodian session expired");
+        throw new Error("Refresh token provided is no longer valid.");
+      }
+
+      if (!response.ok) {
+        const errorResponse = await response.json();
+        throw new Error(`Request failed with status ${response.status}: ${errorResponse.message}`);
       }
 
       const responseJson = await response.json();
@@ -124,10 +134,8 @@ export class ECA3Client extends EventEmitter {
       }
 
       return responseJson.access_token;
-    } catch (e) {
-      // TODO: More sophisticated error handling
-      // It will really depend on what custodians actually implement
-      throw new Error(e);
+    } catch (error) {
+      throw new Error(`Error getting the Access Token: ${error}`);
     }
   }
 

@@ -297,34 +297,32 @@ export async function handleTxStatusUpdate(
       };
       txMeta.txParams = newTxParams;
     }
-    
+
     // Sometimes custodians do not send a webhook when a transaction is submitted -
     // They may only send one when the TX is confirmed (e.g. Safe) so we need to handle
     // submission the same as confirmation
 
     // Metamask resolves the promise in transaction controller when the TX is submitted
-    // So we can yield control back to that function as early as we can 
+    // So we can yield control back to that function as early as we can
 
-    /** 
-     * Previously, we were waiting for transaction confirmation from custodians before yielding 
+    /**
+     * Previously, we were waiting for transaction confirmation from custodians before yielding
      * We are now yielding on submission
      * This has two effects
      * 1. Interaction is yieled by MMI back to the dapp before confirmation, meaning it is much quicker
      * 2. On-chain failures do not cause the dapp's RPC promise to be rejected, which is more in line with MetaMask's behaviour
-     * */ 
-    
+     * */
 
     if (
       txData.transaction.status.submitted ||
       (txData.transaction.status.finished &&
-      txData.transaction.status.success &&
-      txMeta.status !== MetaMaskTransactionStatuses.CONFIRMED)
+        txData.transaction.status.success &&
+        txMeta.status !== MetaMaskTransactionStatuses.CONFIRMED)
     ) {
       // We don't need to wait for the custodian to confirm the TX, since MM's internal
       // block tracker will do that for us
 
       txStateManager.setTxStatusSubmitted(txMeta.id);
-     
     } else if (txData.transaction.status.finished && !txData.transaction.status.success) {
       let message = `Transaction status from custodian: ${txMeta.custodyStatusDisplayText}`; // Clever English language hack IMO
 
@@ -340,4 +338,3 @@ export async function handleTxStatusUpdate(
   }
   return null;
 }
-
