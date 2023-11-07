@@ -7,4 +7,6 @@ export enum MetaMaskTransactionStatuses {
   FAILED = "failed",
   DROPPED = "dropped",
   CONFIRMED = "confirmed",
+  ADDED = "added",
+  FINALIZED = "finalized",
 }
