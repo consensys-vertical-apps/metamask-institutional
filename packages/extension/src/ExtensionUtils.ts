@@ -10,6 +10,7 @@ import { ICustodianUpdate, MetamaskTransaction, MetaMaskTransactionStatuses } fr
 // So that we can use metamask's mixpanel templates
 
 const TRANSACTION_EVENTS: { [key in MetaMaskTransactionStatuses]: string } = {
+  [MetaMaskTransactionStatuses.ADDED]: "Transaction Added",
   [MetaMaskTransactionStatuses.APPROVED]: "Transaction Approved",
   [MetaMaskTransactionStatuses.SIGNED]: "Transaction Signed",
   [MetaMaskTransactionStatuses.REJECTED]: "Transaction Rejected",
@@ -18,6 +19,7 @@ const TRANSACTION_EVENTS: { [key in MetaMaskTransactionStatuses]: string } = {
   [MetaMaskTransactionStatuses.CONFIRMED]: "Transaction Confirmed",
   [MetaMaskTransactionStatuses.UNAPPROVED]: "Transaction Unapproved",
   [MetaMaskTransactionStatuses.DROPPED]: "Transaction Dropped",
+  [MetaMaskTransactionStatuses.FINALIZED]: "Transaction Finalized",
 };
 
 interface UpdateCustodianTransactionsParameters {

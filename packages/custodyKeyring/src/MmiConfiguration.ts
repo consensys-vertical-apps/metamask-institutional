@@ -70,6 +70,7 @@ export class MmiConfigurationController {
         .map(custodian => ({
           type: custodian.name,
           name: custodian.name.toLowerCase(),
+          onboardingUrl: custodian.onboardingUrl,
           website: custodian.website,
           envName: custodian.envName,
           apiUrl: custodian.apiUrl,
@@ -106,6 +107,7 @@ export class MmiConfigurationController {
           type: environment.apiVersion === "3" ? "ECA3" : "JSONRPC",
           iconUrl: custodian.iconUrl,
           name: custodian.name,
+          onboardingUrl: custodian.onboardingUrl,
           website: custodian.website,
           envName: environment.name,
           apiUrl: environment.apiBaseUrl,

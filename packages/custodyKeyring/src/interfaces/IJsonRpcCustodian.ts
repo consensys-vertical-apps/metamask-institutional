@@ -18,6 +18,7 @@ export interface IJsonRpcCustodian {
   displayName: string;
   iconUrl: string;
   website: string;
+  onboardingUrl: string;
   enabled: boolean;
   apiBaseUrl: string;
   issuerClaim: string;

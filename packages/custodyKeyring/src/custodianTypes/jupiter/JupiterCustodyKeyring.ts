@@ -26,6 +26,7 @@ export class JupiterCustodyKeyring extends CustodyKeyring {
     imgSrc: "images/jupiter.svg",
     icon: "images/jupiter.svg",
     website: "",
+    onboardingUrl: "",
     envName: "",
     keyringClass: JupiterCustodyKeyring,
     production: true,

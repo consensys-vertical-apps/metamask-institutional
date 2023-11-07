@@ -22,6 +22,7 @@ export class CactusCustodyKeyring extends CustodyKeyring {
     imgSrc: "https://dashboard.metamask-institutional.io/custodian-icons/cactus-icon.svg",
     icon: "https://dashboard.metamask-institutional.io/custodian-icons/cactus-icon.svg",
     website: "https://www.mycactus.com",
+    onboardingUrl: "https://www.mycactus.com",
     envName: "cactus",
     keyringClass: CactusCustodyKeyring,
     production: true,

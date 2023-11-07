@@ -26,6 +26,7 @@ export class JsonRpcCustodyKeyring extends CustodyKeyring {
     imgSrc: "https://saturn-custody-ui.metamask-institutional.io/saturn.svg",
     icon: "https://saturn-custody-ui.metamask-institutional.io/saturn.svg",
     website: "https://saturn-custody-ui.metamask-institutional.io/",
+    onboardingUrl: "https://saturn-custody-ui.metamask-institutional.io/",
     envName: "saturn-prod",
     keyringClass: JsonRpcCustodyKeyring,
     production: false,
