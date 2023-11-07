@@ -19,7 +19,7 @@ export interface ITransactionDetails {
   transactionStatusDisplayText?: string; // Optional because it's used for displayText from custodian transaction
 
   transactionId?: string;
-  
+
   chainId?: number;
   custodianPublishesTransaction?: boolean;
   signedRawTransaction?: string;
