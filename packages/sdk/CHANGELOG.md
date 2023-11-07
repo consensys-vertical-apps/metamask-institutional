@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.22](https://github.com/consensys-vertical-apps/metamask-institutional/compare/sdk-v0.1.21...sdk-v0.1.22) (2023-11-07)
+
+
+### Bug Fixes
+
+* **errormessage:** if the server responds with a 401 status code when trying to get the access token ([#534](https://github.com/consensys-vertical-apps/metamask-institutional/issues/534)) ([593b2a2](https://github.com/consensys-vertical-apps/metamask-institutional/commit/593b2a228364deaac657435a3fcf840bb6f9e84f))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @metamask-institutional/types bumped from ^1.0.3 to ^1.0.4
+
 ## [0.1.21](https://github.com/consensys-vertical-apps/metamask-institutional/compare/sdk-v0.1.20...sdk-v0.1.21) (2023-10-20)
 
 
