@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.4](https://github.com/consensys-vertical-apps/metamask-institutional/compare/types-v1.0.3...types-v1.0.4) (2023-11-07)
+
+
+### Bug Fixes
+
+* **onboardingurl:** adds the onboardingurl ([#533](https://github.com/consensys-vertical-apps/metamask-institutional/issues/533)) ([f3fa7fc](https://github.com/consensys-vertical-apps/metamask-institutional/commit/f3fa7fcccf112f23184b47989cdf0ea4058cbe98))
+
 ## [1.0.3](https://github.com/consensys-vertical-apps/metamask-institutional/compare/types-v1.0.2...types-v1.0.3) (2023-05-25)
 
 
