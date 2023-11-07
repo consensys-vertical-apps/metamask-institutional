@@ -1,17 +1,3 @@
-export {
-  updateCustodianTransactions,
-  custodianEventHandlerFactory,
-  showCustodianDeepLink,
-} from "./ExtensionUtils";
-
-export {
-  getWaitForConfirmDeepLinkDialog,
-  getTransactionStatusMap,
-  getCustodyAccountSupportedChains,
-  getMmiPortfolioEnabled,
-  getMmiPortfolioUrl,
-  getConfiguredCustodians,
-  getCustodianIconForAddress,
-} from "./ExtensionSelectors";
+export { updateCustodianTransactions, custodianEventHandlerFactory, showCustodianDeepLink } from "./ExtensionUtils";
 
 export { mmiActionsFactory } from "./ExtensionActions";

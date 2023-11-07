@@ -359,7 +359,7 @@ export abstract class CustodyKeyring extends EventEmitter {
     const normalisedSupportedChainIds = supportedChainIds.map(chainId => Number(chainId).toString());
 
     if (!normalisedSupportedChainIds.includes(chainId)) {
-      throw new Error(`This network ${chainId} is not supported by ${this.custodianType.name}`);
+      throw new Error(`This network ${chainId} is not configured or supported with your custody provider.`);
     }
 
     let payload: IEIP1559TxParams | ILegacyTXParams;
