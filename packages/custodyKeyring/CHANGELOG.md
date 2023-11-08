@@ -23,6 +23,12 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
   * dependencies
     * @metamask-institutional/sdk bumped from ^0.1.19 to ^0.1.20
 
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @metamask-institutional/sdk bumped from ^0.1.22 to ^0.1.23
+
 ## [1.0.6](https://github.com/consensys-vertical-apps/metamask-institutional/compare/custody-keyring-v1.0.5...custody-keyring-v1.0.6) (2023-11-07)
 
 
