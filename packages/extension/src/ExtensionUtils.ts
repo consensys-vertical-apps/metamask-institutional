@@ -1,6 +1,5 @@
 import { CustodyController, toChecksumHexAddress } from "@metamask-institutional/custody-controller";
 import { CustodyKeyring } from "@metamask-institutional/custody-keyring";
-import { ExtensionDashboardResponse } from "@metamask-institutional/portfolio-dashboard";
 import { mapTransactionStatus } from "@metamask-institutional/sdk";
 import { TransactionUpdateController } from "@metamask-institutional/transaction-update";
 import { ICustodianUpdate, MetamaskTransaction, MetaMaskTransactionStatuses } from "@metamask-institutional/types";
@@ -276,10 +275,14 @@ export async function handleTxStatusUpdate(
       setTxHash(txMeta.id, txData.transaction.hash);
     }
 
+    // Transaction is signed, or in many intermediate post signing states
     if (
       txData.transaction.status.signed &&
       !txData.transaction.status.finished &&
-      txMeta.status !== MetaMaskTransactionStatuses.SIGNED
+      txMeta.status !== MetaMaskTransactionStatuses.SIGNED &&
+      txMeta.status !== MetaMaskTransactionStatuses.SUBMITTED &&
+      txMeta.status !== MetaMaskTransactionStatuses.CONFIRMED &&
+      txMeta.status !== MetaMaskTransactionStatuses.FAILED
     ) {
       txStateManager.setTxStatusSigned(txMeta.id);
     }
@@ -298,10 +301,6 @@ export async function handleTxStatusUpdate(
       txMeta.txParams = newTxParams;
     }
 
-    // Sometimes custodians do not send a webhook when a transaction is submitted -
-    // They may only send one when the TX is confirmed (e.g. Safe) so we need to handle
-    // submission the same as confirmation
-
     // Metamask resolves the promise in transaction controller when the TX is submitted
     // So we can yield control back to that function as early as we can
 
@@ -313,15 +312,23 @@ export async function handleTxStatusUpdate(
      * 2. On-chain failures do not cause the dapp's RPC promise to be rejected, which is more in line with MetaMask's behaviour
      * */
 
-    if (
-      txData.transaction.status.submitted ||
-      (txData.transaction.status.finished &&
-        txData.transaction.status.success &&
-        txMeta.status !== MetaMaskTransactionStatuses.CONFIRMED)
-    ) {
-      // We don't need to wait for the custodian to confirm the TX, since MM's internal
-      // block tracker will do that for us
+    // We don't need to wait for the custodian to confirm the TX, since MM's internal
+    // block tracker will do that for us
 
+    // Sometimes custodians do not send a webhook when a transaction is submitted -
+    // They may only send one when the TX is confirmed (e.g. Safe) so we need to handle
+    // submission the same as confirmation
+    const looksLikeFinalUpdate =
+      txData.transaction.status.finished &&
+      txData.transaction.status.success &&
+      txMeta.status !== MetaMaskTransactionStatuses.CONFIRMED;
+
+    /* Sometimes we get updates AFTER a TX is confirmed, so we have to be careful not to "revert this" but otherwise we should set submitted when its submitted */
+
+    const looksLikeRealSubmission =
+      txData.transaction.status.submitted && txMeta.status !== MetaMaskTransactionStatuses.CONFIRMED;
+
+    if (looksLikeFinalUpdate || looksLikeRealSubmission) {
       txStateManager.setTxStatusSubmitted(txMeta.id);
     } else if (txData.transaction.status.finished && !txData.transaction.status.success) {
       let message = `Transaction status from custodian: ${txMeta.custodyStatusDisplayText}`; // Clever English language hack IMO

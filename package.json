@@ -17,7 +17,7 @@
     "test:watch": "jest --watchAll",
     "test:watch:coverage": "jest --watchAll --coverage",
     "test:cov": "jest src --ci --coverage",
-    "lint": "lerna run lint --stream --parallel",
+    "lint": "lerna run lint --stream --parallel --",
     "lint:fix": "lerna run lint:fix --stream --parallel",
     "prettier": "prettier --write packages",
     "prettier:check": "prettier --check packages",
