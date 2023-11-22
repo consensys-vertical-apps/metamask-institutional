@@ -1,6 +1,6 @@
 {
   "name": "@metamask-institutional/extension",
-  "version": "0.3.11",
+  "version": "0.3.12",
   "description": "This package will export extension blocks used across the old @codefi/mmi-sdk library",
   "author": "Antonio Regadas <apregadas@gmail.com>",
   "homepage": "https://github.com/consensys-vertical-apps/metamask-institutional#readme",
