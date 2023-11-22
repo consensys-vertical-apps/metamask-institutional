@@ -90,6 +90,13 @@
     * @metamask-institutional/sdk bumped from ^0.1.22 to ^0.1.23
     * @metamask-institutional/transaction-update bumped from ^0.1.32 to ^0.1.33
 
+## [0.3.12](https://github.com/consensys-vertical-apps/metamask-institutional/compare/extension-v0.3.11...extension-v0.3.12) (2023-11-22)
+
+
+### Bug Fixes
+
+* dont set submitted after confirmation ([#560](https://github.com/consensys-vertical-apps/metamask-institutional/issues/560)) ([21db696](https://github.com/consensys-vertical-apps/metamask-institutional/commit/21db696b6849e3acb42ece02382db34dc1dfa16f))
+
 ## [0.3.10](https://github.com/consensys-vertical-apps/metamask-institutional/compare/extension-v0.3.9...extension-v0.3.10) (2023-11-07)
 
 
