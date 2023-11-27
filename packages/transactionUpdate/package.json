@@ -33,7 +33,7 @@
     "@metamask-institutional/sdk": "^0.1.23",
     "@metamask-institutional/types": "^1.0.4",
     "@metamask-institutional/websocket-client": "^0.1.35",
-    "@metamask/obs-store": "^8.0.0",
+    "@metamask/obs-store": "^9.0.0",
     "ethereumjs-util": "^7.1.5"
   },
   "devDependencies": {
