@@ -330,6 +330,7 @@ export async function handleTxStatusUpdate(
 
     if (looksLikeFinalUpdate || looksLikeRealSubmission) {
       txStateManager.setTxStatusSubmitted(txMeta.id);
+      txStateManager.setTxStatusConfirmed(txMeta.id);
     } else if (txData.transaction.status.finished && !txData.transaction.status.success) {
       let message = `Transaction status from custodian: ${txMeta.custodyStatusDisplayText}`; // Clever English language hack IMO
 
