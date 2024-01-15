@@ -17,7 +17,7 @@ interface ICustodianAccountProto {
   chainId?: number;
   custodyType: string;
   meta?: { version: number };
-  envName?: string;
+  envName: string;
 }
 
 // The type actually used in CustodyKeyring

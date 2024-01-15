@@ -20,6 +20,7 @@ const mockMMISDK = {
       labels: [{ key: "my-label", value: "my-label" }],
       jwt: "jwt",
       apiUrl: "apiUrl",
+      envName: "saturn",
     },
   ]),
   getSignature: jest.fn(),
@@ -56,6 +57,7 @@ const mockMmiConfigurationController = {
         custodians: [
           {
             apiUrl: "https://api",
+            envName: "saturn",
           },
         ],
       },
@@ -90,6 +92,7 @@ describe("JsonRpcCustodyKeyring", () => {
           apiUrl: "https://api",
           chainId: 4,
           custodyType: "Saturn",
+          envName: "saturn",
         },
       ];
 
@@ -114,6 +117,7 @@ describe("JsonRpcCustodyKeyring", () => {
           apiUrl: "https://api",
           chainId: 4,
           custodyType: "Saturn",
+          envName: "saturn",
         },
       ];
 
@@ -141,7 +145,8 @@ describe("JsonRpcCustodyKeyring", () => {
         refreshToken: "miaow",
       };
 
-      const url = "http://";
+      const url = "https://api";
+      const envName = "saturn";
 
       const hashMock = {
         update: jest.fn().mockReturnThis(),
@@ -151,7 +156,7 @@ describe("JsonRpcCustodyKeyring", () => {
       // Mocking the crypto module
       const createHashMock = jest.spyOn(crypto, "createHash").mockImplementationOnce(() => hashMock);
 
-      const result = custodyKeyring.hashAuthDetails(authDetails, url);
+      const result = custodyKeyring.hashAuthDetails(authDetails, envName);
 
       expect(createHashMock).toBeCalledWith("sha256");
       expect(hashMock.update).toBeCalledWith(authDetails.refreshToken + url);
@@ -185,6 +190,7 @@ describe("JsonRpcCustodyKeyring", () => {
           apiUrl: "https://api",
           chainId: 4,
           custodyType: "Saturn",
+          envName: "saturn",
         },
       ];
 
@@ -209,6 +215,7 @@ describe("JsonRpcCustodyKeyring", () => {
           apiUrl: "https://api",
           chainId: 4,
           custodyType: "Saturn",
+          envName: "saturn",
         },
       ];
 
@@ -237,6 +244,7 @@ describe("JsonRpcCustodyKeyring", () => {
           apiUrl: "https://api",
           chainId: 4,
           custodyType: "Saturn",
+          envName: "saturn",
         },
       ];
 
@@ -263,6 +271,7 @@ describe("JsonRpcCustodyKeyring", () => {
           apiUrl: "https://api",
           chainId: 4,
           custodyType: "Saturn",
+          envName: "saturn",
         },
       ];
 

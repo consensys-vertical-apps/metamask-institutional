@@ -53,7 +53,8 @@ export class JupiterCustodyKeyring extends CustodyKeyring {
     // Currently the Jupiter custody UI has no transaction dialog, but one has been asked for
     // https://consensys.slack.com/archives/C02F5G7SZU1/p1634735561046100
 
-    const { apiUrl } = this.getAccountDetails(address);
+    const { envName } = this.getAccountDetails(address);
+    const { apiUrl } = this.getCustodianFromEnvName(envName);
 
     const transactionLink: Partial<ICustodianTransactionLink> = {
       text: "Approve the transaction in the Jupiter Custody app. Once all required custody approvals have been performed the transaction will complete. Check your Jupiter Custody app for status.",

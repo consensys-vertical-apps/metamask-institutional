@@ -119,6 +119,12 @@ export abstract class CustodyKeyring extends EventEmitter {
           account.envName = custodians.find(c => c.apiUrl === account.apiUrl)?.envName;
         });
 
+      this.selectedAddresses
+        .filter(account => !account.envName)
+        .forEach(account => {
+          account.envName = custodians.find(c => c.apiUrl === account.apiUrl)?.envName;
+        });
+
       const uniqueAuthDetails: UniqueAccountDetails[] = this.accountsDetails.reduce(
         (result: UniqueAccountDetails[], details) => {
           const hash = this.getUniqueAccountDetails(details);

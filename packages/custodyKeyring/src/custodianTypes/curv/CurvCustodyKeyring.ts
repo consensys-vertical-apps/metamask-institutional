@@ -18,6 +18,7 @@ interface ICustodianAccountProto {
   chainId?: number;
   custodyType: string;
   meta?: { version: number };
+  envName: string;
 }
 
 // The type actually used in CustodyKeyring
@@ -92,6 +93,7 @@ export class CurvCustodyKeyring extends CustodyKeyring {
         chainId: details.chainId,
         custodyType: details.custodyType,
         authDetails,
+        envName: details.envName || this.custodianType.envName,
       };
     });
   }

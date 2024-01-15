@@ -104,6 +104,7 @@ export class CustodyController {
     return custodyTypes;
   }
 
+  // TODO (Bernardo) - This use of apiUrl is for display only
   setCustodianConnectRequest({
     token,
     apiUrl,
@@ -120,6 +121,7 @@ export class CustodyController {
     });
   }
 
+  // TODO (Bernardo) - It looks like this is not being called anywhere
   getCustodianConnectRequest(): {
     token: string;
     apiUrl: string;
