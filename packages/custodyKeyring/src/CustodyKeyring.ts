@@ -38,7 +38,7 @@ import { MmiConfigurationController } from "./MmiConfiguration";
 export type UniqueAccountDetails = {
   hash: string;
   authDetails: AuthDetails;
-  apiUrl: string;
+  envName: string;
 };
 
 export abstract class CustodyKeyring extends EventEmitter {
@@ -61,7 +61,8 @@ export abstract class CustodyKeyring extends EventEmitter {
   // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
   abstract txDeepLink(custodianDetails: any, txId: string): Promise<Partial<ICustodianTransactionLink> | null>;
 
-  abstract sdkFactory(authDetails: AuthDetails, apiUrl: string): MMISDK;
+  // TODO - Should be protected
+  abstract sdkFactory(authDetails: AuthDetails, envName: string): MMISDK;
 
   protected sdkList: { sdk: MMISDK; hash: string }[];
 
@@ -76,7 +77,7 @@ export abstract class CustodyKeyring extends EventEmitter {
   }
 
   getUniqueAccountDetails(account: ICustodianAccount<AuthDetails>): string {
-    return this.hashAuthDetails(account.authDetails, account.apiUrl);
+    return this.hashAuthDetails(account.authDetails, account.envName);
   }
 
   serialize(): Promise<ISerializedKeyring> {
@@ -109,6 +110,15 @@ export abstract class CustodyKeyring extends EventEmitter {
       this.selectedAddresses = migratedOpts.selectedAddresses || [];
       this.accountsDetails = migratedOpts.accountsDetails || [];
       this.meta = migratedOpts.meta || {};
+
+      // TODO - This might be moved to a migration
+      const custodians = this.getCustodians();
+      this.accountsDetails
+        .filter(account => !account.envName)
+        .forEach(account => {
+          account.envName = custodians.find(c => c.apiUrl === account.apiUrl)?.envName;
+        });
+
       const uniqueAuthDetails: UniqueAccountDetails[] = this.accountsDetails.reduce(
         (result: UniqueAccountDetails[], details) => {
           const hash = this.getUniqueAccountDetails(details);
@@ -116,14 +126,19 @@ export abstract class CustodyKeyring extends EventEmitter {
             result.push({
               hash,
               authDetails: details.authDetails,
-              apiUrl: details.apiUrl,
+              envName: details.envName,
             });
           }
           return result;
         },
         [],
       );
-      uniqueAuthDetails.forEach(item => this.getSDK(item.authDetails, item.apiUrl));
+      uniqueAuthDetails.forEach(item => this.getSDK(item.authDetails, item.envName));
+
+      console.log("DESERIALIZED DETAILS", {
+        initial: opts,
+        migrated: migratedOpts,
+      });
 
       resolve();
     });
@@ -161,7 +176,7 @@ export abstract class CustodyKeyring extends EventEmitter {
           this.accounts.push(address);
 
           // Ensure the SDK is available as soon as the account is added
-          this.getSDK(selectedAccountDetails.authDetails, selectedAccountDetails.apiUrl);
+          this.getSDK(selectedAccountDetails.authDetails, selectedAccountDetails.envName);
         }
       }
       resolve(this.accounts);
@@ -177,7 +192,8 @@ export abstract class CustodyKeyring extends EventEmitter {
     this.accountsDetails = this.accountsDetails.filter(a => a.address.toLowerCase() !== address.toLowerCase());
   }
 
-  hashAuthDetails(authDetails: AuthDetails, apiUrl: string): string {
+  hashAuthDetails(authDetails: AuthDetails, envName: string): string {
+    const { apiUrl } = this.getCustodianFromEnvName(envName);
     let identifier: string;
 
     if ((authDetails as ITokenAuthDetails).jwt) {
@@ -192,8 +208,8 @@ export abstract class CustodyKeyring extends EventEmitter {
   // This is for "top-down" token refreshes (from the extension)
   // This allows the API URL to be changed
   replaceRefreshTokenAuthDetails(address: string, newAuthDetails: IRefreshTokenAuthDetails): void {
-    const { authDetails, apiUrl } = this.getAccountDetails(address);
-    const sdk = this.getSDK(authDetails, apiUrl);
+    const { authDetails, envName } = this.getAccountDetails(address);
+    const sdk = this.getSDK(authDetails, envName);
 
     sdk.changeRefreshTokenAuthDetails(newAuthDetails);
   }
@@ -207,7 +223,8 @@ export abstract class CustodyKeyring extends EventEmitter {
     }
   }
 
-  handleRefreshTokenChangeEvent(event: IRefreshTokenChangeEvent, apiUrl: string): void {
+  handleRefreshTokenChangeEvent(event: IRefreshTokenChangeEvent, envName: string): void {
+    const { apiUrl } = this.getCustodianFromEnvName(envName);
     this.updateAccountsDetailsWithNewRefreshToken(event.oldRefreshToken, event.newRefreshToken, apiUrl);
 
     const payload: IRefreshTokenChangeEvent = {
@@ -238,8 +255,8 @@ export abstract class CustodyKeyring extends EventEmitter {
     return authDetails;
   }
 
-  getSDK(authDetails: AuthDetails, apiUrl?: string): MMISDK {
-    const hash = this.hashAuthDetails(authDetails, apiUrl);
+  getSDK(authDetails: AuthDetails, envName: string): MMISDK {
+    const hash = this.hashAuthDetails(authDetails, envName);
 
     // Interesting thing - this will create a new SDK if the auth details are changed
     // What are the possible effects of this?
@@ -250,10 +267,10 @@ export abstract class CustodyKeyring extends EventEmitter {
       return found.sdk;
     }
 
-    const sdk = this.sdkFactory(authDetails, apiUrl);
+    const sdk = this.sdkFactory(authDetails, envName);
 
     sdk.on(REFRESH_TOKEN_CHANGE_EVENT, (event: IRefreshTokenChangeEvent) =>
-      this.handleRefreshTokenChangeEvent(event, apiUrl),
+      this.handleRefreshTokenChangeEvent(event, envName),
     );
 
     sdk.on(INTERACTIVE_REPLACEMENT_TOKEN_CHANGE_EVENT, (event: IInteractiveRefreshTokenChangeEvent) =>
@@ -268,14 +285,15 @@ export abstract class CustodyKeyring extends EventEmitter {
     return sdk;
   }
 
+  // TODO (Bernardo) - Ensure extension sends envName and no apiUrl
   async getCustodianAccounts(
     token: string,
-    apiUrl: string,
+    envName: string,
     searchText?: string,
     getNonImportedAccounts = true,
   ): Promise<ICustodianAccount<AuthDetails>[]> {
     const authDetails = this.createAuthDetails(token);
-    const sdk = this.getSDK(authDetails, apiUrl);
+    const sdk = this.getSDK(authDetails, envName);
 
     let accounts;
     if (searchText) {
@@ -334,8 +352,8 @@ export abstract class CustodyKeyring extends EventEmitter {
       data = "0x" + data;
     }
 
-    const { authDetails, apiUrl } = this.getAccountDetails(fromAddress);
-    const sdk = this.getSDK(authDetails, apiUrl);
+    const { authDetails, envName } = this.getAccountDetails(fromAddress);
+    const sdk = this.getSDK(authDetails, envName);
 
     const noGasPayload: any = {
       from: toChecksumAddress(fromAddress),
@@ -404,8 +422,8 @@ export abstract class CustodyKeyring extends EventEmitter {
       return null;
     }
 
-    const { authDetails, apiUrl } = this.getAccountDetails(from);
-    const sdk = this.getSDK(authDetails, apiUrl);
+    const { authDetails, envName } = this.getAccountDetails(from);
+    const sdk = this.getSDK(authDetails, envName);
     const tx = await sdk.getTransaction(toChecksumAddress(from), txCustodyId);
     return tx;
   }
@@ -425,8 +443,8 @@ export abstract class CustodyKeyring extends EventEmitter {
       return null;
     }
 
-    const { authDetails, apiUrl } = this.getAccountDetails(address);
-    const sdk = this.getSDK(authDetails, apiUrl);
+    const { authDetails, envName } = this.getAccountDetails(address);
+    const sdk = this.getSDK(authDetails, envName);
 
     const signature = await sdk.getSignature(toChecksumAddress(address), signatureId);
 
@@ -434,8 +452,8 @@ export abstract class CustodyKeyring extends EventEmitter {
   }
 
   async signPersonalMessage(address: string, message: string, opts: any): Promise<ITransactionDetails> {
-    const { authDetails, apiUrl } = this.getAccountDetails(address);
-    const sdk = this.getSDK(authDetails, apiUrl);
+    const { authDetails, envName } = this.getAccountDetails(address);
+    const sdk = this.getSDK(authDetails, envName);
 
     const signedMessageMetadata = {
       chainId: null,
@@ -468,8 +486,8 @@ export abstract class CustodyKeyring extends EventEmitter {
   abstract getStatusMap(): ITransactionStatusMap;
 
   async getCustomerProof(address: string): Promise<string> {
-    const { authDetails, apiUrl } = this.getAccountDetails(address);
-    const sdk = this.getSDK(authDetails, apiUrl);
+    const { authDetails, envName } = this.getAccountDetails(address);
+    const sdk = this.getSDK(authDetails, envName);
 
     return sdk.getCustomerProof();
   }
@@ -481,8 +499,8 @@ export abstract class CustodyKeyring extends EventEmitter {
       this.emit("error", "Only signedTypedData_v4 and signedTypedData_v3 is supported");
     }
 
-    const { authDetails, apiUrl } = this.getAccountDetails(address);
-    const sdk = this.getSDK(authDetails, apiUrl);
+    const { authDetails, envName } = this.getAccountDetails(address);
+    const sdk = this.getSDK(authDetails, envName);
 
     const signedTypedMessageMetadata = {
       chainId: null,
@@ -494,8 +512,42 @@ export abstract class CustodyKeyring extends EventEmitter {
   }
 
   getSupportedChains(address: string): Promise<string[]> {
-    const { authDetails, apiUrl } = this.getAccountDetails(address);
-    const sdk = this.getSDK(authDetails, apiUrl);
+    const { authDetails, envName } = this.getAccountDetails(address);
+    const sdk = this.getSDK(authDetails, envName);
     return sdk.getSupportedChains(address);
+  }
+
+  protected getCustodians(): {
+    type: string;
+    name: string;
+    onboardingUrl: string;
+    website: string;
+    envName: string;
+    apiUrl: string;
+    apiVersion: string;
+    iconUrl: string;
+    displayName: string;
+    websocketApiUrl: any;
+    production: boolean;
+    refreshTokenUrl: any;
+    isNoteToTraderSupported: boolean;
+    custodianPublishesTransaction: boolean;
+    version: number;
+  }[] {
+    const {
+      mmiConfiguration: { custodians },
+    } = this.mmiConfigurationController.store.getState();
+
+    return custodians;
+  }
+
+  protected getCustodianFromEnvName(envName: string) {
+    const custodian = this.getCustodians().find(c => c.envName === envName);
+
+    if (!custodian) {
+      throw new Error(`Could not find custodian with name: ${envName} - please contact support`);
+    }
+
+    return custodian;
   }
 }

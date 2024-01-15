@@ -44,8 +44,10 @@ export class JupiterCustodyKeyring extends CustodyKeyring {
     ],
   };
 
-  sdkFactory = (authDetails: AuthDetails, apiUrl: string): MMISDK =>
-    mmiSDKFactory(JupiterCustodianApi, authDetails, this.authType, apiUrl);
+  sdkFactory = (authDetails: AuthDetails, envName: string): MMISDK => {
+    const { apiUrl } = this.getCustodianFromEnvName(envName);
+    return mmiSDKFactory(JupiterCustodianApi, authDetails, this.authType, apiUrl);
+  };
 
   txDeepLink = async (address: string, txId) => {
     // Currently the Jupiter custody UI has no transaction dialog, but one has been asked for

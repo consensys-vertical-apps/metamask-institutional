@@ -63,8 +63,10 @@ export class CurvCustodyKeyring extends CustodyKeyring {
   public selectedAddresses: ICustodianAccount<ITokenAuthDetails>[];
   public accountsDetails: ICustodianAccount<ITokenAuthDetails>[];
 
-  sdkFactory = (authDetails: AuthDetails, apiUrl: string) =>
-    mmiSDKFactory(CurvCustodianApi, authDetails, this.authType, apiUrl);
+  sdkFactory = (authDetails: AuthDetails, envName: string) => {
+    const { apiUrl } = this.getCustodianFromEnvName(envName);
+    return mmiSDKFactory(CurvCustodianApi, authDetails, this.authType, apiUrl);
+  };
 
   // For AccountDetails that still contain `jwt` property
   handleLegacyAccountDetails(

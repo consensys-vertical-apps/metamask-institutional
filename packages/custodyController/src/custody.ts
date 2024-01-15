@@ -170,27 +170,22 @@ export class CustodyController {
     return false;
   }
 
+  // TODO (Bernardo) - Ensure extension sends envName and no apiUrl
   async handleMmiCheckIfTokenIsPresent({
     token,
-    apiUrl,
+    envName,
     keyring,
   }: {
     token: string;
-    apiUrl: string;
+    envName: string;
     keyring: any;
   }): Promise<boolean> {
-    // FIXME: we are not currently storing environment (aka custodian name) in the keyring accountsDetails
-    // We should be doing this and comparing environment instead of apiUrl
-    // But this would require migrations
-    // See MMI-2119
-
     const accounts = await keyring.getAccounts();
 
     for (const address of accounts) {
       const accountDetails = keyring.getAccountDetails(address);
 
-      // TODO: Change to rely on environment instead of apiUrl when MMI-2119 is done
-      if (accountDetails.apiUrl === apiUrl && accountDetails.authDetails.refreshToken === token) {
+      if (accountDetails.envName === envName && accountDetails.authDetails.refreshToken === token) {
         return true;
       }
     }

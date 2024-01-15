@@ -9,6 +9,7 @@ interface IMmiActionsFactoryParameters {
   callBackgroundMethod: any;
 }
 
+// TODO - Check if this is used
 export function mmiActionsFactory({
   log,
   showLoadingIndication,
@@ -62,17 +63,17 @@ export function mmiActionsFactory({
         forceUpdateMetamaskState,
         "Looking for your custodian account...",
       ),
-    getCustodianAccounts: (token, apiUrl, custody, getNonImportedAccounts) =>
+    getCustodianAccounts: (token, envName, custody, getNonImportedAccounts) =>
       createAsyncAction(
         "getCustodianAccounts",
-        [token, apiUrl, custody, getNonImportedAccounts],
+        [token, envName, custody, getNonImportedAccounts],
         forceUpdateMetamaskState,
         "Getting custodian accounts...",
       ),
-    getCustodianAccountsByAddress: (jwt, apiUrl, address, custody) =>
+    getCustodianAccountsByAddress: (jwt, envName, address, custody) =>
       createAsyncAction(
         "getCustodianAccountsByAddress",
-        [jwt, apiUrl, address, custody],
+        [jwt, envName, address, custody],
         forceUpdateMetamaskState,
         "Getting custodian accounts...",
       ),
@@ -86,8 +87,8 @@ export function mmiActionsFactory({
     getCustodianJWTList: custody => createAsyncAction("getCustodianJWTList", [custody], forceUpdateMetamaskState),
     setWaitForConfirmDeepLinkDialog: waitForConfirmDeepLinkDialog =>
       createAction("setWaitForConfirmDeepLinkDialog", waitForConfirmDeepLinkDialog),
-    removeAddTokenConnectRequest: ({ origin, apiUrl, token }) =>
-      createAction("removeAddTokenConnectRequest", { origin, apiUrl, token }),
+    removeAddTokenConnectRequest: ({ origin, envName, token }) =>
+      createAction("removeAddTokenConnectRequest", { origin, envName, token }),
     setCustodianConnectRequest: ({ token, apiUrl, custodianType, custodianName }) =>
       createAsyncAction("setCustodianConnectRequest", [{ token, apiUrl, custodianType, custodianName }]),
     getCustodianConnectRequest: () => createAsyncAction("getCustodianConnectRequest", []),
