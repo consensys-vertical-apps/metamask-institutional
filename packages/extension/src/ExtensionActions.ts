@@ -89,14 +89,14 @@ export function mmiActionsFactory({
       createAction("setWaitForConfirmDeepLinkDialog", waitForConfirmDeepLinkDialog),
     removeAddTokenConnectRequest: ({ origin, envName, token }) =>
       createAction("removeAddTokenConnectRequest", { origin, envName, token }),
-    setCustodianConnectRequest: ({ token, apiUrl, custodianType, custodianName }) =>
-      createAsyncAction("setCustodianConnectRequest", [{ token, apiUrl, custodianType, custodianName }]),
+    setCustodianConnectRequest: ({ token, envName, custodianType }) =>
+      createAsyncAction("setCustodianConnectRequest", [{ token, envName, custodianType }]),
     getCustodianConnectRequest: () => createAsyncAction("getCustodianConnectRequest", []),
     getMmiConfiguration: () => createAsyncAction("getMmiConfiguration", []),
     getAllCustodianAccountsWithToken: (custodyType, token) =>
       createAsyncAction("getAllCustodianAccountsWithToken", [custodyType, token]),
-    setCustodianNewRefreshToken: (address, oldAuthDetails, oldApiUrl, newAuthDetails, newApiUrl) =>
-      createAsyncAction("setCustodianNewRefreshToken", [address, oldAuthDetails, oldApiUrl, newAuthDetails, newApiUrl]),
+    setCustodianNewRefreshToken: (address, newAuthDetails) =>
+      createAsyncAction("setCustodianNewRefreshToken", [address, newAuthDetails]),
     showCustodyConfirmLink: ({ link, address, closeNotification, custodyId }) => {
       return async dispatch => {
         dispatch(

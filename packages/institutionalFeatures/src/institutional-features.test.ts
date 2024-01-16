@@ -30,7 +30,6 @@ describe("InstitutionalFeaturesController", function () {
         feature: "custodian",
         service: "jupiter",
         token: "token",
-        apiUrl: "https://api-url",
         environment: "test-environment",
       },
     };
@@ -45,7 +44,6 @@ describe("InstitutionalFeaturesController", function () {
       feature: "custodian",
       service: "jupiter",
       token: "token",
-      apiUrl: "https://api-url",
       chainId: undefined,
       environment: "test-environment",
     });
@@ -100,28 +98,28 @@ describe("InstitutionalFeaturesController", function () {
     const controller = await createController({
       institutionalFeatures: {
         ...INIT_STATE.institutionalFeatures,
-        connectRequests: [{ origin: "testOrigin.com", token: "token", apiUrl: "http://" }],
+        connectRequests: [{ origin: "testOrigin.com", token: "token", environment: "test-environment" }],
       },
     });
     await controller.removeAddTokenConnectRequest({
       origin: "testOrigin.com",
-      apiUrl: "http://",
+      environment: "test-environment",
       token: "token",
     });
     const state = controller.store.getState();
     expect(state.institutionalFeatures.connectRequests.length).toBe(0);
   });
 
-  it("should not remove connectRequests where apiUrl is different", async function () {
+  it("should not remove connectRequests where environment is different", async function () {
     const controller = await createController({
       institutionalFeatures: {
         ...INIT_STATE.institutionalFeatures,
-        connectRequests: [{ origin: "testOrigin.com", token: "token", apiUrl: "http://" }],
+        connectRequests: [{ origin: "testOrigin.com", token: "token", environment: "test-environment" }],
       },
     });
     await controller.removeAddTokenConnectRequest({
       origin: "testOrigin.com",
-      apiUrl: "not-the-same",
+      environment: "not-the-same",
       token: "token",
     });
     const state = controller.store.getState();
@@ -132,12 +130,12 @@ describe("InstitutionalFeaturesController", function () {
     const controller = await createController({
       institutionalFeatures: {
         ...INIT_STATE.institutionalFeatures,
-        connectRequests: [{ origin: "testOrigin.com", token: "token", apiUrl: "http://" }],
+        connectRequests: [{ origin: "testOrigin.com", token: "token", environment: "test-environment" }],
       },
     });
     await controller.removeAddTokenConnectRequest({
       origin: "testOrigin.com",
-      apiUrl: "http://",
+      environment: "test-environment",
       token: "not-token",
     });
     const state = controller.store.getState();

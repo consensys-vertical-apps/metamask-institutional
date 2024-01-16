@@ -104,29 +104,25 @@ export class CustodyController {
     return custodyTypes;
   }
 
-  // TODO (Bernardo) - This use of apiUrl is for display only
   setCustodianConnectRequest({
     token,
-    apiUrl,
-    custodianName,
     custodianType,
+    envName,
   }: {
     token: string;
-    apiUrl: string;
-    custodianName: string;
     custodianType: string;
+    envName: string;
   }): void {
     this.store.updateState({
-      custodianConnectRequest: { token, apiUrl, custodianName, custodianType },
+      custodianConnectRequest: { token, envName, custodianType },
     });
   }
 
   // TODO (Bernardo) - It looks like this is not being called anywhere
   getCustodianConnectRequest(): {
     token: string;
-    apiUrl: string;
-    custodianName: string;
     custodianType: string;
+    envName: string;
   } {
     const { custodianConnectRequest } = this.store.getState();
     this.store.updateState({
@@ -172,7 +168,6 @@ export class CustodyController {
     return false;
   }
 
-  // TODO (Bernardo) - Ensure extension sends envName and no apiUrl
   async handleMmiCheckIfTokenIsPresent({
     token,
     envName,

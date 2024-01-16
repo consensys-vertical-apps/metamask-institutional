@@ -213,11 +213,13 @@ export abstract class CustodyKeyring extends EventEmitter {
 
   // This is for "top-down" token refreshes (from the extension)
   // This allows the API URL to be changed
-  replaceRefreshTokenAuthDetails(address: string, newAuthDetails: IRefreshTokenAuthDetails): void {
+  replaceRefreshTokenAuthDetails(address: string, refreshToken: string): void {
     const { authDetails, envName } = this.getAccountDetails(address);
     const sdk = this.getSDK(authDetails, envName);
 
-    sdk.changeRefreshTokenAuthDetails(newAuthDetails);
+    sdk.changeRefreshTokenAuthDetails({
+      refreshToken,
+    });
   }
 
   updateAccountsDetailsWithNewRefreshToken(oldRefreshToken: string, newRefreshToken: string, oldApiUrl: string) {

@@ -222,13 +222,13 @@ describe("JsonRpcCustodyKeyring", () => {
       custodyKeyring.setSelectedAddresses(mockSelectedAddresses);
       custodyKeyring.addAccounts(1);
 
-      const newAuthDetails = {
-        refreshToken: "newToken",
-      };
+      const refreshToken = "newToken";
 
-      await custodyKeyring.replaceRefreshTokenAuthDetails("0x123456", newAuthDetails);
+      await custodyKeyring.replaceRefreshTokenAuthDetails("0x123456", refreshToken);
 
-      expect(mockMMISDK.changeRefreshTokenAuthDetails).toHaveBeenCalledWith(newAuthDetails);
+      expect(mockMMISDK.changeRefreshTokenAuthDetails).toHaveBeenCalledWith({
+        refreshToken,
+      });
     });
   });
 
