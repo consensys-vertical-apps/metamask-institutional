@@ -251,7 +251,7 @@ describe("JsonRpcCustodyKeyring", () => {
       custodyKeyring.setSelectedAddresses(mockSelectedAddresses);
       custodyKeyring.addAccounts(1);
 
-      custodyKeyring.updateAccountsDetailsWithNewRefreshToken("jwt", "newToken", "https://api");
+      custodyKeyring.updateAccountsDetailsWithNewRefreshToken("jwt", "newToken", "saturn");
 
       expect((custodyKeyring.accountsDetails[0].authDetails as IRefreshTokenAuthDetails).refreshToken).toEqual(
         "newToken",

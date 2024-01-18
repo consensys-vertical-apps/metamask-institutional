@@ -98,13 +98,11 @@ export abstract class CustodyKeyring extends EventEmitter {
     } = {},
   ): Promise<void> {
     return new Promise<void>(resolve => {
-      const custodians = this.getCustodians();
       const migrator = new Migrator({ migrations });
       const migratedOpts = migrator.migrateData({
         custodianType: this.custodianType,
         type: this.type,
         authType: this.authType,
-        custodians,
         ...opts,
       });
       this.accounts = migratedOpts.accounts || [];
@@ -112,19 +110,20 @@ export abstract class CustodyKeyring extends EventEmitter {
       this.accountsDetails = migratedOpts.accountsDetails || [];
       this.meta = migratedOpts.meta || {};
 
-      // TODO - This might be moved to a migration
-      // const custodians = this.getCustodians();
-      // this.accountsDetails
-      //   .filter(account => !account.envName)
-      //   .forEach(account => {
-      //     account.envName = custodians.find(c => c.apiUrl === account.apiUrl)?.envName;
-      //   });
+      // BEGIN UPDATE ACCOUNTS WITH ENV NAME
+      const custodians = this.getCustodians();
+      this.accountsDetails
+        .filter(account => !account.envName)
+        .forEach(account => {
+          account.envName = custodians.find(c => c.apiUrl === account.apiUrl)?.envName;
+        });
 
-      // this.selectedAddresses
-      //   .filter(account => !account.envName)
-      //   .forEach(account => {
-      //     account.envName = custodians.find(c => c.apiUrl === account.apiUrl)?.envName;
-      //   });
+      this.selectedAddresses
+        .filter(account => !account.envName)
+        .forEach(account => {
+          account.envName = custodians.find(c => c.apiUrl === account.apiUrl)?.envName;
+        });
+      // ENV UPDATE ACCOUNTS WITH ENV NAME
 
       const uniqueAuthDetails: UniqueAccountDetails[] = this.accountsDetails.reduce(
         (result: UniqueAccountDetails[], details) => {
