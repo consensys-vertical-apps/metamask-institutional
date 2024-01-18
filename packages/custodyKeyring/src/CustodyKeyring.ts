@@ -61,7 +61,6 @@ export abstract class CustodyKeyring extends EventEmitter {
   // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
   abstract txDeepLink(custodianDetails: any, txId: string): Promise<Partial<ICustodianTransactionLink> | null>;
 
-  // TODO - Should be protected
   abstract sdkFactory(authDetails: AuthDetails, envName: string): MMISDK;
 
   protected sdkList: { sdk: MMISDK; hash: string }[];
@@ -99,11 +98,13 @@ export abstract class CustodyKeyring extends EventEmitter {
     } = {},
   ): Promise<void> {
     return new Promise<void>(resolve => {
+      const custodians = this.getCustodians();
       const migrator = new Migrator({ migrations });
       const migratedOpts = migrator.migrateData({
         custodianType: this.custodianType,
         type: this.type,
         authType: this.authType,
+        custodians,
         ...opts,
       });
       this.accounts = migratedOpts.accounts || [];
@@ -112,18 +113,18 @@ export abstract class CustodyKeyring extends EventEmitter {
       this.meta = migratedOpts.meta || {};
 
       // TODO - This might be moved to a migration
-      const custodians = this.getCustodians();
-      this.accountsDetails
-        .filter(account => !account.envName)
-        .forEach(account => {
-          account.envName = custodians.find(c => c.apiUrl === account.apiUrl)?.envName;
-        });
+      // const custodians = this.getCustodians();
+      // this.accountsDetails
+      //   .filter(account => !account.envName)
+      //   .forEach(account => {
+      //     account.envName = custodians.find(c => c.apiUrl === account.apiUrl)?.envName;
+      //   });
 
-      this.selectedAddresses
-        .filter(account => !account.envName)
-        .forEach(account => {
-          account.envName = custodians.find(c => c.apiUrl === account.apiUrl)?.envName;
-        });
+      // this.selectedAddresses
+      //   .filter(account => !account.envName)
+      //   .forEach(account => {
+      //     account.envName = custodians.find(c => c.apiUrl === account.apiUrl)?.envName;
+      //   });
 
       const uniqueAuthDetails: UniqueAccountDetails[] = this.accountsDetails.reduce(
         (result: UniqueAccountDetails[], details) => {
@@ -140,11 +141,6 @@ export abstract class CustodyKeyring extends EventEmitter {
         [],
       );
       uniqueAuthDetails.forEach(item => this.getSDK(item.authDetails, item.envName));
-
-      console.log("DESERIALIZED DETAILS", {
-        initial: opts,
-        migrated: migratedOpts,
-      });
 
       resolve();
     });
@@ -222,18 +218,17 @@ export abstract class CustodyKeyring extends EventEmitter {
     });
   }
 
-  updateAccountsDetailsWithNewRefreshToken(oldRefreshToken: string, newRefreshToken: string, oldApiUrl: string) {
+  updateAccountsDetailsWithNewRefreshToken(oldRefreshToken: string, newRefreshToken: string, envName: string) {
     for (const account of this.accountsDetails) {
       const authDetails = account.authDetails as IRefreshTokenAuthDetails;
-      if ((authDetails as IRefreshTokenAuthDetails).refreshToken === oldRefreshToken && account.apiUrl === oldApiUrl) {
+      if ((authDetails as IRefreshTokenAuthDetails).refreshToken === oldRefreshToken && account.envName === envName) {
         authDetails.refreshToken = newRefreshToken;
       }
     }
   }
 
   handleRefreshTokenChangeEvent(event: IRefreshTokenChangeEvent, envName: string): void {
-    const { apiUrl } = this.getCustodianFromEnvName(envName);
-    this.updateAccountsDetailsWithNewRefreshToken(event.oldRefreshToken, event.newRefreshToken, apiUrl);
+    this.updateAccountsDetailsWithNewRefreshToken(event.oldRefreshToken, event.newRefreshToken, envName);
 
     const payload: IRefreshTokenChangeEvent = {
       oldRefreshToken: event.oldRefreshToken,
@@ -293,7 +288,6 @@ export abstract class CustodyKeyring extends EventEmitter {
     return sdk;
   }
 
-  // TODO (Bernardo) - Ensure extension sends envName and no apiUrl
   async getCustodianAccounts(
     token: string,
     envName: string,
