@@ -29,6 +29,7 @@ import {
   INTERACTIVE_REPLACEMENT_TOKEN_CHANGE_EVENT,
   REFRESH_TOKEN_CHANGE_EVENT,
 } from "./constants";
+import { ICustodianEnvironment } from "./interfaces/ICustodianEnvironment";
 import { ICustodyKeyringOptions } from "./interfaces/ICustodyKeyringOptions";
 import { ISerializedKeyring } from "./interfaces/ISerializedKeyring";
 import { migrations } from "./migrations";
@@ -518,30 +519,6 @@ export abstract class CustodyKeyring extends EventEmitter {
     return sdk.getSupportedChains(address);
   }
 
-  protected getCustodians(): {
-    type: string;
-    name: string;
-    onboardingUrl: string;
-    website: string;
-    envName: string;
-    apiUrl: string;
-    apiVersion: string;
-    iconUrl: string;
-    displayName: string;
-    websocketApiUrl: any;
-    production: boolean;
-    refreshTokenUrl: any;
-    isNoteToTraderSupported: boolean;
-    custodianPublishesTransaction: boolean;
-    version: number;
-  }[] {
-    const {
-      mmiConfiguration: { custodians },
-    } = this.mmiConfigurationController.store.getState();
-
-    return custodians;
-  }
-
   protected getCustodianFromEnvName(envName: string) {
     const custodian = this.getCustodians().find(c => c.envName === envName);
 
@@ -550,5 +527,13 @@ export abstract class CustodyKeyring extends EventEmitter {
     }
 
     return custodian;
+  }
+
+  private getCustodians(): ICustodianEnvironment[] {
+    const {
+      mmiConfiguration: { custodians },
+    } = this.mmiConfigurationController.store.getState();
+
+    return custodians;
   }
 }
