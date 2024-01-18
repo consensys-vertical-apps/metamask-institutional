@@ -9,7 +9,7 @@ interface IMmiActionsFactoryParameters {
   callBackgroundMethod: any;
 }
 
-// TODO - Check if this is used
+// TODO - This is not being used anywhere and it's duplicated in the extension
 export function mmiActionsFactory({
   log,
   showLoadingIndication,

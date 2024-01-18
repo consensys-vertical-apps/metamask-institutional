@@ -104,6 +104,7 @@ export class CustodyController {
     return custodyTypes;
   }
 
+  // TODO - Can probably be removed as that state is not being used anywhere
   setCustodianConnectRequest({
     token,
     custodianType,
@@ -118,7 +119,7 @@ export class CustodyController {
     });
   }
 
-  // TODO (Bernardo) - It looks like this is not being called anywhere
+  // TODO - Can probably be removed as it's not being called anywhere
   getCustodianConnectRequest(): {
     token: string;
     custodianType: string;
