@@ -1,6 +1,7 @@
 import { MMISDK, mmiSDKFactory } from "@metamask-institutional/sdk";
 import { IExtensionCustodianAccount, IRefreshTokenAuthDetails } from "@metamask-institutional/types";
 import crypto, { Hash } from "crypto";
+import { MmiConfigurationController } from "src/MmiConfiguration";
 import { mocked } from "ts-jest/utils";
 
 import { CactusCustodyKeyring } from "./CactusCustodyKeyring";
@@ -50,7 +51,22 @@ describe("CactusCustodyKeyring", () => {
   let custodyKeyring: CactusCustodyKeyring;
 
   beforeEach(() => {
-    custodyKeyring = new CactusCustodyKeyring();
+    custodyKeyring = new CactusCustodyKeyring({
+      mmiConfigurationController: {
+        store: {
+          getState: jest.fn().mockReturnValue({
+            mmiConfiguration: {
+              custodians: [
+                {
+                  apiUrl: "https://api",
+                  envName: "cactus",
+                },
+              ],
+            },
+          }),
+        },
+      } as unknown as MmiConfigurationController,
+    });
 
     jest.clearAllMocks();
     mockedMmiSdkFactory.mockReturnValue(mockMMISDK as unknown as MMISDK);
@@ -68,6 +84,7 @@ describe("CactusCustodyKeyring", () => {
           apiUrl: "https://api",
           chainId: 4,
           custodyType: "Cactus",
+          envName: "cactus",
         },
       ];
 
@@ -96,7 +113,8 @@ describe("CactusCustodyKeyring", () => {
         refreshToken: "miaow",
       };
 
-      const url = "http://";
+      const url = "https://api";
+      const envName = "cactus";
 
       const hashMock = {
         update: jest.fn().mockReturnThis(),
@@ -106,7 +124,7 @@ describe("CactusCustodyKeyring", () => {
       // Mocking the crypto module
       const createHashMock = jest.spyOn(crypto, "createHash").mockImplementationOnce(() => hashMock);
 
-      const result = custodyKeyring.hashAuthDetails(authDetails, url);
+      const result = custodyKeyring.hashAuthDetails(authDetails, envName);
 
       expect(createHashMock).toBeCalledWith("sha256");
       expect(hashMock.update).toBeCalledWith(authDetails.refreshToken + url);

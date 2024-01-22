@@ -1,6 +1,7 @@
 import { MMISDK, mmiSDKFactory } from "@metamask-institutional/sdk";
 import { IExtensionCustodianAccount, IRefreshTokenAuthDetails } from "@metamask-institutional/types";
 import crypto, { Hash } from "crypto";
+import { MmiConfigurationController } from "src/MmiConfiguration";
 import { mocked } from "ts-jest/utils";
 
 import { BitgoCustodyKeyring } from "./BitgoCustodyKeyring";
@@ -20,6 +21,7 @@ const mockMMISDK = {
       labels: [{ key: "my-label", value: "my-label" }],
       jwt: "jwt",
       apiUrl: "apiUrl",
+      envName: "bitgo",
     },
   ]),
   getEthereumAccountsByAddress: jest.fn().mockResolvedValue([]),
@@ -50,7 +52,22 @@ describe("BitgoCustodyKeyring", () => {
   let custodyKeyring: BitgoCustodyKeyring;
 
   beforeEach(() => {
-    custodyKeyring = new BitgoCustodyKeyring();
+    custodyKeyring = new BitgoCustodyKeyring({
+      mmiConfigurationController: {
+        store: {
+          getState: jest.fn().mockReturnValue({
+            mmiConfiguration: {
+              custodians: [
+                {
+                  apiUrl: "https://api",
+                  envName: "bitgo",
+                },
+              ],
+            },
+          }),
+        },
+      } as unknown as MmiConfigurationController,
+    });
 
     jest.clearAllMocks();
     mockedMmiSdkFactory.mockReturnValue(mockMMISDK as unknown as MMISDK);
@@ -68,6 +85,7 @@ describe("BitgoCustodyKeyring", () => {
           apiUrl: "https://api",
           chainId: 4,
           custodyType: "Bitgo",
+          envName: "bitgo",
         },
       ];
 
@@ -96,7 +114,8 @@ describe("BitgoCustodyKeyring", () => {
         refreshToken: "miaow",
       };
 
-      const url = "http://";
+      const url = "https://api";
+      const envName = "bitgo";
 
       const hashMock = {
         update: jest.fn().mockReturnThis(),
@@ -106,7 +125,7 @@ describe("BitgoCustodyKeyring", () => {
       // Mocking the crypto module
       const createHashMock = jest.spyOn(crypto, "createHash").mockImplementationOnce(() => hashMock);
 
-      const result = custodyKeyring.hashAuthDetails(authDetails, url);
+      const result = custodyKeyring.hashAuthDetails(authDetails, envName);
 
       expect(createHashMock).toBeCalledWith("sha256");
       expect(hashMock.update).toBeCalledWith(authDetails.refreshToken + url);

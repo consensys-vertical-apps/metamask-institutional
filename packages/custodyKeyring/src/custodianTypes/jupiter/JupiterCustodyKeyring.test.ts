@@ -8,6 +8,7 @@ import {
   ITokenAuthDetails,
   MetamaskTransaction,
 } from "@metamask-institutional/types";
+import { MmiConfigurationController } from "src/MmiConfiguration";
 import { mocked } from "ts-jest/utils";
 
 import { DEFAULT_MAX_CACHE_AGE } from "../../constants";
@@ -25,6 +26,7 @@ const mockAccounts = [
     labels: [{ key: "my-label", value: "my-label" }],
     token: "jwt",
     apiUrl: "apiUrl",
+    envName: "jupiter",
   },
 ];
 
@@ -63,7 +65,30 @@ describe("CustodyKeyring", () => {
   let custodyKeyring: JupiterCustodyKeyring;
 
   beforeEach(() => {
-    custodyKeyring = new JupiterCustodyKeyring();
+    custodyKeyring = new JupiterCustodyKeyring({
+      mmiConfigurationController: {
+        store: {
+          getState: jest.fn().mockReturnValue({
+            mmiConfiguration: {
+              custodians: [
+                {
+                  apiUrl: "apiUrl",
+                  envName: "jupiter",
+                },
+                {
+                  apiUrl: "apiUrl2",
+                  envName: "jupiter2",
+                },
+                {
+                  apiUrl: "https://jupiter-custody-demo.codefi.network",
+                  envName: "jupiter-demo",
+                },
+              ],
+            },
+          }),
+        },
+      } as unknown as MmiConfigurationController,
+    });
     jest.clearAllMocks();
     mockedMmiSdkFactory.mockReturnValue(mockMMISDK as unknown as MMISDK);
   });
@@ -92,6 +117,7 @@ describe("CustodyKeyring", () => {
           authDetails: { jwt: "jwt" },
           apiUrl: "apiUrl",
           custodyType: "jupiter",
+          envName: "jupiter",
         },
       ];
       const mockAccountsDetails: ICustodianAccount<ITokenAuthDetails>[] = [
@@ -102,6 +128,7 @@ describe("CustodyKeyring", () => {
           custodianDetails: {},
           labels: [{ key: "my-label", value: "my-label" }],
           custodyType: "jupiter",
+          envName: "jupiter",
         },
       ];
 
@@ -129,6 +156,7 @@ describe("CustodyKeyring", () => {
           token: "jwt",
           apiUrl: "apiUrl",
           custodyType: "jupiter",
+          envName: "jupiter",
         },
       ];
 
@@ -153,6 +181,7 @@ describe("CustodyKeyring", () => {
           token: "jwt",
           apiUrl: "apiUrl",
           custodyType: "jupiter",
+          envName: "jupiter",
         },
         {
           name: "myCoolAccount2",
@@ -160,8 +189,9 @@ describe("CustodyKeyring", () => {
           custodianDetails: {},
           labels: [{ key: "my-label", value: "my-label" }],
           token: "jwt",
-          apiUrl: "apiUrl",
+          apiUrl: "apiUrl2",
           custodyType: "jupiter",
+          envName: "jupiter2",
         },
       ];
 
@@ -184,6 +214,7 @@ describe("CustodyKeyring", () => {
           token: "jwt",
           apiUrl: "apiUrl",
           custodyType: "jupiter",
+          envName: "jupiter",
         },
       ];
       custodyKeyring.setSelectedAddresses(mockSelectedAddresses);
@@ -204,6 +235,7 @@ describe("CustodyKeyring", () => {
           token: "jwt",
           apiUrl: "apiUrl",
           custodyType: "jupiter",
+          envName: "jupiter",
         },
         {
           name: "myCoolAccount2",
@@ -211,8 +243,9 @@ describe("CustodyKeyring", () => {
           custodianDetails: {},
           labels: [{ key: "my-label", value: "my-label" }],
           token: "jwt",
-          apiUrl: "apiUrl",
+          apiUrl: "apiUrl2",
           custodyType: "jupiter",
+          envName: "jupiter2",
         },
       ];
       custodyKeyring.setSelectedAddresses(mockSelectedAddresses);
@@ -235,7 +268,7 @@ describe("CustodyKeyring", () => {
 
   describe("getSDK", () => {
     it("returns a copy of the SDK from the sdkList if it exists, or creates one if it is not there", () => {
-      const result = custodyKeyring.getSDK({ jwt: "jwt" }, "apiUrl");
+      const result = custodyKeyring.getSDK({ jwt: "jwt" }, "jupiter");
 
       expect(result).toEqual(mockMMISDK);
 
@@ -243,16 +276,16 @@ describe("CustodyKeyring", () => {
     });
 
     it("does not create one of it is there already", () => {
-      custodyKeyring.getSDK({ jwt: "jwt" }, "apiUrl");
-      custodyKeyring.getSDK({ jwt: "jwt" }, "apiUrl");
+      custodyKeyring.getSDK({ jwt: "jwt" }, "jupiter");
+      custodyKeyring.getSDK({ jwt: "jwt" }, "jupiter");
 
       expect(mmiSDKFactory).toHaveBeenCalledTimes(1);
     });
 
     it("will draw from the existing sdkList and return only ones that differ by hash of the auth details", () => {
-      custodyKeyring.getSDK({ jwt: "jwt" }, "apiUrl");
-      custodyKeyring.getSDK({ jwt: "jwt" }, "apiUrl");
-      custodyKeyring.getSDK({ jwt: "jwt2" }, "apiUrl");
+      custodyKeyring.getSDK({ jwt: "jwt" }, "jupiter");
+      custodyKeyring.getSDK({ jwt: "jwt" }, "jupiter");
+      custodyKeyring.getSDK({ jwt: "jwt2" }, "jupiter2");
 
       expect(mmiSDKFactory).toHaveBeenCalledTimes(2);
     });
@@ -262,7 +295,7 @@ describe("CustodyKeyring", () => {
     it("will get addresses, if the arguments specify an ethereum address", () => {
       const address = "0x4D8519890C77217A352d3cC978B0b74165154401";
 
-      custodyKeyring.getCustodianAccounts("jwt", "apiUrl", address);
+      custodyKeyring.getCustodianAccounts("jwt", "jupiter", address);
 
       expect(mockMMISDK.getEthereumAccountsByAddress).toHaveBeenCalledWith(address, DEFAULT_MAX_CACHE_AGE);
     });
@@ -279,6 +312,7 @@ describe("CustodyKeyring", () => {
           token: "jwt",
           apiUrl: "apiUrl",
           custodyType: "jupiter",
+          envName: "jupiter",
         },
       ];
 
@@ -286,19 +320,19 @@ describe("CustodyKeyring", () => {
 
       custodyKeyring.addAccounts(1);
 
-      const result = await custodyKeyring.getCustodianAccounts("jwt", "apiUrl", address);
+      const result = await custodyKeyring.getCustodianAccounts("jwt", "jupiter", address);
       expect(result).toEqual(mockAccounts);
       expect(mmiSDKFactory).toHaveBeenCalledTimes(1);
     });
 
     it("will search by labels if there is a non-address search text", () => {
-      custodyKeyring.getCustodianAccounts("jwt", "apiUrl", "search");
+      custodyKeyring.getCustodianAccounts("jwt", "jupiter", "search");
 
       expect(mockMMISDK.getEthereumAccountsByLabelOrAddressName).toHaveBeenCalledWith("search", DEFAULT_MAX_CACHE_AGE);
     });
 
     it("will get all accounts (for a chainID) if called with no search text", () => {
-      custodyKeyring.getCustodianAccounts("jwt", "apirUrl", null);
+      custodyKeyring.getCustodianAccounts("jwt", "jupiter", null);
 
       expect(mockMMISDK.getEthereumAccounts).toHaveBeenCalledWith(60);
     });
@@ -335,6 +369,7 @@ describe("CustodyKeyring", () => {
           token: "jwt",
           apiUrl: "apiUrl",
           custodyType: "jupiter",
+          envName: "jupiter",
         },
       ];
 
@@ -391,6 +426,7 @@ describe("CustodyKeyring", () => {
           token: "jwt",
           apiUrl: "apiUrl",
           custodyType: "jupiter",
+          envName: "jupiter",
         },
       ];
 
@@ -431,6 +467,7 @@ describe("CustodyKeyring", () => {
           token: "jwt",
           apiUrl: "apiUrl",
           custodyType: "jupiter",
+          envName: "jupiter",
         },
       ];
 
@@ -489,6 +526,7 @@ describe("CustodyKeyring", () => {
           token: "jwt",
           apiUrl: "apiUrl",
           custodyType: "jupiter",
+          envName: "jupiter",
         },
       ];
 
@@ -545,6 +583,7 @@ describe("CustodyKeyring", () => {
           token: "jwt",
           apiUrl: "apiUrl",
           custodyType: "jupiter",
+          envName: "jupiter",
         },
       ];
 
@@ -602,6 +641,7 @@ describe("CustodyKeyring", () => {
           token: "jwt",
           apiUrl: "apiUrl",
           custodyType: "jupiter",
+          envName: "jupiter",
         },
       ];
 
@@ -658,6 +698,7 @@ describe("CustodyKeyring", () => {
           token: "jwt",
           apiUrl: "apiUrl",
           custodyType: "jupiter",
+          envName: "jupiter",
         },
       ];
 
@@ -714,6 +755,7 @@ describe("CustodyKeyring", () => {
           token: "jwt",
           apiUrl: "apiUrl",
           custodyType: "jupiter",
+          envName: "jupiter",
         },
       ];
 
@@ -773,6 +815,7 @@ describe("CustodyKeyring", () => {
           token: "jwt",
           apiUrl: "apiUrl",
           custodyType: "jupiter",
+          envName: "jupiter",
         },
       ];
 
@@ -800,6 +843,7 @@ describe("CustodyKeyring", () => {
           token: "jwt",
           apiUrl: "apiUrl",
           custodyType: "jupiter",
+          envName: "jupiter",
         },
       ];
 
@@ -824,6 +868,7 @@ describe("CustodyKeyring", () => {
           token: "jwt",
           apiUrl: "apiUrl",
           custodyType: "jupiter",
+          envName: "jupiter",
         },
       ];
 
@@ -848,6 +893,7 @@ describe("CustodyKeyring", () => {
           token: "jwt",
           apiUrl: "https://jupiter-custody-demo.codefi.network",
           custodyType: "jupiter",
+          envName: "jupiter-demo",
         },
       ];
 
@@ -886,6 +932,7 @@ describe("CustodyKeyring", () => {
           token: "jwt",
           apiUrl: "apiUrl",
           custodyType: "jupiter",
+          envName: "jupiter",
         },
         {
           name: "myCoolAccount1",
@@ -895,6 +942,7 @@ describe("CustodyKeyring", () => {
           token: "jwt2",
           apiUrl: "apiUrl2",
           custodyType: "jupiter",
+          envName: "jupiter2",
         },
       ];
 
@@ -925,6 +973,7 @@ describe("CustodyKeyring", () => {
           token: "jwt",
           apiUrl: "apiUrl",
           custodyType: "jupiter",
+          envName: "jupiter",
         },
       ];
 
@@ -963,6 +1012,7 @@ describe("CustodyKeyring", () => {
           token: "jwt",
           apiUrl: "apiUrl",
           custodyType: "jupiter",
+          envName: "jupiter",
         },
       ];
 
@@ -993,6 +1043,7 @@ describe("CustodyKeyring", () => {
           token: "jwt",
           apiUrl: "apiUrl",
           custodyType: "jupiter",
+          envName: "jupiter",
         },
       ];
 
@@ -1019,6 +1070,7 @@ describe("CustodyKeyring", () => {
           token: "jwt",
           apiUrl: "apiUrl",
           custodyType: "jupiter",
+          envName: "jupiter",
         },
         {
           name: "myCoolAccount2",
@@ -1026,8 +1078,9 @@ describe("CustodyKeyring", () => {
           custodianDetails: {},
           labels: [{ key: "my-label", value: "my-label" }],
           token: "jwt2",
-          apiUrl: "apiUrl",
+          apiUrl: "apiUrl2",
           custodyType: "jupiter",
+          envName: "jupiter2",
         },
       ];
 

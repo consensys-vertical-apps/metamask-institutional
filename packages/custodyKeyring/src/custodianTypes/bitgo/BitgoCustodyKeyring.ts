@@ -45,8 +45,10 @@ export class BitgoCustodyKeyring extends CustodyKeyring {
     ],
   };
 
-  sdkFactory = (authDetails: AuthDetails, apiUrl: string): MMISDK =>
-    mmiSDKFactory(BitgoCustodianApi, authDetails, this.authType, apiUrl);
+  sdkFactory = (authDetails: AuthDetails, envName: string): MMISDK => {
+    const { apiUrl } = this.getCustodianFromEnvName(envName);
+    return mmiSDKFactory(BitgoCustodianApi, authDetails, this.authType, apiUrl);
+  };
 
   txDeepLink = async (_custodianDetails, _txId) => {
     const transactionLink: Partial<ICustodianTransactionLink> = {

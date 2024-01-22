@@ -18,6 +18,7 @@ interface ICustodianAccountProto {
   chainId?: number;
   custodyType: string;
   meta?: { version: number };
+  envName: string;
 }
 
 // The type actually used in CustodyKeyring
@@ -63,8 +64,10 @@ export class CurvCustodyKeyring extends CustodyKeyring {
   public selectedAddresses: ICustodianAccount<ITokenAuthDetails>[];
   public accountsDetails: ICustodianAccount<ITokenAuthDetails>[];
 
-  sdkFactory = (authDetails: AuthDetails, apiUrl: string) =>
-    mmiSDKFactory(CurvCustodianApi, authDetails, this.authType, apiUrl);
+  sdkFactory = (authDetails: AuthDetails, envName: string) => {
+    const { apiUrl } = this.getCustodianFromEnvName(envName);
+    return mmiSDKFactory(CurvCustodianApi, authDetails, this.authType, apiUrl);
+  };
 
   // For AccountDetails that still contain `jwt` property
   handleLegacyAccountDetails(
@@ -90,6 +93,7 @@ export class CurvCustodyKeyring extends CustodyKeyring {
         chainId: details.chainId,
         custodyType: details.custodyType,
         authDetails,
+        envName: details.envName || this.custodianType.envName,
       };
     });
   }

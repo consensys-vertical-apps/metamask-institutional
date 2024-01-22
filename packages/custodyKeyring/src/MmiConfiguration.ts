@@ -7,6 +7,7 @@ import { ObservableStore } from "@metamask/obs-store";
 
 import { CUSTODIAN_TYPES } from "./custodianTypes";
 import { IConfiguration } from "./interfaces/IConfiguration";
+import { ICustodianEnvironment } from "./interfaces/ICustodianEnvironment";
 import { IMmiConfigurationControllerOptions } from "./interfaces/IMmiConfigurationControllerOptions";
 import { MMIConfiguration } from "./types/MMIConfiguration";
 
@@ -64,7 +65,7 @@ export class MmiConfigurationController {
     const configuredCustodians = configuration.custodians;
 
     // Mutate custodians by adding information from the hardcoded types
-    const custodians = [
+    const custodians: ICustodianEnvironment[] = [
       ...Object.values(CUSTODIAN_TYPES)
         .filter(custodian => custodian.hidden === false)
         .map(custodian => ({

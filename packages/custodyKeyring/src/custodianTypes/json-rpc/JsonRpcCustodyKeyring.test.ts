@@ -20,6 +20,7 @@ const mockMMISDK = {
       labels: [{ key: "my-label", value: "my-label" }],
       jwt: "jwt",
       apiUrl: "apiUrl",
+      envName: "saturn",
     },
   ]),
   getSignature: jest.fn(),
@@ -56,6 +57,7 @@ const mockMmiConfigurationController = {
         custodians: [
           {
             apiUrl: "https://api",
+            envName: "saturn",
           },
         ],
       },
@@ -90,6 +92,7 @@ describe("JsonRpcCustodyKeyring", () => {
           apiUrl: "https://api",
           chainId: 4,
           custodyType: "Saturn",
+          envName: "saturn",
         },
       ];
 
@@ -114,6 +117,7 @@ describe("JsonRpcCustodyKeyring", () => {
           apiUrl: "https://api",
           chainId: 4,
           custodyType: "Saturn",
+          envName: "saturn",
         },
       ];
 
@@ -141,7 +145,8 @@ describe("JsonRpcCustodyKeyring", () => {
         refreshToken: "miaow",
       };
 
-      const url = "http://";
+      const url = "https://api";
+      const envName = "saturn";
 
       const hashMock = {
         update: jest.fn().mockReturnThis(),
@@ -151,7 +156,7 @@ describe("JsonRpcCustodyKeyring", () => {
       // Mocking the crypto module
       const createHashMock = jest.spyOn(crypto, "createHash").mockImplementationOnce(() => hashMock);
 
-      const result = custodyKeyring.hashAuthDetails(authDetails, url);
+      const result = custodyKeyring.hashAuthDetails(authDetails, envName);
 
       expect(createHashMock).toBeCalledWith("sha256");
       expect(hashMock.update).toBeCalledWith(authDetails.refreshToken + url);
@@ -185,6 +190,7 @@ describe("JsonRpcCustodyKeyring", () => {
           apiUrl: "https://api",
           chainId: 4,
           custodyType: "Saturn",
+          envName: "saturn",
         },
       ];
 
@@ -209,19 +215,20 @@ describe("JsonRpcCustodyKeyring", () => {
           apiUrl: "https://api",
           chainId: 4,
           custodyType: "Saturn",
+          envName: "saturn",
         },
       ];
 
       custodyKeyring.setSelectedAddresses(mockSelectedAddresses);
       custodyKeyring.addAccounts(1);
 
-      const newAuthDetails = {
-        refreshToken: "newToken",
-      };
+      const refreshToken = "newToken";
 
-      await custodyKeyring.replaceRefreshTokenAuthDetails("0x123456", newAuthDetails);
+      await custodyKeyring.replaceRefreshTokenAuthDetails("0x123456", refreshToken);
 
-      expect(mockMMISDK.changeRefreshTokenAuthDetails).toHaveBeenCalledWith(newAuthDetails);
+      expect(mockMMISDK.changeRefreshTokenAuthDetails).toHaveBeenCalledWith({
+        refreshToken,
+      });
     });
   });
 
@@ -237,13 +244,14 @@ describe("JsonRpcCustodyKeyring", () => {
           apiUrl: "https://api",
           chainId: 4,
           custodyType: "Saturn",
+          envName: "saturn",
         },
       ];
 
       custodyKeyring.setSelectedAddresses(mockSelectedAddresses);
       custodyKeyring.addAccounts(1);
 
-      custodyKeyring.updateAccountsDetailsWithNewRefreshToken("jwt", "newToken", "https://api");
+      custodyKeyring.updateAccountsDetailsWithNewRefreshToken("jwt", "newToken", "saturn");
 
       expect((custodyKeyring.accountsDetails[0].authDetails as IRefreshTokenAuthDetails).refreshToken).toEqual(
         "newToken",
@@ -263,6 +271,7 @@ describe("JsonRpcCustodyKeyring", () => {
           apiUrl: "https://api",
           chainId: 4,
           custodyType: "Saturn",
+          envName: "saturn",
         },
       ];
 

@@ -44,8 +44,10 @@ export class QredoCustodyKeyring extends CustodyKeyring {
 
   public static addressType: AddressType.POLYCHAIN;
 
-  sdkFactory = (authDetails: IRefreshTokenAuthDetails, apiUrl: string): MMISDK =>
-    mmiSDKFactory(QredoCustodianApi, authDetails, this.authType, apiUrl);
+  sdkFactory = (authDetails: IRefreshTokenAuthDetails, envName: string): MMISDK => {
+    const { apiUrl } = this.getCustodianFromEnvName(envName);
+    return mmiSDKFactory(QredoCustodianApi, authDetails, this.authType, apiUrl);
+  };
 
   txDeepLink = async (_address: string, _txId: string): Promise<Partial<ICustodianTransactionLink>> => {
     return null;

@@ -104,27 +104,26 @@ export class CustodyController {
     return custodyTypes;
   }
 
+  // TODO - Can probably be removed as that state is not being used anywhere
   setCustodianConnectRequest({
     token,
-    apiUrl,
-    custodianName,
     custodianType,
+    envName,
   }: {
     token: string;
-    apiUrl: string;
-    custodianName: string;
     custodianType: string;
+    envName: string;
   }): void {
     this.store.updateState({
-      custodianConnectRequest: { token, apiUrl, custodianName, custodianType },
+      custodianConnectRequest: { token, envName, custodianType },
     });
   }
 
+  // TODO - Can probably be removed as it's not being called anywhere
   getCustodianConnectRequest(): {
     token: string;
-    apiUrl: string;
-    custodianName: string;
     custodianType: string;
+    envName: string;
   } {
     const { custodianConnectRequest } = this.store.getState();
     this.store.updateState({
@@ -172,25 +171,19 @@ export class CustodyController {
 
   async handleMmiCheckIfTokenIsPresent({
     token,
-    apiUrl,
+    envName,
     keyring,
   }: {
     token: string;
-    apiUrl: string;
+    envName: string;
     keyring: any;
   }): Promise<boolean> {
-    // FIXME: we are not currently storing environment (aka custodian name) in the keyring accountsDetails
-    // We should be doing this and comparing environment instead of apiUrl
-    // But this would require migrations
-    // See MMI-2119
-
     const accounts = await keyring.getAccounts();
 
     for (const address of accounts) {
       const accountDetails = keyring.getAccountDetails(address);
 
-      // TODO: Change to rely on environment instead of apiUrl when MMI-2119 is done
-      if (accountDetails.apiUrl === apiUrl && accountDetails.authDetails.refreshToken === token) {
+      if (accountDetails.envName === envName && accountDetails.authDetails.refreshToken === token) {
         return true;
       }
     }

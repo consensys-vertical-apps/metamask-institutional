@@ -43,7 +43,6 @@ export class InstitutionalFeaturesController {
     labels: { key: string; value: any }[],
     feature: string,
     service: string,
-    apiUrl?: string,
     chainId?: string,
     environment?: string,
   ): void {
@@ -63,7 +62,6 @@ export class InstitutionalFeaturesController {
             labels,
             feature,
             service,
-            apiUrl,
             chainId,
             environment,
           },
@@ -81,7 +79,6 @@ export class InstitutionalFeaturesController {
       labels: { key: string; value: any }[];
       feature: string;
       service: string;
-      apiUrl?: string;
       chainId?: string;
       environment?: string;
     };
@@ -106,7 +103,6 @@ export class InstitutionalFeaturesController {
           req.params.labels,
           req.params.feature,
           req.params.service,
-          req.params.apiUrl,
           req.params.chainId,
           req.params.environment,
         );
@@ -118,13 +114,21 @@ export class InstitutionalFeaturesController {
     return true;
   }
 
-  removeAddTokenConnectRequest({ origin, apiUrl, token }: { origin: string; apiUrl: string; token: string }): void {
+  removeAddTokenConnectRequest({
+    origin,
+    environment,
+    token,
+  }: {
+    origin: string;
+    environment: string;
+    token: string;
+  }): void {
     const state = this.store.getState();
     this.store.updateState({
       institutionalFeatures: {
         ...state.institutionalFeatures,
         connectRequests: state.institutionalFeatures.connectRequests.filter(
-          request => !(request.origin === origin && request.token === token && request.apiUrl === apiUrl),
+          request => !(request.origin === origin && request.token === token && request.environment === environment),
         ),
       },
     });

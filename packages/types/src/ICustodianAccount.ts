@@ -12,10 +12,12 @@ interface ICustodianAccountProto {
   address: string;
   custodianDetails: any;
   labels: Label[];
+  /** @deprecated */
   apiUrl: string;
   chainId?: number;
   custodyType: string;
   meta?: { version: number };
+  envName: string;
 }
 
 // The type actually used in CustodyKeyring

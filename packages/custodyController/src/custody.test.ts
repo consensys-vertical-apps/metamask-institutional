@@ -98,11 +98,10 @@ describe("CustodyController", function () {
     await controller.setCustodianConnectRequest({
       token: "token",
       custodianType: "custodianType",
-      custodianName: "custodianName",
-      apiUrl: "https://api",
+      envName: "envName",
     });
     const state = controller.store.getState();
-    expect(state.custodianConnectRequest.custodianName).toBe("custodianName");
+    expect(state.custodianConnectRequest.envName).toBe("envName");
     expect(state.custodianConnectRequest.custodianType).toBe("custodianType");
   });
 
@@ -111,14 +110,12 @@ describe("CustodyController", function () {
     await controller.setCustodianConnectRequest({
       token: "token",
       custodianType: "custodianType",
-      custodianName: "custodianName",
-      apiUrl: "https://api",
+      envName: "envName",
     });
     const connectRequest = await controller.getCustodianConnectRequest();
     expect(connectRequest.custodianType).toBe("custodianType");
-    expect(connectRequest.custodianName).toBe("custodianName");
+    expect(connectRequest.envName).toBe("envName");
     expect(connectRequest.token).toBe("token");
-    expect(connectRequest.apiUrl).toBe("https://api");
     const state = controller.store.getState();
     expect(state.custodianConnectRequest).toStrictEqual({});
   });
@@ -128,14 +125,12 @@ describe("CustodyController", function () {
     await controller.setCustodianConnectRequest({
       token: "token",
       custodianType: "custodianType",
-      custodianName: "custodianname",
-      apiUrl: undefined,
+      envName: "envName",
     });
     const connectRequest = await controller.getCustodianConnectRequest();
     expect(connectRequest.custodianType).toBe("custodianType");
-    expect(connectRequest.custodianName).toBe("custodianname");
+    expect(connectRequest.envName).toBe("envName");
     expect(connectRequest.token).toBe("token");
-    expect(connectRequest.apiUrl).toBe(undefined);
     const state = controller.store.getState();
     expect(state.custodianConnectRequest).toStrictEqual({});
   });

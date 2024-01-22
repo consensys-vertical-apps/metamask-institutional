@@ -9,6 +9,7 @@ interface IMmiActionsFactoryParameters {
   callBackgroundMethod: any;
 }
 
+// TODO - This is not being used anywhere and it's duplicated in the extension
 export function mmiActionsFactory({
   log,
   showLoadingIndication,
@@ -62,17 +63,17 @@ export function mmiActionsFactory({
         forceUpdateMetamaskState,
         "Looking for your custodian account...",
       ),
-    getCustodianAccounts: (token, apiUrl, custody, getNonImportedAccounts) =>
+    getCustodianAccounts: (token, envName, custody, getNonImportedAccounts) =>
       createAsyncAction(
         "getCustodianAccounts",
-        [token, apiUrl, custody, getNonImportedAccounts],
+        [token, envName, custody, getNonImportedAccounts],
         forceUpdateMetamaskState,
         "Getting custodian accounts...",
       ),
-    getCustodianAccountsByAddress: (jwt, apiUrl, address, custody) =>
+    getCustodianAccountsByAddress: (jwt, envName, address, custody) =>
       createAsyncAction(
         "getCustodianAccountsByAddress",
-        [jwt, apiUrl, address, custody],
+        [jwt, envName, address, custody],
         forceUpdateMetamaskState,
         "Getting custodian accounts...",
       ),
@@ -86,16 +87,16 @@ export function mmiActionsFactory({
     getCustodianJWTList: custody => createAsyncAction("getCustodianJWTList", [custody], forceUpdateMetamaskState),
     setWaitForConfirmDeepLinkDialog: waitForConfirmDeepLinkDialog =>
       createAction("setWaitForConfirmDeepLinkDialog", waitForConfirmDeepLinkDialog),
-    removeAddTokenConnectRequest: ({ origin, apiUrl, token }) =>
-      createAction("removeAddTokenConnectRequest", { origin, apiUrl, token }),
-    setCustodianConnectRequest: ({ token, apiUrl, custodianType, custodianName }) =>
-      createAsyncAction("setCustodianConnectRequest", [{ token, apiUrl, custodianType, custodianName }]),
+    removeAddTokenConnectRequest: ({ origin, environment, token }) =>
+      createAction("removeAddTokenConnectRequest", { origin, environment, token }),
+    setCustodianConnectRequest: ({ token, envName, custodianType }) =>
+      createAsyncAction("setCustodianConnectRequest", [{ token, envName, custodianType }]),
     getCustodianConnectRequest: () => createAsyncAction("getCustodianConnectRequest", []),
     getMmiConfiguration: () => createAsyncAction("getMmiConfiguration", []),
     getAllCustodianAccountsWithToken: (custodyType, token) =>
       createAsyncAction("getAllCustodianAccountsWithToken", [custodyType, token]),
-    setCustodianNewRefreshToken: (address, oldAuthDetails, oldApiUrl, newAuthDetails, newApiUrl) =>
-      createAsyncAction("setCustodianNewRefreshToken", [address, oldAuthDetails, oldApiUrl, newAuthDetails, newApiUrl]),
+    setCustodianNewRefreshToken: ({ address, refreshToken }) =>
+      createAsyncAction("setCustodianNewRefreshToken", [{ address, refreshToken }]),
     showCustodyConfirmLink: ({ link, address, closeNotification, custodyId }) => {
       return async dispatch => {
         dispatch(

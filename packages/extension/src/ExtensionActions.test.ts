@@ -34,8 +34,8 @@ describe("ExtensionActions", () => {
       });
 
       const connectCustodyAddresses = mmiActions.connectCustodyAddresses({}, "0xAddress");
-      mmiActions.getCustodianAccounts("token", "apiUrl", "custody", "getNonImportedAccounts", {});
-      mmiActions.getCustodianAccountsByAddress("jwt", "apiUrl", "address", "custody", {}, 4);
+      mmiActions.getCustodianAccounts("token", "envName", "custody", "getNonImportedAccounts", {});
+      mmiActions.getCustodianAccountsByAddress("jwt", "envName", "address", "custody", {}, 4);
       mmiActions.getMmiConfiguration({
         portfolio: {
           enabled: true,
@@ -44,12 +44,7 @@ describe("ExtensionActions", () => {
         custodians: [],
       });
       mmiActions.getCustodianToken({});
-      mmiActions.getCustodianConnectRequest({
-        token: "token",
-        custodianType: "custodianType",
-        custodianName: "custodianname",
-        apiUrl: undefined,
-      });
+      mmiActions.getCustodianConnectRequest();
       mmiActions.getCustodianTransactionDeepLink("0xAddress", "txId");
       mmiActions.getCustodianConfirmDeepLink("txId");
       mmiActions.getCustodianSignMessageDeepLink("0xAddress", "custodyTxId");
@@ -60,14 +55,13 @@ describe("ExtensionActions", () => {
       });
       mmiActions.removeAddTokenConnectRequest({
         origin: "origin",
-        apiUrl: "https://jupiter-custody.codefi.network",
+        environment: "environment",
         token: "token",
       });
       mmiActions.setCustodianConnectRequest({
         token: "token",
-        apiUrl: "https://jupiter-custody.codefi.network",
+        custodianName: "custodianName",
         custodianType: "custodianType",
-        custodianName: "custodianname",
       });
       mmiActions.showCustodyConfirmLink({
         link: "link",
@@ -75,7 +69,7 @@ describe("ExtensionActions", () => {
         custodyId: "custodyIf",
       })(jest.fn());
       const setWaitForConfirmDeepLinkDialog = mmiActions.setWaitForConfirmDeepLinkDialog(true);
-      mmiActions.setCustodianNewRefreshToken("address", "oldAuthDetails", "oldApiUrl", "newAuthDetails", "newApiUrl");
+      mmiActions.setCustodianNewRefreshToken("address", "refreshToken");
       mmiActions.showInteractiveReplacementTokenModal()(jest.fn());
       connectCustodyAddresses(jest.fn());
       setWaitForConfirmDeepLinkDialog(jest.fn());
