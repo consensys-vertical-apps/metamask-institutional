@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.24](https://github.com/consensys-vertical-apps/metamask-institutional/compare/sdk-v0.1.23...sdk-v0.1.24) (2024-01-23)
+
+
+### Bug Fixes
+
+* only create an ITR event if the custodian returns a URL where the user can go ([#608](https://github.com/consensys-vertical-apps/metamask-institutional/issues/608)) ([dc17ed2](https://github.com/consensys-vertical-apps/metamask-institutional/commit/dc17ed2e60b8cf44d3b3d49e5ccac5c7e9e51959))
+
 ## [0.1.23](https://github.com/consensys-vertical-apps/metamask-institutional/compare/sdk-v0.1.22...sdk-v0.1.23) (2023-11-08)
 
 
