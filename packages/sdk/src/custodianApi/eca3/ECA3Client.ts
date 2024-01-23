@@ -88,8 +88,8 @@ export class ECA3Client extends EventEmitter {
        * it means the refresh token provided is no longer valid.
        * This could be due to the token being expired, revoked, or the token not being recognized by the server.
        */
-      if (response?.status === 401) {
-        const url = response?.url;
+      if (response?.status === 401 && response?.url) {
+        const url = response.url;
         const oldRefreshToken = this.refreshToken;
         const hashedToken = crypto
           .createHash("sha256")
