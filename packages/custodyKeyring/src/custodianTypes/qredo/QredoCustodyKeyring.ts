@@ -18,7 +18,7 @@ export class QredoCustodyKeyring extends CustodyKeyring {
   public readonly custodianType = {
     name: "Qredo",
     displayName: "Qredo",
-    apiUrl: "https://api.qredo.network",
+    apiUrl: "https://api-v2.qredo.network/api/v2",
     imgSrc: "https://dashboard.metamask-institutional.io/custodian-icons/qredo-icon.svg",
     icon: "https://dashboard.metamask-institutional.io/custodian-icons/qredo-icon.svg",
     website: "https://www.qredo.com",
@@ -45,8 +45,7 @@ export class QredoCustodyKeyring extends CustodyKeyring {
   public static addressType: AddressType.POLYCHAIN;
 
   sdkFactory = (authDetails: IRefreshTokenAuthDetails, envName: string): MMISDK => {
-    const { apiUrl } = this.getCustodianFromEnvName(envName);
-    return mmiSDKFactory(QredoCustodianApi, authDetails, this.authType, apiUrl);
+    return mmiSDKFactory(QredoCustodianApi, authDetails, this.authType, this.custodianType.apiUrl);
   };
 
   txDeepLink = async (_address: string, _txId: string): Promise<Partial<ICustodianTransactionLink>> => {

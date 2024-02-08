@@ -45,8 +45,7 @@ export class CactusCustodyKeyring extends CustodyKeyring {
   public static addressType: AddressType.POLYCHAIN;
 
   sdkFactory = (authDetails: IRefreshTokenAuthDetails, envName: string): MMISDK => {
-    const { apiUrl } = this.getCustodianFromEnvName(envName);
-    return mmiSDKFactory(CactusCustodianApi, authDetails, this.authType, apiUrl);
+    return mmiSDKFactory(CactusCustodianApi, authDetails, this.authType, this.custodianType.apiUrl);
   };
 
   txDeepLink = async (_custodianDetails, _txId): Promise<Partial<ICustodianTransactionLink>> => {
