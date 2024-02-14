@@ -12,7 +12,7 @@ export const CUSTODIAN_TYPES: { [key: string]: ICustodianType } = {
   QREDO: {
     name: "Qredo",
     displayName: "Qredo",
-    apiUrl: "https://api.qredo.network",
+    apiUrl: "https://api-v2.qredo.network/api/v2",
     imgSrc: "https://dashboard.metamask-institutional.io/custodian-icons/qredo-icon.svg",
     icon: "https://dashboard.metamask-institutional.io/custodian-icons/qredo-icon.svg",
     website: "https://www.qredo.com",
