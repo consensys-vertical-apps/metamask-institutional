@@ -21,7 +21,7 @@ module.exports = {
   // browser: false,
 
   // The directory where Jest should store its cached dependency information
-  // cacheDirectory: "/tmp/jest_rs",
+  cacheDirectory: "./node_modules/.jest-cache",
 
   // Automatically clear mock calls and instances between every test
   // clearMocks: false,
@@ -61,7 +61,7 @@ module.exports = {
   // ],
 
   // A list of reporter names that Jest uses when writing coverage reports
-  coverageReporters: ["json", "html", "json-summary", "lcov"],
+  coverageReporters: ["json", "html", "json-summary", "lcov", "junit"],
 
   // An object that configures minimum threshold enforcement for coverage results
   coverageThreshold: {
@@ -129,7 +129,7 @@ module.exports = {
     [
       "jest-junit",
       {
-        outputDirectory: "../../test-results/",
+        outputDirectory: ".",
         outputName: "junit.xml",
       },
     ],
