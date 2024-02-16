@@ -104,34 +104,6 @@ export class CustodyController {
     return custodyTypes;
   }
 
-  // TODO - Can probably be removed as that state is not being used anywhere
-  setCustodianConnectRequest({
-    token,
-    custodianType,
-    envName,
-  }: {
-    token: string;
-    custodianType: string;
-    envName: string;
-  }): void {
-    this.store.updateState({
-      custodianConnectRequest: { token, envName, custodianType },
-    });
-  }
-
-  // TODO - Can probably be removed as it's not being called anywhere
-  getCustodianConnectRequest(): {
-    token: string;
-    custodianType: string;
-    envName: string;
-  } {
-    const { custodianConnectRequest } = this.store.getState();
-    this.store.updateState({
-      custodianConnectRequest: {},
-    });
-    return custodianConnectRequest;
-  }
-
   handleMmiCustodianInUse(req: {
     origin: string;
     params: {

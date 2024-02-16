@@ -13,8 +13,6 @@ describe("ExtensionActions", () => {
         getCustodianToken: jest.fn(),
         getCustodianJWTList: jest.fn(),
         removeAddTokenConnectRequest: jest.fn(),
-        setCustodianConnectRequest: jest.fn(),
-        getCustodianConnectRequest: jest.fn(),
         getMmiConfiguration: jest.fn(),
         getAllCustodianAccountsWithToken: jest.fn(),
         showCustodyConfirmLink: jest.fn(),
@@ -44,7 +42,6 @@ describe("ExtensionActions", () => {
         custodians: [],
       });
       mmiActions.getCustodianToken({});
-      mmiActions.getCustodianConnectRequest();
       mmiActions.getCustodianTransactionDeepLink("0xAddress", "txId");
       mmiActions.getCustodianConfirmDeepLink("txId");
       mmiActions.getCustodianSignMessageDeepLink("0xAddress", "custodyTxId");
@@ -57,11 +54,6 @@ describe("ExtensionActions", () => {
         origin: "origin",
         environment: "environment",
         token: "token",
-      });
-      mmiActions.setCustodianConnectRequest({
-        token: "token",
-        custodianName: "custodianName",
-        custodianType: "custodianType",
       });
       mmiActions.showCustodyConfirmLink({
         link: "link",

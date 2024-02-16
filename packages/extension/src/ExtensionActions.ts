@@ -89,9 +89,6 @@ export function mmiActionsFactory({
       createAction("setWaitForConfirmDeepLinkDialog", waitForConfirmDeepLinkDialog),
     removeAddTokenConnectRequest: ({ origin, environment, token }) =>
       createAction("removeAddTokenConnectRequest", { origin, environment, token }),
-    setCustodianConnectRequest: ({ token, envName, custodianType }) =>
-      createAsyncAction("setCustodianConnectRequest", [{ token, envName, custodianType }]),
-    getCustodianConnectRequest: () => createAsyncAction("getCustodianConnectRequest", []),
     getMmiConfiguration: () => createAsyncAction("getMmiConfiguration", []),
     getAllCustodianAccountsWithToken: (custodyType, token) =>
       createAsyncAction("getAllCustodianAccountsWithToken", [custodyType, token]),
