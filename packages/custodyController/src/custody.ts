@@ -16,66 +16,86 @@ import { toChecksumHexAddress } from "./utils";
  */
 export class CustodyController {
   public store;
+
+  public captureException: (e: Error) => void;
   /**
    * Creates a new controller instance
    *
    * @param {CustodyOptions} [opts] - Controller configuration parameters
    */
   constructor(opts: any = {}) {
-    const { initState } = opts;
+    const { initState, captureException } = opts;
 
     this.store = new ObservableStore({
       custodyAccountDetails: {} as { [key: string]: CustodyAccountDetails },
       custodianConnectRequest: {},
       ...initState,
     });
+
+    this.captureException = captureException;
   }
 
   storeCustodyStatusMap(custody: string, custodyStatusMap: ITransactionStatusMap): void {
-    const { custodyStatusMaps } = this.store.getState();
+    try {
+      const { custodyStatusMaps } = this.store.getState();
 
-    this.store.updateState({
-      custodyStatusMaps: {
-        ...custodyStatusMaps,
-        [custody.toLowerCase()]: custodyStatusMap,
-      },
-    });
+      this.store.updateState({
+        custodyStatusMaps: {
+          ...custodyStatusMaps,
+          [custody.toLowerCase()]: custodyStatusMap,
+        },
+      });
+    } catch (error) {
+      this.captureException(error);
+    }
   }
 
   storeSupportedChainsForAddress(address: string, supportedChains: string[], custodianName: string): void {
-    const { custodianSupportedChains } = this.store.getState();
+    try {
+      const { custodianSupportedChains } = this.store.getState();
 
-    this.store.updateState({
-      custodianSupportedChains: {
-        ...custodianSupportedChains,
-        [address]: {
-          supportedChains: supportedChains.map(chain => Number(chain).toString()),
-          custodianName: custodianName,
+      this.store.updateState({
+        custodianSupportedChains: {
+          ...custodianSupportedChains,
+          [address]: {
+            supportedChains: supportedChains.map(chain => Number(chain).toString()),
+            custodianName: custodianName,
+          },
         },
-      },
-    });
+      });
+    } catch (error) {
+      this.captureException(error);
+    }
   }
 
   setAccountDetails(newAccountDetails: CustodyAccountDetails[]): void {
-    const { custodyAccountDetails } = this.store.getState();
-    const accountsToAdd = {};
-    newAccountDetails.forEach(item => {
-      if (!custodyAccountDetails[toChecksumHexAddress(item.address)]) {
-        accountsToAdd[toChecksumHexAddress(item.address)] = item;
-      }
-    });
-    this.store.updateState({
-      custodyAccountDetails: {
-        ...custodyAccountDetails,
-        ...accountsToAdd,
-      },
-    });
+    try {
+      const { custodyAccountDetails } = this.store.getState();
+      const accountsToAdd = {};
+      newAccountDetails.forEach(item => {
+        if (!custodyAccountDetails[toChecksumHexAddress(item.address)]) {
+          accountsToAdd[toChecksumHexAddress(item.address)] = item;
+        }
+      });
+      this.store.updateState({
+        custodyAccountDetails: {
+          ...custodyAccountDetails,
+          ...accountsToAdd,
+        },
+      });
+    } catch (error) {
+      this.captureException(error);
+    }
   }
 
   removeAccount(address: string): void {
-    const { custodyAccountDetails } = this.store.getState();
-    delete custodyAccountDetails[toChecksumHexAddress(address)];
-    this.store.updateState({ custodyAccountDetails });
+    try {
+      const { custodyAccountDetails } = this.store.getState();
+      delete custodyAccountDetails[toChecksumHexAddress(address)];
+      this.store.updateState({ custodyAccountDetails });
+    } catch (error) {
+      this.captureException(error);
+    }
   }
 
   setWaitForConfirmDeepLinkDialog(waitForConfirmDeepLinkDialog: boolean): void {
@@ -95,13 +115,17 @@ export class CustodyController {
   }
 
   getAllCustodyTypes(): Set<string | unknown> {
-    const custodyTypes = new Set();
-    const { custodyAccountDetails } = this.store.getState();
+    try {
+      const custodyTypes = new Set();
+      const { custodyAccountDetails } = this.store.getState();
 
-    for (const address of Object.keys(custodyAccountDetails)) {
-      custodyTypes.add(custodyAccountDetails[address]?.custodyType);
+      for (const address of Object.keys(custodyAccountDetails)) {
+        custodyTypes.add(custodyAccountDetails[address]?.custodyType);
+      }
+      return custodyTypes;
+    } catch (error) {
+      this.captureException(error);
     }
-    return custodyTypes;
   }
 
   // TODO - Can probably be removed as that state is not being used anywhere
@@ -138,35 +162,40 @@ export class CustodyController {
       custodianName: string;
     };
   }): boolean {
-    if (!req.params.custodianName) {
-      throw new Error("Missing parameter: custodianName");
-    }
+    try {
+      if (!req.params.custodianName) {
+        throw new Error("Missing parameter: custodianName");
+      }
 
-    const custodian = CUSTODIAN_TYPES[req.params.custodianName.toUpperCase()];
+      const custodian = CUSTODIAN_TYPES[req.params.custodianName.toUpperCase()];
 
-    let allowed = false;
+      let allowed = false;
 
-    if (custodian) {
-      for (const origin of custodian.origins) {
-        if (origin.test(req.origin)) {
-          allowed = true;
+      if (custodian) {
+        for (const origin of custodian.origins) {
+          if (origin.test(req.origin)) {
+            allowed = true;
+          }
         }
       }
-    }
 
-    if (!allowed) {
-      throw new Error("Forbidden");
-    }
-
-    const { custodyAccountDetails } = this.store.getState();
-
-    for (const address of Object.keys(custodyAccountDetails)) {
-      if (custodyAccountDetails[address]?.custodyType === `Custody - ${custodian.name}`) {
-        return true;
+      if (!allowed) {
+        throw new Error("Forbidden");
       }
-    }
 
-    return false;
+      const { custodyAccountDetails } = this.store.getState();
+
+      for (const address of Object.keys(custodyAccountDetails)) {
+        if (custodyAccountDetails[address]?.custodyType === `Custody - ${custodian.name}`) {
+          return true;
+        }
+      }
+
+      return false;
+    } catch (error) {
+      this.captureException(error);
+      throw error;
+    }
   }
 
   async handleMmiCheckIfTokenIsPresent({
@@ -178,16 +207,21 @@ export class CustodyController {
     envName: string;
     keyring: any;
   }): Promise<boolean> {
-    const accounts = await keyring.getAccounts();
+    try {
+      const accounts = await keyring.getAccounts();
 
-    for (const address of accounts) {
-      const accountDetails = keyring.getAccountDetails(address);
+      for (const address of accounts) {
+        const accountDetails = keyring.getAccountDetails(address);
 
-      if (accountDetails.envName === envName && accountDetails.authDetails.refreshToken === token) {
-        return true;
+        if (accountDetails.envName === envName && accountDetails.authDetails.refreshToken === token) {
+          return true;
+        }
       }
-    }
 
-    return false;
+      return false;
+    } catch (error) {
+      this.captureException(error);
+      return false;
+    }
   }
 }
