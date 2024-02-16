@@ -10,7 +10,7 @@ describe("CustodyController", function () {
     waitForConfirmDeepLinkDialog: false,
   };
 
-  const createController = async initState => new CustodyController({ initState });
+  const createController = async initState => new CustodyController({ initState, captureException: jest.fn() });
 
   it("should create custodyController", async function () {
     const controller = await createController(INIT_STATE);
