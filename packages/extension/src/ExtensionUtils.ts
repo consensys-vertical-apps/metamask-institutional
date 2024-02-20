@@ -105,6 +105,7 @@ interface CustodianEventHandlerFactoryParameters {
   txStateManager: any;
   custodyController: CustodyController;
   trackTransactionEvent: (txMeta: MetamaskTransaction, string) => void;
+  captureException: (e: Error) => void;
 }
 
 // Process transaction/signature update events from MMI API
@@ -118,6 +119,7 @@ export function custodianEventHandlerFactory({
   txStateManager,
   custodyController,
   trackTransactionEvent,
+  captureException,
 }: CustodianEventHandlerFactoryParameters): (txData: ICustodianUpdate) => void {
   return async (txData: ICustodianUpdate) => {
     let address;
@@ -188,6 +190,7 @@ export function custodianEventHandlerFactory({
       } catch (error) {
         // Sometimes we can't track things because they happen while the extension is locked
         log.error(error);
+        captureException(error);
       }
     }
 

@@ -58,6 +58,7 @@ describe("ExtensionUtils", () => {
     } as unknown as MetaMaskTransactionStatuses,
     custodyController,
     trackTransactionEvent: jest.fn(),
+    captureException: jest.fn(),
   };
 
   beforeEach(() => {
@@ -286,6 +287,7 @@ describe("ExtensionUtils", () => {
         } as unknown as MetaMaskTransactionStatuses,
         custodyController,
         trackTransactionEvent: jest.fn(),
+        captureException: jest.fn(),
       };
       await custodianEventHandlerFactory(params)({
         transaction: {
@@ -364,6 +366,7 @@ describe("ExtensionUtils", () => {
         } as unknown as MetaMaskTransactionStatuses,
         custodyController,
         trackTransactionEvent: jest.fn(),
+        captureException: jest.fn(),
       };
       await custodianEventHandlerFactory(params)({
         transaction: {
@@ -422,6 +425,7 @@ describe("ExtensionUtils", () => {
         } as unknown as MetaMaskTransactionStatuses,
         custodyController,
         trackTransactionEvent: jest.fn(),
+        captureException: jest.fn(),
       };
       await custodianEventHandlerFactory(params)({
         transaction: {
@@ -482,6 +486,7 @@ describe("ExtensionUtils", () => {
         } as unknown as MetaMaskTransactionStatuses,
         custodyController,
         trackTransactionEvent: jest.fn(),
+        captureException: jest.fn(),
       };
       await custodianEventHandlerFactory(params)({
         transaction: {
