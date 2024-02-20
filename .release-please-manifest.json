@@ -2,7 +2,7 @@
   "packages/institutionalFeatures": "1.2.13",
   "packages/simpleCache": "1.1.0",
   "packages/types": "1.0.4",
-  "packages/custodyController": "0.2.21",
+  "packages/custodyController": "0.2.22",
   "packages/custodyKeyring": "1.0.10",
   "packages/sdk": "0.1.24",
   "packages/transactionUpdate": "0.1.36",
@@ -10,5 +10,5 @@
   "packages/configurationClient": "2.0.1",
   "packages/portfolioDashboard": "1.4.0",
   "packages/rpcAllowlist": "1.0.0",
-  "packages/extension": "0.3.15"
+  "packages/extension": "0.3.16"
 }

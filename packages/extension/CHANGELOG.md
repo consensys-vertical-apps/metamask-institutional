@@ -115,6 +115,20 @@
     * @metamask-institutional/custody-keyring bumped from ^1.0.9 to ^1.0.10
     * @metamask-institutional/transaction-update bumped from ^0.1.35 to ^0.1.36
 
+## [0.3.16](https://github.com/consensys-vertical-apps/metamask-institutional/compare/extension-v0.3.15...extension-v0.3.16) (2024-02-20)
+
+
+### Bug Fixes
+
+* **fix version:** fixes custody-keyring and extension package versions ([78b8039](https://github.com/consensys-vertical-apps/metamask-institutional/commit/78b80399444469dd669d7cda403ca73452bb78f2))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @metamask-institutional/custody-controller bumped from ^0.2.21 to ^0.2.22
+
 ## [0.3.12](https://github.com/consensys-vertical-apps/metamask-institutional/compare/extension-v0.3.11...extension-v0.3.12) (2023-11-22)
 
 

@@ -127,6 +127,13 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
   * dependencies
     * @metamask-institutional/custody-keyring bumped from ^1.0.9 to ^1.0.10
 
+## [0.2.22](https://github.com/consensys-vertical-apps/metamask-institutional/compare/custody-controller-v0.2.21...custody-controller-v0.2.22) (2024-02-20)
+
+
+### Bug Fixes
+
+* **fix version:** fixes custody-keyring and extension package versions ([78b8039](https://github.com/consensys-vertical-apps/metamask-institutional/commit/78b80399444469dd669d7cda403ca73452bb78f2))
+
 ## [0.2.6](https://github.com/consensys-vertical-apps/metamask-institutional/compare/custody-controller-v0.2.5...custody-controller-v0.2.6) (2023-05-17)
 
 
