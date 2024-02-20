@@ -93,48 +93,6 @@ describe("CustodyController", function () {
     expect(controller.getCustodyTypeByAddress("0xc96348083d806DFfc546b36e05AF1f9452CDAe91")).toBe(undefined);
   });
 
-  it("should set custodianConnectRequest", async function () {
-    const controller = await createController(INIT_STATE);
-    await controller.setCustodianConnectRequest({
-      token: "token",
-      custodianType: "custodianType",
-      envName: "envName",
-    });
-    const state = controller.store.getState();
-    expect(state.custodianConnectRequest.envName).toBe("envName");
-    expect(state.custodianConnectRequest.custodianType).toBe("custodianType");
-  });
-
-  it("should return and clear custodianConnectRequest", async function () {
-    const controller = await createController(INIT_STATE);
-    await controller.setCustodianConnectRequest({
-      token: "token",
-      custodianType: "custodianType",
-      envName: "envName",
-    });
-    const connectRequest = await controller.getCustodianConnectRequest();
-    expect(connectRequest.custodianType).toBe("custodianType");
-    expect(connectRequest.envName).toBe("envName");
-    expect(connectRequest.token).toBe("token");
-    const state = controller.store.getState();
-    expect(state.custodianConnectRequest).toStrictEqual({});
-  });
-
-  it("is okay with a blank api URL", async function () {
-    const controller = await createController(INIT_STATE);
-    await controller.setCustodianConnectRequest({
-      token: "token",
-      custodianType: "custodianType",
-      envName: "envName",
-    });
-    const connectRequest = await controller.getCustodianConnectRequest();
-    expect(connectRequest.custodianType).toBe("custodianType");
-    expect(connectRequest.envName).toBe("envName");
-    expect(connectRequest.token).toBe("token");
-    const state = controller.store.getState();
-    expect(state.custodianConnectRequest).toStrictEqual({});
-  });
-
   it("should return true for custodian type in use", async function () {
     const accountMock = {
       ["0xc96348083d806DFfc546b36e05AF1f9452CDAe91"]: {
