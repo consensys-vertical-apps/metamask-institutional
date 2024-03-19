@@ -37,6 +37,7 @@
     "@metamask-institutional/transaction-update": "^0.1.36",
     "@metamask-institutional/types": "^1.0.4",
     "jest-create-mock-instance": "^2.0.0",
-    "jest-fetch-mock": "3.0.3"
+    "jest-fetch-mock": "3.0.3",
+    "lodash.clonedeep": "^4.5.0"
   }
 }

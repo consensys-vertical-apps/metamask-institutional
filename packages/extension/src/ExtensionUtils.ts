@@ -3,6 +3,7 @@ import { CustodyKeyring } from "@metamask-institutional/custody-keyring";
 import { mapTransactionStatus } from "@metamask-institutional/sdk";
 import { TransactionUpdateController } from "@metamask-institutional/transaction-update";
 import { ICustodianUpdate, MetamaskTransaction, MetaMaskTransactionStatuses } from "@metamask-institutional/types";
+import cloneDeep from 'lodash.clonedeep';
 
 // This is to emulate the events in the TransactionController
 // which are used to report transaction lifecycle events to metametrics
@@ -271,37 +272,39 @@ export async function handleTxStatusUpdate(
   ) as MetamaskTransaction;
 
   if (txMeta) {
-    txMeta.custodyStatus = txData.transaction.status.displayText.toLowerCase();
-    txMeta.custodyStatusDisplayText = txData.transaction?.status.displayText;
+    const mutableTxMeta = cloneDeep(txMeta);
 
-    if (txData.transaction.hash && (!txMeta.hash || txMeta.hash === "0x")) {
-      setTxHash(txMeta.id, txData.transaction.hash);
+    mutableTxMeta.custodyStatus = txData.transaction.status.displayText.toLowerCase();
+    mutableTxMeta.custodyStatusDisplayText = txData.transaction?.status.displayText;
+
+    if (txData.transaction.hash && (!mutableTxMeta.hash || mutableTxMeta.hash === "0x")) {
+      setTxHash(mutableTxMeta.id, txData.transaction.hash);
     }
 
     // Transaction is signed, or in many intermediate post signing states
     if (
       txData.transaction.status.signed &&
       !txData.transaction.status.finished &&
-      txMeta.status !== MetaMaskTransactionStatuses.SIGNED &&
-      txMeta.status !== MetaMaskTransactionStatuses.SUBMITTED &&
-      txMeta.status !== MetaMaskTransactionStatuses.CONFIRMED &&
-      txMeta.status !== MetaMaskTransactionStatuses.FAILED
+      mutableTxMeta.status !== MetaMaskTransactionStatuses.SIGNED &&
+      mutableTxMeta.status !== MetaMaskTransactionStatuses.SUBMITTED &&
+      mutableTxMeta.status !== MetaMaskTransactionStatuses.CONFIRMED &&
+      mutableTxMeta.status !== MetaMaskTransactionStatuses.FAILED
     ) {
-      txStateManager.setTxStatusSigned(txMeta.id);
+      txStateManager.setTxStatusSigned(mutableTxMeta.id);
     }
 
     if (
-      !txMeta.txParams.nonce ||
-      (txData.transaction.nonce && Number(txMeta.txParams.nonce) !== Number(txData.transaction.nonce))
+      !mutableTxMeta.txParams.nonce ||
+      (txData.transaction.nonce && Number(mutableTxMeta.txParams.nonce) !== Number(txData.transaction.nonce))
     ) {
       const nonce =
         "0x" + (parseInt(txData.transaction.nonce) || (await getPendingNonce(txData.transaction.from))).toString(16);
 
       const newTxParams = await {
-        ...txMeta.txParams,
+        ...mutableTxMeta.txParams,
         nonce,
       };
-      txMeta.txParams = newTxParams;
+      mutableTxMeta.txParams = newTxParams;
     }
 
     // Metamask resolves the promise in transaction controller when the TX is submitted
@@ -324,27 +327,27 @@ export async function handleTxStatusUpdate(
     const looksLikeFinalUpdate =
       txData.transaction.status.finished &&
       txData.transaction.status.success &&
-      txMeta.status !== MetaMaskTransactionStatuses.CONFIRMED;
+      mutableTxMeta.status !== MetaMaskTransactionStatuses.CONFIRMED;
 
     /* Sometimes we get updates AFTER a TX is confirmed, so we have to be careful not to "revert this" but otherwise we should set submitted when its submitted */
 
     const looksLikeRealSubmission =
-      txData.transaction.status.submitted && txMeta.status !== MetaMaskTransactionStatuses.CONFIRMED;
+      txData.transaction.status.submitted && mutableTxMeta.status !== MetaMaskTransactionStatuses.CONFIRMED;
 
     if (looksLikeFinalUpdate || looksLikeRealSubmission) {
-      txStateManager.setTxStatusSubmitted(txMeta.id);
+      txStateManager.setTxStatusSubmitted(mutableTxMeta.id);
     } else if (txData.transaction.status.finished && !txData.transaction.status.success) {
-      let message = `Transaction status from custodian: ${txMeta.custodyStatusDisplayText}`; // Clever English language hack IMO
+      let message = `Transaction status from custodian: ${mutableTxMeta.custodyStatusDisplayText}`; // Clever English language hack IMO
 
       if (txData.transaction.status.reason) {
         message = txData.transaction.status.reason;
       }
-      txStateManager.setTxStatusFailed(txMeta.id, message);
+      txStateManager.setTxStatusFailed(mutableTxMeta.id, message);
     }
 
-    txStateManager.updateTransaction(txMeta, "Updated custody transaction status.");
+    txStateManager.updateTransaction(mutableTxMeta, "Updated custody transaction status.");
 
-    return txMeta;
+    return mutableTxMeta;
   }
   return null;
 }
