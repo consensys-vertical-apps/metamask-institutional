@@ -115,6 +115,13 @@
     * @metamask-institutional/custody-keyring bumped from ^1.0.9 to ^1.0.10
     * @metamask-institutional/transaction-update bumped from ^0.1.35 to ^0.1.36
 
+## [0.3.17](https://github.com/consensys-vertical-apps/metamask-institutional/compare/extension-v0.3.16...extension-v0.3.17) (2024-03-19)
+
+
+### Bug Fixes
+
+* **extensionutils:** we have to clonedeep txmeta ([#665](https://github.com/consensys-vertical-apps/metamask-institutional/issues/665)) ([8b3f3f9](https://github.com/consensys-vertical-apps/metamask-institutional/commit/8b3f3f921d139943ed4d38afdb46d8be4305f6b4))
+
 ## [0.3.16](https://github.com/consensys-vertical-apps/metamask-institutional/compare/extension-v0.3.15...extension-v0.3.16) (2024-02-20)
 
 
