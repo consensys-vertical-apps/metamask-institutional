@@ -82,6 +82,10 @@ export class TransactionUpdateController extends EventEmitter {
     this.emit("custodian_event", data);
   }
 
+  handleHandShakeEvent(data: Partial<ICustodianUpdate>): void {
+    this.emit("handshake", data);
+  }
+
   onWebsocketClose() {
     this.isWSConnectionOpen = false;
   }
@@ -172,6 +176,7 @@ export class TransactionUpdateController extends EventEmitter {
 
         this.websocketClient = new WebsocketClientController({
           handleUpdateEvent: this.handleWebsocketEvent.bind(this),
+          handleHandShakeEvent: this.handleHandShakeEvent.bind(this),
           onFailure: this.startPolling.bind(this),
           mmiConfigurationController: this.mmiConfigurationController,
           captureException: this.captureException,
