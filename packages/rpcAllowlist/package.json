@@ -1,6 +1,6 @@
 {
   "name": "@metamask-institutional/rpc-allowlist",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Allowlist for custom JSON-RPC commands",
   "author": "Antonio Regadas <apregadas@gmail.com>",
   "homepage": "https://github.com/consensys-vertical-apps/metamask-institutional#readme",
