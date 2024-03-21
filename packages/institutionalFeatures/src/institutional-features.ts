@@ -25,6 +25,7 @@ export class InstitutionalFeaturesController {
       : {
           institutionalFeatures: {
             connectRequests: [],
+            channelId: null,
           },
         };
 
@@ -32,6 +33,7 @@ export class InstitutionalFeaturesController {
       institutionalFeatures: {
         ...initState.institutionalFeatures,
         connectRequests: [...(initState.institutionalFeatures.connectRequests || [])],
+        channelId: null,
       },
     });
   }
@@ -130,6 +132,16 @@ export class InstitutionalFeaturesController {
         connectRequests: state.institutionalFeatures.connectRequests.filter(
           request => !(request.origin === origin && request.token === token && request.environment === environment),
         ),
+      },
+    });
+  }
+
+  setChannelId(channelId: string): void {
+    const state = this.store.getState();
+    this.store.updateState({
+      institutionalFeatures: {
+        ...state.institutionalFeatures,
+        channelId,
       },
     });
   }
