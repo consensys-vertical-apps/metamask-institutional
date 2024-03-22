@@ -8,6 +8,8 @@ interface IEnvironment {
   apiVersion: string;
   iconUrl: string;
   isNoteToTraderSupported: boolean;
+  isManualTokenInputSupported: boolean;
+  isQRCodeSupported: boolean;
   custodianPublishesTransaction: boolean;
 }
 

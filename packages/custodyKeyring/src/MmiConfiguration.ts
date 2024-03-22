@@ -82,6 +82,8 @@ export class MmiConfigurationController {
           production: custodian.production,
           refreshTokenUrl: null,
           isNoteToTraderSupported: false,
+          isQRCodeSupported: false,
+          isManualTokenInputSupported: false,
           custodianPublishesTransaction: custodian.custodianPublishesTransaction,
           version: 1,
         })),
@@ -118,6 +120,8 @@ export class MmiConfigurationController {
           refreshTokenUrl: environment.refreshTokenUrl,
           websocketApiUrl: environment.websocketApiUrl,
           isNoteToTraderSupported: environment.isNoteToTraderSupported,
+          isQRCodeSupported: environment.isQRCodeSupported,
+          isManualTokenInputSupported: environment.isManualTokenInputSupported,
           custodianPublishesTransaction: environment.custodianPublishesTransaction,
           version: 2,
         });

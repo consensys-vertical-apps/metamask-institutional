@@ -12,6 +12,8 @@ export interface ICustodianEnvironment {
   refreshTokenUrl: string;
   websocketApiUrl: string;
   isNoteToTraderSupported: boolean;
+  isQRCodeSupported: boolean;
+  isManualTokenInputSupported: boolean;
   custodianPublishesTransaction: boolean;
   version: number;
 }
