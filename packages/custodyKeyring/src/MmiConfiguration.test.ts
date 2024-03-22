@@ -142,6 +142,8 @@ describe("MmiConfigurationController", () => {
             refreshTokenUrl: null,
             websocketApiUrl: null,
             isNoteToTraderSupported: false,
+            isQRCodeSupported: false,
+            isManualTokenInputSupported: false,
             version: 1,
           })),
         {
