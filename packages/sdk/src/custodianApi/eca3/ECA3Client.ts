@@ -83,13 +83,15 @@ export class ECA3Client extends EventEmitter {
         credentials: "same-origin", // this is the default value for "withCredentials" in the Fetch API
       });
 
+      const responseJson = await response.json();
+
       /**
        * If the server responds with a 401 status code when trying to get the access token,
        * it means the refresh token provided is no longer valid.
        * This could be due to the token being expired, revoked, or the token not being recognized by the server.
        */
-      if (response?.status === 401 && response?.url) {
-        const url = response.url;
+      if (response?.status === 401 && responseJson?.url) {
+        const url = responseJson?.url;
         const oldRefreshToken = this.refreshToken;
         const hashedToken = crypto
           .createHash("sha256")
@@ -105,11 +107,8 @@ export class ECA3Client extends EventEmitter {
       }
 
       if (!response.ok) {
-        const errorResponse = await response.json();
-        throw new Error(`Request failed with status ${response.status}: ${errorResponse.message}`);
+        throw new Error(`Request failed with status ${response.status}: ${responseJson.message}`);
       }
-
-      const responseJson = await response.json();
 
       this.cacheAge = responseJson.expires_in;
       this.cache.setCache<string>("accessToken", responseJson.access_token);
