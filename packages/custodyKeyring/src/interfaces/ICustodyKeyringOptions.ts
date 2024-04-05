@@ -7,4 +7,5 @@ export interface ICustodyKeyringOptions {
   selectedAddresses?: ICustodianAccount[];
   accountsDetails?: ICustodianAccount[];
   mmiConfigurationController?: MmiConfigurationController;
+  captureException?: (error: Error) => void;
 }
