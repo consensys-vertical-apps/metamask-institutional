@@ -58,6 +58,8 @@ export abstract class CustodyKeyring extends EventEmitter {
   public trackingActiveByCredentials = {};
 
   public mmiConfigurationController: MmiConfigurationController;
+  public captureException: (error: Error) => void;
+
 
   // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
   abstract txDeepLink(custodianDetails: any, txId: string): Promise<Partial<ICustodianTransactionLink> | null>;
@@ -74,6 +76,7 @@ export abstract class CustodyKeyring extends EventEmitter {
     this.sdkList = [];
     this.meta = {};
     this.mmiConfigurationController = opts.mmiConfigurationController;
+    this.captureException = opts.captureException;
   }
 
   getUniqueAccountDetails(account: ICustodianAccount<AuthDetails>): string {
@@ -99,50 +102,55 @@ export abstract class CustodyKeyring extends EventEmitter {
     } = {},
   ): Promise<void> {
     return new Promise<void>(resolve => {
-      const migrator = new Migrator({ migrations });
-      const migratedOpts = migrator.migrateData({
-        custodianType: this.custodianType,
-        type: this.type,
-        authType: this.authType,
-        ...opts,
-      });
-      this.accounts = migratedOpts.accounts || [];
-      this.selectedAddresses = migratedOpts.selectedAddresses || [];
-      this.accountsDetails = migratedOpts.accountsDetails || [];
-      this.meta = migratedOpts.meta || {};
-
-      // BEGIN UPDATE ACCOUNTS WITH ENV NAME
-      const custodians = this.getCustodians();
-      this.accountsDetails
-        .filter(account => !account.envName)
-        .forEach(account => {
-          account.envName = custodians.find(c => c.apiUrl === account.apiUrl)?.envName;
+      try {
+        const migrator = new Migrator({ migrations });
+        const migratedOpts = migrator.migrateData({
+          custodianType: this.custodianType,
+          type: this.type,
+          authType: this.authType,
+          ...opts,
         });
+        this.accounts = migratedOpts.accounts || [];
+        this.selectedAddresses = migratedOpts.selectedAddresses || [];
+        this.accountsDetails = migratedOpts.accountsDetails || [];
+        this.meta = migratedOpts.meta || {};
 
-      this.selectedAddresses
-        .filter(account => !account.envName)
-        .forEach(account => {
-          account.envName = custodians.find(c => c.apiUrl === account.apiUrl)?.envName;
-        });
-      // ENV UPDATE ACCOUNTS WITH ENV NAME
+        // BEGIN UPDATE ACCOUNTS WITH ENV NAME
+        const custodians = this.getCustodians();
+        this.accountsDetails
+          .filter(account => !account.envName)
+          .forEach(account => {
+            account.envName = custodians.find(c => c.apiUrl === account.apiUrl)?.envName;
+          });
 
-      const uniqueAuthDetails: UniqueAccountDetails[] = this.accountsDetails.reduce(
-        (result: UniqueAccountDetails[], details) => {
-          const hash = this.getUniqueAccountDetails(details);
-          if (!result.find(account => hash === account.hash)) {
-            result.push({
-              hash,
-              authDetails: details.authDetails,
-              envName: details.envName,
-            });
-          }
-          return result;
-        },
-        [],
-      );
-      uniqueAuthDetails.forEach(item => this.getSDK(item.authDetails, item.envName));
+        this.selectedAddresses
+          .filter(account => !account.envName)
+          .forEach(account => {
+            account.envName = custodians.find(c => c.apiUrl === account.apiUrl)?.envName;
+          });
+        // ENV UPDATE ACCOUNTS WITH ENV NAME
 
-      resolve();
+        const uniqueAuthDetails: UniqueAccountDetails[] = this.accountsDetails.reduce(
+          (result: UniqueAccountDetails[], details) => {
+            const hash = this.getUniqueAccountDetails(details);
+            if (!result.find(account => hash === account.hash)) {
+              result.push({
+                hash,
+                authDetails: details.authDetails,
+                envName: details.envName,
+              });
+            }
+            return result;
+          },
+          [],
+        );
+        uniqueAuthDetails.forEach(item => this.getSDK(item.authDetails, item.envName));
+
+        resolve();
+      } catch (error) {
+        console.error("Error during deserialize method execution:", error);
+        this.captureException(error);
+      }
     });
   }
 
