@@ -1,6 +1,6 @@
 {
   "name": "@metamask-institutional/institutional-features",
-  "version": "1.2.13",
+  "version": "1.2.14",
   "description": "This package will export connectRequest state used across the old @codefi/mmi-sdk library",
   "author": "Albert Olive <albertolivecorbella@gmail.com>",
   "homepage": "https://github.com/consensys-vertical-apps/metamask-institutional#readme",
@@ -29,7 +29,7 @@
   },
   "gitHead": "62ed7639b9145658a4fa1273e35e99d300acdc99",
   "dependencies": {
-    "@metamask-institutional/custody-keyring": "^1.0.10",
+    "@metamask-institutional/custody-keyring": "^1.0.11",
     "@metamask/obs-store": "^8.0.0"
   },
   "devDependencies": {

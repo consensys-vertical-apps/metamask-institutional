@@ -115,6 +115,22 @@
     * @metamask-institutional/custody-keyring bumped from ^1.0.9 to ^1.0.10
     * @metamask-institutional/transaction-update bumped from ^0.1.35 to ^0.1.36
 
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @metamask-institutional/custody-controller bumped from ^0.2.22 to ^0.2.23
+    * @metamask-institutional/custody-keyring bumped from ^1.0.10 to ^1.0.11
+    * @metamask-institutional/sdk bumped from ^0.1.24 to ^0.1.25
+    * @metamask-institutional/transaction-update bumped from ^0.1.36 to ^0.1.37
+
+## [0.3.18](https://github.com/consensys-vertical-apps/metamask-institutional/compare/extension-v0.3.17...extension-v0.3.18) (2024-03-20)
+
+
+### Bug Fixes
+
+* **txstatus:** adds missing logic to take care of the hash and update the txMeta object ([#671](https://github.com/consensys-vertical-apps/metamask-institutional/issues/671)) ([d3776ca](https://github.com/consensys-vertical-apps/metamask-institutional/commit/d3776cab868e893b748a50855305dfd2aa090b53))
+
 ## [0.3.17](https://github.com/consensys-vertical-apps/metamask-institutional/compare/extension-v0.3.16...extension-v0.3.17) (2024-03-19)
 
 

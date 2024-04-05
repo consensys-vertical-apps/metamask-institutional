@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.25](https://github.com/consensys-vertical-apps/metamask-institutional/compare/sdk-v0.1.24...sdk-v0.1.25) (2024-04-03)
+
+
+### Bug Fixes
+
+* **refresh-token:** logic around refresh token ([#682](https://github.com/consensys-vertical-apps/metamask-institutional/issues/682)) ([14b771c](https://github.com/consensys-vertical-apps/metamask-institutional/commit/14b771c1f5d1a613ead9fd568cae8e0cba8b9464))
+
 ## [0.1.24](https://github.com/consensys-vertical-apps/metamask-institutional/compare/sdk-v0.1.23...sdk-v0.1.24) (2024-01-23)
 
 

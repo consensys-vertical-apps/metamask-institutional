@@ -272,6 +272,7 @@ export async function handleTxStatusUpdate(
   ) as MetamaskTransaction;
 
   if (txMeta) {
+    // We will need to keep this object up to date with what we are setting in the transaction-controller
     const mutableTxMeta = cloneDeep(txMeta);
 
     mutableTxMeta.custodyStatus = txData.transaction.status.displayText.toLowerCase();
@@ -279,7 +280,12 @@ export async function handleTxStatusUpdate(
 
     if (txData.transaction.hash && (!mutableTxMeta.hash || mutableTxMeta.hash === "0x")) {
       setTxHash(mutableTxMeta.id, txData.transaction.hash);
+      // Also update the hash of our local object
+      mutableTxMeta.hash = txData.transaction.hash;
     }
+
+    // Update the txMeta at transaction-controller after setting the hash and custodyStatus
+    txStateManager.updateTransaction(mutableTxMeta, "Updated custody transaction status.");
 
     // Transaction is signed, or in many intermediate post signing states
     if (
@@ -290,7 +296,9 @@ export async function handleTxStatusUpdate(
       mutableTxMeta.status !== MetaMaskTransactionStatuses.CONFIRMED &&
       mutableTxMeta.status !== MetaMaskTransactionStatuses.FAILED
     ) {
-      txStateManager.setTxStatusSigned(mutableTxMeta.id);
+      txStateManager.setTxStatusSigned(mutableTxMeta.id);    
+      // Also update the status of our local object    
+      mutableTxMeta.status = mutableTxMeta.custodyStatus;
     }
 
     if (
@@ -336,6 +344,13 @@ export async function handleTxStatusUpdate(
 
     if (looksLikeFinalUpdate || looksLikeRealSubmission) {
       txStateManager.setTxStatusSubmitted(mutableTxMeta.id);
+
+      // We only want to update the MM status until the "submitted" state, meaning
+      // we don't want to set it for the "Mined" that we get, because MM doesn't have it.
+      if (mutableTxMeta.custodyStatus === MetaMaskTransactionStatuses.SUBMITTED) {
+        // Updates the status of our local object    
+        mutableTxMeta.status = mutableTxMeta.custodyStatus;
+      }
     } else if (txData.transaction.status.finished && !txData.transaction.status.success) {
       let message = `Transaction status from custodian: ${mutableTxMeta.custodyStatusDisplayText}`; // Clever English language hack IMO
 
@@ -343,6 +358,8 @@ export async function handleTxStatusUpdate(
         message = txData.transaction.status.reason;
       }
       txStateManager.setTxStatusFailed(mutableTxMeta.id, message);
+      // Updates the status of our local object
+      mutableTxMeta.status = mutableTxMeta.custodyStatus;
     }
 
     txStateManager.updateTransaction(mutableTxMeta, "Updated custody transaction status.");
