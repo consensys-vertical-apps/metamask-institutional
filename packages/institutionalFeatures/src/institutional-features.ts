@@ -145,4 +145,14 @@ export class InstitutionalFeaturesController {
       },
     });
   }
+
+  setConnectionRequest(payload: any): void {
+    const state = this.store.getState();
+    this.store.updateState({
+      institutionalFeatures: {
+        ...state.institutionalFeatures,
+        connectionRequest: payload,
+      },
+    });
+  }
 }
