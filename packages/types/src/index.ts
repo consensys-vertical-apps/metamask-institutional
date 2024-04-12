@@ -26,3 +26,4 @@ export { MetaMaskTransactionStatuses } from "./enum/MetaMaskTransactionStatuses"
 export { AuthDetails } from "./types/AuthDetails";
 export { MetamaskTransaction } from "./types/MetamaskTransaction";
 export { ConnectionRequest } from "./types/ConnectionRequest";
+export { ConnectRequest } from "./types/ConnectRequest";
