@@ -24,8 +24,8 @@ describe("isAllowedRPCOrigin", () => {
         expect(isAllowedRPCOrigin(messageType, "http://subdomain.metamask-institutional.io")).toBe(false);
       });
 
-      it("returns false for root MMI domain", () => {
-        expect(isAllowedRPCOrigin(messageType, "https://metamask-institutional.io")).toBe(false);
+      it("returns true for root MMI domain", () => {
+        expect(isAllowedRPCOrigin(messageType, "https://metamask-institutional.io")).toBe(true);
       });
     });
   });
