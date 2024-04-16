@@ -83,7 +83,7 @@ export class TransactionUpdateController extends EventEmitter {
     this.emit("custodian_event", data);
   }
 
-  handleHandShakeEvent(data: Partial<ICustodianUpdate>): void {
+  handleHandShakeEvent(data: { channelId: string }): void {
     this.emit("handshake", data);
   }
 
