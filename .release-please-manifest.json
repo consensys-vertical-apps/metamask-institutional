@@ -9,6 +9,6 @@
   "packages/websocketClient": "0.1.40",
   "packages/configurationClient": "2.0.1",
   "packages/portfolioDashboard": "1.4.0",
-  "packages/rpcAllowlist": "1.0.2",
+  "packages/rpcAllowlist": "1.0.3",
   "packages/extension": "0.3.20"
 }
