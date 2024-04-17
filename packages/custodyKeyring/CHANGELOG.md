@@ -41,6 +41,13 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
   * dependencies
     * @metamask-institutional/sdk bumped from ^0.1.24 to ^0.1.25
 
+## [1.0.12](https://github.com/consensys-vertical-apps/metamask-institutional/compare/custody-keyring-v1.0.11...custody-keyring-v1.0.12) (2024-04-05)
+
+
+### Bug Fixes
+
+* **manual update:** manual update ([#685](https://github.com/consensys-vertical-apps/metamask-institutional/issues/685)) ([162a0c0](https://github.com/consensys-vertical-apps/metamask-institutional/commit/162a0c03944c2ddc518a109debbfd4086b5ccd51))
+
 ## [1.0.10](https://github.com/consensys-vertical-apps/metamask-institutional/compare/custody-keyring-v1.0.9...custody-keyring-v1.0.10) (2024-02-13)
 
 

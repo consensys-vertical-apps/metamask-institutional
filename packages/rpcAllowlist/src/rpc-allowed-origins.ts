@@ -11,7 +11,7 @@ export function isAllowedRPCOrigin(messageType: string, origin: string) {
   switch (messageType) {
     case "metamaskinstitutional_portfolio":
     case "metamaskinstitutional_open_swaps":
-      return isValidMMISubdomain(url) || isValidLocalOrigin(url);
+      return isValidMMIDomainORSubdomain(url) || isValidLocalOrigin(url);
     default:
       return false;
   }
@@ -21,8 +21,9 @@ function isValidLocalOrigin({ origin }: URL) {
   return LOCAL_ORIGINS.includes(origin);
 }
 
-function isValidMMISubdomain({ protocol, hostname }: URL) {
-  return protocol === "https:" && hostname.endsWith(`.${MMI_HOSTNAME}`);
+function isValidMMIDomainORSubdomain({ protocol, hostname }: URL) {
+  // Check if the protocol is HTTPS and the hostname is exactly the MMI_HOSTNAME or a subdomain of it.
+  return protocol === "https:" && (hostname === MMI_HOSTNAME || hostname.endsWith(`.${MMI_HOSTNAME}`));
 }
 
 function parseUrl(origin: string) {
