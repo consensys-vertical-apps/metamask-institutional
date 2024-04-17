@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @metamask-institutional/types bumped from ^1.0.4 to ^1.1.0
+
 ## [0.1.25](https://github.com/consensys-vertical-apps/metamask-institutional/compare/sdk-v0.1.24...sdk-v0.1.25) (2024-04-03)
 
 
