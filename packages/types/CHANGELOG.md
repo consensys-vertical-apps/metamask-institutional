@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.0](https://github.com/consensys-vertical-apps/metamask-institutional/compare/types-v1.0.4...types-v1.1.0) (2024-04-17)
+
+
+### Features
+
+* **websocketclient transasctionupdate:** initial handshake work ([#670](https://github.com/consensys-vertical-apps/metamask-institutional/issues/670)) ([5cd3bd6](https://github.com/consensys-vertical-apps/metamask-institutional/commit/5cd3bd60e9fd342b4b82c8bb589de8b4a0373c5a))
+
 ## [1.0.4](https://github.com/consensys-vertical-apps/metamask-institutional/compare/types-v1.0.3...types-v1.0.4) (2023-11-07)
 
 

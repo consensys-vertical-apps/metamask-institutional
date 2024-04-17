@@ -132,6 +132,16 @@
     * @metamask-institutional/custody-keyring bumped from ^1.0.11 to ^1.0.12
     * @metamask-institutional/transaction-update bumped from ^0.1.37 to ^0.1.38
 
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @metamask-institutional/custody-controller bumped from ^0.2.24 to ^0.2.25
+    * @metamask-institutional/custody-keyring bumped from ^1.0.12 to ^1.1.0
+    * @metamask-institutional/sdk bumped from ^0.1.25 to ^0.1.26
+    * @metamask-institutional/transaction-update bumped from ^0.1.38 to ^0.2.0
+    * @metamask-institutional/types bumped from ^1.0.4 to ^1.1.0
+
 ## [0.3.18](https://github.com/consensys-vertical-apps/metamask-institutional/compare/extension-v0.3.17...extension-v0.3.18) (2024-03-20)
 
 

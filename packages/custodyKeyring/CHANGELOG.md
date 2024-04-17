@@ -41,6 +41,21 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
   * dependencies
     * @metamask-institutional/sdk bumped from ^0.1.24 to ^0.1.25
 
+## [1.1.0](https://github.com/consensys-vertical-apps/metamask-institutional/compare/custody-keyring-v1.0.12...custody-keyring-v1.1.0) (2024-04-17)
+
+
+### Features
+
+* **websocketclient transasctionupdate:** initial handshake work ([#670](https://github.com/consensys-vertical-apps/metamask-institutional/issues/670)) ([5cd3bd6](https://github.com/consensys-vertical-apps/metamask-institutional/commit/5cd3bd60e9fd342b4b82c8bb589de8b4a0373c5a))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @metamask-institutional/sdk bumped from ^0.1.25 to ^0.1.26
+    * @metamask-institutional/types bumped from ^1.0.4 to ^1.1.0
+
 ## [1.0.12](https://github.com/consensys-vertical-apps/metamask-institutional/compare/custody-keyring-v1.0.11...custody-keyring-v1.0.12) (2024-04-05)
 
 
