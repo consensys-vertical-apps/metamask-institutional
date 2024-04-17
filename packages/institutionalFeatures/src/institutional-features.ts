@@ -1,4 +1,5 @@
 import { CUSTODIAN_TYPES } from "@metamask-institutional/custody-keyring";
+import { ConnectionRequest, ConnectRequest } from "@metamask-institutional/types";
 import { ObservableStore } from "@metamask/obs-store";
 
 /**
@@ -25,6 +26,8 @@ export class InstitutionalFeaturesController {
       : {
           institutionalFeatures: {
             connectRequests: [],
+            channelId: null,
+            connectionRequest: null,
           },
         };
 
@@ -32,6 +35,8 @@ export class InstitutionalFeaturesController {
       institutionalFeatures: {
         ...initState.institutionalFeatures,
         connectRequests: [...(initState.institutionalFeatures.connectRequests || [])],
+        channelId: null,
+        connectionRequest: null,
       },
     });
   }
@@ -130,6 +135,36 @@ export class InstitutionalFeaturesController {
         connectRequests: state.institutionalFeatures.connectRequests.filter(
           request => !(request.origin === origin && request.token === token && request.environment === environment),
         ),
+      },
+    });
+  }
+
+  setChannelId(channelId: string): void {
+    const state = this.store.getState();
+    this.store.updateState({
+      institutionalFeatures: {
+        ...state.institutionalFeatures,
+        channelId,
+      },
+    });
+  }
+
+  setConnectionRequest(payload: ConnectionRequest): void {
+    const state = this.store.getState();
+    this.store.updateState({
+      institutionalFeatures: {
+        ...state.institutionalFeatures,
+        connectionRequest: payload,
+      },
+    });
+  }
+
+  setConnectRequests(payload: ConnectRequest): void {
+    const state = this.store.getState();
+    this.store.updateState({
+      institutionalFeatures: {
+        ...state.institutionalFeatures,
+        connectRequests: [payload, ...state.institutionalFeatures.connectRequests],
       },
     });
   }

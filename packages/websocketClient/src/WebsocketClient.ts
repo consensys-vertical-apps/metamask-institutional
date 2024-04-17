@@ -1,4 +1,5 @@
 import { MmiConfigurationController } from "@metamask-institutional/custody-keyring";
+import { ConnectionRequest } from "@metamask-institutional/types";
 import { EventEmitter } from "events";
 
 import { WEBSOCKET_REQUEST_TIMEOUT } from "./constants";
@@ -13,6 +14,8 @@ export class WebsocketClientController extends EventEmitter {
   public onFailure: () => void;
   public captureException: (error: Error) => void;
   public handleUpdateEvent: (ev: any) => void;
+  public handleHandShakeEvent: (ev: any) => void;
+  public handleConnectionRequest: (ev: ConnectionRequest) => void;
   public onReconnect: () => void;
   public onWebsocketClose: () => void;
 
@@ -31,6 +34,8 @@ export class WebsocketClientController extends EventEmitter {
     super(); // EventEmitter constructor
 
     this.handleUpdateEvent = opts.handleUpdateEvent;
+    this.handleHandShakeEvent = opts.handleHandShakeEvent;
+    this.handleConnectionRequest = opts.handleConnectionRequest;
     this.onFailure = opts.onFailure;
     this.mmiConfigurationController = opts.mmiConfigurationController;
     this.captureException = opts.captureException;
@@ -90,6 +95,14 @@ export class WebsocketClientController extends EventEmitter {
 
     if (msg.event === "custodian_update") {
       this.handleUpdateEvent(msg.data);
+    }
+
+    if (msg.event === "handshake") {
+      this.handleHandShakeEvent(msg.data);
+    }
+
+    if (msg.event === "connection.request") {
+      this.handleConnectionRequest(msg.data);
     }
 
     if (

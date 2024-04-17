@@ -637,4 +637,30 @@ describe("TransactionUpdateController", () => {
       expect(mockThis.on).toHaveBeenCalledWith("custodian_event", expect.any(Function));
     });
   });
+
+  describe("handleHandShakeEvent", () => {
+    it("should emit a handshake event with the provided data", () => {
+      const mockData = { channelId: "channelId" };
+      const spyEmit = jest.spyOn(transactionUpdateController, "emit");
+
+      transactionUpdateController.handleHandShakeEvent(mockData);
+
+      expect(spyEmit).toHaveBeenCalledWith("handshake", mockData);
+    });
+  });
+
+  describe("handleConnectionRequestEvent", () => {
+    it("should emit a connection.request event with the payload", () => {
+      const connectionRequest = {
+        payload: "payload",
+        traceId: "traceId",
+        channelId: "channelId",
+      };
+      const spyEmit = jest.spyOn(transactionUpdateController, "emit");
+
+      transactionUpdateController.handleConnectionRequestEvent(connectionRequest);
+
+      expect(spyEmit).toHaveBeenCalledWith("connection.request", connectionRequest);
+    });
+  });
 });

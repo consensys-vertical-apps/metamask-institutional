@@ -16,6 +16,8 @@ describe("websocketClientController", () => {
   let getCustomerProof;
   let getStatusMap;
   let handleUpdateEvent;
+  let handleHandShakeEvent;
+  let handleConnectionRequest;
   let onFailure;
   let mockMmiConfigurationController;
 
@@ -26,6 +28,8 @@ describe("websocketClientController", () => {
   beforeEach(() => {
     onFailure = jest.fn();
     handleUpdateEvent = jest.fn();
+    handleHandShakeEvent = jest.fn();
+    handleConnectionRequest = jest.fn();
     getCustomerProof = jest.fn(() => Promise.resolve("eyJhbGciOiJIUzI1NiJ9"));
     getStatusMap = jest.fn();
     onReconnect = jest.fn();
@@ -60,6 +64,8 @@ describe("websocketClientController", () => {
 
     websocketClientController = new WebsocketClientController({
       handleUpdateEvent,
+      handleHandShakeEvent,
+      handleConnectionRequest,
       getCustodyKeyring,
       onFailure,
       mmiConfigurationController: mockMmiConfigurationController,
@@ -80,6 +86,34 @@ describe("websocketClientController", () => {
 
       websocketClientController.onMessage(event as any);
       expect(handleUpdateEvent).toHaveBeenCalled();
+    });
+
+    it("should handle handshake events correctly", () => {
+      const handshakeData = {
+        event: "handshake",
+        data: { some: "data" },
+      };
+      const event = {
+        data: JSON.stringify(handshakeData),
+      };
+
+      websocketClientController.onMessage(event as MessageEvent);
+
+      expect(handleHandShakeEvent).toHaveBeenCalledWith(handshakeData.data);
+    });
+
+    it("should handle connection.request events correctly", () => {
+      const connectionRequestData = {
+        event: "connection.request",
+        data: { some: "data" },
+      };
+      const event = {
+        data: JSON.stringify(connectionRequestData),
+      };
+
+      websocketClientController.onMessage(event as MessageEvent);
+
+      expect(handleConnectionRequest).toHaveBeenCalledWith(connectionRequestData.data);
     });
   });
 

@@ -1,6 +1,7 @@
 import { CustodyKeyring, MMIConfiguration, MmiConfigurationController } from "@metamask-institutional/custody-keyring";
 import { mapTransactionStatus } from "@metamask-institutional/sdk";
 import {
+  ConnectionRequest,
   ICustodianUpdate,
   IRefreshTokenAuthDetails,
   ISignatureDetails,
@@ -80,6 +81,14 @@ export class TransactionUpdateController extends EventEmitter {
     }
 
     this.emit("custodian_event", data);
+  }
+
+  handleHandShakeEvent(data: { channelId: string }): void {
+    this.emit("handshake", data);
+  }
+
+  handleConnectionRequestEvent(payload: ConnectionRequest): void {
+    this.emit("connection.request", payload);
   }
 
   onWebsocketClose() {
@@ -172,6 +181,8 @@ export class TransactionUpdateController extends EventEmitter {
 
         this.websocketClient = new WebsocketClientController({
           handleUpdateEvent: this.handleWebsocketEvent.bind(this),
+          handleHandShakeEvent: this.handleHandShakeEvent.bind(this),
+          handleConnectionRequest: this.handleConnectionRequestEvent.bind(this),
           onFailure: this.startPolling.bind(this),
           mmiConfigurationController: this.mmiConfigurationController,
           captureException: this.captureException,
