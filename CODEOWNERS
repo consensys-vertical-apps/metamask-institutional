@@ -1,0 +1,9 @@
+# MMI monorepo CODEOWNERS file
+
+# Default owner for everything in the repo
+* @consensys-vertical-apps/mmi-extension-team
+
+# Specific directories
+/packages/sdk @zone-live
+/packages/custodyKeyring @zone-live
+/packages/custodyController @albert
