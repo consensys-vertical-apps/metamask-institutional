@@ -1,0 +1,9 @@
+# MMI monorepo CODEOWNERS file
+
+# Default owner for everything in the repo
+* @zone-live @albertolive @shane-t
+
+# Specific directories
+/packages/sdk                 @zone-live @albertolive @shane-t
+/packages/custodyKeyring      @zone-live @albertolive @shane-t
+/packages/custodyController   @zone-live @albertolive @shane-t
