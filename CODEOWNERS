@@ -4,6 +4,6 @@
 * @zone-live @albertolive @shane-t
 
 # Specific directories
-/packages/sdk @zone-live
-/packages/custodyKeyring @zone-live
-/packages/custodyController @albertolive
+/packages/sdk                 @zone-live @albertolive @shane-t
+/packages/custodyKeyring      @zone-live @albertolive @shane-t
+/packages/custodyController   @zone-live @albertolive @shane-t
