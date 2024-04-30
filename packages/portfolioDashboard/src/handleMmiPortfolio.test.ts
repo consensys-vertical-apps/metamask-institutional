@@ -89,7 +89,7 @@ describe('handleMmiPortfolio', () => {
       if (address === '0xCustodial') {
         return { name: 'Custodial Account', custodyType: 'Custodial' };
       }
-      return null; // simulate a non custodial account by not returning details
+      return null;
     });
 
     const keyringAccounts = ['0xCustodial', '0xNonCustodial'];
