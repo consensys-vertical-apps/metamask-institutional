@@ -5,6 +5,7 @@ import { EventEmitter } from "events";
 import { REFRESH_TOKEN_CHANGE_EVENT } from "../../constants/constants";
 import { CustodianApiError } from "../../errors/CustodianApiError";
 import { MessageTypes, TypedMessage } from "../../interfaces/ITypedMessage";
+import { handleResponse } from "../../util/handle-response";
 import { IQredoAccessTokenResponse } from "./interfaces/IQredoAccessTokenResponse";
 import { IQredoCustomerProof } from "./interfaces/IQredoCustomerProof";
 import { IQredoEthereumAccount } from "./interfaces/IQredoEthereumAccount";
@@ -43,11 +44,8 @@ export class QredoClient extends EventEmitter {
         body: `grant_type=refresh_token&refresh_token=${this.refreshToken}`,
       });
 
-      if (!response.ok) {
-        throw new Error(`Error fetching the access token. Status: ${response.status} ${response.statusText}`);
-      }
-
-      const data = (await response.json()) as IQredoAccessTokenResponse;
+      const contextMessage = "Error fetching the access token";
+      const data = (await handleResponse(response, contextMessage)) as IQredoAccessTokenResponse;
 
       if (!data.access_token) {
         throw new Error("No access token");
@@ -86,11 +84,8 @@ export class QredoClient extends EventEmitter {
         headers,
       });
 
-      if (!response.ok) {
-        throw new Error(`Error fetching wallet accounts. Status: ${response.status} ${response.statusText}`);
-      }
-
-      const data = (await response.json()) as IQredoWalletsResponse;
+      const contextMessage = "Error fetching accounts";
+      const data = (await handleResponse(response, contextMessage)) as IQredoWalletsResponse;
 
       return data.wallets;
     } catch (e) {
@@ -128,13 +123,8 @@ export class QredoClient extends EventEmitter {
         body: JSON.stringify(payload),
       });
 
-      if (!response.ok) {
-        throw new Error(`Error creating transaction. Status: ${response.status} ${response.statusText}`);
-      }
-
-      const data = (await response.json()) as IQredoTransaction;
-
-      return data;
+      const contextMessage = "Error creating transaction";
+      return (await handleResponse(response, contextMessage)) as IQredoTransaction;
     } catch (e) {
       throw new CustodianApiError(e);
     }
@@ -148,15 +138,8 @@ export class QredoClient extends EventEmitter {
         headers,
       });
 
-      if (!response.ok) {
-        throw new Error(
-          `Error getting transaction with id ${custodian_transactionId}. Status: ${response.status} ${response.statusText}`,
-        );
-      }
-
-      const data = (await response.json()) as IQredoTransaction;
-
-      return data;
+      const contextMessage = `Error getting transaction with id ${custodian_transactionId}`;
+      return (await handleResponse(response, contextMessage)) as IQredoTransaction;
     } catch (e) {
       throw new CustodianApiError(e);
     }
@@ -176,15 +159,8 @@ export class QredoClient extends EventEmitter {
         headers,
       });
 
-      if (!response.ok) {
-        throw new Error(
-          `Error getting signed message with id ${custodian_signedMessageId}. Status: ${response.status} ${response.statusText}`,
-        );
-      }
-
-      const data = (await response.json()) as IQredoSignatureResponse;
-
-      return data;
+      const contextMessage = `Error getting signed message with id ${custodian_signedMessageId}`;
+      return (await handleResponse(response, contextMessage)) as IQredoSignatureResponse;
     } catch (e) {
       throw new CustodianApiError(e);
     }
@@ -199,13 +175,8 @@ export class QredoClient extends EventEmitter {
         headers,
       });
 
-      if (!response.ok) {
-        throw new Error(`Error getting Custommer Proof. Status: ${response.status} ${response.statusText}`);
-      }
-
-      const data = (await response.json()) as IQredoCustomerProof;
-
-      return data;
+      const contextMessage = "Error getting customer proof";
+      return (await handleResponse(response, contextMessage)) as IQredoCustomerProof;
     } catch (e) {
       if (e.response?.status >= 400 && e.response?.status < 500) {
         // If there's an auth error - don't reuse the token!
@@ -224,13 +195,8 @@ export class QredoClient extends EventEmitter {
         headers,
       });
 
-      if (!response.ok) {
-        throw new Error(`Error getting Networks. Status: ${response.status} ${response.statusText}`);
-      }
-
-      const data = (await response.json()) as IQredoNetworksResponse;
-
-      return data;
+      const contextMessage = "Error getting networks";
+      return (await handleResponse(response, contextMessage)) as IQredoNetworksResponse;
     } catch (e) {
       throw new CustodianApiError(e);
     }
@@ -251,14 +217,8 @@ export class QredoClient extends EventEmitter {
         headers,
       });
 
-      if (!response.ok) {
-        throw new Error(
-          `Error doing signTypedData from address: ${fromAddress}. Status: ${response.status} ${response.statusText}`,
-        );
-      }
-
-      const data = await response.json();
-      return data;
+      const contextMessage = `Error doing signTypedData from address: ${fromAddress}`;
+      return (await handleResponse(response, contextMessage)) as IQredoSignatureResponse;
     } catch (e) {
       throw new CustodianApiError(e);
     }
@@ -279,21 +239,12 @@ export class QredoClient extends EventEmitter {
         headers,
       });
 
-      if (!response.ok) {
-        throw new Error(
-          `Error doing signPersonalMessage from address: ${fromAddress}. Status: ${response.status} ${response.statusText}`,
-        );
-      }
-
-      const data = await response.json();
-      return data;
+      const contextMessage = `Error doing signPersonalMessage from address: ${fromAddress}`;
+      return (await handleResponse(response, contextMessage)) as IQredoSignatureResponse;
     } catch (e) {
       throw new CustodianApiError(e);
     }
   }
-
-  // This could be from a "top down" refresh token change
-  // which doesn't emit an event
 
   setRefreshToken(refreshToken: string): void {
     this.refreshToken = refreshToken;

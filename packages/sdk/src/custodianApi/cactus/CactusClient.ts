@@ -3,6 +3,7 @@ import { IEIP1559TxParams, ILegacyTXParams } from "@metamask-institutional/types
 
 import { CustodianApiError } from "../../errors/CustodianApiError";
 import { MessageTypes, TypedMessage } from "../../interfaces/ITypedMessage";
+import { handleResponse } from "../../util/handle-response";
 import { ICactusAccessTokenResponse } from "./interfaces/ICactusAccessTokenResponse";
 import { ICactusChainIdsResponse } from "./interfaces/ICactusChainIdsResponse";
 import { ICactusCustomerProof } from "./interfaces/ICactusCustomerProof";
@@ -43,11 +44,8 @@ export class CactusClient {
         }),
       });
 
-      if (!response.ok) {
-        throw new Error(`Error fetching the access token. Status: ${response.status} ${response.statusText}`);
-      }
-
-      const data: ICactusAccessTokenResponse = await response.json();
+      const contextMessage = "Error fetching the access token";
+      const data: ICactusAccessTokenResponse = await handleResponse(response, contextMessage);
 
       if (!data.jwt) {
         throw new Error("No access token");
@@ -67,11 +65,9 @@ export class CactusClient {
         headers,
       });
 
-      if (!response.ok) {
-        throw new Error(`Error fetching accounts. Status: ${response.status} ${response.statusText}`);
-      }
+      const contextMessage = "Error fetching accounts";
+      const accounts: ICactusEthereumAccount[] = await handleResponse(response, contextMessage);
 
-      const accounts: ICactusEthereumAccount[] = await response.json();
       return accounts;
     } catch (e) {
       throw new CustodianApiError(e);
@@ -107,12 +103,8 @@ export class CactusClient {
         headers,
       });
 
-      if (!response.ok) {
-        throw new Error(`Error creating transaction. Status: ${response.status} ${response.statusText}`);
-      }
-
-      const data = await response.json();
-      return data;
+      const contextMessage = "Error creating transaction";
+      return await handleResponse(response, contextMessage);
     } catch (e) {
       throw new CustodianApiError(e);
     }
@@ -126,13 +118,8 @@ export class CactusClient {
         headers,
       });
 
-      if (!response.ok) {
-        throw new Error(
-          `Error getting signed message with id ${custodian_signedMessageId}. Status: ${response.status} ${response.statusText}`,
-        );
-      }
-
-      const data = await response.json();
+      const contextMessage = `Error getting signed message with id ${custodian_signedMessageId}`;
+      const data = await handleResponse(response, contextMessage);
 
       if (data.length) {
         return data[0] as ICactusSignatureResponse;
@@ -152,17 +139,13 @@ export class CactusClient {
         headers,
       });
 
-      if (!response.ok) {
-        throw new Error(
-          `Error getting transaction with id ${custodian_transactionId}. Status: ${response.status} ${response.statusText}`,
-        );
-      }
-
-      const data = await response.json();
+      const contextMessage = `Error getting transaction with id ${custodian_transactionId}`;
+      const data = await handleResponse(response, contextMessage);
 
       if (data.length) {
         return data[0];
       }
+
       return null;
     } catch (e) {
       throw new CustodianApiError(e);
@@ -177,15 +160,8 @@ export class CactusClient {
         headers,
       });
 
-      if (!response.ok) {
-        throw new Error(
-          `Error getting transactions with chainId ${chainId}. Status: ${response.status} ${response.statusText}`,
-        );
-      }
-
-      const data = await response.json();
-
-      return data;
+      const contextMessage = `Error getting transactions with chainId ${chainId}`;
+      return await handleResponse(response, contextMessage);
     } catch (e) {
       throw new CustodianApiError(e);
     }
@@ -201,12 +177,8 @@ export class CactusClient {
         body: JSON.stringify({}),
       });
 
-      if (!response.ok) {
-        throw new Error(`Error getting Custommer Proof. Status: ${response.status} ${response.statusText}`);
-      }
-
-      const customerProof = await response.json();
-      return customerProof;
+      const contextMessage = "Error getting Custommer Proof";
+      return await handleResponse(response, contextMessage);
     } catch (e) {
       throw new CustodianApiError(e);
     }
@@ -239,14 +211,8 @@ export class CactusClient {
         headers,
       });
 
-      if (!response.ok) {
-        throw new Error(
-          `Error doing signTypedData from address: ${fromAddress}. Status: ${response.status} ${response.statusText}`,
-        );
-      }
-
-      const data = await response.json();
-      return data;
+      const contextMessage = `Error doing signTypedData from address: ${fromAddress}`;
+      return await handleResponse(response, contextMessage);
     } catch (e) {
       throw new CustodianApiError(e);
     }
@@ -270,14 +236,8 @@ export class CactusClient {
         headers,
       });
 
-      if (!response.ok) {
-        throw new Error(
-          `Error doing signPersonalMessage from address: ${fromAddress}. Status: ${response.status} ${response.statusText}`,
-        );
-      }
-
-      const data = await response.json();
-      return data;
+      const contextMessage = `Error doing signPersonalMessage from address: ${fromAddress}`;
+      return await handleResponse(response, contextMessage);
     } catch (e) {
       throw new CustodianApiError(e);
     }
@@ -291,11 +251,9 @@ export class CactusClient {
         headers,
       });
 
-      if (!response.ok) {
-        throw new Error(`Error getting chainIds. Status: ${response.status} ${response.statusText}`);
-      }
+      const contextMessage = "Error getting chainIds";
+      const data: ICactusChainIdsResponse = await handleResponse(response, contextMessage);
 
-      const data: ICactusChainIdsResponse = await response.json();
       return data;
     } catch (e) {
       throw new CustodianApiError(e);
