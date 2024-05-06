@@ -8,7 +8,7 @@
   "packages/transactionUpdate": "0.2.0",
   "packages/websocketClient": "0.2.0",
   "packages/configurationClient": "2.0.1",
-  "packages/portfolioDashboard": "1.4.0",
+  "packages/portfolioDashboard": "1.4.1",
   "packages/rpcAllowlist": "1.0.3",
-  "packages/extension": "0.3.21"
+  "packages/extension": "0.3.22"
 }

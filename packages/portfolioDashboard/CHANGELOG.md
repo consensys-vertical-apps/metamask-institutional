@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.4.1](https://github.com/consensys-vertical-apps/metamask-institutional/compare/portfolio-dashboard-v1.4.0...portfolio-dashboard-v1.4.1) (2024-05-06)
+
+
+### Bug Fixes
+
+* **handlemmiportfolio:** returns name for non custodial accounts ([#708](https://github.com/consensys-vertical-apps/metamask-institutional/issues/708)) ([4b48cbf](https://github.com/consensys-vertical-apps/metamask-institutional/commit/4b48cbf0f8495f835201e926d4cec8a2b4826b87))
+
 ## [1.4.0](https://github.com/consensys-vertical-apps/metamask-institutional/compare/portfolio-dashboard-v1.3.0...portfolio-dashboard-v1.4.0) (2023-06-05)
 
 
