@@ -8,7 +8,7 @@ export async function handleMmiPortfolio({
 }) {
   const parsedNetworks = networks.map(item => parseInt(item.chainId, 16));
 
-  let parsedAccounts = [];
+  const parsedAccounts = [];
 
   identities.forEach(identity => {
     const isInKeyring = keyringAccounts.includes(identity.address);

@@ -31,16 +31,14 @@ export class CurvCustodianApi extends EventEmitter implements ICustodianApi {
   }
 
   // Returns a flat array of ethereum accounts (and names)
-  public async getEthereumAccounts(
-    _chainId?: number,
-  ): Promise<IEthereumAccount<IJupiterEthereumAccountCustodianDetails>[]> {
+  public async getEthereumAccounts(_chainId?: number): Promise<IEthereumAccount<IEthereumAccountCustodianDetails>[]> {
     return null;
   }
 
   // Used during account import to find wallets and accounts matching an address prefix
   public async getEthereumAccountsByAddress(
     _address: string,
-  ): Promise<IEthereumAccount<IJupiterEthereumAccountCustodianDetails>[]> {
+  ): Promise<IEthereumAccount<IEthereumAccountCustodianDetails>[]> {
     return null;
   }
 

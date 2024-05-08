@@ -1,5 +1,5 @@
 import { CustodyController } from "@metamask-institutional/custody-controller";
-import { JupiterCustodyKeyring } from "@metamask-institutional/custody-keyring";
+import { JsonRpcCustodyKeyring } from "@metamask-institutional/custody-keyring";
 import { TransactionUpdateController } from "@metamask-institutional/transaction-update";
 import { ICustodianUpdate, ITransactionDetails, MetaMaskTransactionStatuses } from "@metamask-institutional/types";
 import createMockInstance from "jest-create-mock-instance";
@@ -16,7 +16,7 @@ fetchMock.enableMocks();
 
 describe("ExtensionUtils", () => {
   const custodyController = new CustodyController();
-  const keyring = new JupiterCustodyKeyring();
+  const keyring = new JsonRpcCustodyKeyring();
   const transactionUpdateController = createMockInstance(TransactionUpdateController);
 
   const getStateMock = { fn: jest.fn() };
@@ -78,7 +78,7 @@ describe("ExtensionUtils", () => {
       }));
       keyring.getTransaction = jest.fn(() => Promise.resolve({} as ITransactionDetails));
 
-      custodyController.getCustodyTypeByAddress = jest.fn(() => "Custody - Jupiter");
+      custodyController.getCustodyTypeByAddress = jest.fn(() => "Custody - JSONRPC");
 
       const updateTxMock = { fn: jest.fn(() => true) };
       jest.spyOn(updateTxMock, "fn");
@@ -90,7 +90,7 @@ describe("ExtensionUtils", () => {
       await updateCustodianTransactions({
         keyring,
         custodyController,
-        type: "Custody - Jupiter",
+        type: "Custody - JSONRPC",
         txList: [
           {
             txId: "txId",
@@ -140,7 +140,7 @@ describe("ExtensionUtils", () => {
         },
       }));
 
-      custodyController.getCustodyTypeByAddress = jest.fn(() => "Custody - Jupiter");
+      custodyController.getCustodyTypeByAddress = jest.fn(() => "Custody - JSONRPC");
 
       const eventHandler = custodianEventHandlerFactory(params);
 
@@ -182,7 +182,7 @@ describe("ExtensionUtils", () => {
         },
       }));
 
-      custodyController.getCustodyTypeByAddress = jest.fn(() => "Custody - Jupiter");
+      custodyController.getCustodyTypeByAddress = jest.fn(() => "Custody - JSONRPC");
 
       const eventHandler = custodianEventHandlerFactory(params);
 
@@ -218,7 +218,7 @@ describe("ExtensionUtils", () => {
         },
       }));
 
-      custodyController.getCustodyTypeByAddress = jest.fn(() => "Custody - Jupiter");
+      custodyController.getCustodyTypeByAddress = jest.fn(() => "Custody - JSONRPC");
 
       const eventHandler = custodianEventHandlerFactory(params);
 
@@ -254,7 +254,7 @@ describe("ExtensionUtils", () => {
         },
       }));
 
-      custodyController.getCustodyTypeByAddress = jest.fn(() => "Custody - Jupiter");
+      custodyController.getCustodyTypeByAddress = jest.fn(() => "Custody - JSONRPC");
 
       const params = {
         getState: getStateMock.fn,
@@ -332,7 +332,7 @@ describe("ExtensionUtils", () => {
         },
       }));
 
-      custodyController.getCustodyTypeByAddress = jest.fn(() => "Custody - Jupiter");
+      custodyController.getCustodyTypeByAddress = jest.fn(() => "Custody - JSONRPC");
 
       const params = {
         getState: getStateMock.fn,
@@ -391,7 +391,7 @@ describe("ExtensionUtils", () => {
         },
       }));
 
-      custodyController.getCustodyTypeByAddress = jest.fn(() => "Custody - Jupiter");
+      custodyController.getCustodyTypeByAddress = jest.fn(() => "Custody - JSONRPC");
 
       const params = {
         getState: getStateMock.fn,
@@ -441,7 +441,7 @@ describe("ExtensionUtils", () => {
     });
 
     it("will process an update with a signed tx", async () => {
-      const keyring = new JupiterCustodyKeyring();
+      const keyring = new JsonRpcCustodyKeyring();
       keyring.getStatusMap = jest.fn(() => ({
         status: {
           mmStatus: "signed",
@@ -452,7 +452,7 @@ describe("ExtensionUtils", () => {
       }));
       const custodyController = new CustodyController();
 
-      custodyController.getCustodyTypeByAddress = jest.fn(() => "Custody - Jupiter");
+      custodyController.getCustodyTypeByAddress = jest.fn(() => "Custody - JSONRPC");
 
       const params = {
         getState: getStateMock.fn,

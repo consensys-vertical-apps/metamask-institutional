@@ -1,3 +1,3 @@
 export const DefaultCactusCustodianDetails = {
-  apiUrl: "https://jupiter-custody.codefi.network",
+  apiUrl: "https://api.mycactus.com/custody/v1/mmi-api",
 };
