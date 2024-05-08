@@ -1,15 +1,15 @@
 import { AuthTypes } from "@metamask-institutional/types";
 import { mocked } from "ts-jest/utils";
 
-import { JupiterCustodianApi } from "../custodianApi/jupiter/JupiterCustodianApi";
+import { JsonRpcCustodianApi } from "../custodianApi/json-rpc/JsonRpcCustodianApi";
 import { MessageTypes, TypedMessage } from "../interfaces/ITypedMessage";
 import { MMISDK } from "./MMISDK";
 
-jest.mock("../custodianApi/jupiter/JupiterCustodianApi");
+jest.mock("../custodianApi/json-rpc/JsonRpcCustodianApi");
 
 describe("MMISDK", () => {
   let mmiSDK: MMISDK;
-  const mockedCustodianApi = mocked(JupiterCustodianApi, true);
+  const mockedCustodianApi = mocked(JsonRpcCustodianApi, true);
 
   let mockedCustodianApiInstance;
 
@@ -17,7 +17,7 @@ describe("MMISDK", () => {
     mmiSDK = new MMISDK(
       // @TODO check back later
       // @ts-ignore
-      JupiterCustodianApi,
+      JsonRpcCustodianApi,
       {
         jwt: "xyz",
       },
@@ -146,7 +146,7 @@ describe("MMISDK", () => {
       const mmiSDK2 = new MMISDK(
         // @TODO check back later
         // @ts-ignore
-        JupiterCustodianApi,
+        JsonRpcCustodianApi,
         {
           jwt: "xyz",
         },

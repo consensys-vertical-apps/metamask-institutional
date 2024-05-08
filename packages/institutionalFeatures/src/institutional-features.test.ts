@@ -32,7 +32,7 @@ describe("InstitutionalFeaturesController", function () {
       params: {
         labels: [],
         feature: "custodian",
-        service: "jupiter",
+        service: "json-rpc",
         token: "token",
         environment: "test-environment",
       },
@@ -46,7 +46,7 @@ describe("InstitutionalFeaturesController", function () {
       method: "custodian",
       labels: [],
       feature: "custodian",
-      service: "jupiter",
+      service: "json-rpc",
       token: "token",
       chainId: undefined,
       environment: "test-environment",

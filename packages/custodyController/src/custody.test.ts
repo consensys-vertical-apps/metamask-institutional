@@ -28,12 +28,12 @@ describe("CustodyController", function () {
 
   it("should set custodianSupportedChains", async function () {
     const controller = await createController(INIT_STATE);
-    controller.storeSupportedChainsForAddress("0x", ["1", "2"], "jupiter");
+    controller.storeSupportedChainsForAddress("0x", ["1", "2"], "json-rpc");
     const state = controller.store.getState();
     expect(state.custodianSupportedChains).toEqual({
       "0x": {
         supportedChains: ["1", "2"],
-        custodianName: "jupiter",
+        custodianName: "json-rpc",
       },
     });
   });
@@ -98,7 +98,7 @@ describe("CustodyController", function () {
       ["0xc96348083d806DFfc546b36e05AF1f9452CDAe91"]: {
         address: "0xc96348083d806DFfc546b36e05AF1f9452CDAe91",
         details: "details",
-        custodyType: "Custody - Jupiter",
+        custodyType: "Custody - json-rpc",
       },
     };
 
@@ -111,9 +111,9 @@ describe("CustodyController", function () {
     });
 
     const connectRequest = {
-      origin: "https://jupiter-custody-ui.codefi.network/",
+      origin: "https://saturn-custody-ui.dev.metamask-institutional.io/",
       params: {
-        custodianName: "jupiter",
+        custodianName: "json-rpc",
       },
     };
 
@@ -126,7 +126,7 @@ describe("CustodyController", function () {
       ["0xc96348083d806DFfc546b36e05AF1f9452CDAe91"]: {
         address: "0xc96348083d806DFfc546b36e05AF1f9452CDAe91",
         details: "details",
-        custodyType: "Custody - Jupiter",
+        custodyType: "Custody - json-rpc",
       },
     };
 
@@ -141,7 +141,7 @@ describe("CustodyController", function () {
     const connectRequest = {
       origin: "http://space.com",
       params: {
-        custodianName: "jupiter",
+        custodianName: "json-rpc",
       },
     };
 
@@ -157,7 +157,7 @@ describe("CustodyController", function () {
       ["0xc96348083d806DFfc546b36e05AF1f9452CDAe91"]: {
         address: "0xc96348083d806DFfc546b36e05AF1f9452CDAe91",
         details: "details",
-        custodyType: "Custody - Jupiter",
+        custodyType: "Custody - json-rpc",
       },
     };
 
@@ -170,7 +170,7 @@ describe("CustodyController", function () {
     });
 
     const connectRequest = {
-      origin: "https://jupiter-custody-ui.codefi.network/",
+      origin: "https://saturn-custody-ui.dev.metamask-institutional.io/",
       params: {
         custodianName: "fake",
       },
