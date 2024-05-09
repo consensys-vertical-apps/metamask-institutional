@@ -44,8 +44,8 @@ export class CactusClient {
         }),
       });
 
-      const contextMessage = "Error fetching the access token";
-      const data: ICactusAccessTokenResponse = await handleResponse(response, contextMessage);
+      const contextErrorMessage = "Error fetching the access token";
+      const data: ICactusAccessTokenResponse = await handleResponse(response, contextErrorMessage);
 
       if (!data.jwt) {
         throw new Error("No access token");
@@ -65,8 +65,8 @@ export class CactusClient {
         headers,
       });
 
-      const contextMessage = "Error fetching accounts";
-      const accounts: ICactusEthereumAccount[] = await handleResponse(response, contextMessage);
+      const contextErrorMessage = "Error fetching accounts";
+      const accounts: ICactusEthereumAccount[] = await handleResponse(response, contextErrorMessage);
 
       return accounts;
     } catch (e) {
@@ -103,8 +103,8 @@ export class CactusClient {
         headers,
       });
 
-      const contextMessage = "Error creating transaction";
-      return await handleResponse(response, contextMessage);
+      const contextErrorMessage = "Error creating transaction";
+      return await handleResponse(response, contextErrorMessage);
     } catch (e) {
       throw new CustodianApiError(e);
     }
@@ -118,8 +118,8 @@ export class CactusClient {
         headers,
       });
 
-      const contextMessage = `Error getting signed message with id ${custodian_signedMessageId}`;
-      const data = await handleResponse(response, contextMessage);
+      const contextErrorMessage = `Error getting signed message with id ${custodian_signedMessageId}`;
+      const data = await handleResponse(response, contextErrorMessage);
 
       if (data.length) {
         return data[0] as ICactusSignatureResponse;
@@ -139,8 +139,8 @@ export class CactusClient {
         headers,
       });
 
-      const contextMessage = `Error getting transaction with id ${custodian_transactionId}`;
-      const data = await handleResponse(response, contextMessage);
+      const contextErrorMessage = `Error getting transaction with id ${custodian_transactionId}`;
+      const data = await handleResponse(response, contextErrorMessage);
 
       if (data.length) {
         return data[0];
@@ -160,8 +160,8 @@ export class CactusClient {
         headers,
       });
 
-      const contextMessage = `Error getting transactions with chainId ${chainId}`;
-      return await handleResponse(response, contextMessage);
+      const contextErrorMessage = `Error getting transactions with chainId ${chainId}`;
+      return await handleResponse(response, contextErrorMessage);
     } catch (e) {
       throw new CustodianApiError(e);
     }
@@ -177,8 +177,8 @@ export class CactusClient {
         body: JSON.stringify({}),
       });
 
-      const contextMessage = "Error getting Custommer Proof";
-      return await handleResponse(response, contextMessage);
+      const contextErrorMessage = "Error getting Custommer Proof";
+      return await handleResponse(response, contextErrorMessage);
     } catch (e) {
       throw new CustodianApiError(e);
     }
@@ -211,8 +211,8 @@ export class CactusClient {
         headers,
       });
 
-      const contextMessage = `Error doing signTypedData from address: ${fromAddress}`;
-      return await handleResponse(response, contextMessage);
+      const contextErrorMessage = `Error doing signTypedData from address: ${fromAddress}`;
+      return await handleResponse(response, contextErrorMessage);
     } catch (e) {
       throw new CustodianApiError(e);
     }
@@ -236,8 +236,8 @@ export class CactusClient {
         headers,
       });
 
-      const contextMessage = `Error doing signPersonalMessage from address: ${fromAddress}`;
-      return await handleResponse(response, contextMessage);
+      const contextErrorMessage = `Error doing signPersonalMessage from address: ${fromAddress}`;
+      return await handleResponse(response, contextErrorMessage);
     } catch (e) {
       throw new CustodianApiError(e);
     }
@@ -251,8 +251,8 @@ export class CactusClient {
         headers,
       });
 
-      const contextMessage = "Error getting chainIds";
-      const data: ICactusChainIdsResponse = await handleResponse(response, contextMessage);
+      const contextErrorMessage = "Error getting chainIds";
+      const data: ICactusChainIdsResponse = await handleResponse(response, contextErrorMessage);
 
       return data;
     } catch (e) {

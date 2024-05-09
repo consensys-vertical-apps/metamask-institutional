@@ -44,8 +44,8 @@ export class QredoClient extends EventEmitter {
         body: `grant_type=refresh_token&refresh_token=${this.refreshToken}`,
       });
 
-      const contextMessage = "Error fetching the access token";
-      const data = (await handleResponse(response, contextMessage)) as IQredoAccessTokenResponse;
+      const contextErrorMessage = "Error fetching the access token";
+      const data = (await handleResponse(response, contextErrorMessage)) as IQredoAccessTokenResponse;
 
       if (!data.access_token) {
         throw new Error("No access token");
@@ -84,8 +84,8 @@ export class QredoClient extends EventEmitter {
         headers,
       });
 
-      const contextMessage = "Error fetching accounts";
-      const data = (await handleResponse(response, contextMessage)) as IQredoWalletsResponse;
+      const contextErrorMessage = "Error fetching accounts";
+      const data = (await handleResponse(response, contextErrorMessage)) as IQredoWalletsResponse;
 
       return data.wallets;
     } catch (e) {
@@ -123,8 +123,8 @@ export class QredoClient extends EventEmitter {
         body: JSON.stringify(payload),
       });
 
-      const contextMessage = "Error creating transaction";
-      return (await handleResponse(response, contextMessage)) as IQredoTransaction;
+      const contextErrorMessage = "Error creating transaction";
+      return (await handleResponse(response, contextErrorMessage)) as IQredoTransaction;
     } catch (e) {
       throw new CustodianApiError(e);
     }
@@ -138,8 +138,8 @@ export class QredoClient extends EventEmitter {
         headers,
       });
 
-      const contextMessage = `Error getting transaction with id ${custodian_transactionId}`;
-      return (await handleResponse(response, contextMessage)) as IQredoTransaction;
+      const contextErrorMessage = `Error getting transaction with id ${custodian_transactionId}`;
+      return (await handleResponse(response, contextErrorMessage)) as IQredoTransaction;
     } catch (e) {
       throw new CustodianApiError(e);
     }
@@ -159,8 +159,8 @@ export class QredoClient extends EventEmitter {
         headers,
       });
 
-      const contextMessage = `Error getting signed message with id ${custodian_signedMessageId}`;
-      return (await handleResponse(response, contextMessage)) as IQredoSignatureResponse;
+      const contextErrorMessage = `Error getting signed message with id ${custodian_signedMessageId}`;
+      return (await handleResponse(response, contextErrorMessage)) as IQredoSignatureResponse;
     } catch (e) {
       throw new CustodianApiError(e);
     }
@@ -175,8 +175,8 @@ export class QredoClient extends EventEmitter {
         headers,
       });
 
-      const contextMessage = "Error getting customer proof";
-      return (await handleResponse(response, contextMessage)) as IQredoCustomerProof;
+      const contextErrorMessage = "Error getting customer proof";
+      return (await handleResponse(response, contextErrorMessage)) as IQredoCustomerProof;
     } catch (e) {
       if (e.response?.status >= 400 && e.response?.status < 500) {
         // If there's an auth error - don't reuse the token!
@@ -195,8 +195,8 @@ export class QredoClient extends EventEmitter {
         headers,
       });
 
-      const contextMessage = "Error getting networks";
-      return (await handleResponse(response, contextMessage)) as IQredoNetworksResponse;
+      const contextErrorMessage = "Error getting networks";
+      return (await handleResponse(response, contextErrorMessage)) as IQredoNetworksResponse;
     } catch (e) {
       throw new CustodianApiError(e);
     }
@@ -217,8 +217,8 @@ export class QredoClient extends EventEmitter {
         headers,
       });
 
-      const contextMessage = `Error doing signTypedData from address: ${fromAddress}`;
-      return (await handleResponse(response, contextMessage)) as IQredoSignatureResponse;
+      const contextErrorMessage = `Error doing signTypedData from address: ${fromAddress}`;
+      return (await handleResponse(response, contextErrorMessage)) as IQredoSignatureResponse;
     } catch (e) {
       throw new CustodianApiError(e);
     }
@@ -239,8 +239,8 @@ export class QredoClient extends EventEmitter {
         headers,
       });
 
-      const contextMessage = `Error doing signPersonalMessage from address: ${fromAddress}`;
-      return (await handleResponse(response, contextMessage)) as IQredoSignatureResponse;
+      const contextErrorMessage = `Error doing signPersonalMessage from address: ${fromAddress}`;
+      return (await handleResponse(response, contextErrorMessage)) as IQredoSignatureResponse;
     } catch (e) {
       throw new CustodianApiError(e);
     }

@@ -1,4 +1,4 @@
-export async function handleResponse(response: Response, contextMessage?: string): Promise<any> {
+export async function handleResponse(response: Response, contextErrorMessage?: string): Promise<any> {
   if (!response.ok) {
     try {
       const errorData = await response.json();
@@ -8,11 +8,11 @@ export async function handleResponse(response: Response, contextMessage?: string
       } else if (errorData.message) {
         errorMsg += `. Error message: ${errorData.message}`;
       }
-      errorMsg += contextMessage ? ` Context: ${contextMessage}` : "";
+      errorMsg += contextErrorMessage ? ` Context: ${contextErrorMessage}` : "";
       console.error(errorMsg, { headers: response.headers, url: response.url });
       throw new Error(errorMsg);
     } catch (error) {
-      const fallbackErrorMsg = `Failed to parse JSON from a non-OK response. Status: ${response.status} ${response.statusText}. ${contextMessage || ""}`;
+      const fallbackErrorMsg = `Failed to parse JSON from a non-OK response. Status: ${response.status} ${response.statusText}. ${contextErrorMessage || ""}`;
       console.error(fallbackErrorMsg, { headers: response.headers, url: response.url });
       throw new Error(fallbackErrorMsg);
     }
@@ -22,7 +22,7 @@ export async function handleResponse(response: Response, contextMessage?: string
     const data = await response.json();
     return data;
   } catch (error) {
-    const errorMsg = `Failed to parse JSON. Status: ${response.status} ${response.statusText}. ${contextMessage || ""}`;
+    const errorMsg = `Failed to parse JSON. Status: ${response.status} ${response.statusText}. ${contextErrorMessage || ""}`;
     console.error(errorMsg, { headers: response.headers, url: response.url });
     throw new Error(errorMsg);
   }
