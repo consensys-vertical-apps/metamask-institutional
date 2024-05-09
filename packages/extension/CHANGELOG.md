@@ -142,6 +142,12 @@
     * @metamask-institutional/transaction-update bumped from ^0.1.38 to ^0.2.0
     * @metamask-institutional/types bumped from ^1.0.4 to ^1.1.0
 
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @metamask-institutional/portfolio-dashboard bumped from ^1.4.0 to ^1.4.1
+
 ## [0.3.18](https://github.com/consensys-vertical-apps/metamask-institutional/compare/extension-v0.3.17...extension-v0.3.18) (2024-03-20)
 
 
