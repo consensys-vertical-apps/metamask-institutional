@@ -27,8 +27,6 @@ jobs:
           cache: "yarn"
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-      - name: Set Yarn Version
-        run: yarn set version 1.22.19
       - run: yarn install
       - run: yarn type-check
       - run: yarn build
