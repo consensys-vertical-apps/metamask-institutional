@@ -1,6 +1,5 @@
 import fetchMock from "jest-fetch-mock";
 
-import { CustodianApiError } from "../../errors/CustodianApiError";
 import { BitgoClient } from "./BitgoClient";
 
 fetchMock.enableMocks();
@@ -48,16 +47,9 @@ describe("BitgoClient", () => {
     });
 
     it("should fail if an exception is thrown by the HTTP client", async () => {
-      fetchMock.mockImplementationOnce(() => {
-        throw {
-          response: {
-            status: 400,
-            data: "Fail",
-          },
-        };
-      });
+      fetchMock.mockResponseOnce(() => Promise.reject(new Error("Network error")));
 
-      await expect(bitgoClient.getEthereumAccounts()).rejects.toThrow(CustodianApiError);
+      await expect(bitgoClient.getEthereumAccounts()).rejects.toThrow("Network error");
     });
   });
 
@@ -77,7 +69,7 @@ describe("BitgoClient", () => {
       expect(result).toEqual("account");
     });
 
-    it("should return null if the account isnt found", async () => {
+    it("should return null if the account isn't found", async () => {
       fetchMock.mockResponseOnce(JSON.stringify({ data: [] }));
 
       const result = await bitgoClient.getEthereumAccountByAddress("0x");
@@ -93,22 +85,15 @@ describe("BitgoClient", () => {
     });
 
     it("should fail if an exception is thrown by the HTTP client", async () => {
-      fetchMock.mockImplementationOnce(() => {
-        throw {
-          response: {
-            status: 400,
-            data: "Fail",
-          },
-        };
-      });
+      fetchMock.mockResponseOnce(() => Promise.reject(new Error("Network error")));
 
-      await expect(bitgoClient.getEthereumAccountByAddress("0x")).rejects.toThrow(CustodianApiError);
+      await expect(bitgoClient.getEthereumAccountByAddress("0x")).rejects.toThrow("Network error");
     });
   });
 
   describe("BitgoClient#createTransaction", () => {
     it("should POST the /custodian/transaction endpoint", async () => {
-      fetchMock.mockResponseOnce(JSON.stringify("ok"));
+      fetchMock.mockResponseOnce(JSON.stringify({ data: "ok" }));
 
       await bitgoClient.createTransaction(
         { walletId: "test", coinId: "gteth" },
@@ -134,7 +119,7 @@ describe("BitgoClient", () => {
     });
 
     it("should POST the /custodian/transaction endpoint with EIP-1559 params", async () => {
-      fetchMock.mockResponseOnce(JSON.stringify("ok"));
+      fetchMock.mockResponseOnce(JSON.stringify({ data: "ok" }));
 
       await bitgoClient.createTransaction(
         { walletId: "test", coinId: "gteth" },
@@ -161,16 +146,9 @@ describe("BitgoClient", () => {
     });
 
     it("should fail if an exception is thrown by the HTTP client", async () => {
-      fetchMock.mockImplementationOnce(() => {
-        throw {
-          response: {
-            status: 400,
-            data: "Fail",
-          },
-        };
-      });
+      fetchMock.mockResponseOnce(() => Promise.reject(new Error("Network error")));
 
-      expect(
+      await expect(
         bitgoClient.createTransaction(
           { walletId: "test", coinId: "gteth" },
           {
@@ -182,7 +160,7 @@ describe("BitgoClient", () => {
             from: "test",
           },
         ),
-      ).rejects.toThrow(CustodianApiError);
+      ).rejects.toThrow("Network error");
     });
   });
 
@@ -203,16 +181,9 @@ describe("BitgoClient", () => {
     });
 
     it("should fail if an exception is thrown by the HTTP client", async () => {
-      fetchMock.mockImplementationOnce(() => {
-        throw {
-          response: {
-            status: 400,
-            data: "Fail",
-          },
-        };
-      });
+      fetchMock.mockResponseOnce(() => Promise.reject(new Error("Network error")));
 
-      await expect(bitgoClient.getTransactions()).rejects.toThrow(CustodianApiError);
+      await expect(bitgoClient.getTransactions()).rejects.toThrow("Network error");
     });
   });
 
@@ -233,16 +204,9 @@ describe("BitgoClient", () => {
     });
 
     it("should fail if an exception is thrown by the HTTP client", async () => {
-      fetchMock.mockImplementationOnce(() => {
-        throw {
-          response: {
-            status: 400,
-            data: "Fail",
-          },
-        };
-      });
+      fetchMock.mockResponseOnce(() => Promise.reject(new Error("Network error")));
 
-      expect(bitgoClient.getTransaction("xxx")).rejects.toThrow(CustodianApiError);
+      await expect(bitgoClient.getTransaction("xxx")).rejects.toThrow("Network error");
     });
   });
 
@@ -264,16 +228,9 @@ describe("BitgoClient", () => {
     });
 
     it("should fail if an exception is thrown by the HTTP client", async () => {
-      fetchMock.mockImplementationOnce(() => {
-        throw {
-          response: {
-            status: 400,
-            data: "Fail",
-          },
-        };
-      });
+      fetchMock.mockResponseOnce(() => Promise.reject(new Error("Network error")));
 
-      await expect(bitgoClient.getCustomerProof()).rejects.toThrow(CustodianApiError);
+      await expect(bitgoClient.getCustomerProof()).rejects.toThrow("Network error");
     });
   });
 });

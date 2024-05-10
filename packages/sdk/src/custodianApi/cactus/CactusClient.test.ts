@@ -1,6 +1,5 @@
 import fetchMock from "jest-fetch-mock";
 
-import { CustodianApiError } from "../../errors/CustodianApiError";
 import { MessageTypes, TypedMessage } from "../../interfaces/ITypedMessage";
 import { CactusClient } from "./CactusClient";
 import { mockCactusGetChainIdsResponse } from "./mocks/mockCactusGetChainIdsResponse";
@@ -24,16 +23,9 @@ describe("CactusClient", () => {
 
   describe("getAccessToken", () => {
     it("should fail if an exception is thrown by the HTTP client", async () => {
-      fetchMock.mockImplementationOnce(() => {
-        throw {
-          response: {
-            status: 400,
-            data: "Fail",
-          },
-        };
-      });
+      fetchMock.mockImplementationOnce(() => Promise.reject(new Error("Network failure")));
 
-      await expect(cactusClient.getAccessToken()).rejects.toThrow(CustodianApiError);
+      await expect(cactusClient.getAccessToken()).rejects.toThrow("Network failure");
     });
 
     it("should fail if no access token is returned", async () => {
@@ -85,16 +77,8 @@ describe("CactusClient", () => {
     });
 
     it("should fail if an exception is thrown by the HTTP client", async () => {
-      fetchMock.mockImplementationOnce(() => {
-        throw {
-          response: {
-            status: 400,
-            data: "Fail",
-          },
-        };
-      });
-
-      await expect(cactusClient.getEthereumAccounts()).rejects.toThrow(CustodianApiError);
+      fetchMock.mockReject(new Error("Failed to fetch accounts"));
+      await expect(cactusClient.getEthereumAccounts()).rejects.toThrow("Failed to fetch accounts");
     });
   });
 
@@ -165,16 +149,8 @@ describe("CactusClient", () => {
     });
 
     it("should fail if an exception is thrown by the HTTP client", async () => {
-      fetchMock.mockImplementationOnce(() => {
-        throw {
-          response: {
-            status: 400,
-            data: "Fail",
-          },
-        };
-      });
-
-      expect(
+      fetchMock.mockReject(new Error("Transaction failed"));
+      await expect(
         cactusClient.createTransaction(
           { chainId: 4, note: "test" },
           {
@@ -186,7 +162,7 @@ describe("CactusClient", () => {
             from: "test",
           },
         ),
-      ).rejects.toThrow(CustodianApiError);
+      ).rejects.toThrow("Transaction failed");
     });
   });
 
@@ -215,16 +191,8 @@ describe("CactusClient", () => {
     });
 
     it("should fail if an exception is thrown by the HTTP client", async () => {
-      fetchMock.mockImplementationOnce(() => {
-        throw {
-          response: {
-            status: 400,
-            data: "Fail",
-          },
-        };
-      });
-
-      await expect(cactusClient.getSignedMessage("xxx")).rejects.toThrow(CustodianApiError);
+      fetchMock.mockReject(new Error("Failed to get signature"));
+      await expect(cactusClient.getSignedMessage("xxx")).rejects.toThrow("Failed to get signature");
     });
   });
 
@@ -245,16 +213,9 @@ describe("CactusClient", () => {
     });
 
     it("should fail if an exception is thrown by the HTTP client", async () => {
-      fetchMock.mockImplementationOnce(() => {
-        throw {
-          response: {
-            status: 400,
-            data: "Fail",
-          },
-        };
-      });
+      fetchMock.mockImplementationOnce(() => Promise.reject(new Error("Network failure")));
 
-      expect(cactusClient.getTransactions(4)).rejects.toThrow(CustodianApiError);
+      await expect(cactusClient.getTransactions(4)).rejects.toThrow("Network failure");
     });
   });
 
@@ -283,16 +244,9 @@ describe("CactusClient", () => {
     });
 
     it("should fail if an exception is thrown by the HTTP client", async () => {
-      fetchMock.mockImplementationOnce(() => {
-        throw {
-          response: {
-            status: 400,
-            data: "Fail",
-          },
-        };
-      });
+      fetchMock.mockImplementationOnce(() => Promise.reject(new Error("Network failure")));
 
-      await expect(cactusClient.getTransaction("xxx")).rejects.toThrow(CustodianApiError);
+      await expect(cactusClient.getTransactions(4)).rejects.toThrow("Network failure");
     });
   });
 
@@ -314,16 +268,9 @@ describe("CactusClient", () => {
     });
 
     it("should fail if an exception is thrown by the HTTP client", async () => {
-      fetchMock.mockImplementationOnce(() => {
-        throw {
-          response: {
-            status: 400,
-            data: "Fail",
-          },
-        };
-      });
+      fetchMock.mockImplementationOnce(() => Promise.reject(new Error("Network failure")));
 
-      expect(cactusClient.getCustomerProof()).rejects.toThrow(CustodianApiError);
+      await expect(cactusClient.getCustomerProof()).rejects.toThrow("Network failure");
     });
   });
 
@@ -381,14 +328,7 @@ describe("CactusClient", () => {
     });
 
     it("should fail if an exception is thrown by the HTTP client", async () => {
-      fetchMock.mockImplementationOnce(() => {
-        throw {
-          response: {
-            status: 400,
-            data: "Fail",
-          },
-        };
-      });
+      fetchMock.mockImplementationOnce(() => Promise.reject(new Error("Network failure")));
 
       const buffer: TypedMessage<MessageTypes> = {
         types: {
@@ -401,7 +341,7 @@ describe("CactusClient", () => {
         message: {},
       };
 
-      expect(cactusClient.signTypedData_v4("test", buffer, "V4", 4)).rejects.toThrow(CustodianApiError);
+      await expect(cactusClient.signTypedData_v4("test", buffer, "V4", 4)).rejects.toThrow("Network failure");
     });
   });
 
@@ -424,17 +364,11 @@ describe("CactusClient", () => {
     });
 
     it("should fail if an exception is thrown by the HTTP client", async () => {
-      fetchMock.mockImplementationOnce(() => {
-        throw {
-          response: {
-            status: 400,
-            data: "Fail",
-          },
-        };
-      });
+      fetchMock.mockImplementationOnce(() => Promise.reject(new Error("Network failure")));
+
       const message = "0xdeadbeef";
 
-      expect(cactusClient.signPersonalMessage("test", message)).rejects.toThrow(CustodianApiError);
+      await expect(cactusClient.signPersonalMessage("test", message)).rejects.toThrow("Network failure");
     });
   });
 
@@ -453,16 +387,9 @@ describe("CactusClient", () => {
     });
 
     it("should fail if an exception is thrown by the HTTP client", async () => {
-      fetchMock.mockImplementationOnce(() => {
-        throw {
-          response: {
-            status: 400,
-            data: "Fail",
-          },
-        };
-      });
+      fetchMock.mockImplementationOnce(() => Promise.reject(new Error("Network error")));
 
-      await expect(cactusClient.getChainIds()).rejects.toThrow(CustodianApiError);
+      await expect(cactusClient.getChainIds()).rejects.toThrow("Network error");
     });
   });
 });

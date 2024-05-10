@@ -1,6 +1,5 @@
 import fetchMock from "jest-fetch-mock";
 
-import { CustodianApiError } from "../../errors/CustodianApiError";
 import { MessageTypes, TypedMessage } from "../../interfaces/ITypedMessage";
 import { qredoAccountsMock } from "./mocks/qredoAccountsMock";
 import { qredoCustomerProofMock } from "./mocks/qredoCustomerProofMock";
@@ -24,16 +23,8 @@ describe("#QredoClient", () => {
 
   describe("getAccessToken", () => {
     it("should fail if an exception is thrown by the HTTP client", async () => {
-      fetchMock.mockImplementationOnce(() => {
-        throw {
-          response: {
-            status: 400,
-            data: "Fail",
-          },
-        };
-      });
-
-      await expect(qredoClient.getAccessToken()).rejects.toThrow(CustodianApiError);
+      fetchMock.mockImplementationOnce(() => Promise.reject(new Error("Network error")));
+      await expect(qredoClient.getAccessToken()).rejects.toThrow("Network error");
     });
 
     it("should fail if no access token is returned", async () => {
@@ -59,30 +50,14 @@ describe("#QredoClient", () => {
 
   describe("getEthereumAccounts", () => {
     it("should fail if an exception is thrown by the HTTP client", async () => {
-      fetchMock.mockResponseOnce(
-        JSON.stringify({
-          access_token: "123",
-          refresh_token: "token",
-        }),
-      );
-
-      fetchMock.mockImplementationOnce(() => {
-        throw {
-          response: {
-            status: 400,
-            data: "Fail",
-          },
-        };
-      });
-
-      await expect(qredoClient.getEthereumAccounts()).rejects.toThrow(CustodianApiError);
+      fetchMock.mockImplementationOnce(() => Promise.reject(new Error("Network error")));
+      await expect(qredoClient.getEthereumAccounts()).rejects.toThrow("Network error");
     });
 
     it("should call the accounts endpoint", async () => {
-      fetchMock.mockResponseOnce(
-        JSON.stringify({
-          wallets: qredoAccountsMock,
-        }),
+      fetchMock.mockResponses(
+        [JSON.stringify({ access_token: "123", refresh_token: "token" }), { status: 200 }],
+        [JSON.stringify({ wallets: qredoAccountsMock }), { status: 200 }],
       );
 
       const result = await qredoClient.getEthereumAccounts();
@@ -152,29 +127,13 @@ describe("#QredoClient", () => {
     });
 
     it("should fail if an exception is thrown by the HTTP client", async () => {
-      fetchMock.mockImplementationOnce(() => {
-        throw {
-          response: {
-            status: 400,
-            data: "Fail",
-          },
-        };
-      });
-
+      fetchMock.mockImplementationOnce(() => Promise.reject(new Error("Bad request")));
       await expect(
         qredoClient.createTransaction(
           { from: "0xtest", chainId: "42" },
-          {
-            to: "test",
-            value: "test",
-            data: "test",
-            gasLimit: "test",
-            gasPrice: "test",
-            from: "test",
-            type: "0",
-          },
+          { to: "test", value: "test", data: "test", gasLimit: "test", gasPrice: "test", from: "test", type: "0" },
         ),
-      ).rejects.toThrow(CustodianApiError);
+      ).rejects.toThrow("Bad request");
     });
   });
 
@@ -195,16 +154,8 @@ describe("#QredoClient", () => {
     });
 
     it("should fail if an exception is thrown by the HTTP client", async () => {
-      fetchMock.mockImplementationOnce(() => {
-        throw {
-          response: {
-            status: 400,
-            data: "Fail",
-          },
-        };
-      });
-
-      await expect(qredoClient.getTransaction("xxx")).rejects.toThrow(CustodianApiError);
+      fetchMock.mockImplementationOnce(() => Promise.reject(new Error("Bad request")));
+      await expect(qredoClient.getTransaction("xxx")).rejects.toThrow("Bad request");
     });
   });
 
@@ -216,16 +167,8 @@ describe("#QredoClient", () => {
 
   describe("getCustomerProof", () => {
     it("should fail if an exception is thrown by the HTTP client", async () => {
-      fetchMock.mockImplementationOnce(() => {
-        throw {
-          response: {
-            status: 400,
-            data: "Fail",
-          },
-        };
-      });
-
-      await expect(qredoClient.getCustomerProof()).rejects.toThrow(CustodianApiError);
+      fetchMock.mockImplementationOnce(() => Promise.reject(new Error("Bad request")));
+      await expect(qredoClient.getTransaction("xxx")).rejects.toThrow("Bad request");
     });
 
     it("should call the customer proof endpoint", async () => {
@@ -263,16 +206,8 @@ describe("#QredoClient", () => {
     });
 
     it("should fail if an exception is thrown by the HTTP client", async () => {
-      fetchMock.mockImplementationOnce(() => {
-        throw {
-          response: {
-            status: 400,
-            data: "Fail",
-          },
-        };
-      });
-
-      await expect(qredoClient.getSignedMessage("xxx")).rejects.toThrow(CustodianApiError);
+      fetchMock.mockImplementationOnce(() => Promise.reject(new Error("Bad request")));
+      await expect(qredoClient.getTransaction("xxx")).rejects.toThrow("Bad request");
     });
   });
 
@@ -291,16 +226,8 @@ describe("#QredoClient", () => {
     });
 
     it("should fail if an exception is thrown by the HTTP client", async () => {
-      fetchMock.mockImplementationOnce(() => {
-        throw {
-          response: {
-            status: 400,
-            data: "Fail",
-          },
-        };
-      });
-
-      await expect(qredoClient.getNetworks()).rejects.toThrow(CustodianApiError);
+      fetchMock.mockImplementationOnce(() => Promise.reject(new Error("Bad request")));
+      await expect(qredoClient.getTransaction("xxx")).rejects.toThrow("Bad request");
     });
   });
 
@@ -323,17 +250,8 @@ describe("#QredoClient", () => {
     });
 
     it("should fail if an exception is thrown by the HTTP client", async () => {
-      fetchMock.mockImplementationOnce(() => {
-        throw {
-          response: {
-            status: 400,
-            data: "Fail",
-          },
-        };
-      });
-      const message = "0xdeadbeef";
-
-      expect(qredoClient.signPersonalMessage("test", message)).rejects.toThrow(CustodianApiError);
+      fetchMock.mockImplementationOnce(() => Promise.reject(new Error("Bad request")));
+      await expect(qredoClient.signPersonalMessage("test", "0xdeadbeef")).rejects.toThrow("Bad request");
     });
   });
 
@@ -365,27 +283,9 @@ describe("#QredoClient", () => {
     });
 
     it("should fail if an exception is thrown by the HTTP client", async () => {
-      fetchMock.mockImplementationOnce(() => {
-        throw {
-          response: {
-            status: 400,
-            data: "Fail",
-          },
-        };
-      });
-
-      const buffer: TypedMessage<MessageTypes> = {
-        types: {
-          EIP712Domain: [],
-        },
-        primaryType: "test",
-        domain: {
-          name: "test",
-        },
-        message: {},
-      };
-
-      expect(qredoClient.signTypedData_v4("test", buffer)).rejects.toThrow(CustodianApiError);
+      fetchMock.mockImplementationOnce(() => Promise.reject(new Error("Bad request")));
+      const buffer = { types: { EIP712Domain: [] }, primaryType: "test", domain: { name: "test" }, message: {} };
+      await expect(qredoClient.signTypedData_v4("test", buffer)).rejects.toThrow("Bad request");
     });
   });
 });

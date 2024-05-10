@@ -1,7 +1,6 @@
 import { SimpleCache } from "@metamask-institutional/simplecache";
 import { IEIP1559TxParams, ILegacyTXParams } from "@metamask-institutional/types";
 
-import { CustodianApiError } from "../../errors/CustodianApiError";
 import { MessageTypes, TypedMessage } from "../../interfaces/ITypedMessage";
 import { handleResponse } from "../../util/handle-response";
 import { ICactusAccessTokenResponse } from "./interfaces/ICactusAccessTokenResponse";
@@ -32,46 +31,38 @@ export class CactusClient {
   }
 
   async getAccessToken(): Promise<string> {
-    try {
-      const response = await fetch(`${this.apiUrl}/tokens`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          grantType: "refresh_token",
-          refreshToken: this.refreshToken,
-        }),
-      });
+    const response = await fetch(`${this.apiUrl}/tokens`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        grantType: "refresh_token",
+        refreshToken: this.refreshToken,
+      }),
+    });
 
-      const contextErrorMessage = "Error fetching the access token";
-      const data: ICactusAccessTokenResponse = await handleResponse(response, contextErrorMessage);
+    const contextErrorMessage = "Error fetching the access token";
+    const data: ICactusAccessTokenResponse = await handleResponse(response, contextErrorMessage);
 
-      if (!data.jwt) {
-        throw new Error("No access token");
-      }
-
-      return data.jwt;
-    } catch (e) {
-      throw new CustodianApiError(e);
+    if (!data.jwt) {
+      throw new Error("No access token");
     }
+
+    return data.jwt;
   }
 
   async getEthereumAccounts(): Promise<ICactusEthereumAccount[]> {
     const headers = await this.getHeaders();
 
-    try {
-      const response = await fetch(`${this.apiUrl}/eth-accounts`, {
-        headers,
-      });
+    const response = await fetch(`${this.apiUrl}/eth-accounts`, {
+      headers,
+    });
 
-      const contextErrorMessage = "Error fetching accounts";
-      const accounts: ICactusEthereumAccount[] = await handleResponse(response, contextErrorMessage);
+    const contextErrorMessage = "Error fetching accounts";
+    const accounts: ICactusEthereumAccount[] = await handleResponse(response, contextErrorMessage);
 
-      return accounts;
-    } catch (e) {
-      throw new CustodianApiError(e);
-    }
+    return accounts;
   }
 
   async createTransaction(
@@ -96,92 +87,72 @@ export class CactusClient {
       payload.maxFeePerGas = (txParams as IEIP1559TxParams).maxFeePerGas;
     }
 
-    try {
-      const response = await fetch(`${this.apiUrl}/transactions?chainId=${cactusTxDetails.chainId}`, {
-        method: "POST",
-        body: JSON.stringify(payload),
-        headers,
-      });
+    const response = await fetch(`${this.apiUrl}/transactions?chainId=${cactusTxDetails.chainId}`, {
+      method: "POST",
+      body: JSON.stringify(payload),
+      headers,
+    });
 
-      const contextErrorMessage = "Error creating transaction";
-      return await handleResponse(response, contextErrorMessage);
-    } catch (e) {
-      throw new CustodianApiError(e);
-    }
+    const contextErrorMessage = "Error creating transaction";
+    return await handleResponse(response, contextErrorMessage);
   }
 
   async getSignedMessage(custodian_signedMessageId: string): Promise<ICactusSignatureResponse> {
     const headers = await this.getHeaders();
 
-    try {
-      const response = await fetch(`${this.apiUrl}/signatures?transactionId=${custodian_signedMessageId}`, {
-        headers,
-      });
+    const response = await fetch(`${this.apiUrl}/signatures?transactionId=${custodian_signedMessageId}`, {
+      headers,
+    });
 
-      const contextErrorMessage = `Error getting signed message with id ${custodian_signedMessageId}`;
-      const data = await handleResponse(response, contextErrorMessage);
+    const contextErrorMessage = `Error getting signed message with id ${custodian_signedMessageId}`;
+    const data = await handleResponse(response, contextErrorMessage);
 
-      if (data.length) {
-        return data[0] as ICactusSignatureResponse;
-      }
-
-      return null;
-    } catch (e) {
-      throw new CustodianApiError(e);
+    if (data.length) {
+      return data[0] as ICactusSignatureResponse;
     }
+
+    return null;
   }
 
   async getTransaction(custodian_transactionId: string): Promise<ICactusTransaction> {
     const headers = await this.getHeaders();
 
-    try {
-      const response = await fetch(`${this.apiUrl}/transactions?transactionId=${custodian_transactionId}`, {
-        headers,
-      });
+    const response = await fetch(`${this.apiUrl}/transactions?transactionId=${custodian_transactionId}`, {
+      headers,
+    });
 
-      const contextErrorMessage = `Error getting transaction with id ${custodian_transactionId}`;
-      const data = await handleResponse(response, contextErrorMessage);
+    const contextErrorMessage = `Error getting transaction with id ${custodian_transactionId}`;
+    const data = await handleResponse(response, contextErrorMessage);
 
-      if (data.length) {
-        return data[0];
-      }
-
-      return null;
-    } catch (e) {
-      throw new CustodianApiError(e);
+    if (data.length) {
+      return data[0];
     }
+
+    return null;
   }
 
   async getTransactions(chainId: number): Promise<ICactusTransaction[]> {
     const headers = await this.getHeaders();
 
-    try {
-      const response = await fetch(`${this.apiUrl}/transactions?chainId=${chainId}`, {
-        headers,
-      });
+    const response = await fetch(`${this.apiUrl}/transactions?chainId=${chainId}`, {
+      headers,
+    });
 
-      const contextErrorMessage = `Error getting transactions with chainId ${chainId}`;
-      return await handleResponse(response, contextErrorMessage);
-    } catch (e) {
-      throw new CustodianApiError(e);
-    }
+    const contextErrorMessage = `Error getting transactions with chainId ${chainId}`;
+    return await handleResponse(response, contextErrorMessage);
   }
 
   async getCustomerProof(): Promise<ICactusCustomerProof> {
     const headers = await this.getHeaders();
 
-    try {
-      const response = await fetch(`${this.apiUrl}/customer-proof`, {
-        method: "POST",
-        headers,
-        body: JSON.stringify({}),
-      });
+    const response = await fetch(`${this.apiUrl}/customer-proof`, {
+      method: "POST",
+      headers,
+      body: JSON.stringify({}),
+    });
 
-      const contextErrorMessage = "Error getting Custommer Proof";
-      return await handleResponse(response, contextErrorMessage);
-    } catch (e) {
-      throw new CustodianApiError(e);
-    }
+    const contextErrorMessage = "Error getting Custommer Proof";
+    return await handleResponse(response, contextErrorMessage);
   }
 
   async signTypedData_v4(
@@ -204,18 +175,14 @@ export class CactusClient {
       url += `?chainId=${chainId}`;
     }
 
-    try {
-      const response = await fetch(url, {
-        method: "POST",
-        body: JSON.stringify(payload),
-        headers,
-      });
+    const response = await fetch(url, {
+      method: "POST",
+      body: JSON.stringify(payload),
+      headers,
+    });
 
-      const contextErrorMessage = `Error doing signTypedData from address: ${fromAddress}`;
-      return await handleResponse(response, contextErrorMessage);
-    } catch (e) {
-      throw new CustodianApiError(e);
-    }
+    const contextErrorMessage = `Error doing signTypedData from address: ${fromAddress}`;
+    return await handleResponse(response, contextErrorMessage);
   }
 
   async signPersonalMessage(fromAddress: string, message: string): Promise<ICactusSignatureResponse> {
@@ -229,34 +196,26 @@ export class CactusClient {
       signatureVersion: "personalSign",
     };
 
-    try {
-      const response = await fetch(`${this.apiUrl}/signatures`, {
-        method: "POST",
-        body: JSON.stringify(payload),
-        headers,
-      });
+    const response = await fetch(`${this.apiUrl}/signatures`, {
+      method: "POST",
+      body: JSON.stringify(payload),
+      headers,
+    });
 
-      const contextErrorMessage = `Error doing signPersonalMessage from address: ${fromAddress}`;
-      return await handleResponse(response, contextErrorMessage);
-    } catch (e) {
-      throw new CustodianApiError(e);
-    }
+    const contextErrorMessage = `Error doing signPersonalMessage from address: ${fromAddress}`;
+    return await handleResponse(response, contextErrorMessage);
   }
 
   async getChainIds(): Promise<ICactusChainIdsResponse> {
     const headers = await this.getHeaders();
 
-    try {
-      const response = await fetch(`${this.apiUrl}/chainIds`, {
-        headers,
-      });
+    const response = await fetch(`${this.apiUrl}/chainIds`, {
+      headers,
+    });
 
-      const contextErrorMessage = "Error getting chainIds";
-      const data: ICactusChainIdsResponse = await handleResponse(response, contextErrorMessage);
+    const contextErrorMessage = "Error getting chainIds";
+    const data: ICactusChainIdsResponse = await handleResponse(response, contextErrorMessage);
 
-      return data;
-    } catch (e) {
-      throw new CustodianApiError(e);
-    }
+    return data;
   }
 }

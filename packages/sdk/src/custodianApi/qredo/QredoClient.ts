@@ -3,7 +3,6 @@ import { IEIP1559TxParams, ILegacyTXParams, IRefreshTokenChangeEvent } from "@me
 import { EventEmitter } from "events";
 
 import { REFRESH_TOKEN_CHANGE_EVENT } from "../../constants/constants";
-import { CustodianApiError } from "../../errors/CustodianApiError";
 import { MessageTypes, TypedMessage } from "../../interfaces/ITypedMessage";
 import { handleResponse } from "../../util/handle-response";
 import { IQredoAccessTokenResponse } from "./interfaces/IQredoAccessTokenResponse";
@@ -37,60 +36,51 @@ export class QredoClient extends EventEmitter {
   }
 
   async getAccessToken(): Promise<string> {
-    try {
-      const response = await fetch(`${this.apiUrl}/connect/token`, {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: `grant_type=refresh_token&refresh_token=${this.refreshToken}`,
-      });
+    const response = await fetch(`${this.apiUrl}/connect/token`, {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: `grant_type=refresh_token&refresh_token=${this.refreshToken}`,
+    });
 
-      const contextErrorMessage = "Error fetching the access token";
-      const data = (await handleResponse(response, contextErrorMessage)) as IQredoAccessTokenResponse;
+    const contextErrorMessage = "Error fetching the access token";
+    const data = (await handleResponse(response, contextErrorMessage)) as IQredoAccessTokenResponse;
 
-      if (!data.access_token) {
-        throw new Error("No access token");
-      }
-
-      if (data.refresh_token && data.refresh_token !== this.refreshToken) {
-        console.log(
-          "JsonRPCClient: Refresh token changed to " +
-            data.refresh_token.substring(0, 5) +
-            "..." +
-            data.refresh_token.substring(data.refresh_token.length - 5),
-        );
-
-        const oldRefreshToken = this.refreshToken;
-        this.setRefreshToken(data.refresh_token);
-
-        // This is a "bottom up" refresh token change, from the custodian
-        const payload: IRefreshTokenChangeEvent = {
-          oldRefreshToken,
-          newRefreshToken: data.refresh_token,
-        };
-        this.emit(REFRESH_TOKEN_CHANGE_EVENT, payload);
-      }
-
-      return data.access_token;
-    } catch (e) {
-      throw new CustodianApiError(e);
+    if (!data.access_token) {
+      throw new Error("No access token");
     }
+
+    if (data.refresh_token && data.refresh_token !== this.refreshToken) {
+      console.log(
+        "JsonRPCClient: Refresh token changed to " +
+          data.refresh_token.substring(0, 5) +
+          "..." +
+          data.refresh_token.substring(data.refresh_token.length - 5),
+      );
+
+      const oldRefreshToken = this.refreshToken;
+      this.setRefreshToken(data.refresh_token);
+
+      // This is a "bottom up" refresh token change, from the custodian
+      const payload: IRefreshTokenChangeEvent = {
+        oldRefreshToken,
+        newRefreshToken: data.refresh_token,
+      };
+      this.emit(REFRESH_TOKEN_CHANGE_EVENT, payload);
+    }
+
+    return data.access_token;
   }
 
   async getEthereumAccounts(): Promise<IQredoEthereumAccount[]> {
     const headers = await this.getHeaders();
+    const response = await fetch(`${this.apiUrl}/connect/wallets`, {
+      headers,
+    });
 
-    try {
-      const response = await fetch(`${this.apiUrl}/connect/wallets`, {
-        headers,
-      });
+    const contextErrorMessage = "Error fetching accounts";
+    const data = (await handleResponse(response, contextErrorMessage)) as IQredoWalletsResponse;
 
-      const contextErrorMessage = "Error fetching accounts";
-      const data = (await handleResponse(response, contextErrorMessage)) as IQredoWalletsResponse;
-
-      return data.wallets;
-    } catch (e) {
-      throw new CustodianApiError(e);
-    }
+    return data.wallets;
   }
 
   async createTransaction(
@@ -116,33 +106,24 @@ export class QredoClient extends EventEmitter {
       payload.maxFeePerGas = (txParams as IEIP1559TxParams).maxFeePerGas;
     }
 
-    try {
-      const response = await fetch(`${this.apiUrl}/connect/transaction`, {
-        method: "POST",
-        headers,
-        body: JSON.stringify(payload),
-      });
+    const response = await fetch(`${this.apiUrl}/connect/transaction`, {
+      method: "POST",
+      headers,
+      body: JSON.stringify(payload),
+    });
 
-      const contextErrorMessage = "Error creating transaction";
-      return (await handleResponse(response, contextErrorMessage)) as IQredoTransaction;
-    } catch (e) {
-      throw new CustodianApiError(e);
-    }
+    const contextErrorMessage = "Error creating transaction";
+    return (await handleResponse(response, contextErrorMessage)) as IQredoTransaction;
   }
 
   async getTransaction(custodian_transactionId: string): Promise<IQredoTransaction> {
     const headers = await this.getHeaders();
+    const response = await fetch(`${this.apiUrl}/connect/transaction/${custodian_transactionId}`, {
+      headers,
+    });
 
-    try {
-      const response = await fetch(`${this.apiUrl}/connect/transaction/${custodian_transactionId}`, {
-        headers,
-      });
-
-      const contextErrorMessage = `Error getting transaction with id ${custodian_transactionId}`;
-      return (await handleResponse(response, contextErrorMessage)) as IQredoTransaction;
-    } catch (e) {
-      throw new CustodianApiError(e);
-    }
+    const contextErrorMessage = `Error getting transaction with id ${custodian_transactionId}`;
+    return (await handleResponse(response, contextErrorMessage)) as IQredoTransaction;
   }
 
   async getTransactions(): Promise<IQredoTransaction[]> {
@@ -153,17 +134,12 @@ export class QredoClient extends EventEmitter {
 
   async getSignedMessage(custodian_signedMessageId: string): Promise<IQredoSignatureResponse> {
     const headers = await this.getHeaders();
+    const response = await fetch(`${this.apiUrl}/connect/sign/${custodian_signedMessageId}`, {
+      headers,
+    });
 
-    try {
-      const response = await fetch(`${this.apiUrl}/connect/sign/${custodian_signedMessageId}`, {
-        headers,
-      });
-
-      const contextErrorMessage = `Error getting signed message with id ${custodian_signedMessageId}`;
-      return (await handleResponse(response, contextErrorMessage)) as IQredoSignatureResponse;
-    } catch (e) {
-      throw new CustodianApiError(e);
-    }
+    const contextErrorMessage = `Error getting signed message with id ${custodian_signedMessageId}`;
+    return (await handleResponse(response, contextErrorMessage)) as IQredoSignatureResponse;
   }
 
   async getCustomerProof(): Promise<IQredoCustomerProof> {
@@ -183,23 +159,17 @@ export class QredoClient extends EventEmitter {
         console.warn("Authentication error obtaining customer proof - deleting token");
         this.cache.deleteCache("accessToken");
       }
-      throw new CustodianApiError(e);
     }
   }
 
   async getNetworks(): Promise<IQredoNetworksResponse> {
     const headers = await this.getHeaders();
+    const response = await fetch(`${this.apiUrl}/connect/networks`, {
+      headers,
+    });
 
-    try {
-      const response = await fetch(`${this.apiUrl}/connect/networks`, {
-        headers,
-      });
-
-      const contextErrorMessage = "Error getting networks";
-      return (await handleResponse(response, contextErrorMessage)) as IQredoNetworksResponse;
-    } catch (e) {
-      throw new CustodianApiError(e);
-    }
+    const contextErrorMessage = "Error getting networks";
+    return (await handleResponse(response, contextErrorMessage)) as IQredoNetworksResponse;
   }
 
   async signTypedData_v4(fromAddress: string, message: TypedMessage<MessageTypes>): Promise<IQredoSignatureResponse> {
@@ -210,18 +180,14 @@ export class QredoClient extends EventEmitter {
       payload: message,
     };
 
-    try {
-      const response = await fetch(`${this.apiUrl}/connect/sign`, {
-        method: "POST",
-        body: JSON.stringify(payload),
-        headers,
-      });
+    const response = await fetch(`${this.apiUrl}/connect/sign`, {
+      method: "POST",
+      body: JSON.stringify(payload),
+      headers,
+    });
 
-      const contextErrorMessage = `Error doing signTypedData from address: ${fromAddress}`;
-      return (await handleResponse(response, contextErrorMessage)) as IQredoSignatureResponse;
-    } catch (e) {
-      throw new CustodianApiError(e);
-    }
+    const contextErrorMessage = `Error doing signTypedData from address: ${fromAddress}`;
+    return (await handleResponse(response, contextErrorMessage)) as IQredoSignatureResponse;
   }
 
   async signPersonalMessage(fromAddress: string, message: string): Promise<IQredoSignatureResponse> {
@@ -232,18 +198,14 @@ export class QredoClient extends EventEmitter {
       message,
     };
 
-    try {
-      const response = await fetch(`${this.apiUrl}/connect/sign`, {
-        method: "POST",
-        body: JSON.stringify(payload),
-        headers,
-      });
+    const response = await fetch(`${this.apiUrl}/connect/sign`, {
+      method: "POST",
+      body: JSON.stringify(payload),
+      headers,
+    });
 
-      const contextErrorMessage = `Error doing signPersonalMessage from address: ${fromAddress}`;
-      return (await handleResponse(response, contextErrorMessage)) as IQredoSignatureResponse;
-    } catch (e) {
-      throw new CustodianApiError(e);
-    }
+    const contextErrorMessage = `Error doing signPersonalMessage from address: ${fromAddress}`;
+    return (await handleResponse(response, contextErrorMessage)) as IQredoSignatureResponse;
   }
 
   setRefreshToken(refreshToken: string): void {
