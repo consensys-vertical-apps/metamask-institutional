@@ -1,5 +1,5 @@
 export interface ICustodianDetails {
   apiUrl: string;
-  jwt?: string; // Jupiter, Bitgo
+  jwt?: string; // Saturn, Bitgo
   refreshToken?: string; // Qredo, Cactus
 }
