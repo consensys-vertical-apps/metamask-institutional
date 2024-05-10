@@ -1,3 +1,3 @@
 export const DefaultQredoCustodianDetails = {
-  apiUrl: "https://jupiter-custody.codefi.network",
+  apiUrl: "https://api-v2.qredo.network/api/v2",
 };

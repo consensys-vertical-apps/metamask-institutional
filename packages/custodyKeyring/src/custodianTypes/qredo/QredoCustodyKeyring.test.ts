@@ -103,7 +103,7 @@ describe("QredoCustodyKeyring", () => {
     });
   });
 
-  // This method is tested in the Jupiter Keyring test, but that has a different AuthType
+  // This method is tested in the JSON-RPC Keyring test, but that has a different AuthType
   describe("hashAuthDetails", () => {
     it("should hash the refreshtoken together with the custodian API URL", () => {
       const authDetails: IRefreshTokenAuthDetails = {
