@@ -1,3 +1,4 @@
+import { toChecksumAddress } from "@ethereumjs/util";
 import { CustodyKeyring, MMIConfiguration, MmiConfigurationController } from "@metamask-institutional/custody-keyring";
 import { mapTransactionStatus } from "@metamask-institutional/sdk";
 import {
@@ -10,7 +11,6 @@ import {
 } from "@metamask-institutional/types";
 import { WebsocketClientController } from "@metamask-institutional/websocket-client";
 import { ObservableStore } from "@metamask/obs-store";
-import { toChecksumAddress } from "ethereumjs-util";
 import { EventEmitter } from "events";
 
 import { POLL_TRANSACTION_RETRIES, TRANSACTION_POLLING_INTERVAL } from "./constants";
