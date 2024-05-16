@@ -60,7 +60,6 @@ export abstract class CustodyKeyring extends EventEmitter {
   public mmiConfigurationController: MmiConfigurationController;
   public captureException: (error: Error) => void;
 
-
   // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
   abstract txDeepLink(custodianDetails: any, txId: string): Promise<Partial<ICustodianTransactionLink> | null>;
 
@@ -537,7 +536,7 @@ export abstract class CustodyKeyring extends EventEmitter {
     return custodian;
   }
 
-  private getCustodians(): ICustodianEnvironment[] {
+  protected getCustodians(): ICustodianEnvironment[] {
     const {
       mmiConfiguration: { custodians },
     } = this.mmiConfigurationController.store.getState();
