@@ -29,7 +29,7 @@
   },
   "gitHead": "",
   "dependencies": {
-    "@metamask-institutional/custody-keyring": "^1.1.1",
+    "@metamask-institutional/custody-keyring": "^1.1.2",
     "@metamask-institutional/sdk": "^0.1.27",
     "@metamask-institutional/types": "^1.1.0",
     "mock-socket": "^9.2.1"

@@ -30,7 +30,7 @@
   "gitHead": "",
   "dependencies": {
     "@ethereumjs/util": "^8.0.5",
-    "@metamask-institutional/custody-keyring": "^1.1.1",
+    "@metamask-institutional/custody-keyring": "^1.1.2",
     "@metamask-institutional/sdk": "^0.1.27",
     "@metamask-institutional/types": "^1.1.0",
     "@metamask-institutional/websocket-client": "^0.2.1",
