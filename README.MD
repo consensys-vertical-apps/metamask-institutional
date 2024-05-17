@@ -47,7 +47,7 @@ To install, for example, react as a dependency into all packages, you can use th
 If you want to install react as a dependency only to a particular package, execute the following command:
 
 `$ lerna add react --scope my-package`
-`$ npx lerna add ethereumjs-util --scope=@metamask-institutional/custody-keyring`
+`$ npx lerna add @ethereumjs/util --scope=@metamask-institutional/custody-keyring`
 
 If you have installed, react for every package but would like to upgrade/downgrade to a particular version only for a specific package, then you can do it like this:
 
