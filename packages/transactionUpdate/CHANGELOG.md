@@ -201,6 +201,21 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
     * @metamask-institutional/sdk bumped from ^0.1.26 to ^0.1.27
     * @metamask-institutional/websocket-client bumped from ^0.2.0 to ^0.2.1
 
+## [0.2.2](https://github.com/consensys-vertical-apps/metamask-institutional/compare/transaction-update-v0.2.1...transaction-update-v0.2.2) (2024-05-17)
+
+
+### Bug Fixes
+
+* **transaction-update:** replace ethereumjs-util with @ethereumjs/util ([#720](https://github.com/consensys-vertical-apps/metamask-institutional/issues/720)) ([136bb72](https://github.com/consensys-vertical-apps/metamask-institutional/commit/136bb721cfb465baf3891deb38f7230d833fc2db))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @metamask-institutional/custody-keyring bumped from ^1.1.2 to ^2.0.0
+    * @metamask-institutional/websocket-client bumped from ^0.2.1 to ^0.2.2
+
 ## [0.2.0](https://github.com/consensys-vertical-apps/metamask-institutional/compare/transaction-update-v0.1.38...transaction-update-v0.2.0) (2024-04-17)
 
 
