@@ -3,7 +3,7 @@
   "packages/simpleCache": "1.1.0",
   "packages/types": "1.1.0",
   "packages/custodyController": "0.2.26",
-  "packages/custodyKeyring": "1.1.1",
+  "packages/custodyKeyring": "1.1.2",
   "packages/sdk": "0.1.27",
   "packages/transactionUpdate": "0.2.1",
   "packages/websocketClient": "0.2.1",
