@@ -527,6 +527,10 @@ export abstract class CustodyKeyring extends EventEmitter {
   }
 
   protected getCustodianFromEnvName(envName: string) {
+    if (!envName) {
+      return;
+    }
+
     const custodian = this.getCustodians().find(c => c.envName === envName);
 
     if (!custodian) {
