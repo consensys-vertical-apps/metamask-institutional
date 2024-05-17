@@ -1,7 +1,7 @@
 import { IEIP1559TxParams, ILegacyTXParams } from "@metamask-institutional/types";
 
-import { CustodianApiError } from "../../errors/CustodianApiError";
 import { MessageTypes, TypedMessage } from "../../interfaces/ITypedMessage";
+import { handleResponse } from "../../util/handle-response";
 import { IBitgoCreateTransactionResponse } from "./interfaces/IBitgoCreateTransactionResponse";
 import { IBitgoCustomerProof } from "./interfaces/IBitgoCustomerProof";
 import { IBitgoEIP712Request } from "./interfaces/IBitgoEIP712Request";
@@ -32,44 +32,28 @@ export class BitgoClient {
   async getEthereumAccounts(): Promise<IBitgoEthereumAccount[]> {
     const headers = this.getHeaders();
 
-    try {
-      const response = await fetch(`${this.bitgoApiurl}/wallets`, {
-        headers,
-      });
+    const response = await fetch(`${this.bitgoApiurl}/wallets`, {
+      headers,
+    });
 
-      if (!response.ok) {
-        throw new Error(`Error fetching wallet accounts. Status: ${response.status} ${response.statusText}`);
-      }
-
-      const accounts: IBitgoGetEthereumAccountsResponse = await response.json();
-      return accounts.data;
-    } catch (e) {
-      throw new CustodianApiError(e);
-    }
+    const contextErrorMessage = "Error fetching wallet accounts";
+    const accounts: IBitgoGetEthereumAccountsResponse = await handleResponse(response, contextErrorMessage);
+    return accounts.data;
   }
 
   async getEthereumAccountByAddress(address: string): Promise<IBitgoEthereumAccount> {
     const headers = this.getHeaders();
 
-    try {
-      const response = await fetch(`${this.bitgoApiurl}/mmi/wallets/address/${address}`, {
-        headers,
-      });
+    const response = await fetch(`${this.bitgoApiurl}/mmi/wallets/address/${address}`, {
+      headers,
+    });
 
-      if (!response.ok) {
-        throw new Error(
-          `Error fetching account for address ${address}. Status: ${response.status} ${response.statusText}`,
-        );
-      }
-
-      const accounts: IBitgoGetEthereumAccountsResponse = await response.json();
-      if (accounts.data.length) {
-        return accounts.data[0];
-      } else {
-        return null;
-      }
-    } catch (e) {
-      throw new CustodianApiError(e);
+    const contextErrorMessage = `Error fetching account for address ${address}`;
+    const accounts: IBitgoGetEthereumAccountsResponse = await handleResponse(response, contextErrorMessage);
+    if (accounts.data.length) {
+      return accounts.data[0];
+    } else {
+      return null;
     }
   }
 
@@ -86,90 +70,60 @@ export class BitgoClient {
       txParams.maxFeePerGas = (txParams as IEIP1559TxParams).maxFeePerGas;
     }
 
-    try {
-      const response = await fetch(
-        `${this.bitgoApiurl}/mmi/${bitgoTxDetails.coinId}/wallet/${bitgoTxDetails.walletId}/tx/build`,
-        {
-          method: "POST",
-          headers,
-          body: JSON.stringify({
-            txParams,
-          }),
-        },
-      );
+    const response = await fetch(
+      `${this.bitgoApiurl}/mmi/${bitgoTxDetails.coinId}/wallet/${bitgoTxDetails.walletId}/tx/build`,
+      {
+        method: "POST",
+        headers,
+        body: JSON.stringify({
+          txParams,
+        }),
+      },
+    );
 
-      if (!response.ok) {
-        throw new Error(`Error creating transaction. Status: ${response.status} ${response.statusText}`);
-      }
-
-      const resultWrapper: IBitgoCreateTransactionResponse = await response.json();
-      return resultWrapper.data;
-    } catch (e) {
-      throw new CustodianApiError(e);
-    }
+    const contextErrorMessage = "Error creating transaction";
+    const resultWrapper: IBitgoCreateTransactionResponse = await handleResponse(response, contextErrorMessage);
+    return resultWrapper.data;
   }
 
   async getTransaction(custodian_transactionId: string): Promise<IBitgoTransaction> {
     const headers = this.getHeaders();
 
-    try {
-      const response = await fetch(`${this.bitgoApiurl}/mmi/wallets/transactions/${custodian_transactionId}`, {
-        headers,
-      });
+    const response = await fetch(`${this.bitgoApiurl}/mmi/wallets/transactions/${custodian_transactionId}`, {
+      headers,
+    });
 
-      if (!response.ok) {
-        throw new Error(
-          `Error getting transaction with id ${custodian_transactionId}. Status: ${response.status} ${response.statusText}`,
-        );
-      }
-
-      const transaction = await response.json();
-      return transaction.data[0];
-    } catch (e) {
-      throw new CustodianApiError(e);
-    }
+    const contextErrorMessage = `Error getting transaction with id ${custodian_transactionId}`;
+    const transaction = await handleResponse(response, contextErrorMessage);
+    return transaction.data[0];
   }
 
   async getTransactions(): Promise<IBitgoTransaction[]> {
     const headers = this.getHeaders();
 
-    try {
-      const response = await fetch(`${this.bitgoApiurl}/custodian/transaction`, {
-        headers,
-      });
+    const response = await fetch(`${this.bitgoApiurl}/custodian/transaction`, {
+      headers,
+    });
 
-      if (!response.ok) {
-        throw new Error(`Error getting transactions. Status: ${response.status} ${response.statusText}`);
-      }
-
-      const allTransactions = await response.json();
-      return allTransactions.data;
-    } catch (e) {
-      throw new CustodianApiError(e);
-    }
+    const contextErrorMessage = "Error getting transactions";
+    const allTransactions = await handleResponse(response, contextErrorMessage);
+    return allTransactions.data;
   }
 
   async getCustomerProof(): Promise<IBitgoCustomerProof> {
     const headers = this.getHeaders();
 
-    try {
-      const response = await fetch(`${this.bitgoApiurl}/mmi/customer-proof`, {
-        method: "POST",
-        headers,
-        body: JSON.stringify({
-          version: "n/a",
-        }),
-      });
+    const response = await fetch(`${this.bitgoApiurl}/mmi/customer-proof`, {
+      method: "POST",
+      headers,
+      body: JSON.stringify({
+        version: "n/a",
+      }),
+    });
 
-      if (!response.ok) {
-        throw new Error(`Error getting Custommer Proof. Status: ${response.status} ${response.statusText}`);
-      }
-
-      const customerProof = await response.json();
-      return customerProof;
-    } catch (e) {
-      throw new CustodianApiError(e);
-    }
+    const contextErrorMessage = "Error getting Customer Proof";
+    const customerProof = await handleResponse(response, contextErrorMessage);
+    return customerProof;
   }
 
   async signTypedData_v4(
@@ -187,24 +141,15 @@ export class BitgoClient {
       encodingVersion: version || "v4",
     };
 
-    try {
-      const response = await fetch(`${this.bitgoApiurl}/mmi/${coinId}/wallet/${walletId}/messages/typed`, {
-        method: "POST",
-        body: JSON.stringify(payload),
-        headers,
-      });
+    const response = await fetch(`${this.bitgoApiurl}/mmi/${coinId}/wallet/${walletId}/messages/typed`, {
+      method: "POST",
+      body: JSON.stringify(payload),
+      headers,
+    });
 
-      if (!response.ok) {
-        throw new Error(
-          `Error doing signTypedData from address: ${fromAddress}. Status: ${response.status} ${response.statusText}`,
-        );
-      }
-
-      const data = await response.json();
-      return data;
-    } catch (e) {
-      throw new CustodianApiError(e);
-    }
+    const contextErrorMessage = `Error doing signTypedData from address: ${fromAddress}`;
+    const data = await handleResponse(response, contextErrorMessage);
+    return data;
   }
 
   async signPersonalMessage(
@@ -220,24 +165,15 @@ export class BitgoClient {
       message,
     };
 
-    try {
-      const response = await fetch(`${this.bitgoApiurl}/mmi/${coinId}/wallet/${walletId}/messages/personal`, {
-        method: "POST",
-        body: JSON.stringify(payload),
-        headers,
-      });
+    const response = await fetch(`${this.bitgoApiurl}/mmi/${coinId}/wallet/${walletId}/messages/personal`, {
+      method: "POST",
+      body: JSON.stringify(payload),
+      headers,
+    });
 
-      if (!response.ok) {
-        throw new Error(
-          `Error doing signPersonalMessage from address: ${fromAddress}. Status: ${response.status} ${response.statusText}`,
-        );
-      }
-
-      const data = await response.json();
-      return data;
-    } catch (e) {
-      throw new CustodianApiError(e);
-    }
+    const contextErrorMessage = `Error doing signPersonalMessage from address: ${fromAddress}`;
+    const data = await handleResponse(response, contextErrorMessage);
+    return data;
   }
 
   async getSignedMessage(
@@ -247,25 +183,15 @@ export class BitgoClient {
   ): Promise<IBitgoPersonalSignResponse> {
     const headers = await this.getHeaders();
 
-    try {
-      const response = await fetch(
-        `${this.bitgoApiurl}/mmi/${coinId}/wallet/${walletId}/messages/${custodian_signedMessageId}`,
-        {
-          headers,
-        },
-      );
+    const response = await fetch(
+      `${this.bitgoApiurl}/mmi/${coinId}/wallet/${walletId}/messages/${custodian_signedMessageId}`,
+      {
+        headers,
+      },
+    );
 
-      if (!response.ok) {
-        throw new Error(
-          `Error getting signed message with id ${custodian_signedMessageId}. Status: ${response.status} ${response.statusText}`,
-        );
-      }
-
-      const data = await response.json();
-
-      return data as IBitgoPersonalSignResponse;
-    } catch (e) {
-      throw new CustodianApiError(e);
-    }
+    const contextErrorMessage = `Error getting signed message with id ${custodian_signedMessageId}`;
+    const data = await handleResponse(response, contextErrorMessage);
+    return data as IBitgoPersonalSignResponse;
   }
 }

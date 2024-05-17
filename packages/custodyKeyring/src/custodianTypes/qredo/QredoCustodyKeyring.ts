@@ -6,6 +6,7 @@ import {
   IRefreshTokenAuthDetails,
   ITransactionStatusMap,
 } from "@metamask-institutional/types";
+import { ICustodianEnvironment } from "src/interfaces/ICustodianEnvironment";
 
 import { CustodyKeyring } from "../../CustodyKeyring";
 import { ICustodyKeyringOptions } from "../../interfaces/ICustodyKeyringOptions";
@@ -58,5 +59,9 @@ export class QredoCustodyKeyring extends CustodyKeyring {
 
   getStatusMap(): ITransactionStatusMap {
     return QredoStatusMap;
+  }
+
+  protected getCustodianFromEnvName(envName: string): ICustodianEnvironment {
+    return this.getCustodians().find(c => /qredo/iu.test(c.envName));
   }
 }
