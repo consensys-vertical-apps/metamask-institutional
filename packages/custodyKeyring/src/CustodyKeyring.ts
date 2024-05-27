@@ -380,13 +380,23 @@ export abstract class CustodyKeyring extends EventEmitter {
 
     const chainId = Number(txMeta.chainId).toString(10); // Convert to string to avoid weirdness with BigInt
 
-    const supportedChainIds = await sdk.getSupportedChains(fromAddress);
+    try {
+      const supportedChainIds = await sdk.getSupportedChains(fromAddress);
 
-    // JSON-RPC chains are hexlified
-    const normalisedSupportedChainIds = supportedChainIds.map(chainId => Number(chainId).toString());
+      // Check for both undefined and empty array scenarios.
+      if (!supportedChainIds || supportedChainIds.length === 0) {
+        throw new Error("Didn't find any supported chains or an error occurred.");
+      }
 
-    if (!normalisedSupportedChainIds.includes(chainId)) {
-      throw new Error(`This network ${chainId} is not configured or supported with your custody provider.`);
+      // JSON-RPC chains are hexlified
+      const normalisedSupportedChainIds = supportedChainIds.map(chainId => Number(chainId).toString());
+
+      if (!normalisedSupportedChainIds.includes(chainId)) {
+        throw new Error(`This network ${chainId} is not configured or supported with your custody provider.`);
+      }
+    } catch (error) {
+      console.error("Error processing chain IDs:", error);
+      throw error;
     }
 
     let payload: IEIP1559TxParams | ILegacyTXParams;
