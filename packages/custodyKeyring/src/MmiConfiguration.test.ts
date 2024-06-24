@@ -17,11 +17,11 @@ const missingV1Custodian = {
 
 const v1custodianWithNoteSupport = {
   apiBaseUrl: "",
-  displayName: "Qredo",
+  displayName: "Cactus",
   iconUrl: "images/test.svg",
-  name: "qredo",
+  name: "cactus",
   production: true,
-  type: "Qredo",
+  type: "Cactus",
   enabled: true,
   refreshTokenUrl: "https://test",
   isNoteToTraderSupported: true,

@@ -266,7 +266,7 @@ describe("CactusCustodianApi", () => {
     });
   });
 
-  describe("QredoCustodianApi#getSupportedChains", () => {
+  describe("CactusCustodianApi#getSupportedChains", () => {
     it("calls the client and returns the networks as strings", async () => {
       const result = await cactusCustodianApi.getSupportedChains();
 

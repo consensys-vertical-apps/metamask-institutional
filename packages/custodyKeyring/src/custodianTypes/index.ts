@@ -5,33 +5,8 @@ import { CactusCustodyKeyring } from "./cactus/CactusCustodyKeyring";
 import { CurvCustodyKeyring } from "./curv/CurvCustodyKeyring";
 import { ECA3CustodyKeyring } from "./eca3/ECA3CustodyKeyring";
 import { JsonRpcCustodyKeyring } from "./json-rpc/JsonRpcCustodyKeyring";
-import { QredoCustodyKeyring } from "./qredo/QredoCustodyKeyring";
 
 export const CUSTODIAN_TYPES: { [key: string]: ICustodianType } = {
-  QREDO: {
-    name: "Qredo",
-    displayName: "Qredo",
-    apiUrl: "https://api-v2.qredo.network/api/v2",
-    imgSrc: "https://dashboard.metamask-institutional.io/custodian-icons/qredo-icon.svg",
-    icon: "https://dashboard.metamask-institutional.io/custodian-icons/qredo-icon.svg",
-    website: "https://www.qredo.com",
-    onboardingUrl: "https://www.qredo.com",
-    envName: "qredo",
-    keyringClass: QredoCustodyKeyring,
-    production: true,
-    hidden: false,
-    origins: [],
-    environmentMapping: [
-      {
-        pattern: /^.*$/u,
-        mmiApiUrl: "https://mmi.codefi.network/v1",
-      },
-      {
-        pattern: /^https:\/\/api.qredo.network/u,
-        mmiApiUrl: "https://api.mmi-prod.codefi.network/v1",
-      },
-    ],
-  },
   CACTUS: {
     name: "Cactus",
     displayName: "Cactus Custody",

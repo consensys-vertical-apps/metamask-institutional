@@ -1,9 +1,0 @@
-import { IQredoAccessTokenResponse } from "../interfaces/IQredoAccessTokenResponse";
-
-export const qredoGetAccessTokenMock: IQredoAccessTokenResponse = {
-  access_token:
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJodHRwczovLzdiYTIxMS1hcGkucXJlZG8ubmV0IiwiZXhwIjoxNjMyMjIxNjg4LCJqdGkiOiIxeVJpUXgzM09qN1RmcHZ1eGtnZjBBeEFjUVIiLCJpYXQiOjE2MzIyMjA3ODgsImlzcyI6Imh0dHBzOi8vN2JhMjExLWFwaS5xcmVkby5uZXQiLCJzdWIiOiIycE5hYVkyaTV0ekNoejJRMVRZbnNRVDRDTHNpSkc3elFnR2Z1SkZtS1d6eCIsInR5cCI6ImFjY2VzcyIsImFfaWQiOiIxeVJncEpwcWxOZWxmSEo1YktyUmtVaVhDOXMiLCJjX2lkIjoiMXhvMHlOYllFMUgzRlN2aGdOUWEyQUpOQXJsIn0.LeM0xg-SAI9t4smWNAG3PvIbqf5czOCfFTo3iLXM0iw",
-  expires_in: 900,
-  token_type: "Bearer",
-  refresh_token: "new",
-};
