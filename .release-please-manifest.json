@@ -4,7 +4,7 @@
   "packages/types": "1.1.0",
   "packages/custodyController": "0.2.29",
   "packages/custodyKeyring": "2.0.2",
-  "packages/sdk": "0.1.28",
+  "packages/sdk": "0.1.29",
   "packages/transactionUpdate": "0.2.4",
   "packages/websocketClient": "0.2.4",
   "packages/configurationClient": "2.0.1",
