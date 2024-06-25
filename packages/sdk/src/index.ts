@@ -17,7 +17,6 @@ export { CactusCustodianApi } from "./custodianApi/cactus/CactusCustodianApi";
 export { CurvCustodianApi } from "./custodianApi/curv/CurvCustodianApi";
 export { JsonRpcCustodianApi } from "./custodianApi/json-rpc/JsonRpcCustodianApi";
 export { ECA3CustodianApi } from "./custodianApi/eca3/ECA3CustodianApi";
-export { QredoCustodianApi } from "./custodianApi/qredo/QredoCustodianApi";
 
 // Utility methods
 export { mapTransactionStatus } from "./util/map-status";
