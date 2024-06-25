@@ -33,7 +33,7 @@
     "@metamask-institutional/custody-controller": "^0.2.29",
     "@metamask-institutional/custody-keyring": "^2.0.2",
     "@metamask-institutional/portfolio-dashboard": "^1.4.1",
-    "@metamask-institutional/sdk": "^0.1.28",
+    "@metamask-institutional/sdk": "^0.1.29",
     "@metamask-institutional/transaction-update": "^0.2.4",
     "@metamask-institutional/types": "^1.1.0",
     "jest-create-mock-instance": "^2.0.0",
