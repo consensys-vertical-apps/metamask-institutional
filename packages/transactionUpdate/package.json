@@ -31,7 +31,7 @@
   "dependencies": {
     "@ethereumjs/util": "^8.0.5",
     "@metamask-institutional/custody-keyring": "^2.0.2",
-    "@metamask-institutional/sdk": "^0.1.28",
+    "@metamask-institutional/sdk": "^0.1.29",
     "@metamask-institutional/types": "^1.1.0",
     "@metamask-institutional/websocket-client": "^0.2.4",
     "@metamask/obs-store": "^9.0.0"
