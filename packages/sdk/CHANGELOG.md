@@ -9,6 +9,13 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
   * dependencies
     * @metamask-institutional/types bumped from ^1.0.4 to ^1.1.0
 
+## [0.1.28](https://github.com/consensys-vertical-apps/metamask-institutional/compare/sdk-v0.1.27...sdk-v0.1.28) (2024-06-25)
+
+
+### Bug Fixes
+
+* **sdk:** manual publish ([#753](https://github.com/consensys-vertical-apps/metamask-institutional/issues/753)) ([e45b76d](https://github.com/consensys-vertical-apps/metamask-institutional/commit/e45b76dda62e27fca6471a4aaf11583700763981))
+
 ## [0.1.27](https://github.com/consensys-vertical-apps/metamask-institutional/compare/sdk-v0.1.26...sdk-v0.1.27) (2024-05-15)
 
 
