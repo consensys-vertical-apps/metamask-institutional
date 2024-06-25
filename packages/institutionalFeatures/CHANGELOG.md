@@ -147,6 +147,12 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
   * dependencies
     * @metamask-institutional/custody-keyring bumped from ^2.0.0 to ^2.0.1
 
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @metamask-institutional/custody-keyring bumped from ^2.0.1 to ^2.0.2
+
 ## [1.3.0](https://github.com/consensys-vertical-apps/metamask-institutional/compare/institutional-features-v1.2.15...institutional-features-v1.3.0) (2024-04-17)
 
 
