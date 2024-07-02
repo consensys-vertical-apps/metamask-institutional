@@ -48,7 +48,6 @@ module.exports = {
     "!./classes/TimerService.ts",
     "!./enum/**",
     "!./util/map-status.ts",
-    "!./custodianApi/curv/**",
     "!./interfaces/*",
   ],
 

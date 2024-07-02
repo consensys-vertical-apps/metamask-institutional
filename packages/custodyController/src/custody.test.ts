@@ -5,7 +5,11 @@ import { CustodyAccountDetails } from "./types";
 
 describe("CustodyController", function () {
   const INIT_STATE = {
-    custodyAccountDetails: {},
+    custodyAccountDetails: {
+      "0x58183d520cf53a2aac1b02aa11d1c226453e1745": { custodyType: "Custody - Qredo" },
+      "0xbf59cbfb3a4df99380b273a685db5f3248333bab": { custodyType: "Custody - Curv" },
+      "0xc96348083d806DFfc546b36e05AF1f9452CDAe91": { custodyType: "Custody - JSONRPC" },
+    },
     custodyStatusMaps: {},
     waitForConfirmDeepLinkDialog: false,
   };
@@ -48,9 +52,37 @@ describe("CustodyController", function () {
         custodianName: "saturn",
       } as unknown as CustodyAccountDetails,
     ]);
-    expect(controller.getCustodyTypeByAddress("0xc96348083d806DFfc546b36e05AF1f9452CDAe91")).toBe("test");
+    expect(controller.getCustodyTypeByAddress("0xc96348083d806DFfc546b36e05AF1f9452CDAe91")).toBe("Custody - JSONRPC");
+    expect(controller.getAllCustodyTypes().values().next().value).toBe("Custody - JSONRPC");
+  });
 
-    expect(controller.getAllCustodyTypes().values().next().value).toBe("test");
+  it("should filter our Qredo and Curv custody types and return only JSONRPC", async function () {
+    const controller = await createController(INIT_STATE);
+    controller.setAccountDetails([
+      {
+        address: "0xc96348083d806DFfc546b36e05AF1f9452CDAe91",
+        details: "details",
+        custodyType: "Custody - JSONRPC",
+        custodianName: "saturn",
+      } as unknown as CustodyAccountDetails,
+      {
+        address: "0x58183d520cf53a2aac1b02aa11d1c226453e1745",
+        details: "details",
+        custodyType: "Custody - Qredo",
+        custodianName: "qredo",
+      } as unknown as CustodyAccountDetails,
+      {
+        address: "0xbf59cbfb3a4df99380b273a685db5f3248333bab",
+        details: "details",
+        custodyType: "Custody - Curv",
+        custodianName: "curv",
+      } as unknown as CustodyAccountDetails,
+    ]);
+    expect(controller.getCustodyTypeByAddress("0xc96348083d806DFfc546b36e05AF1f9452CDAe91")).toBe("Custody - JSONRPC");
+    expect(controller.getCustodyTypeByAddress("0x58183d520cf53a2aac1b02aa11d1c226453e1745")).toBe("Custody - Qredo");
+    expect(controller.getCustodyTypeByAddress("0xbf59cbfb3a4df99380b273a685db5f3248333bab")).toBe("Custody - Curv");
+
+    expect(controller.getAllCustodyTypes().values().next().value).toBe("Custody - JSONRPC");
   });
 
   it("should get account details", async () => {
@@ -59,12 +91,12 @@ describe("CustodyController", function () {
       {
         address: "0xc96348083d806DFfc546b36e05AF1f9452CDAe91",
         details: "details",
-        custodyType: "test",
+        custodyType: "Custody - JSONRPC",
       } as unknown as CustodyAccountDetails,
     ]);
 
     const result = controller.getAccountDetails("0xc96348083d806DFfc546b36e05AF1f9452CDAe91");
-    expect(result.address).toBe("0xc96348083d806DFfc546b36e05AF1f9452CDAe91");
+    expect(result.custodyType).toBe("Custody - JSONRPC");
   });
 
   it("should set waitForConfirmDeepLinkDialog to true", async function () {

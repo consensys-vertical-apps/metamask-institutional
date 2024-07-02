@@ -118,9 +118,14 @@ export class CustodyController {
     try {
       const custodyTypes = new Set();
       const { custodyAccountDetails } = this.store.getState();
+      const excludedCustodyTypes = ["Custody - Qredo", "Custody - Curv"];
 
       for (const address of Object.keys(custodyAccountDetails)) {
-        custodyTypes.add(custodyAccountDetails[address]?.custodyType);
+        const custodyType = custodyAccountDetails[address]?.custodyType;
+
+        if (!excludedCustodyTypes.includes(custodyType)) {
+          custodyTypes.add(custodyType);
+        }
       }
       return custodyTypes;
     } catch (error) {

@@ -2,7 +2,6 @@ import { ICustodianType } from "@metamask-institutional/types";
 
 import { BitgoCustodyKeyring } from "./bitgo/BitgoCustodyKeyring";
 import { CactusCustodyKeyring } from "./cactus/CactusCustodyKeyring";
-import { CurvCustodyKeyring } from "./curv/CurvCustodyKeyring";
 import { ECA3CustodyKeyring } from "./eca3/ECA3CustodyKeyring";
 import { JsonRpcCustodyKeyring } from "./json-rpc/JsonRpcCustodyKeyring";
 
@@ -92,22 +91,5 @@ export const CUSTODIAN_TYPES: { [key: string]: ICustodianType } = {
     hidden: true, // Since this is the prototype, we don't want to show it in the UI
     origins: [],
     environmentMapping: [], // No environment mapping for JSON-RPC custodians as this is derived from the configuration service
-  },
-
-  // Legacy Custodian
-  CURV: {
-    name: "Curv",
-    displayName: "Curv",
-    apiUrl: "https://app.curv.co",
-    imgSrc: "images/curv-logo-horizontal-black.svg",
-    icon: "images/curv-logo.svg",
-    website: "",
-    onboardingUrl: "",
-    envName: "",
-    keyringClass: CurvCustodyKeyring,
-    production: false,
-    hidden: true,
-    origins: [],
-    environmentMapping: [],
   },
 };
