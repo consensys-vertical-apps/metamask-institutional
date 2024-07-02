@@ -2,7 +2,7 @@
   "packages/institutionalFeatures": "1.3.5",
   "packages/simpleCache": "1.1.0",
   "packages/types": "1.1.0",
-  "packages/custodyController": "0.2.30",
+  "packages/custodyController": "0.2.31",
   "packages/custodyKeyring": "2.0.3",
   "packages/sdk": "0.1.30",
   "packages/transactionUpdate": "0.2.5",

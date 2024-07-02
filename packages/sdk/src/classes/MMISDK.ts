@@ -186,7 +186,3 @@ export class MMISDK extends EventEmitter {
 }
 
 export { ICustodianDetails } from "../interfaces/ICustodianDetails";
-
-// @TODO We don't need it right now, come back later after CustodyKeyring is in its own package
-// and check if we still want to export it here for some reason
-// export { CustodyKeyring } from "./CustodyKeyring";
