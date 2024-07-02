@@ -71,8 +71,6 @@ export class JsonRpcCustodianApi extends EventEmitter implements ICustodianApi {
   async getEthereumAccountsByAddress(address: string): Promise<IEthereumAccount<IEthereumAccountCustodianDetails>[]> {
     const accounts = await this.getEthereumAccounts();
 
-    // TODO: This is a bit inefficient, but eventually we may add optional filtering to the JSON-RPC API
-
     return accounts.filter(account => account.address.toLowerCase().includes(address.toLowerCase()));
   }
 

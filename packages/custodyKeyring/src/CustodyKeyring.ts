@@ -455,8 +455,6 @@ export abstract class CustodyKeyring extends EventEmitter {
     return this.accountsDetails.find(account => account.address.toLowerCase() === address.toLowerCase());
   }
 
-  // TODO: This methods should be rename 'get signed message'
-
   async getSignature(address: string, signatureId: string): Promise<ISignatureDetails> {
     if (signatureId === undefined) {
       return null;
