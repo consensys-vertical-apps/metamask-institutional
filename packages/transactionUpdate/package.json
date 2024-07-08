@@ -37,6 +37,6 @@
     "@metamask/obs-store": "^9.0.0"
   },
   "devDependencies": {
-    "ts-jest": "26.4.4"
+    "ts-jest": "29.2.0"
   }
 }
