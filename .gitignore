@@ -386,3 +386,5 @@ test-report.xml
 **/junit.xml
 # Test results
 test-results/
+
+.nx/
