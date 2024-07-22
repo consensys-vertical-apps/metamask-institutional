@@ -21,7 +21,7 @@ export class BitgoCustodyKeyring extends CustodyKeyring {
     displayName: "BitGo",
     apiUrl: "https://app.bitgo.com/defi/v2",
     imgSrc: "https://dashboard.metamask-institutional.io/custodian-icons/bitgo-icon.svg",
-    icon: "https://dashboard.metamask-institutional.io/custodian-icons/bitgo-icon.svg",
+    iconUrl: "https://dashboard.metamask-institutional.io/custodian-icons/bitgo-icon.svg",
     website: "https://www.bitgo.com",
     onboardingUrl: "https://www.bitgo.com",
     envName: "bitgo",
