@@ -181,6 +181,31 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
     * @metamask-institutional/custody-keyring bumped from ^2.0.2 to ^2.0.3
     * @metamask-institutional/sdk bumped from ^0.1.29 to ^0.1.30
 
+## [0.3.0](https://github.com/consensys-vertical-apps/metamask-institutional/compare/custody-controller-v0.2.31...custody-controller-v0.3.0) (2024-07-23)
+
+
+### Features
+
+* **custody-controller:** added handleMmiCheckIfTokenIsPresent method ([#121](https://github.com/consensys-vertical-apps/metamask-institutional/issues/121)) ([3523e1d](https://github.com/consensys-vertical-apps/metamask-institutional/commit/3523e1d395f5082f396e70cb12f9f2e0ba617aa1))
+
+
+### Bug Fixes
+
+* **check null values:** checking null values in signedMEssage and transaction ([#233](https://github.com/consensys-vertical-apps/metamask-institutional/issues/233)) ([3e21fb9](https://github.com/consensys-vertical-apps/metamask-institutional/commit/3e21fb95f764a9ffe6aea1e459737f7cf62408f7))
+* **custody-controller:** fixed handleMmiCheckIfTokenIsPresent errors ([#136](https://github.com/consensys-vertical-apps/metamask-institutional/issues/136)) ([31c5227](https://github.com/consensys-vertical-apps/metamask-institutional/commit/31c5227b9ba1a6c55d337204f0f56dc209ba2fba))
+* **fix version:** fixes custody-keyring and extension package versions ([78b8039](https://github.com/consensys-vertical-apps/metamask-institutional/commit/78b80399444469dd669d7cda403ca73452bb78f2))
+* **npmignore:** clean up ([#271](https://github.com/consensys-vertical-apps/metamask-institutional/issues/271)) ([a4bbae1](https://github.com/consensys-vertical-apps/metamask-institutional/commit/a4bbae1887ef3cead82b58bd2ec14fbfcd40f662))
+* **updates packages:** updates packages to the latest versions ([#278](https://github.com/consensys-vertical-apps/metamask-institutional/issues/278)) ([0dc78c5](https://github.com/consensys-vertical-apps/metamask-institutional/commit/0dc78c5321d8b686320a7d83bd45eae93fefb36a))
+* **version bump:** manual version bump and clean up ([#762](https://github.com/consensys-vertical-apps/metamask-institutional/issues/762)) ([5135d9c](https://github.com/consensys-vertical-apps/metamask-institutional/commit/5135d9c1def750422e4a8f7718ba1926242695dd))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @metamask-institutional/custody-keyring bumped from ^2.0.3 to ^2.0.4
+    * @metamask-institutional/sdk bumped from ^0.1.30 to ^0.1.31
+
 ## [0.2.22](https://github.com/consensys-vertical-apps/metamask-institutional/compare/custody-controller-v0.2.21...custody-controller-v0.2.22) (2024-02-20)
 
 
