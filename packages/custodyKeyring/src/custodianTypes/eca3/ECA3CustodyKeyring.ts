@@ -24,7 +24,7 @@ export class ECA3CustodyKeyring extends CustodyKeyring {
     displayName: "ECA3",
     apiUrl: "https://neptune-custody.codefi.network/eth",
     imgSrc: "https://backend.vistan-brillen.de/storage/files/images/marken/changeme/header/changeme-logo-header.jpg",
-    icon: "https://backend.vistan-brillen.de/storage/files/images/marken/changeme/header/changeme-logo-header.jpg",
+    iconUrl: "https://backend.vistan-brillen.de/storage/files/images/marken/changeme/header/changeme-logo-header.jpg",
     website: "https://neptune-custody-ui.metamask-institutional.io/",
     onboardingUrl: "https://neptune-custody-ui.metamask-institutional.io/",
     envName: "neptune-custody",

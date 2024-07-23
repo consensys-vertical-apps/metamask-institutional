@@ -10,7 +10,7 @@ export interface ICustodianType {
   apiVersion?: string;
   custodianPublishesTransaction?: boolean;
   imgSrc: string;
-  icon: string;
+  iconUrl: string;
   website: string;
   onboardingUrl: string;
   envName: string;

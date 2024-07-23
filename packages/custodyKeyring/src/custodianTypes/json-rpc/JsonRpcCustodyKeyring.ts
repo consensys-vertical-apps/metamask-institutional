@@ -24,7 +24,7 @@ export class JsonRpcCustodyKeyring extends CustodyKeyring {
     displayName: "JSON-RPC",
     apiUrl: "https://saturn-custody.codefi.network/eth",
     imgSrc: "https://saturn-custody-ui.metamask-institutional.io/saturn.svg",
-    icon: "https://saturn-custody-ui.metamask-institutional.io/saturn.svg",
+    iconUrl: "https://saturn-custody-ui.metamask-institutional.io/saturn.svg",
     website: "https://saturn-custody-ui.metamask-institutional.io/",
     onboardingUrl: "https://saturn-custody-ui.metamask-institutional.io/",
     envName: "saturn-prod",
