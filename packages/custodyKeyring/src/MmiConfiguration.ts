@@ -33,18 +33,18 @@ export class MmiConfigurationController {
     const initState = opts.initState?.mmiConfiguration
       ? opts.initState
       : {
-          mmiConfiguration: {
-            portfolio: {
-              enabled: false,
-              url: "",
-              cookieSetUrls: [],
-            },
-            features: {
-              websocketApi: false,
-            },
-            custodians: [], // NB: Custodians will always be empty when we start
+        mmiConfiguration: {
+          portfolio: {
+            enabled: false,
+            url: "",
+            cookieSetUrls: [],
           },
-        };
+          features: {
+            websocketApi: false,
+          },
+          custodians: [], // NB: Custodians will always be empty when we start
+        },
+      };
 
     this.configurationClient = new ConfigurationClient(opts.mmiConfigurationServiceUrl);
 
@@ -114,6 +114,7 @@ export class MmiConfigurationController {
             console.warn(`Missing legacy custodian ${environment.name}`);
           } else {
             legacyCustodian.isNoteToTraderSupported = environment.isNoteToTraderSupported;
+            legacyCustodian.apiUrl = environment.apiBaseUrl;
           }
           return; // Exit this routine to avoid double adding the legacy custodian
         }
