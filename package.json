@@ -49,9 +49,9 @@
     "jest-coverage-badges": "^1.1.2",
     "jest-junit": "^15.0.0",
     "jest-sonar-reporter": "^2.0.0",
-    "lerna": "^6.6.1",
+    "lerna": "^8.1.7",
     "lint-staged": "^13.1.2",
-    "nx": "^19.4.0",
+    "nx": "^19.5.4",
     "prettier": "^2.8.7",
     "rimraf": "^4.4.1",
     "ts-jest": "^29.0.5",
@@ -73,5 +73,6 @@
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
-  }
+  },
+  "packageManager": "yarn@1.22.19"
 }

@@ -89,7 +89,7 @@ export class MmiConfigurationController {
           refreshTokenUrl: null,
           isNoteToTraderSupported: false,
           isQRCodeSupported: false,
-          isManualTokenInputSupported: custodian.isManualTokenInputSupported,
+          isManualTokenInputSupported: true,
           custodianPublishesTransaction: custodian.custodianPublishesTransaction,
           version: 1,
         })),
