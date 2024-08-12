@@ -143,7 +143,7 @@ describe("MmiConfigurationController", () => {
             websocketApiUrl: null,
             isNoteToTraderSupported: false,
             isQRCodeSupported: false,
-            isManualTokenInputSupported: true,
+            isManualTokenInputSupported: false,
             version: 1,
           })),
         {
