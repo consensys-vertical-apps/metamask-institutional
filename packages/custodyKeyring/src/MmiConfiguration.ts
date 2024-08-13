@@ -12,7 +12,6 @@ import { IMmiConfigurationControllerOptions } from "./interfaces/IMmiConfigurati
 import { MMIConfiguration } from "./types/MMIConfiguration";
 
 // If a custodian is `curv`, `qredo` `bitgo` or `cactus` it is legacy custodian
-
 const legacyCustodianNames = ["curv", "qredo", "bitgo", "cactus"];
 
 /**
@@ -69,7 +68,6 @@ export class MmiConfigurationController {
     const configuredCustodians = configuration.custodians;
 
     // Steo 1: populate the custodian array with the LEGACY custodians
-
     // Mutate custodians by adding information from the hardcoded types
     const custodians: ICustodianEnvironment[] = [
       ...Object.values(CUSTODIAN_TYPES)
@@ -95,8 +93,8 @@ export class MmiConfigurationController {
         })),
     ];
 
-    // Step 2: populate the custodian array with the configured custodians, which INCLUDES stubs for the legacy custodians
-    // We also mutate the legacy custodian, adding the isNoteToTraderSupported property (FIXME: this is no longer needed because there are no legacy custodians supporting this)
+    // Step 2: populate the custodians array with the configured custodians, which already INCLUDES the legacy custodians
+    // We also mutate the legacy custodian, adding the API url when it exists on the configured custodians side (Bitgo dev/test env)
 
     // Loop through the custodians from the API
     configuredCustodians.forEach(custodian => {
@@ -105,7 +103,6 @@ export class MmiConfigurationController {
         if (legacyCustodianNames.includes(environment.name)) {
           // This logic checks if something is a legacy custodian
 
-          // Version 1 custodians should still support note to trader
           // Find the legacy custodians in the list of custodians we are building
           const legacyCustodian = custodians.find(
             legacyCustodian => legacyCustodian.name.toLowerCase() === environment.name,
@@ -113,8 +110,11 @@ export class MmiConfigurationController {
           if (!legacyCustodian) {
             console.warn(`Missing legacy custodian ${environment.name}`);
           } else {
-            legacyCustodian.isNoteToTraderSupported = environment.isNoteToTraderSupported;
-            legacyCustodian.apiUrl = environment.apiBaseUrl;
+            if(environment.apiBaseUrl) {
+              // Updates a legacy custodian with an API url from the configured custodian,
+              // it's useful for bitgo that has a different API url from dev to prod
+              legacyCustodian.apiUrl = environment.apiBaseUrl;
+            }
           }
           return; // Exit this routine to avoid double adding the legacy custodian
         }
