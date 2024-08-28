@@ -50,7 +50,7 @@
     "jest-junit": "^15.0.0",
     "jest-sonar-reporter": "^2.0.0",
     "lerna": "^8.1.7",
-    "lint-staged": "^13.1.2",
+    "lint-staged": "^15.2.9",
     "nx": "^19.5.4",
     "prettier": "^2.8.7",
     "rimraf": "^4.4.1",
