@@ -30,7 +30,7 @@
   "gitHead": "62ed7639b9145658a4fa1273e35e99d300acdc99",
   "dependencies": {
     "@ethereumjs/tx": "^4.1.1",
-    "@ethereumjs/util": "^8.0.5",
+    "@ethereumjs/util": "^9.1.0",
     "@metamask-institutional/configuration-client": "^2.0.1",
     "@metamask-institutional/sdk": "^0.1.30",
     "@metamask-institutional/types": "^1.1.0",
