@@ -46,7 +46,7 @@ const v2custodian = {
   tokens: "All ERC-20 tokens",
   chains: ["Ethereum"],
   tags: null,
-  apiVersion: 2,
+  apiVersion: "1",
   custodianPublishesTransaction: false,
   environments: [
     {
@@ -57,9 +57,11 @@ const v2custodian = {
       websocketApiUrl: "wss://websocket.dev.metamask-institutional.io/v1/ws",
       apiBaseUrl: "https://saturn-custody.dev.metamask-institutional.io/eth",
       iconUrl: "https://saturn-custody-ui.dev.metamask-institutional.io/saturn.svg",
-      apiVersion: 2,
+      apiVersion: "1",
       custodianPublishesTransaction: false,
       isNoteToTraderSupported: true,
+      isManualTokenInputSupported: false,
+      isQRCodeSupported: false
     },
   ],
 };
@@ -160,6 +162,8 @@ describe("MmiConfigurationController", () => {
           production: v2custodian.production,
           refreshTokenUrl: v2custodian.refreshTokenUrl,
           isNoteToTraderSupported: v2custodian.environments[0].isNoteToTraderSupported,
+          isManualTokenInputSupported: v2custodian.environments[0].isManualTokenInputSupported,
+          isQRCodeSupported: v2custodian.environments[0].isQRCodeSupported,
           websocketApiUrl: "wss://websocket.dev.metamask-institutional.io/v1/ws",
           version: 2,
         },

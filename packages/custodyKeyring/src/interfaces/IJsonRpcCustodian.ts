@@ -1,4 +1,6 @@
 interface IEnvironment {
+  type: string;
+  version: number;
   refreshTokenUrl: string;
   name: string;
   displayName: string;
