@@ -32,18 +32,18 @@ export class MmiConfigurationController {
     const initState = opts.initState?.mmiConfiguration
       ? opts.initState
       : {
-        mmiConfiguration: {
-          portfolio: {
-            enabled: false,
-            url: "",
-            cookieSetUrls: [],
+          mmiConfiguration: {
+            portfolio: {
+              enabled: false,
+              url: "",
+              cookieSetUrls: [],
+            },
+            features: {
+              websocketApi: false,
+            },
+            custodians: [], // NB: Custodians will always be empty when we start
           },
-          features: {
-            websocketApi: false,
-          },
-          custodians: [], // NB: Custodians will always be empty when we start
-        },
-      };
+        };
 
     this.configurationClient = new ConfigurationClient(opts.mmiConfigurationServiceUrl);
 
@@ -99,6 +99,13 @@ export class MmiConfigurationController {
     // Loop through the custodians from the API
     configuredCustodians.forEach(custodian => {
       custodian.environments.forEach(environment => {
+        if (environment.name.includes("bitgo")) {
+          environment.type = "Bitgo";
+          environment.version = 1;
+          environment.apiVersion = undefined;
+          environment.websocketApiUrl = undefined;
+        }
+
         // This used to check if there is no apiUrl, but now it checks by name
         if (legacyCustodianNames.includes(environment.name)) {
           // This logic checks if something is a legacy custodian
@@ -110,7 +117,7 @@ export class MmiConfigurationController {
           if (!legacyCustodian) {
             console.warn(`Missing legacy custodian ${environment.name}`);
           } else {
-            if(environment.apiBaseUrl) {
+            if (environment.apiBaseUrl) {
               // Updates a legacy custodian with an API url from the configured custodian,
               // it's useful for bitgo that has a different API url from dev to prod
               legacyCustodian.apiUrl = environment.apiBaseUrl;
@@ -120,7 +127,7 @@ export class MmiConfigurationController {
         }
 
         custodians.push({
-          type: environment.apiVersion === "3" ? "ECA3" : "JSONRPC",
+          type: environment.apiVersion === "3" ? "ECA3" : environment.apiVersion === "1" ? "JSONRPC" : environment.type,
           iconUrl: custodian.iconUrl,
           name: custodian.name,
           onboardingUrl: custodian.onboardingUrl,
@@ -136,7 +143,7 @@ export class MmiConfigurationController {
           isQRCodeSupported: environment.isQRCodeSupported,
           isManualTokenInputSupported: environment.isManualTokenInputSupported,
           custodianPublishesTransaction: environment.custodianPublishesTransaction,
-          version: 2,
+          version: !environment.apiVersion ? 1 : 2,
         });
       });
     });
