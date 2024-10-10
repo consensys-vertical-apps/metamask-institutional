@@ -1,3 +1,4 @@
+import { IApiCallLogEntry } from "@metamask-institutional/custody-keyring";
 import { SimpleCache } from "@metamask-institutional/simplecache";
 import {
   AuthDetails,
@@ -16,7 +17,11 @@ import { CustodianApiConstructor, ICustodianApi } from "src/interfaces/ICustodia
 import { SignedMessageMetadata } from "src/types/SignedMessageMetadata";
 import { SignedTypedMessageMetadata } from "src/types/SignedTypedMessageMetadata";
 
-import { INTERACTIVE_REPLACEMENT_TOKEN_CHANGE_EVENT, REFRESH_TOKEN_CHANGE_EVENT } from "../constants/constants";
+import {
+  API_REQUEST_LOG_EVENT,
+  INTERACTIVE_REPLACEMENT_TOKEN_CHANGE_EVENT,
+  REFRESH_TOKEN_CHANGE_EVENT,
+} from "../constants/constants";
 import { IEthereumAccount } from "../interfaces/IEthereumAccount";
 import { IEthereumAccountCustodianDetails } from "../interfaces/IEthereumAccountCustodianDetails";
 import { MessageTypes, TypedMessage } from "../interfaces/ITypedMessage";
@@ -48,6 +53,10 @@ export class MMISDK extends EventEmitter {
 
     this.custodianApi.on(INTERACTIVE_REPLACEMENT_TOKEN_CHANGE_EVENT, event => {
       this.emit(INTERACTIVE_REPLACEMENT_TOKEN_CHANGE_EVENT, event);
+    });
+
+    this.custodianApi.on(API_REQUEST_LOG_EVENT, (event: IApiCallLogEntry) => {
+      this.emit(API_REQUEST_LOG_EVENT, event);
     });
   }
 

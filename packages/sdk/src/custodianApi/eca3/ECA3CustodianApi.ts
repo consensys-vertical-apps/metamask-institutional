@@ -1,3 +1,4 @@
+import { IApiCallLogEntry } from "@metamask-institutional/custody-keyring";
 import { SimpleCache } from "@metamask-institutional/simplecache";
 import {
   AuthTypes,
@@ -11,12 +12,14 @@ import {
 } from "@metamask-institutional/types";
 import { EventEmitter } from "events";
 import { SignedMessageMetadata } from "src/types/SignedMessageMetadata";
-import { SignedMessageParams } from "src/types/SignedMessageParams";
 import { SignedTypedMessageMetadata } from "src/types/SignedTypedMessageMetadata";
-import { SignedTypedMessageParams } from "src/types/SignedTypedMessageParams";
 
 import { AccountHierarchyNode } from "../../classes/AccountHierarchyNode";
-import { INTERACTIVE_REPLACEMENT_TOKEN_CHANGE_EVENT, REFRESH_TOKEN_CHANGE_EVENT } from "../../constants/constants";
+import {
+  API_REQUEST_LOG_EVENT,
+  INTERACTIVE_REPLACEMENT_TOKEN_CHANGE_EVENT,
+  REFRESH_TOKEN_CHANGE_EVENT,
+} from "../../constants/constants";
 import { ICustodianApi } from "../../interfaces/ICustodianApi";
 import { IEthereumAccount } from "../../interfaces/IEthereumAccount";
 import { IEthereumAccountCustodianDetails } from "../../interfaces/IEthereumAccountCustodianDetails";
@@ -25,7 +28,6 @@ import { CreateTransactionMetadata } from "../../types/CreateTransactionMetadata
 import { ECA3Client } from "./ECA3Client";
 import { JsonRpcTransactionParams } from "./rpc-payloads/JsonRpcCreateTransactionPayload";
 import { JsonRpcReplaceTransactionParams } from "./rpc-payloads/JsonRpcReplaceTransactionPayload";
-import { JsonRpcListAccountsSignedResponse } from "./rpc-responses/JsonRpcListAccountsSignedResponse";
 import { hexlify } from "./util/hexlify";
 import { mapStatusObjectToStatusText } from "./util/mapStatusObjectToStatusText";
 
@@ -54,6 +56,10 @@ export class ECA3CustodianApi extends EventEmitter implements ICustodianApi {
 
     this.client.on(INTERACTIVE_REPLACEMENT_TOKEN_CHANGE_EVENT, event => {
       this.emit(INTERACTIVE_REPLACEMENT_TOKEN_CHANGE_EVENT, event);
+    });
+
+    this.client.on(API_REQUEST_LOG_EVENT, (event: IApiCallLogEntry) => {
+      this.emit(API_REQUEST_LOG_EVENT, event);
     });
   }
 

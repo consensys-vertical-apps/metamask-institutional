@@ -8,6 +8,7 @@ export { ICustodianApi } from "./interfaces/ICustodianApi";
 export {
   REFRESH_TOKEN_CHANGE_EVENT,
   INTERACTIVE_REPLACEMENT_TOKEN_CHANGE_EVENT,
+  API_REQUEST_LOG_EVENT,
   DEFAULT_MAX_CACHE_AGE,
 } from "./constants/constants";
 
