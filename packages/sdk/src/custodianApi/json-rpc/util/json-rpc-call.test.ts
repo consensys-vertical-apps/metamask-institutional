@@ -13,7 +13,7 @@ describe("json-rpc-call", () => {
   describe("json-rpc-call", () => {
     it("should call the JSON RPC endpoint with the appropriate method and parameters", async () => {
       fetchMock.mockResponseOnce(JSON.stringify({ result: "test" }));
-      const call = factory("http://test/json-rpc");
+      const call = factory("http://test/json-rpc", jest.fn());
 
       await call("test", { some: "parameter" }, "access_token");
 
@@ -37,7 +37,7 @@ describe("json-rpc-call", () => {
         }),
       );
 
-      const call = factory("http://test/json-rpc");
+      const call = factory("http://test/json-rpc", jest.fn());
 
       await expect(call("test", { some: "parameter" }, "access_token")).rejects.toThrow("Test error");
     });

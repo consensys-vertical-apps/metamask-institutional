@@ -3,7 +3,11 @@ import { IRefreshTokenChangeEvent } from "@metamask-institutional/types";
 import crypto from "crypto";
 import { EventEmitter } from "events";
 
-import { INTERACTIVE_REPLACEMENT_TOKEN_CHANGE_EVENT, REFRESH_TOKEN_CHANGE_EVENT } from "../../constants/constants";
+import {
+  API_REQUEST_LOG_EVENT,
+  INTERACTIVE_REPLACEMENT_TOKEN_CHANGE_EVENT,
+  REFRESH_TOKEN_CHANGE_EVENT,
+} from "../../constants/constants";
 import { JsonRpcResult } from "./interfaces/JsonRpcResult";
 import { JsonRpcCreateTransactionPayload } from "./rpc-payloads/JsonRpcCreateTransactionPayload";
 import { JsonRpcGetSignedMessageByIdPayload } from "./rpc-payloads/JsonRpcGetSignedMessageByIdPayload";
@@ -33,7 +37,7 @@ export class JsonRpcClient extends EventEmitter {
   constructor(private apiBaseUrl: string, private refreshToken: string, private refreshTokenUrl: string) {
     super();
 
-    this.call = factory(`${apiBaseUrl}/v1/json-rpc`);
+    this.call = factory(`${this.apiBaseUrl}/v1/json-rpc`, this.emit.bind(this));
 
     this.cache = new SimpleCache();
   }
@@ -127,8 +131,23 @@ export class JsonRpcClient extends EventEmitter {
         this.emit(REFRESH_TOKEN_CHANGE_EVENT, payload);
       }
 
+      this.emit(API_REQUEST_LOG_EVENT, {
+        method: "POST",
+        endpoint: this.refreshTokenUrl,
+        success: response.ok,
+        timestamp: new Date().toISOString(),
+        errorMessage: response.ok ? undefined : responseJson.message,
+      });
+
       return responseJson.access_token;
     } catch (error) {
+      this.emit(API_REQUEST_LOG_EVENT, {
+        method: "POST",
+        endpoint: this.refreshTokenUrl,
+        success: false,
+        timestamp: new Date().toISOString(),
+        errorMessage: error.message,
+      });
       throw new Error(`Error getting the Access Token: ${error}`);
     }
   }
