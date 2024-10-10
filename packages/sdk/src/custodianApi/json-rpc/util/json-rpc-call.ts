@@ -1,4 +1,4 @@
-import { IApiCallLogEntry } from "@metamask-institutional/custody-keyring/src/interfaces/IApiCallLogEntry";
+import { IApiCallLogEntry } from "@metamask-institutional/custody-keyring";
 
 import { API_REQUEST_LOG_EVENT } from "../../../constants/constants";
 import { JsonRpcError } from "../interfaces/JsonRpcError";
