@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.0](https://github.com/consensys-vertical-apps/metamask-institutional/compare/types-v1.1.0...types-v1.2.0) (2024-10-11)
+
+
+### Features
+
+* added export state log feature ([#841](https://github.com/consensys-vertical-apps/metamask-institutional/issues/841)) ([28e6083](https://github.com/consensys-vertical-apps/metamask-institutional/commit/28e6083b842eafaaa3d65979fa6380b4b0abd9d6))
+
 ## [1.1.0](https://github.com/consensys-vertical-apps/metamask-institutional/compare/types-v1.0.4...types-v1.1.0) (2024-04-17)
 
 

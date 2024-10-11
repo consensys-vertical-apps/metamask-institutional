@@ -59,6 +59,32 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
   * dependencies
     * @metamask-institutional/sdk bumped from ^0.1.29 to ^0.1.30
 
+## [2.1.0](https://github.com/consensys-vertical-apps/metamask-institutional/compare/custody-keyring-v2.0.3...custody-keyring-v2.1.0) (2024-10-11)
+
+
+### Features
+
+* added export state log feature ([#841](https://github.com/consensys-vertical-apps/metamask-institutional/issues/841)) ([28e6083](https://github.com/consensys-vertical-apps/metamask-institutional/commit/28e6083b842eafaaa3d65979fa6380b4b0abd9d6))
+
+
+### Bug Fixes
+
+* mmi xxx bitgo api url ([#790](https://github.com/consensys-vertical-apps/metamask-institutional/issues/790)) ([2e869d1](https://github.com/consensys-vertical-apps/metamask-institutional/commit/2e869d11e8a0796d7fb5e3a0cea99358c68545e7))
+* **version bump:** manual version bump and clean up ([#762](https://github.com/consensys-vertical-apps/metamask-institutional/issues/762)) ([5135d9c](https://github.com/consensys-vertical-apps/metamask-institutional/commit/5135d9c1def750422e4a8f7718ba1926242695dd))
+
+
+### Performance Improvements
+
+* **custody-keyring:** remove migrations from index ([#774](https://github.com/consensys-vertical-apps/metamask-institutional/issues/774)) ([deafdd5](https://github.com/consensys-vertical-apps/metamask-institutional/commit/deafdd51c357d18ad7b58a03dccae77fd2d74bbe))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @metamask-institutional/sdk bumped from ^0.1.30 to ^0.2.0
+    * @metamask-institutional/types bumped from ^1.1.0 to ^1.2.0
+
 ## [2.0.1](https://github.com/consensys-vertical-apps/metamask-institutional/compare/custody-keyring-v2.0.0...custody-keyring-v2.0.1) (2024-05-29)
 
 

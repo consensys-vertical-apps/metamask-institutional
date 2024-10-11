@@ -9,6 +9,25 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
   * dependencies
     * @metamask-institutional/types bumped from ^1.0.4 to ^1.1.0
 
+## [0.2.0](https://github.com/consensys-vertical-apps/metamask-institutional/compare/sdk-v0.1.30...sdk-v0.2.0) (2024-10-11)
+
+
+### Features
+
+* added export state log feature ([#841](https://github.com/consensys-vertical-apps/metamask-institutional/issues/841)) ([28e6083](https://github.com/consensys-vertical-apps/metamask-institutional/commit/28e6083b842eafaaa3d65979fa6380b4b0abd9d6))
+
+
+### Bug Fixes
+
+* **version bump:** manual version bump and clean up ([#762](https://github.com/consensys-vertical-apps/metamask-institutional/issues/762)) ([5135d9c](https://github.com/consensys-vertical-apps/metamask-institutional/commit/5135d9c1def750422e4a8f7718ba1926242695dd))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @metamask-institutional/types bumped from ^1.1.0 to ^1.2.0
+
 ## [0.1.30](https://github.com/consensys-vertical-apps/metamask-institutional/compare/sdk-v0.1.29...sdk-v0.1.30) (2024-06-25)
 
 
