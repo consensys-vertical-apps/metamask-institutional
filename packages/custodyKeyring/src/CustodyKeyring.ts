@@ -5,6 +5,7 @@ import {
   AddressType,
   AuthDetails,
   AuthTypes,
+  IApiCallLogEntry,
   ICustodianAccount,
   ICustodianTransactionLink,
   ICustodianType,
@@ -25,6 +26,7 @@ import crypto from "crypto";
 import { EventEmitter } from "events";
 
 import {
+  API_REQUEST_LOG_EVENT,
   DEFAULT_MAX_CACHE_AGE,
   INTERACTIVE_REPLACEMENT_TOKEN_CHANGE_EVENT,
   REFRESH_TOKEN_CHANGE_EVENT,
@@ -249,6 +251,10 @@ export abstract class CustodyKeyring extends EventEmitter {
     this.emit(INTERACTIVE_REPLACEMENT_TOKEN_CHANGE_EVENT, event); // Propagate the event to the extension where it calls for the keyrings to be persisted
   }
 
+  emitApiRequestLogEvent(event: IApiCallLogEntry): void {
+    this.emit(API_REQUEST_LOG_EVENT, event);
+  }
+
   createAuthDetails(token: string): AuthDetails {
     let authDetails: AuthDetails;
 
@@ -286,6 +292,8 @@ export abstract class CustodyKeyring extends EventEmitter {
     sdk.on(INTERACTIVE_REPLACEMENT_TOKEN_CHANGE_EVENT, (event: IInteractiveRefreshTokenChangeEvent) =>
       this.handleInteractiveRefreshTokenChangeEvent(event),
     );
+
+    sdk.on(API_REQUEST_LOG_EVENT, (event: IApiCallLogEntry) => this.emitApiRequestLogEvent(event));
 
     this.sdkList.push({
       sdk,

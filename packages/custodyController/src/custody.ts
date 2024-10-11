@@ -1,5 +1,5 @@
 import { CUSTODIAN_TYPES } from "@metamask-institutional/custody-keyring";
-import { ITransactionStatusMap } from "@metamask-institutional/types";
+import { IApiCallLogEntry, ITransactionStatusMap } from "@metamask-institutional/types";
 import { ObservableStore } from "@metamask/obs-store";
 
 import { CustodyAccountDetails } from "./types";
@@ -16,8 +16,9 @@ import { toChecksumHexAddress } from "./utils";
  */
 export class CustodyController {
   public store;
-
+  private readonly MAX_LOG_ENTRIES = 500;
   public captureException: (e: Error) => void;
+
   /**
    * Creates a new controller instance
    *
@@ -29,10 +30,44 @@ export class CustodyController {
     this.store = new ObservableStore({
       custodyAccountDetails: {} as { [key: string]: CustodyAccountDetails },
       custodianConnectRequest: {},
+      apiRequestLogs: [],
       ...initState,
     });
 
     this.captureException = captureException;
+  }
+
+  storeApiCallLog(apiLogEntry: IApiCallLogEntry): void {
+    const { apiRequestLogs } = this.store.getState();
+
+    const updatedApiRequestLogs = apiRequestLogs ? [...apiRequestLogs] : [];
+
+    if (updatedApiRequestLogs.length >= this.MAX_LOG_ENTRIES) {
+      updatedApiRequestLogs.shift();
+    }
+
+    updatedApiRequestLogs.push(apiLogEntry);
+
+    this.store.updateState({ apiRequestLogs: updatedApiRequestLogs });
+  }
+
+  sanitizeAndLogApiCall(apiLogEntry: IApiCallLogEntry): void {
+    const { id, method, endpoint, success, timestamp, errorMessage, responseData } = apiLogEntry;
+
+    const sanitizedEntry: IApiCallLogEntry = {
+      id,
+      method,
+      endpoint,
+      success,
+      timestamp,
+      responseData: success ? responseData : undefined,
+    };
+
+    if (!success && errorMessage) {
+      sanitizedEntry.errorMessage = errorMessage;
+    }
+
+    this.storeApiCallLog(sanitizedEntry);
   }
 
   storeCustodyStatusMap(custody: string, custodyStatusMap: ITransactionStatusMap): void {

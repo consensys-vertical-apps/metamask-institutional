@@ -1,6 +1,7 @@
 import { SimpleCache } from "@metamask-institutional/simplecache";
 import {
   AuthTypes,
+  IApiCallLogEntry,
   ICustodianTransactionLink,
   IEIP1559TxParams,
   ILegacyTXParams,
@@ -12,7 +13,11 @@ import {
 import { EventEmitter } from "events";
 
 import { AccountHierarchyNode } from "../../classes/AccountHierarchyNode";
-import { INTERACTIVE_REPLACEMENT_TOKEN_CHANGE_EVENT, REFRESH_TOKEN_CHANGE_EVENT } from "../../constants/constants";
+import {
+  API_REQUEST_LOG_EVENT,
+  INTERACTIVE_REPLACEMENT_TOKEN_CHANGE_EVENT,
+  REFRESH_TOKEN_CHANGE_EVENT,
+} from "../../constants/constants";
 import { ICustodianApi } from "../../interfaces/ICustodianApi";
 import { IEthereumAccount } from "../../interfaces/IEthereumAccount";
 import { IEthereumAccountCustodianDetails } from "../../interfaces/IEthereumAccountCustodianDetails";
@@ -48,6 +53,10 @@ export class JsonRpcCustodianApi extends EventEmitter implements ICustodianApi {
 
     this.client.on(INTERACTIVE_REPLACEMENT_TOKEN_CHANGE_EVENT, event => {
       this.emit(INTERACTIVE_REPLACEMENT_TOKEN_CHANGE_EVENT, event);
+    });
+
+    this.client.on(API_REQUEST_LOG_EVENT, (event: IApiCallLogEntry) => {
+      this.emit(API_REQUEST_LOG_EVENT, event);
     });
   }
 
