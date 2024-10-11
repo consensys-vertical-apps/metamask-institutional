@@ -1,4 +1,5 @@
 export interface IApiCallLogEntry {
+  id?: number;
   method: string;
   endpoint: string;
   success: boolean;

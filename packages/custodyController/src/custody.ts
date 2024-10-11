@@ -52,9 +52,10 @@ export class CustodyController {
   }
 
   sanitizeAndLogApiCall(apiLogEntry: IApiCallLogEntry): void {
-    const { method, endpoint, success, timestamp, errorMessage, responseData } = apiLogEntry;
+    const { id, method, endpoint, success, timestamp, errorMessage, responseData } = apiLogEntry;
 
     const sanitizedEntry: IApiCallLogEntry = {
+      id,
       method,
       endpoint,
       success,

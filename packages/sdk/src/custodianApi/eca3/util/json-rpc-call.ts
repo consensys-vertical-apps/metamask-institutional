@@ -34,6 +34,7 @@ export default function (jsonRpcEndpoint: string, emit: (eventName: string, even
       responseJson = await response.json();
 
       emit(API_REQUEST_LOG_EVENT, {
+        id: requestId,
         method,
         endpoint: jsonRpcEndpoint,
         success: !responseJson.error,
@@ -55,6 +56,7 @@ export default function (jsonRpcEndpoint: string, emit: (eventName: string, even
       console.log("JSON-RPC <", method, requestId, e, jsonRpcEndpoint);
 
       emit(API_REQUEST_LOG_EVENT, {
+        id: requestId,
         method,
         endpoint: jsonRpcEndpoint,
         success: false,
