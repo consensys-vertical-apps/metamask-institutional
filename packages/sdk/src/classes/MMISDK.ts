@@ -1,8 +1,8 @@
-import { IApiCallLogEntry } from "@metamask-institutional/custody-keyring";
 import { SimpleCache } from "@metamask-institutional/simplecache";
 import {
   AuthDetails,
   AuthTypes,
+  IApiCallLogEntry,
   ICustodianTransactionLink,
   IEIP1559TxParams,
   ILegacyTXParams,

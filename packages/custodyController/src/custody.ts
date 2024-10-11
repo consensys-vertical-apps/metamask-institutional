@@ -1,5 +1,5 @@
-import { CUSTODIAN_TYPES, IApiCallLogEntry } from "@metamask-institutional/custody-keyring";
-import { ITransactionStatusMap } from "@metamask-institutional/types";
+import { CUSTODIAN_TYPES } from "@metamask-institutional/custody-keyring";
+import { IApiCallLogEntry, ITransactionStatusMap } from "@metamask-institutional/types";
 import { ObservableStore } from "@metamask/obs-store";
 
 import { CustodyAccountDetails } from "./types";

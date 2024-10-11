@@ -16,6 +16,7 @@ export { ITransactionStatusMap } from "./ITransactionStatusMap";
 export { ICustodianAccount, IExtensionCustodianAccount } from "./ICustodianAccount";
 export { IRefreshTokenChangeEvent } from "./IRefreshTokenChangeEvent";
 export { IInteractiveRefreshTokenChangeEvent } from "./IInteractiveRefreshTokenChangeEvent";
+export { IApiCallLogEntry } from "./IApiCallLogEntry";
 
 // Enums
 export { AuthTypes } from "./enum/AuthTypes";

@@ -5,6 +5,7 @@ import {
   AddressType,
   AuthDetails,
   AuthTypes,
+  IApiCallLogEntry,
   ICustodianAccount,
   ICustodianTransactionLink,
   ICustodianType,
@@ -30,7 +31,6 @@ import {
   INTERACTIVE_REPLACEMENT_TOKEN_CHANGE_EVENT,
   REFRESH_TOKEN_CHANGE_EVENT,
 } from "./constants";
-import { IApiCallLogEntry } from "./interfaces/IApiCallLogEntry";
 import { ICustodianEnvironment } from "./interfaces/ICustodianEnvironment";
 import { ICustodyKeyringOptions } from "./interfaces/ICustodyKeyringOptions";
 import { ISerializedKeyring } from "./interfaces/ISerializedKeyring";
