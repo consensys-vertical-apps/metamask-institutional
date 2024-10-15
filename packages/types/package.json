@@ -1,6 +1,6 @@
 {
   "name": "@metamask-institutional/types",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "This package will export shared types used across the old @codefi/mmi-sdk library",
   "author": "Albert Olive <albertolivecorbella@gmail.com>",
   "homepage": "https://github.com/consensys-vertical-apps/metamask-institutional#readme",

@@ -224,6 +224,15 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
     * @metamask-institutional/sdk bumped from ^0.1.29 to ^0.1.30
     * @metamask-institutional/websocket-client bumped from ^0.2.4 to ^0.2.5
 
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @metamask-institutional/custody-keyring bumped from ^2.0.3 to ^2.1.0
+    * @metamask-institutional/sdk bumped from ^0.1.30 to ^0.2.0
+    * @metamask-institutional/types bumped from ^1.1.0 to ^1.2.0
+    * @metamask-institutional/websocket-client bumped from ^0.2.5 to ^0.2.6
+
 ## [0.2.2](https://github.com/consensys-vertical-apps/metamask-institutional/compare/transaction-update-v0.2.1...transaction-update-v0.2.2) (2024-05-17)
 
 
