@@ -46,7 +46,8 @@ export class BitgoCustodyKeyring extends CustodyKeyring {
   };
 
   sdkFactory = (authDetails: AuthDetails, envName: string): MMISDK => {
-    const custodian = this.getCustodianFromEnvName("bitgo");
+    const custodianEnvName = envName !== "bitgo" ? "bitgo-test" : "bitgo";
+    const custodian = this.getCustodianFromEnvName(custodianEnvName);
 
     return mmiSDKFactory(BitgoCustodianApi, authDetails, this.authType, custodian.apiUrl);
   };
