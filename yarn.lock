@@ -1251,10 +1251,10 @@
     yargs "17.7.2"
     yargs-parser "21.1.1"
 
-"@metamask/obs-store@^9.0.0":
-  version "9.0.0"
-  resolved "https://registry.yarnpkg.com/@metamask/obs-store/-/obs-store-9.0.0.tgz#fa50c988b4635817ff0454bc9763b1cf6b37d9e9"
-  integrity sha512-GDsEh2DTHgmISzJt8erf9T4Ph38iwD2yDJ6J1YFq/IcWRGnT1bkgSEVqZMv9c9JloX02T5bFIUK6+9m9EycI6A==
+"@metamask/obs-store@^9.1.0":
+  version "9.1.0"
+  resolved "https://registry.yarnpkg.com/@metamask/obs-store/-/obs-store-9.1.0.tgz#3784f088ad9127a1d0fa073109564217a9f2785f"
+  integrity sha512-Ok1GreroQpV39PBYzTvEEyWrXBcjjsb8O3Q62PVHZEqDJ+8ehjBEFblX6eRTfS9vhNVHCf+GTayaFp9Bmeh1/A==
   dependencies:
     "@metamask/safe-event-emitter" "^3.0.0"
     readable-stream "^3.6.2"
