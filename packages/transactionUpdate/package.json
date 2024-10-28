@@ -34,7 +34,7 @@
     "@metamask-institutional/sdk": "^0.2.0",
     "@metamask-institutional/types": "^1.2.0",
     "@metamask-institutional/websocket-client": "^0.2.6",
-    "@metamask/obs-store": "^9.0.0"
+    "@metamask/obs-store": "^9.1.0"
   },
   "devDependencies": {
     "ts-jest": "26.4.4"
